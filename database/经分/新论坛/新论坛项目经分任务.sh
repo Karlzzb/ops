@@ -1,0 +1,1 @@
+01 5 * * * /opt/logstash/bin/logstash -f /data/dbtools/discuz_access_stat.conf  > /var/log/discuz_access_stat.log 2>&1

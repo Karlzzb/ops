@@ -1,0 +1,241 @@
+安装drbd
+ rpm -Uvh http://www.elrepo.org/elrepo-release-6-6.el6.elrepo.noarch.rpm --force
+ 
+  yum install drbd83-utils.x86_64 kmod-drbd83.x86_64
+  
+ # 创建用于drbd同步的分区
+  [root@node1 yum.repos.d]#  lvcreate -L 200G -n drbd /dev/mainvg
+  Logical volume "drbd" created
+  [root@node2 yum.repos.d]# lvcreate -L 200G -n drbd /dev/mainvg
+  Logical volume "drbd" created
+  
+  # 配置drbd
+  [root@node1 yum.repos.d]# cat /etc/drbd.d/global_common.conf
+global {
+    usage-count no;
+}
+
+common {
+    protocol C;
+
+    handlers {
+        # These are EXAMPLE handlers only.
+        # They may have severe implications,
+        # like hard resetting the node under certain circumstances.
+        # Be careful when chosing your poison.
+
+        # pri-on-incon-degr "/usr/lib/drbd/notify-pri-on-incon-degr.sh; /usr/lib/drbd/notify-emergency-reboot.sh; echo b > /proc/sysrq-trigger ; reboot -f";
+        # pri-lost-after-sb "/usr/lib/drbd/notify-pri-lost-after-sb.sh; /usr/lib/drbd/notify-emergency-reboot.sh; echo b > /proc/sysrq-trigger ; reboot -f";
+        # local-io-error "/usr/lib/drbd/notify-io-error.sh; /usr/lib/drbd/notify-emergency-shutdown.sh; echo o > /proc/sysrq-trigger ; halt -f";
+        # fence-peer "/usr/lib/drbd/crm-fence-peer.sh";
+        # split-brain "/usr/lib/drbd/notify-split-brain.sh root";
+        # out-of-sync "/usr/lib/drbd/notify-out-of-sync.sh root";
+        # before-resync-target "/usr/lib/drbd/snapshot-resync-target-lvm.sh -p 15 -- -c 16k";
+        # after-resync-target /usr/lib/drbd/unsnapshot-resync-target-lvm.sh;
+    }
+
+    startup {
+        wfc-timeout 30;
+        outdated-wfc-timeout 20;
+        degr-wfc-timeout 30;
+    }
+
+    disk {
+        on-io-error detach;  
+        fencing resource-and-stonith;  
+    }
+
+    net {
+        cram-hmac-alg sha1;
+        shared-secret "sync_disk_now";
+    }
+
+    syncer {
+        rate 100M;
+        verify-alg sha1;
+    }
+}
+
+
+resource mfs {
+    #　host-name is mandatory and must match the Linux host name (uname -n) of one of the nodes
+    on node1 {
+        device    /dev/drbd0;
+        disk      /dev/mainvg/drbd;
+        address   192.168.10.234:9876;
+        meta-disk  internal;
+    }
+
+    on node2 {
+        device    /dev/drbd0;
+        disk      /dev/mainvg/drbd;
+        address   192.168.10.235:9876;
+        meta-disk internal;
+    }
+}
+
+# 安装heartbeat
+yum install xfsdump.x86_64 heartbeat
+
+[root@node1 yum.repos.d]# /etc/init.d/drbd start
+Starting DRBD resources: [ d(mfs) s(mfs) n(mfs) ]...
+[root@node2 yum.repos.d]# /etc/init.d/drbd start
+Starting DRBD resources: [ d(mfs) s(mfs) n(mfs) ].
+
+[root@node1 yum.repos.d]# drbd-overview 
+  0:mfs  Connected Secondary/Secondary Inconsistent/Inconsistent C r----- 
+[root@node1 yum.repos.d]# cat /proc/drbd 
+version: 8.3.16 (api:88/proto:86-97)
+GIT-hash: a798fa7e274428a357657fb52f0ecf40192c1985 build by phil@Build64R6, 2013-09-27 16:00:43
+ 0: cs:Connected ro:Secondary/Secondary ds:Inconsistent/Inconsistent C r-----
+    ns:0 nr:0 dw:0 dr:0 al:0 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:209708764
+    
+[root@node1 yum.repos.d]# drbdadm -- --overwrite-data-of-peer primary mfs
+[root@node1 yum.repos.d]# drbd-overview 
+  0:mfs  SyncSource Primary/Secondary UpToDate/Inconsistent C r---n- 
+    [>....................] sync'ed:  0.2% (204588/204792)M
+
+#格式化文件系统
+[root@node1 yum.repos.d]# mkfs.xfs /dev/drbd0
+meta-data=/dev/drbd0             isize=256    agcount=16, agsize=3276700 blks
+         =                       sectsz=4096  attr=2, projid32bit=0
+data     =                       bsize=4096   blocks=52427191, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0
+log      =internal log           bsize=4096   blocks=25599, version=2
+         =                       sectsz=4096  sunit=1 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+
+# heartbeat 设置
+
+
+
+# ha.cf 保持node1和node2一致
+# auto_failback on # 生产环境为了更安全会设置成off
+[root@node1 ha.d]# cat ha.cf 
+logfacility     local0
+keepalive 2
+bcast   eth0
+deadtime 20
+warntime 10
+initdead 120
+
+auto_failback on
+node    node1   
+node    node2
+
+# 权限600，node1和node2一致
+[root@node1 ha.d]# cat authkeys 
+auth 1
+1 crc
+
+# resources，node1和node2一致
+[root@node1 ha.d]# cat haresources 
+node1 initdrbd 192.168.10.222
+     
+
+# 创建新的脚本resource.d/initdrbd ，权限755，对应haresources 定义的initdrbd
+[root@node1 ha.d]# cat resource.d/initdrbd 
+#!/bin/bash
+
+META_DATA="/mfs/metadata"
+
+case "$1" in
+    start)
+        while true; do
+            drbd_status=$(/etc/init.d/drbd status | grep -Ew "Connected|WFConnection" | wc -l)
+            if [ $drbd_status -eq 0 ]; then
+                logger "$(date) drbd's status is inconsisten, waiting..."
+                sleep 1
+            else
+                echo "$(date) drbd's status is ok"
+                break
+            fi
+        done
+        
+        mkdir -p $META_DATA
+        drbdsetup /dev/drbd0 primary -o
+        mount /dev/drbd0 $META_DATA
+        chown daemon:daemon $META_DATA  -R
+        mfsmetarestore -a -d $META_DATA
+        /usr/sbin/mfsmaster start
+
+    ;;
+    stop)
+        /usr/sbin/mfsmaster stop
+        #fuser -ck /data/mfs
+        umount -fl /dev/drbd0
+        drbdadm secondary mfs
+
+    ;;
+    status)
+        echo ;;
+
+    *)
+    echo "Usage: drbddisk [resource] {start|stop|status}"
+    exit 1
+    ;;
+esac
+
+exit 0
+
+
+#######MFS配置
+# mfs metadata
+# yum install mfs mfs-cgi mfs-client
+
+# 挂载文件系统
+[root@node1 ~]# mkdir -p  /mfs/metadata/; mount /dev/drbd0 /mfs/metadata/ ; chown daemon:daemon /mfs/metadata/
+[root@node1 ~]# df -h
+Filesystem               Size  Used Avail Use% Mounted on
+/dev/mapper/mainvg-root  193G  8.5G  175G   5% /
+tmpfs                    3.9G     0  3.9G   0% /dev/shm
+/dev/sda1                504M   39M  440M   9% /boot
+/dev/drbd0               200G   33M  200G   1% /mfs/metadata
+
+# vim /etc/mfs/mfsexports.cfg
+# vim /etc/mfs/mfsmaster.cfg, 修改DATA_PATH为/mfs/metadata/
+# cp /var/mfs/metadata.mfs.empty /mfs/metadata/metadata.mfs
+# chown daemon. /mfs/metadata/metadata.mfs
+
+# 启动mfsmaster
+[root@node1 ~]# mfsmaster start
+working directory: /mfs/metadata
+lockfile created and locked
+initializing mfsmaster modules ...
+loading sessions ... ok
+sessions file has been loaded
+exports file has been loaded
+mfstopology configuration file (/etc/mfs/mfstopology.cfg) not found - using defaults
+loading metadata ...
+create new empty filesystemmetadata file has been loaded
+no charts data file - initializing empty charts
+master <-> metaloggers module: listen on *:9419
+master <-> chunkservers module: listen on *:9420
+main master server module: listen on *:9421
+mfsmaster daemon initialized properly
+
+# 启动heartbeat错误
+Sep 25 09:59:09 node1 heartbeat: [13218]: ERROR: should_drop_message: attempted replay attack [node1]? [gen = 1411509430, curgen = 1411610322]
+Sep 25 09:59:10 node1 heartbeat: [13218]: ERROR: should_drop_message: attempted replay attack [node1]? [gen = 1411509430, curgen = 1411610322]
+Sep 25 09:59:11 node1 heartbeat: [13218]: ERROR: should_drop_message: attempted replay attack [node1]? [gen = 1411509430, curgen = 1411610322]
+[root@node1 ha.d]# /bin/rm /var/lib/heartbeat/hb_uuid
+[root@node1 ha.d]# /bin/rm /var/lib/heartbeat/hb_generation
+
+
+# chunk节点
+# 创建文件系统用于存储
+[root@node3 mfs]# lvcreate -L 500G -n data /dev/mainvg
+  Logical volume "data" created
+[root@node3 mfs]# mkfs.ext4 /dev/mainvg/data 
+# mkdir -p /data; mount /dev/mainvg/data /data;  chown daemon. /data/ -R
+
+# 定义数据存储目录
+[root@node3 mfs]# mv  mfshdd.cfg.dist  mfshdd.cfg
+
+# 修改mfsmaster为VIP地址。
+[root@node3 mfs]# mv mfschunkserver.cfg.dist  mfschunkserver.cfg
+
+
+
+

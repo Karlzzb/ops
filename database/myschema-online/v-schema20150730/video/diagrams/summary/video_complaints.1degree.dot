@@ -1,0 +1,39 @@
+// dot 2.26.0 on Linux 2.6.32-504.3.3.el6.x86_64
+// SchemaSpy rev Unknown
+digraph "video_complaints" {
+  graph [
+    rankdir="RL"
+    bgcolor="#f7f7f7"
+    nodesep="0.18"
+    ranksep="0.46"
+    fontname="Microsoft YaHei"
+    fontsize="11"
+  ];
+  node [
+    fontname="Microsoft YaHei"
+    fontsize="11"
+    shape="plaintext"
+  ];
+  edge [
+    arrowsize="0.8"
+  ];
+  "video_complaints" [
+    label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
+      <TR><TD COLSPAN="3" BGCOLOR="#9bab96" ALIGN="CENTER">video_complaints<br/>(用户投诉建议表                        **创建者：morgan)</TD></TR>
+      <TR><TD PORT="id" COLSPAN="3" BGCOLOR="#bed1b8" ALIGN="LEFT">id</TD></TR>
+      <TR><TD PORT="uid" COLSPAN="3" ALIGN="LEFT">uid</TD></TR>
+      <TR><TD PORT="cid" COLSPAN="3" ALIGN="LEFT">cid</TD></TR>
+      <TR><TD PORT="type" COLSPAN="3" ALIGN="LEFT">type</TD></TR>
+      <TR><TD PORT="content" COLSPAN="3" ALIGN="LEFT">content</TD></TR>
+      <TR><TD PORT="results" COLSPAN="3" ALIGN="LEFT">results</TD></TR>
+      <TR><TD PORT="status" COLSPAN="3" ALIGN="LEFT">status</TD></TR>
+      <TR><TD PORT="editors_id" COLSPAN="3" ALIGN="LEFT">editors_id</TD></TR>
+      <TR><TD PORT="created" COLSPAN="3" ALIGN="LEFT">created</TD></TR>
+      <TR><TD PORT="edit_time" COLSPAN="3" ALIGN="LEFT">edit_time</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="#f7f7f7">  </TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">223 rows</TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">  </TD></TR>
+    </TABLE>>
+    URL="tables/video_complaints.html"
+    tooltip="video_complaints"
+  ];
+}

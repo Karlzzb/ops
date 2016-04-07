@@ -1,0 +1,25 @@
+[server default]
+# mysql user and password
+user=mhaadmin
+password=06e2d6ae38a56d817829bda
+port=3366
+ssh_user=root
+# working directory on the manager
+manager_workdir=/var/log/masterha/v-mha
+# working directory on MySQL servers
+remote_workdir=/var/log/masterha/v-mha
+
+master_binlog_dir=/data/dblogs/mysql3366/binlogs
+ping_interval=5
+
+master_ip_failover_script= /usr/local/custom_script/master_ip_failover
+#report_script= /usr/local/custom_script/send_report
+secondary_check_script = masterha_secondary_check -s hostname=caegi-v-lvs02
+
+[server1]
+hostname=caegi-v-mysql01
+candidate_master=1
+
+[server2]
+hostname=caegi-v-mysql03
+candidate_master=1

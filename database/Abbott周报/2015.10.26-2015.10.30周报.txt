@@ -1,0 +1,13 @@
+1.测试环境数据库更新5次，bar环境数据库更新1次。
+2.给PUMA添加用户VIP等级和时间。
+3.针对论坛的SQL更新，修改SQL版本更新脚本。
+4.MySQL移动BBS和PAY实例到202.153.198.9
+5.和sid讨论ops权限的需求。
+6.OPS: Mysql digest 批量review后台完成，还差页面
+7.OPS: 权限表创建
+
+
+下周
+1.OPS: 用户权限开发。
+2.准备将V和BBS的pt-query-digest迁移到OPS数据库本地
+3.权限开发完以后，Redis功能需要微调

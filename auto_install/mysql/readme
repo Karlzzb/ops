@@ -1,0 +1,47 @@
+#########################使用oninstall_mysql5.6-yum.sh安装部署#########################
+上传my.cnf mysql oninstall_mysql5.6-yum.sh到LINUX服务器任意同一目录下
+
+执行oninstall_mysql5.6-yum.sh脚本
+
+脚本执行说明：/bin/sh oninstall_mysql5.6.sh --instance-ports=3306
+							(instance-ports参数后可接多个端口号，以逗号分隔,多个端口号代表启动多个实例)
+
+安装目录说明：
+	MYSQL服务目录：/usr/bin
+	数据目录：/db/mysql{port}/ 
+	日志目录：/db/mysql{port}/
+数据库重启方法：
+	/etc/init.d/mysql{port} start|stop|restart
+
+数据库连接方式：
+	mysql -uroot -pmyadmin -S /db/mysql{port}/mysql.sock 
+	(默认密码:myadmin)
+	
+(备注: 不同实例的数据、日志和启动文件分离，{port}等于实例端口号，例如：/etc/init.d/mysql3306 start)
+
+
+
+
+#########################使用oninstall_mysql5.6.sh安装部署(源码安装)#########################
+上传oninstall_mysql.tar.gz到LINUX服务器任意目录
+
+解压文件后进入oninstall_mysql目录，执行oninstall_mysql5.6.sh脚本
+
+脚本执行说明：
+	首次创建MYSQL实例使用：./oninstall_mysql5.6.sh --instance-ports=3306
+							(instance-ports参数后可接多个端口号，以逗号分隔)
+							
+	在已创建过MYSQL的服务器上添加实例：oninstall_mysql5.6.sh --add-instance=true --instance-ports=3307,3308
+
+安装目录说明：
+	MYSQL服务目录：/application/mysql
+	数据目录：/db/mysql{port}/ 
+	日志目录：/db/mysql{port}/
+数据库重启方法：
+	/etc/init.d/mysql{port} start|stop|restart
+
+数据库连接方式：
+	/application/mysql/bin/mysql -uroot -pmyadmin -S /db/mysql{port}/mysql.sock 
+	(默认密码:myadmin)
+	
+     (备注: 不同实例的数据、日志和启动文件分离，{port}等于实例端口号，例如：/etc/init.d/mysql3306 start)

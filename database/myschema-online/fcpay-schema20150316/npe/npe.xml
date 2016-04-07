@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<database name="npe" type="MySQL - 5.6.22-log">
+   <tables>
+      <table name="oplogs" numRows="337962" remarks="" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="uuid" nullable="false" remarks="" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="1" name="searchkey" nullable="false" remarks="" size="256" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="2" name="message" nullable="false" remarks="" size="512" type="VARCHAR"/>
+         <column autoUpdated="false" defaultValue="info" digits="0" id="3" name="level" nullable="true" remarks="" size="32" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="4" name="createtime" nullable="true" remarks="" size="64" type="VARCHAR"/>
+         <primaryKey column="uuid" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="uuid"/>
+         </index>
+         <index name="createtime_key" unique="false">
+            <column ascending="true" name="createtime"/>
+         </index>
+      </table>
+      <table name="params" numRows="0" remarks="" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="keyy" nullable="false" remarks="" size="256" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="1" name="valuee" nullable="false" remarks="" size="512" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="2" name="des" nullable="false" remarks="" size="512" type="VARCHAR"/>
+         <primaryKey column="keyy" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="keyy"/>
+         </index>
+      </table>
+      <table name="procdef" numRows="5" remarks="" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="defid" nullable="false" remarks="" size="48" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="1" name="defname" nullable="true" remarks="" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="2" name="version" nullable="true" remarks="" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="3" name="packages" nullable="true" remarks="" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="4" name="xmlbody" nullable="true" remarks="" size="2147483647" type="LONGTEXT"/>
+         <column autoUpdated="false" digits="0" id="5" name="subelements" nullable="true" remarks="" size="512" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="6" name="createtime" nullable="true" remarks="" size="64" type="VARCHAR"/>
+         <primaryKey column="defid" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="defid"/>
+         </index>
+      </table>
+      <table name="procinsts" numRows="0" remarks="" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="procdefid" nullable="false" remarks="" size="32" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="1" name="procinstid" nullable="false" remarks="" size="32" type="VARCHAR"/>
+         <primaryKey column="procinstid" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="procinstid"/>
+         </index>
+      </table>
+      <table name="taskcenter" numRows="0" remarks="" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="centerid" nullable="false" remarks="" size="48" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="1" name="centername" nullable="true" remarks="" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="2" name="status" nullable="true" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="3" name="createtime" nullable="true" remarks="" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="4" name="modtime" nullable="true" remarks="" size="64" type="VARCHAR"/>
+         <primaryKey column="centerid" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="centerid"/>
+         </index>
+      </table>
+      <table name="taskrole" numRows="20" remarks="" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="roleid" nullable="false" remarks="" size="48" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="1" name="rolename" nullable="true" remarks="" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="2" name="status" nullable="true" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="3" name="centerid" nullable="true" remarks="" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="4" name="createtime" nullable="true" remarks="" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="5" name="modtime" nullable="true" remarks="" size="64" type="VARCHAR"/>
+         <primaryKey column="roleid" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="roleid"/>
+         </index>
+      </table>
+      <table name="tasks" numRows="402234" remarks="" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="taskinstid" nullable="false" remarks="" size="48" type="VARCHAR">
+            <parent column="taskinstid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="tasks_submit"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="procdefid" nullable="false" remarks="" size="48" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="2" name="procinstid" nullable="false" remarks="" size="48" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="3" name="taskdefid" nullable="false" remarks="" size="48" type="VARCHAR"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="4" name="interstate" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="5" name="previnsts" nullable="true" remarks="" size="65535" type="TEXT"/>
+         <column autoUpdated="false" digits="0" id="6" name="antecessors" nullable="true" remarks="" size="65535" type="TEXT"/>
+         <column autoUpdated="false" digits="0" id="7" name="procPIO" nullable="true" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="8" name="taskPIO" nullable="true" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="9" name="rolemark" nullable="true" remarks="" size="256" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="10" name="startMS" nullable="true" remarks="" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="11" name="idata1" nullable="true" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="12" name="idata2" nullable="true" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="13" name="strdata1" nullable="true" remarks="" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="14" name="strdata2" nullable="true" remarks="" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="15" name="fdata1" nullable="true" remarks="" size="12" type="FLOAT"/>
+         <column autoUpdated="false" digits="0" id="16" name="fdata2" nullable="true" remarks="" size="12" type="FLOAT"/>
+         <column autoUpdated="false" digits="0" id="17" name="taskname" nullable="true" remarks="" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="18" name="jsondata" nullable="true" remarks="" size="2147483647" type="LONGTEXT"/>
+         <column autoUpdated="false" digits="0" id="19" name="submitter" nullable="true" remarks="" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="20" name="submittime" nullable="true" remarks="" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="21" name="obtainer" nullable="true" remarks="" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="22" name="obtaintime" nullable="true" remarks="" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="23" name="createtime" nullable="true" remarks="" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="24" name="taskcenter" nullable="true" remarks="" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="25" name="rootproc" nullable="true" remarks="" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="26" name="nodetype" nullable="true" remarks="" size="10" type="INT"/>
+         <primaryKey column="taskinstid" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="taskinstid"/>
+         </index>
+         <index name="multikey1" unique="false">
+            <column ascending="true" name="interstate"/>
+            <column ascending="true" name="obtainer"/>
+            <column ascending="true" name="taskname"/>
+            <column ascending="true" name="obtaintime"/>
+         </index>
+         <index name="multikey2" unique="false">
+            <column ascending="true" name="procinstid"/>
+            <column ascending="true" name="taskdefid"/>
+         </index>
+         <index name="multikey3" unique="false">
+            <column ascending="true" name="nodetype"/>
+            <column ascending="true" name="taskname"/>
+            <column ascending="true" name="interstate"/>
+         </index>
+         <index name="multikey4" unique="false">
+            <column ascending="true" name="nodetype"/>
+            <column ascending="true" name="taskcenter"/>
+            <column ascending="true" name="interstate"/>
+         </index>
+         <index name="multikey5" unique="false">
+            <column ascending="true" name="submitter"/>
+            <column ascending="true" name="taskname"/>
+         </index>
+      </table>
+      <table name="tasks_obtain" numRows="0" remarks="" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="taskinstid" nullable="false" remarks="" size="48" type="VARCHAR">
+            <parent column="taskinstid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="tasks_submit"/>
+         </column>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="1" name="interstate" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="2" name="obtainer" nullable="true" remarks="" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="3" name="obtaintime" nullable="true" remarks="" size="64" type="VARCHAR"/>
+         <primaryKey column="taskinstid" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="taskinstid"/>
+         </index>
+      </table>
+      <table name="tasks_submit" numRows="0" remarks="" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="taskinstid" nullable="false" remarks="" size="48" type="VARCHAR">
+            <child column="taskinstid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="tasks"/>
+            <child column="taskinstid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="tasks_obtain"/>
+         </column>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="1" name="interstate" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="2" name="procPIO" nullable="true" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="3" name="taskPIO" nullable="true" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="4" name="rolemark" nullable="true" remarks="" size="256" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="5" name="idata1" nullable="true" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="6" name="idata2" nullable="true" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="7" name="strdata1" nullable="true" remarks="" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="8" name="strdata2" nullable="true" remarks="" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="9" name="fdata1" nullable="true" remarks="" size="12" type="FLOAT"/>
+         <column autoUpdated="false" digits="0" id="10" name="fdata2" nullable="true" remarks="" size="12" type="FLOAT"/>
+         <column autoUpdated="false" digits="0" id="11" name="taskname" nullable="true" remarks="" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="12" name="jsondata" nullable="true" remarks="" size="2147483647" type="LONGTEXT"/>
+         <column autoUpdated="false" digits="0" id="13" name="submitter" nullable="true" remarks="" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="14" name="submittime" nullable="true" remarks="" size="64" type="VARCHAR"/>
+         <primaryKey column="taskinstid" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="taskinstid"/>
+         </index>
+      </table>
+   </tables>
+</database>

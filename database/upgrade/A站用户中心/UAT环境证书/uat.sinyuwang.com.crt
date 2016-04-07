@@ -1,0 +1,60 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 3 (0x3)
+    Signature Algorithm: md5WithRSAEncryption
+        Issuer: C=TH, ST=Bangkok, L=Bangkok, O=LeaveNow,Co.Ltd, OU=GoIt, CN=RootCA/emailAddress=qnmd@gmail.com
+        Validity
+            Not Before: Apr  5 07:47:01 2016 GMT
+            Not After : Apr  5 07:47:01 2017 GMT
+        Subject: C=TH, ST=Bangkok, L=Bangkok, O=LeaveNow,Co.Ltd, OU=GoIt, CN=uat.sinyuwang.com/emailAddress=qnmd2@gmail.com
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (1024 bit)
+                Modulus:
+                    00:c9:e4:8d:77:3a:56:b7:62:b1:9d:ea:cf:81:5a:
+                    c8:44:ba:1f:ef:cd:40:c0:eb:7e:d3:c4:0e:16:c4:
+                    e0:87:ec:f0:18:33:6e:fe:73:82:c3:be:2d:70:5f:
+                    e0:03:a8:8b:d4:5b:b9:b1:37:ca:d5:f6:57:cb:6a:
+                    d1:6d:b8:06:45:60:05:55:aa:07:5e:27:4c:b0:e5:
+                    98:68:b0:54:68:b9:f9:ce:59:7b:2d:ec:52:0d:7e:
+                    11:01:20:be:7f:04:da:cb:57:2e:6e:67:18:b9:40:
+                    3b:1b:01:2e:41:f4:0e:56:6f:5d:9d:db:71:21:a8:
+                    8b:e0:ca:60:1c:c0:d4:c5:97
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Authority Key Identifier: 
+                keyid:4D:11:2D:EF:31:E2:A3:41:71:DC:59:95:4D:25:7C:E3:64:28:C7:D7
+
+            X509v3 Extended Key Usage: 
+                TLS Web Server Authentication, TLS Web Client Authentication, Microsoft Server Gated Crypto, Netscape Server Gated Crypto
+            X509v3 Basic Constraints: critical
+                CA:FALSE
+    Signature Algorithm: md5WithRSAEncryption
+         5a:53:cd:7b:b8:d2:af:f7:db:40:6e:fd:52:8c:92:b8:ed:eb:
+         3f:1f:50:cf:46:2c:57:ed:e3:30:a1:39:bf:a1:e6:67:cc:ca:
+         57:d1:56:c2:a1:b6:b7:fc:33:73:51:6b:12:51:8b:6c:c4:8a:
+         20:bb:96:9f:0c:cd:09:d2:96:0e:f8:e5:fe:ee:c1:de:1e:ac:
+         33:b0:c7:65:fc:6c:d6:08:61:12:3b:9d:69:5c:92:e0:7f:6e:
+         3a:c1:90:6d:82:b3:00:a5:76:35:70:3e:2a:83:5d:81:8a:92:
+         ea:d3:45:68:87:55:6d:d1:c2:60:8c:9e:b0:b7:f6:bb:8d:32:
+         42:73
+-----BEGIN CERTIFICATE-----
+MIIC/zCCAmigAwIBAgIBAzANBgkqhkiG9w0BAQQFADCBijELMAkGA1UEBhMCVEgx
+EDAOBgNVBAgTB0Jhbmdrb2sxEDAOBgNVBAcTB0Jhbmdrb2sxGDAWBgNVBAoTD0xl
+YXZlTm93LENvLkx0ZDENMAsGA1UECxMER29JdDEPMA0GA1UEAxMGUm9vdENBMR0w
+GwYJKoZIhvcNAQkBFg5xbm1kQGdtYWlsLmNvbTAeFw0xNjA0MDUwNzQ3MDFaFw0x
+NzA0MDUwNzQ3MDFaMIGWMQswCQYDVQQGEwJUSDEQMA4GA1UECBMHQmFuZ2tvazEQ
+MA4GA1UEBxMHQmFuZ2tvazEYMBYGA1UEChMPTGVhdmVOb3csQ28uTHRkMQ0wCwYD
+VQQLEwRHb0l0MRowGAYDVQQDExF1YXQuc2lueXV3YW5nLmNvbTEeMBwGCSqGSIb3
+DQEJARYPcW5tZDJAZ21haWwuY29tMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKB
+gQDJ5I13Ola3YrGd6s+BWshEuh/vzUDA637TxA4WxOCH7PAYM27+c4LDvi1wX+AD
+qIvUW7mxN8rV9lfLatFtuAZFYAVVqgdeJ0yw5ZhosFRoufnOWXst7FINfhEBIL5/
+BNrLVy5uZxi5QDsbAS5B9A5Wb12d23EhqIvgymAcwNTFlwIDAQABo2cwZTAfBgNV
+HSMEGDAWgBRNES3vMeKjQXHcWZVNJXzjZCjH1zA0BgNVHSUELTArBggrBgEFBQcD
+AQYIKwYBBQUHAwIGCisGAQQBgjcKAwMGCWCGSAGG+EIEATAMBgNVHRMBAf8EAjAA
+MA0GCSqGSIb3DQEBBAUAA4GBAFpTzXu40q/320Bu/VKMkrjt6z8fUM9GLFft4zCh
+Ob+h5mfMylfRVsKhtrf8M3NRaxJRi2zEiiC7lp8MzQnSlg745f7uwd4erDOwx2X8
+bNYIYRI7nWlckuB/bjrBkG2CswCldjVwPiqDXYGKkurTRWiHVW3RwmCMnrC39ruN
+MkJz
+-----END CERTIFICATE-----

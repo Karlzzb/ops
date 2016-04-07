@@ -1,0 +1,17 @@
+1.jodie，kid，abboot，anni重新开会定关于login time的需求
+2.根据login time的需求在老论坛上创建了10张分表
+3.部署app和oauth，MySQL高可用MHA和redis高可用
+4.初始化APP和oauth MySQL数据
+5.根据V项目运营删除后台消息数据
+6.更新V项目测试环境5次，Bar环境3次，线上环境2次
+7.2条谷歌分流查询SQL需要优化
+8.配合kid创建新的表和插入新的数据
+9.更新新论坛测试环境1次，beta环境1次
+10.测试redis， mysql服务器重启后服务是否正常启动。
+11.配合morgan排查用户认证中心redis连接不上问题
+12.配合morgan创建谷歌分流两张表并插入初始化数据
+13.配置mysql-slowlog备份
+14.配合caesar更新app数据
+15.和morgan，kid沟通谷歌分流数据的归档
+16.搭建APP OAUTH的MySQL,Redis测试环境
+17.APP和用户认证中心的binlong和数据备份完成

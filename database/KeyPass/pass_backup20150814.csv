@@ -1,0 +1,15 @@
+Title,URL,Username,Password,Notes
+online,,,,
+discuz,,,,
+db,,,,"db-root: 82610238f05689c186e5ef261bf4e835;"
+server,,,,"root-pwd: f47636673b14c54021a69dc06f6a19fb; wsadmin-pwd: KKFt3OdGgGCXhIciTEi; zimg-wsadmin: sthuU5RaZ;"
+s8bbs,,,,
+db,,,,"203-root: 2e03434258e44706e2d6afc1eb8e12d817827def; 201-root: 496bfc621ade673369f21fd1ec6a94b7637fd315; 204-root: b1ba8e46c4a2a2598a846acc1257b9c52a73f872; 广告系统-root: adf6acc1257b9c52a73f872; 内容管理系统-root: 257b9c52a73f872adf6acc1;"
+server,,,,"wsadmin: Da4neqGT0odiBZv2BxRi; root-pwd: m6AKywRiAv;"
+V项目,,,,
+db,,,,"db-root: 496bfc621ade673369f21fd8312a94b7637fd315; zabbix-db-root: d72284fe8d2fcbbba181;"
+server,,,,"wsadmin-pwd: j2KKFt3OdGgGCXhIciTEi; root-pwd: 8FjIsukBWCHRKLfZEWjVS; zabbix-kerl: ]LxwVh/OcP^jSy; kerl-跳板机: axfx12348312;"
+充提,,,,
+db,,,,"db-root: a099e03ef05102d4cf4e8e7ab565af61;"
+server,,,,"wsadmin-pwd: daca5609c48654e6f65f654b90f2356a9a3c52f37b53eb1270d70b3d7d5181ab; root-pwd: 2cd0ae668a585a14e07c2ea4f264d79ba0754d120667c652a26713573b500c5dbb47a0986af02366947dc61fc34e^C81; kerl-pwd: c&0L=2C{'db.A0; zabbix-admin: g3940QB1kbyCqEiJBAfoC;"
+VPNS,,,,"VPN-V-KERL: bGOWJL8Kmdy_M0Mx4xKms; VPN-PAY-KERL: ,SpJSiBt#[7LeKl%~.8hr; open-vpn-kerl: NAyY4dUWlAyeVOByiD7B;"

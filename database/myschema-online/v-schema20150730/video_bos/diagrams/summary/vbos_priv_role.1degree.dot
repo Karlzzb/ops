@@ -1,0 +1,35 @@
+// dot 2.26.0 on Linux 2.6.32-504.3.3.el6.x86_64
+// SchemaSpy rev Unknown
+digraph "vbos_priv_role" {
+  graph [
+    rankdir="RL"
+    bgcolor="#f7f7f7"
+    nodesep="0.18"
+    ranksep="0.46"
+    fontname="Microsoft YaHei"
+    fontsize="11"
+  ];
+  node [
+    fontname="Microsoft YaHei"
+    fontsize="11"
+    shape="plaintext"
+  ];
+  edge [
+    arrowsize="0.8"
+  ];
+  "vbos_priv_role" [
+    label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
+      <TR><TD COLSPAN="3" BGCOLOR="#9bab96" ALIGN="CENTER">vbos_priv_role<br/>(权限用户关联表)</TD></TR>
+      <TR><TD PORT="auto_id" COLSPAN="3" BGCOLOR="#bed1b8" ALIGN="LEFT">auto_id</TD></TR>
+      <TR><TD PORT="priv_id" COLSPAN="3" ALIGN="LEFT">priv_id</TD></TR>
+      <TR><TD PORT="role_id" COLSPAN="3" ALIGN="LEFT">role_id</TD></TR>
+      <TR><TD PORT="init_time" COLSPAN="3" ALIGN="LEFT">init_time</TD></TR>
+      <TR><TD PORT="dml_time" COLSPAN="3" ALIGN="LEFT">dml_time</TD></TR>
+      <TR><TD PORT="dml_flag" COLSPAN="3" ALIGN="LEFT">dml_flag</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="#f7f7f7">  </TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">851 rows</TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">  </TD></TR>
+    </TABLE>>
+    URL="tables/vbos_priv_role.html"
+    tooltip="vbos_priv_role"
+  ];
+}

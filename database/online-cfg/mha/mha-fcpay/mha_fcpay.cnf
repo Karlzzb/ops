@@ -1,0 +1,31 @@
+[server default]
+# mysql user and password
+user=mhaadmin
+password=be2caaae36d817829bda
+port=3398
+#ssh cfg
+ssh_user=root
+# working directory on the manager
+manager_workdir=/data/log/masterha/fcpay-mha
+# working directory on MySQL servers
+remote_workdir=/data/log/masterha/fcpay-mha
+
+master_binlog_dir=/data/dblogs/mysql3398/binlogs
+ping_interval=3
+
+master_ip_failover_script = /usr/local/custom_script/master_ip_failover
+#report_script= /usr/local/custom_script/send_report
+#secondary_check_script = masterha_secondary_check -s hostname=TPHN-OPS01
+
+[server1]
+hostname=TPHN-PAY-MYSQL01
+candidate_master=1
+
+[server2]
+hostname=TPHN-PAY-MYSQL02
+candidate_master=1
+
+[server3]
+hostname=TPHN-PAY-TEST01
+no_master=1
+

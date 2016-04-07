@@ -1,0 +1,7 @@
+elk.s8s8pc.com
+
+等域名生效
+
+代码在nginx04  /data/discuz_start  下面
+
+http://elk.s8s8pc.com/discuz_stat.html

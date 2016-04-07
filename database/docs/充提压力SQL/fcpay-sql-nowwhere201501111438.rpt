@@ -1,0 +1,117 @@
+
+# 3695.7s user time, 7s system time, 23.50M rss, 197.57M vsz
+# Current date: Sun Jan 11 15:39:57 2015
+# Hostname: sg-wfc-mysql02
+# Files: /home/kerl/slowlogs/mysql-slow.log201501111438
+# Overall: 1.61k total, 3 unique, 0.09 QPS, 0.00x concurrency ____________
+# Time range: 2015-01-10 15:42:27 to 20:49:08
+# Attribute          total     min     max     avg     95%  stddev  median
+# ============     ======= ======= ======= ======= ======= ======= =======
+# Exec time             2s    83us   105ms     1ms     5ms     6ms   103us
+# Lock time           94ms    36us    10ms    58us    84us   251us    44us
+# Rows sent          6.27k       1       4    3.99    3.89    0.13    3.89
+# Rows examine     271.85k       4 115.07k  173.12    3.89   3.79k    3.89
+# Query size       216.68k      38     311  137.98  136.99    5.37  136.99
+
+# Profile
+# Rank Query ID           Response time Calls R/Call V/M   Item
+# ==== ================== ============= ===== ====== ===== ===============
+#    1 0x735F3CD1B0506E7F  1.7462 91.6%  1605 0.0011  0.03 SELECT FC_RISK_SORT_RULE
+#    2 0xFA3469E2D7C2D0F8  0.0939  4.9%     2 0.0470  0.00 SELECT FC_WITHDRAW_APPLY
+#    3 0x3AFECDB510DB448F  0.0671  3.5%     1 0.0671  0.00 SELECT FC_RISK_PREPAID_ACCOUNT_CHANGE_INFO
+
+# Query 1: 0.09 QPS, 0.00x concurrency, ID 0x735F3CD1B0506E7F at byte 407660282
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.03
+# Time range: 2015-01-10 15:42:27 to 20:49:08
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count         99    1605
+# Exec time     91      2s    83us   105ms     1ms     5ms     5ms   103us
+# Lock time     99    94ms    36us    10ms    58us    84us   251us    44us
+# Rows sent     99   6.27k       4       4       4       4       0       4
+# Rows examine   2   6.27k       4       4       4       4       0       4
+# Query size    99 216.30k     138     138     138     138       0     138
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us  #############################
+# 100us  ################################################################
+#   1ms  ##
+#  10ms  ###
+# 100ms  #
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_RISK_SORT_RULE'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_RISK_SORT_RULE`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+SELECT RULE_ID, RULE_TYPE, RULE_VALUE, WORK_CENTER, RULE_DESC, RULE_FLAG, OPERATE_TIME, OPERATOR
+FROM FC_RISK_SORT_RULE limit 0,2147483647\G
+
+# Query 2: 0.00 QPS, 0.00x concurrency, ID 0xFA3469E2D7C2D0F8 at byte 589982163
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.00
+# Time range: 2015-01-10 15:45:00 to 17:19:34
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0       2
+# Exec time      4    94ms    47ms    47ms    47ms    47ms   569us    47ms
+# Lock time      0    91us    41us    50us    45us    50us     6us    45us
+# Rows sent      0       2       1       1       1       1       0       1
+# Rows examine  55 150.50k  75.25k  75.25k  75.25k  75.25k       0  75.25k
+# Query size     0      76      38      38      38      38       0      38
+# String:
+# Databases    fcpay
+# Hosts        210.213.242.114
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us
+#   1ms
+#  10ms  ################################################################
+# 100ms
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_WITHDRAW_APPLY'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_WITHDRAW_APPLY`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+select count(1) from FC_WITHDRAW_APPLY\G
+
+# Query 3: 0 QPS, 0x concurrency, ID 0x3AFECDB510DB448F at byte 107670269
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.00
+# Time range: all events occurred at 2015-01-10 15:58:38
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0       1
+# Exec time      3    67ms    67ms    67ms    67ms    67ms       0    67ms
+# Lock time      0    60us    60us    60us    60us    60us       0    60us
+# Rows sent      0       1       1       1       1       1       0       1
+# Rows examine  42 115.07k 115.07k 115.07k 115.07k 115.07k       0 115.07k
+# Query size     0     311     311     311     311     311       0     311
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us
+#   1ms
+#  10ms  ################################################################
+# 100ms
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_RISK_PREPAID_ACCOUNT_CHANGE_INFO'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_RISK_PREPAID_ACCOUNT_CHANGE_INFO`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+SELECT PREPAID_ACCOUNT_CHANGE_INFO_ID, BUSINESS_ID, ACCOUNT_CHANGE_ID, ACCOUNT_CHANGE_TIME, ACCOUNT_CHANGE_TYPE, ACCOUNT_CHANGE_AMOUNT, AVAILABLE_AMOUNT, IP_ADDRESS, ACCOUNT_NO_REMARK, LOAD_TYPE, REMARK, CUSTOMER_NAME, RECORD_DATA
+FROM FC_RISK_PREPAID_ACCOUNT_CHANGE_INFO
+ORDER BY ACCOUNT_CHANGE_TIME  limit 0,1\G

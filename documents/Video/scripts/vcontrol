@@ -1,0 +1,166 @@
+#!/bin/bash
+# video socket script - adam
+
+VIDEO_DIR="/data/socket"
+LOGDIR="/data/logs-video"
+
+# functions
+err_echo() {
+    echo -e "\e[91m[ERROR]:\033[0m $1"
+}
+
+info_echo() {
+    echo -e "\e[92m[INFO]:\033[0m $1"
+}
+
+warn_echo() {
+    echo -e "\e[93m[WARNING]:\033[0m $1"
+}
+
+
+# check $JAVA_HOME and java command
+if [ -z "$JAVA_HOME" ]; then 
+    export JAVA_HOME="/data/app/jdk";
+    JAVA_HOME=/data/app/jdk; 
+fi
+JAVA_BIN="$JAVA_HOME/bin/java"
+
+if [ ! -x "$JAVA_BIN" ]; then
+    err_echo "Can't find java command: $JAVA_BIN"
+    exit 1
+fi
+
+# check video dir 
+if [ ! -d "$VIDEO_DIR/classes" -o ! -d "$VIDEO_DIR/lib" ]; then
+    err_echo "Can't find directory: $VIDEO_DIR/classes and $VIDEO_DIR/lib"
+    exit 1
+fi
+
+
+v_start() {
+    if [ $(ps aux | grep "[D]channelId" | wc -l) -gt 0 ]; then
+        err_echo "One or more channels already started, skipping ..." 
+        echo "-----------------------"
+        echo "*** Process List"
+        echo "-----------------------"
+        netstat -ntlp  | grep -w java
+        exit 1 
+    fi
+
+    RADIO_CLASSPATH="." 
+    LOG_FILE=$(date +%y-%m-%d)
+
+    for jarpath in $VIDEO_DIR/lib/*.jar; do
+        RADIO_CLASSPATH=$RADIO_CLASSPATH:$jarpath
+    done
+
+    cd $VIDEO_DIR/classes
+    
+    CHANNELS=$(java ReadConf ${VIDEO_DIR}/classes/channel.xml)
+    if [ -z "$CHANNELS" ]; then
+        err_echo "Failed to get chat channel in ${VIDEO_DIR}/classes/channel.xml"
+        exit 1
+    fi 
+
+    OLD_IFS="$IFS"
+    IFS=","
+    arr=($CHANNELS)
+    IFS="$OLD_IFS"
+    
+    JMX_PORT=6789
+    for channel_id in ${arr[@]}; do
+
+        info_echo "Starting channel $channel_id ..."
+        CHANNEL_LOG_DIR="$LOGDIR${channel_id}"
+        if [ ! -d "$CHANNEL_LOG_DIR" ]; then
+             mkdir -p "$CHANNEL_LOG_DIR"
+        fi
+
+    	$JAVA_BIN -cp $RADIO_CLASSPATH -Xrs -server -XX:+AggressiveOpts -XX:+UseParallelGC -XX:+UseBiasedLocking -XX:PermSize=256m -XX:MaxPermSize=256m -XX:+DisableExplicitGC -XX:-UseGCOverheadLimit -Xverify:none -Dcom.sun.management.jmxremote.port=$JMX_PORT -Dcom.sun.management.jmxremote.host=127.0.0.1 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -DchannelId=${channel_id}  com.video.server.Bootstrap >$CHANNEL_LOG_DIR/console_$LOG_FILE &	
+        sleep 3
+        if [ $(ps aux | grep "[D]channelId=$channel_id" | wc -l) -eq 1 ]; then
+            info_echo "Channel $channel_id started."
+        else
+            err_echo "Failed to start channel $channel_id !"
+        fi
+        JMX_PORT=$((JMX_PORT + 1))
+    done
+    
+}
+
+v_stop() {
+    if [ $(ps aux | grep -c "[D]channelId") -eq 0 ]; then
+        warn_echo "All video channels already stopped."
+        return
+    fi 
+    info_echo "Stopping all channels on $HOSTNAME"
+    /usr/bin/killall java &>/dev/null
+    sleep 2 
+    if [ $(ps aux | grep [v]ideo.jar | wc -l) -gt 0 ]; then 
+        /usr/bin/killall -9 java &>/dev/null 
+    fi 
+    info_echo "Done."
+}
+
+v_status() {
+    if [ $(ps aux | grep -c "[D]channelId") -eq 0 ]; then
+        warn_echo "No running Video channel." 
+        exit 0
+    fi
+
+    for i in $(ps aux | grep [D]channelId | perl -ne 'if (/.*DchannelId=(\d+).*/s) {print "$1\n"}'); do
+        info_echo "Running Video channel: $i"     
+    done
+}
+
+v_sync_conf() {
+    if [[ $# -ne 1 ]] || [[ "$1" != socket_* ]]; then
+        echo "[ERROR]: invalid version."
+        exit 1
+    fi
+
+    DST_VERSION="/data/archiver/$1"
+    
+    if [ ! -d "$DST_VERSION" ]; then
+        echo "[ERROR]: $DST_VERSION not exists"
+        exit 1
+    fi
+
+    info_echo "Copying configuration files: /data/conf/*.xml ==> $DST_VERSION"
+    for i in /data/conf/*.xml; do 
+        /bin/cp -v --backup=simple --suffix=.bak $i $DST_VERSION/classes/ 
+    done
+
+    for i in /data/conf/*.xml; do 
+        FILE_NAME=$(basename $i)
+        info_echo "Diff file: $i ==> $DST_VERSION/classes/$FILE_NAME.bak"
+        diff $i $DST_VERSION/classes/$FILE_NAME.bak
+    done
+
+    info_echo "OK"
+}
+
+case "$1" in
+    start)
+        v_start
+        echo "-----------------------"
+        echo "*** Process List"
+        echo "-----------------------"
+        netstat -ntlp  | grep -w java
+        ;;
+    stop)
+        v_stop
+        ;;
+    restart)
+        v_stop 
+        v_start 
+        ;;
+    status)
+        v_status    
+        ;;
+    sync_conf)
+        v_sync_conf "$2"
+        ;;
+    *)
+         echo "Usage: $0 {start|stop|restart|status|sync_conf}"
+esac

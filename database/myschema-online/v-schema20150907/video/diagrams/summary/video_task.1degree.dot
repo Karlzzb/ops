@@ -1,0 +1,51 @@
+// dot 2.26.0 on Linux 2.6.32-504.3.3.el6.x86_64
+// SchemaSpy rev Unknown
+digraph "video_task" {
+  graph [
+    rankdir="RL"
+    bgcolor="#f7f7f7"
+    nodesep="0.18"
+    ranksep="0.46"
+    fontname="Microsoft YaHei"
+    fontsize="11"
+  ];
+  node [
+    fontname="Microsoft YaHei"
+    fontsize="11"
+    shape="plaintext"
+  ];
+  edge [
+    arrowsize="0.8"
+  ];
+  "video_task" [
+    label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
+      <TR><TD COLSPAN="3" BGCOLOR="#9bab96" ALIGN="CENTER">video_task<br/>(任务表)</TD></TR>
+      <TR><TD PORT="vtask_id" COLSPAN="3" BGCOLOR="#bed1b8" ALIGN="LEFT">vtask_id</TD></TR>
+      <TR><TD PORT="pre_vtask_id" COLSPAN="3" ALIGN="LEFT">pre_vtask_id</TD></TR>
+      <TR><TD PORT="task_name" COLSPAN="3" ALIGN="LEFT">task_name</TD></TR>
+      <TR><TD PORT="description" COLSPAN="3" ALIGN="LEFT">description</TD></TR>
+      <TR><TD PORT="icon" COLSPAN="3" ALIGN="LEFT">icon</TD></TR>
+      <TR><TD PORT="user_group" COLSPAN="3" ALIGN="LEFT">user_group</TD></TR>
+      <TR><TD PORT="max_user" COLSPAN="3" ALIGN="LEFT">max_user</TD></TR>
+      <TR><TD PORT="applicants" COLSPAN="3" ALIGN="LEFT">applicants</TD></TR>
+      <TR><TD PORT="achievers" COLSPAN="3" ALIGN="LEFT">achievers</TD></TR>
+      <TR><TD PORT="starttime" COLSPAN="3" ALIGN="LEFT">starttime</TD></TR>
+      <TR><TD PORT="endtime" COLSPAN="3" ALIGN="LEFT">endtime</TD></TR>
+      <TR><TD PORT="period" COLSPAN="3" ALIGN="LEFT">period</TD></TR>
+      <TR><TD PORT="period_type" COLSPAN="3" ALIGN="LEFT">period_type</TD></TR>
+      <TR><TD PORT="reward" COLSPAN="3" ALIGN="LEFT">reward</TD></TR>
+      <TR><TD PORT="prize" COLSPAN="3" ALIGN="LEFT">prize</TD></TR>
+      <TR><TD PORT="bonus" COLSPAN="3" ALIGN="LEFT">bonus</TD></TR>
+      <TR><TD PORT="sort_order" COLSPAN="3" ALIGN="LEFT">sort_order</TD></TR>
+      <TR><TD PORT="script_name" COLSPAN="3" ALIGN="LEFT">script_name</TD></TR>
+      <TR><TD PORT="status" COLSPAN="3" ALIGN="LEFT">status</TD></TR>
+      <TR><TD PORT="init_time" COLSPAN="3" ALIGN="LEFT">init_time</TD></TR>
+      <TR><TD PORT="dml_time" COLSPAN="3" ALIGN="LEFT">dml_time</TD></TR>
+      <TR><TD PORT="dml_flag" COLSPAN="3" ALIGN="LEFT">dml_flag</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="#f7f7f7">  </TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">13 rows</TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">  </TD></TR>
+    </TABLE>>
+    URL="tables/video_task.html"
+    tooltip="video_task"
+  ];
+}

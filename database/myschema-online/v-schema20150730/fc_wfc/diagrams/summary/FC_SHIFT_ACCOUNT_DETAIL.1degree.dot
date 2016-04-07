@@ -1,0 +1,37 @@
+// dot 2.26.0 on Linux 2.6.32-504.3.3.el6.x86_64
+// SchemaSpy rev Unknown
+digraph "FC_SHIFT_ACCOUNT_DETAIL" {
+  graph [
+    rankdir="RL"
+    bgcolor="#f7f7f7"
+    nodesep="0.18"
+    ranksep="0.46"
+    fontname="Microsoft YaHei"
+    fontsize="11"
+  ];
+  node [
+    fontname="Microsoft YaHei"
+    fontsize="11"
+    shape="plaintext"
+  ];
+  edge [
+    arrowsize="0.8"
+  ];
+  "FC_SHIFT_ACCOUNT_DETAIL" [
+    label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
+      <TR><TD COLSPAN="3" BGCOLOR="#9bab96" ALIGN="CENTER">FC_SHIFT_ACCOUNT_DETAIL<br/>(活动账户分户汇总表(记录各活动账户分户账的当期汇总信息，每个交接班为一个周期，与活动账户管理表中的活动账户一致，当发生交)</TD></TR>
+      <TR><TD PORT="ACCOUNT_ALIAS" COLSPAN="3" BGCOLOR="#bed1b8" ALIGN="LEFT">ACCOUNT_ALIAS</TD></TR>
+      <TR><TD PORT="BEGIN_BALANCE" COLSPAN="3" ALIGN="LEFT">BEGIN_BALANCE</TD></TR>
+      <TR><TD PORT="TOTAL_INCOME" COLSPAN="3" ALIGN="LEFT">TOTAL_INCOME</TD></TR>
+      <TR><TD PORT="TOTAL_PAY" COLSPAN="3" ALIGN="LEFT">TOTAL_PAY</TD></TR>
+      <TR><TD PORT="LAST_BALANCE" COLSPAN="3" ALIGN="LEFT">LAST_BALANCE</TD></TR>
+      <TR><TD PORT="UPT_DATETIME" COLSPAN="3" ALIGN="LEFT">UPT_DATETIME</TD></TR>
+      <TR><TD PORT="TRANS_OUT_COUNT" COLSPAN="3" ALIGN="LEFT">TRANS_OUT_COUNT</TD></TR>
+      <TR><TD PORT="TRANS_IN_COUNT" COLSPAN="3" ALIGN="LEFT">TRANS_IN_COUNT</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="#f7f7f7">  </TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">0 rows</TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">  </TD></TR>
+    </TABLE>>
+    URL="tables/FC_SHIFT_ACCOUNT_DETAIL.html"
+    tooltip="FC_SHIFT_ACCOUNT_DETAIL"
+  ];
+}

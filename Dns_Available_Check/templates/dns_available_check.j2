@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DNS Available Check</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-sortable.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="alert">
+      <strong>The Latest Update Time: {{ current_data }}</strong>
+    </div>
+    <table class="table table-striped sortable">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Domain Name</th>
+                <th>IP</th>
+                <th>Page Status</th>
+                <th>Registrar</th>
+                <th>Creation Date</th>
+                <th>Update Date</th>
+                <th>Expiration Date</th>
+                <th>GeoIP ASNum Edition</th>
+                <th>GeoIP Country Edition</th>
+                <th data-defaultsort="desc">Connectivity Rate(%)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in data_list %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{data.Domain}}</td>
+                <td>{{data.IP}}</td>
+                <td>{{data.Page_Status}}</td>
+                <td>{{data.Registrar}}</td>
+                <td>{{data.Creation_Date}}</td>
+                <td>{{data.Update_Date}}</td>
+                <td>{{data.Registrar_Registration_Expiration_Date}}</td>
+                <td>{{data.GeoIP_ASNum_Edition}}</td>
+                <td>{{data.GeoIP_Country_Edition}}</td>
+                <td>{{data.Connectivity_Rate}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script type="text/javascript" language="javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" language="javascript" src="js/moment.min.js"></script>
+    <script type="text/javascript" language="javascript" src="js/bootstrap-sortable.js"></script>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+alpha:
+  listen: 0.0.0.0:19000
+  hash: fnv1a_64
+  distribution: ketama
+  auto_eject_hosts: true
+  redis: true
+  timeout: 600
+  server_retry_timeout: 2000
+  server_failure_limit: 1
+  servers:
+   - caegi-b-redis01:8691:1
+   - caegi-b-redis02:8692:1
+   - caegi-b-redis03:8693:1

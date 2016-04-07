@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<database name="video_bos" type="MySQL - 5.6.22-log">
+   <tables>
+      <table name="vbos_admin" numRows="105" remarks="后台管理员帐号信息表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="admin_id" nullable="false" remarks="管理员ID（自增主键）" size="10" type="INT UNSIGNED">
+            <child column="admin_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="vbos_mrecharge_stat"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="name" nullable="false" remarks="管理员登陆名称" size="32" type="CHAR"/>
+         <column autoUpdated="false" digits="0" id="2" name="passwd" nullable="false" remarks="管理员登陆密码,md5加密" size="32" type="CHAR"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="times" nullable="false" remarks="登陆次数" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" digits="0" id="4" name="ctime" nullable="false" remarks="帐号创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="5" name="ltime" nullable="false" remarks="最后登录时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="6" name="init_time" nullable="false" remarks="数据创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="7" name="dml_time" nullable="false" remarks="数据最后修改时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="8" name="dml_flag" nullable="false" remarks="数据操作标识: 1-新增;2-修改;3-删除" size="3" type="TINYINT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="9" name="role_id" nullable="true" remarks="角色ID" size="10" type="INT">
+            <parent column="role_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="vbos_role"/>
+         </column>
+         <primaryKey column="admin_id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="admin_id"/>
+         </index>
+      </table>
+      <table name="vbos_announcement_logs" numRows="334" remarks="房间公告表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="非业务主键ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="content" nullable="true" remarks="公告内容" size="65535" type="TEXT"/>
+         <column autoUpdated="false" defaultValue="0000-00-00 00:00:00" digits="0" id="2" name="created" nullable="false" remarks="修改时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="3" name="admin_id" nullable="false" remarks="操作者ID" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="4" name="status" nullable="false" remarks="接口请求状态： 1：成功   2：失败" size="3" type="TINYINT"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="vbos_bank" numRows="667" remarks="银行信息表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="非业务主键ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="issuing_bank" nullable="true" remarks="发卡银行" size="255" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="2" name="code_bank" nullable="true" remarks="发卡行代码" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="3" name="card_name" nullable="true" remarks="卡种名称" size="255" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="4" name="card_type" nullable="true" remarks="卡类型" size="3" type="TINYINT"/>
+         <column autoUpdated="false" digits="0" id="5" name="num_length" nullable="true" remarks="卡号长度" size="3" type="TINYINT"/>
+         <column autoUpdated="false" digits="0" id="6" name="bin" nullable="true" remarks="BIN号" size="10" type="INT"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="vbos_bill_stat" numRows="196" remarks="每日对充值、金额的统计存储表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="auid" nullable="false" remarks="非业务主键ID" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="1" name="new_recharge" nullable="false" remarks="当日新增充值用户数" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="2" name="total_recharge" nullable="false" remarks="当日充值总人数" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" digits="0" id="3" name="total_money" nullable="false" remarks="当日充值总金额" size="14" type="DECIMAL"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="4" name="total_bill" nullable="false" remarks="当日充值总订单数" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="5" name="avg_recharge" nullable="false" remarks="当日人均充值：总充值金额/总充值人数" size="14" type="DECIMAL"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="6" name="avg_bill" nullable="false" remarks="当日订单平均充值：总充值金额/总订单数" size="14" type="DECIMAL"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="7" name="total_customer" nullable="false" remarks="当日消费总人数" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="8" name="total_amount" nullable="false" remarks="当日消费总金额数" size="11" type="DECIMAL"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="9" name="arpu_bill" nullable="false" remarks="当日ARPU值" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="10" name="arpu_recharge" nullable="false" remarks="当日充值ARPU值" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" digits="0" id="11" name="arpu_customer" nullable="false" remarks="当日平均消费金额" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="12" name="ctime" nullable="false" remarks="统计的时间" size="19" type="DATETIME"/>
+         <primaryKey column="auid" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="auid"/>
+         </index>
+         <index name="ctime_key" unique="false">
+            <column ascending="true" name="ctime"/>
+         </index>
+      </table>
+      <table name="vbos_bonus_rule" numRows="32" remarks="分成规则表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="auid" nullable="false" remarks="非业务主键ID" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="1" name="host_level" nullable="false" remarks="主播等级" size="3" type="TINYINT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="2" name="host_shares" nullable="false" remarks="分成比率" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="3" name="init_time" nullable="false" remarks="数据创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="4" name="dml_time" nullable="false" remarks="数据最后修改时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="5" name="dml_flag" nullable="false" remarks="数据操作标识: 1-新增;2-修改;3-删除" size="3" type="TINYINT"/>
+         <primaryKey column="auid" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="auid"/>
+         </index>
+      </table>
+      <table name="vbos_cash" numRows="1" remarks="财务申请 审核表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="非业务主键ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="order_id" nullable="false" remarks="主播提现订单ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="2" name="order_number" nullable="false" remarks="提现流水号  唯一" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="money" nullable="false" remarks="提现金额" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="4" name="status" nullable="false" remarks="状态：0 等待提现  1：等待审核(提现中) 2：提现失败  3：提现成功" size="3" type="TINYINT"/>
+         <column autoUpdated="false" digits="0" id="5" name="uid" nullable="false" remarks="用户ID" size="10" type="INT">
+            <parent column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="vbos_host_info"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="6" name="username" nullable="false" remarks="用户名" size="128" type="VARCHAR"/>
+         <column autoUpdated="false" defaultValue="0000-00-00 00:00:00" digits="0" id="7" name="ctime" nullable="false" remarks="提现时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="8" name="app_content" nullable="true" remarks="申请成功或失败原因" size="255" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="9" name="app_time" nullable="true" remarks="申请操作时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="10" name="check_content" nullable="true" remarks="审核成功或失败原因" size="255" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="11" name="check_time" nullable="true" remarks="审核操作时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="12" name="host_editor" nullable="true" remarks="主播申请通过操作人ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="13" name="apply_editor" nullable="true" remarks="财务申请操作人ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="14" name="check_editor" nullable="true" remarks="财务审核操作人ID" size="10" type="INT"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <primaryKey column="order_number" sequenceNumberInPK="2"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+            <column ascending="true" name="order_number"/>
+         </index>
+      </table>
+      <table name="vbos_channel" numRows="0" remarks="推广渠道表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="非业务主键ID" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="" digits="0" id="1" name="name" nullable="false" remarks="渠道名称" size="255" type="VARCHAR"/>
+         <column autoUpdated="false" defaultValue="0.00" digits="2" id="2" name="amount" nullable="false" remarks="投放金额" size="11" type="DECIMAL"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="type" nullable="false" remarks="渠道分类" size="3" type="TINYINT"/>
+         <column autoUpdated="false" digits="0" id="4" name="url" nullable="false" remarks="推广链接" size="255" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="5" name="content" nullable="true" remarks="渠道描述" size="65535" type="TEXT"/>
+         <column autoUpdated="false" digits="0" id="6" name="uid" nullable="false" remarks="推广人 ID" size="10" type="INT">
+            <parent column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="vbos_host_info"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="7" name="author" nullable="false" remarks="创建者ID" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0000-00-00 00:00:00" digits="0" id="8" name="created" nullable="true" remarks="创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="9" name="editor" nullable="false" remarks="修改者ID" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0000-00-00 00:00:00" digits="0" id="10" name="edittime" nullable="true" remarks="修改时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="11" name="is_del" nullable="true" remarks="是否删除   0 为删除   1 为正常" size="3" type="TINYINT"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="vbos_channel_stat" numRows="0" remarks="推广统计表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="非业务主键ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="name" nullable="false" remarks="渠道名称" size="255" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="2" name="cid" nullable="false" remarks="渠道ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="3" name="type" nullable="false" remarks="渠道类型" size="3" type="TINYINT"/>
+         <column autoUpdated="false" digits="2" id="4" name="amount" nullable="false" remarks="投放金额" size="11" type="DECIMAL"/>
+         <column autoUpdated="false" digits="0" id="5" name="arrive" nullable="false" remarks="到达" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="6" name="trigger" nullable="false" remarks="触发" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="7" name="reg_num" nullable="false" remarks="注册数" size="10" type="INT"/>
+         <column autoUpdated="false" digits="2" id="8" name="reg_shares" nullable="false" remarks="注册率" size="5" type="DECIMAL"/>
+         <column autoUpdated="false" digits="0" id="9" name="reg_cost" nullable="false" remarks="注册成本" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="10" name="total_recharge" nullable="false" remarks="当日充值总人数" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="11" name="total_money" nullable="false" remarks="当日充值总金额" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="12" name="total_bill" nullable="false" remarks="当日ROI" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0000-00-00 00:00:00" digits="0" id="13" name="created" nullable="false" remarks="创建时间" size="19" type="DATETIME"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="cid" unique="true">
+            <column ascending="true" name="cid"/>
+         </index>
+      </table>
+      <table name="vbos_extract_audit" numRows="0" remarks="提款申请表" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="id" nullable="false" remarks="非业务主键ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="host_id" nullable="false" remarks="主播ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="2" id="2" name="ext_money" nullable="false" remarks="提款金额" size="11" type="DECIMAL"/>
+         <column autoUpdated="false" digits="0" id="3" name="operate_status" nullable="false" remarks="运营审批  0：   等待 1：批准   2 ：驳回" size="3" type="TINYINT"/>
+         <column autoUpdated="false" digits="0" id="4" name="operate_content" nullable="false" remarks="运营审批原因" size="65535" type="TEXT"/>
+         <column autoUpdated="false" digits="0" id="5" name="financial_status" nullable="false" remarks="财务审批  0：   等待 1：批准   2 ：驳回" size="3" type="TINYINT"/>
+         <column autoUpdated="false" digits="0" id="6" name="financial_content" nullable="false" remarks="财务审批原因" size="65535" type="TEXT"/>
+         <column autoUpdated="false" defaultValue="0000-00-00 00:00:00" digits="0" id="7" name="created" nullable="false" remarks="申请时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="8" name="edit_time" nullable="false" remarks="审批时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="9" name="editor" nullable="false" remarks="操作人员ID" size="10" type="INT"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="vbos_host_info" numRows="659" remarks="主播信息表" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="uid" nullable="false" remarks="主播ID，和用户表主键关联" size="10" type="INT">
+            <child column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="vbos_cash"/>
+            <child column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="vbos_channel"/>
+            <child column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="vbos_mrecharge"/>
+            <child column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="vbos_personal_channel_stat"/>
+            <child column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="vbos_props_logs"/>
+            <child column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="vbos_user_mexp"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="nick" nullable="false" remarks="主播昵称，和此主播注册时的昵称一致" size="32" type="CHAR"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="2" name="host_type" nullable="false" remarks="主播类型" size="128" type="VARCHAR"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="host_level" nullable="false" remarks="主播等级" size="3" type="TINYINT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="4" name="region" nullable="true" remarks="主播属地" size="3" type="TINYINT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="5" name="minutes" nullable="false" remarks="累计直播分钟数" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="6" name="days" nullable="false" remarks="累计直播天数" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="7" name="amount" nullable="false" remarks="累计业绩" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="8" name="arts" nullable="false" remarks="才艺类型" size="3" type="TINYINT UNSIGNED"/>
+         <column autoUpdated="false" digits="0" id="9" name="birtyday" nullable="true" remarks="生日" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="10" name="hometown" nullable="false" remarks="家乡" size="3" type="TINYINT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="11" name="constellation" nullable="false" remarks="星座" size="32" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="12" name="occupation" nullable="true" remarks="职业" size="32" type="CHAR"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="13" name="editor" nullable="true" remarks="编辑者ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="14" name="ctime" nullable="false" remarks="统计的时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="15" name="dml_time" nullable="false" remarks="数据最后修改时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="16" name="dml_flag" nullable="false" remarks="数据操作标识: 1-新增;2-修改;3-删除" size="3" type="TINYINT"/>
+         <primaryKey column="uid" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="uid"/>
+         </index>
+         <index name="ctime_key" unique="false">
+            <column ascending="true" name="ctime"/>
+         </index>
+      </table>
+      <table name="vbos_host_stat" numRows="6165" remarks="每日对主播业绩的统计表" type="TABLE">
+         <column autoUpdated="false" defaultValue="0" digits="0" id="0" name="host_id" nullable="false" remarks="主播ID，和主播表的主键关联" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="1" name="host_shares" nullable="false" remarks="当日的主播提成比例" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="2" name="total_income" nullable="false" remarks="当日的总收入" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="host_income" nullable="false" remarks="当日主播的收入" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="4" name="host_company_income" nullable="false" remarks="当日主播对应的公司总收入" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="5" name="host_level" nullable="false" remarks="当日主播的等级" size="3" type="TINYINT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="6" name="host_type" nullable="false" remarks="当日主播的类型" size="255" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="7" name="ctime" nullable="false" remarks="统计的时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="8" name="init_time" nullable="false" remarks="数据创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="9" name="dml_time" nullable="false" remarks="数据最后修改时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="10" name="dml_flag" nullable="false" remarks="数据操作标识: 1-新增;2-修改;3-删除" size="3" type="TINYINT"/>
+         <column autoUpdated="false" digits="0" id="11" name="nickname" nullable="false" remarks="昵称 作废字段" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="12" name="username" nullable="false" remarks="主播账号" size="128" type="VARCHAR"/>
+         <primaryKey column="ctime" sequenceNumberInPK="1"/>
+         <primaryKey column="host_id" sequenceNumberInPK="2"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="host_id"/>
+            <column ascending="true" name="ctime"/>
+         </index>
+      </table>
+      <table name="vbos_images" numRows="25" remarks="轮播图信息表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="非业务主键ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="name" nullable="false" remarks="图片名称" size="128" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="2" name="temp_name" nullable="false" remarks="存储名称（哈希）" size="128" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="3" name="url" nullable="false" remarks="跳转路径" size="255" type="VARCHAR"/>
+         <column autoUpdated="false" defaultValue="0000-00-00 00:00:00" digits="0" id="4" name="ctime" nullable="false" remarks="创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="5" name="creater" nullable="false" remarks="创建者ID" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="6" name="editor" nullable="false" remarks="编辑者ID" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0000-00-00 00:00:00" digits="0" id="7" name="etime" nullable="false" remarks="编辑时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="8" name="status" nullable="false" remarks="是否删除    0 正常   1 删除" size="3" type="TINYINT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="9" name="sort" nullable="false" remarks="排序" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="10" name="type" nullable="false" remarks="图片类型： 1、首页焦点轮播图     2、首页侧边广告轮播图" size="3" type="TINYINT"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="vbos_interface_logs" numRows="547219" remarks="接口调用日志表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="非业务主键ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="url" nullable="true" remarks="接口名称" size="255" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="2" name="rout" nullable="true" remarks="请求位置" size="128" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="3" name="return_msg" nullable="true" remarks="返回内容  json格式" size="255" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="4" name="ctime" nullable="true" remarks="调用时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="5" name="status" nullable="true" remarks="调用状态" size="10" type="INT"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="vbos_mrecharge" numRows="174" remarks="人工充值|扣减表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="非业务自增主键ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="uid" nullable="true" remarks="用户ID" size="10" type="INT">
+            <parent column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="vbos_host_info"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="plus_gold" nullable="true" remarks="充值金额" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="3" name="minus_gold" nullable="true" remarks="扣减金额" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="4" name="rechargetype" nullable="true" remarks="充值类型:0人工充值，1活动奖励，2平台赔偿" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" digits="0" id="5" name="status" nullable="true" remarks="审核状态:0等待审核,1审核通过,2审核失败" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" digits="0" id="6" name="apply_name" nullable="true" remarks="充值|扣减员" size="32" type="CHAR"/>
+         <column autoUpdated="false" digits="0" id="7" name="check_name" nullable="true" remarks="审核员" size="32" type="CHAR"/>
+         <column autoUpdated="false" digits="0" id="8" name="apply_time" nullable="true" remarks="充值|扣减时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="9" name="check_time" nullable="true" remarks="审核时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="10" name="remark" nullable="true" remarks="备注" size="1000" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="11" name="check_remark" nullable="true" remarks="审核不通过原因" size="255" type="VARCHAR"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="vbos_mrecharge_stat" numRows="1985" remarks="手工充值流程统计表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="非业务自增主键ID" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="1" name="uid" nullable="false" remarks="用户ID，和用户表关联" size="10" type="INT UNSIGNED">
+            <parent column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="vbos_users_recharge_list"/>
+         </column>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="2" name="admin_id" nullable="false" remarks="操作人员ID，和admin表关联" size="10" type="INT UNSIGNED">
+            <parent column="admin_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="vbos_admin"/>
+         </column>
+         <column autoUpdated="false" defaultValue="0.00" digits="2" id="3" name="charge_amount" nullable="false" remarks="充值金额" size="11" type="DECIMAL"/>
+         <column autoUpdated="false" digits="0" id="4" name="content" nullable="true" remarks="充值原因" size="65535" type="TEXT"/>
+         <column autoUpdated="false" digits="0" id="5" name="ctime" nullable="false" remarks="统计的时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="6" name="status" nullable="false" remarks="1=增加成功，-1=接口连接失败 -102=增加失败，-103=来源ip没有权限，-104=用户不存在" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="7" name="type" nullable="false" remarks="手动：  1 ： 增加    2 ：  扣减" size="3" type="TINYINT"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="vbos_pay_bonus" numRows="0" remarks="主播工资奖金发放表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="auid" nullable="false" remarks="非业务主键ID" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" digits="0" id="1" name="ctime" nullable="false" remarks="创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="2" name="mtime" nullable="true" remarks="修改时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="3" name="uid" nullable="false" remarks="充值用户id" size="10" type="INT UNSIGNED">
+            <parent column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="vbos_users_recharge_list"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="4" name="pay_money" nullable="false" remarks="申请钱数" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" digits="0" id="5" name="pay_type" nullable="false" remarks="发放类型 1:工资 2:奖金" size="100" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="6" name="note" nullable="false" remarks="留言" size="255" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="7" name="replyid" nullable="false" remarks="申请员id" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="8" name="checkid" nullable="true" remarks="审核员id" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="9" name="pay_status" nullable="true" remarks="审核状态: 0-等待审核 1-审核通过 2-审核失败" size="10" type="INT"/>
+         <primaryKey column="auid" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="auid"/>
+         </index>
+      </table>
+      <table name="vbos_personal_channel_stat" numRows="283" remarks="个人推广数据统计表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="非业务主键ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="account" nullable="false" remarks="用户账户" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="2" name="uid" nullable="false" remarks="用户ID" size="10" type="INT">
+            <parent column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="vbos_host_info"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="3" name="nickname" nullable="false" remarks="用户昵称" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" defaultValue="0000-00-00 00:00:00" digits="0" id="4" name="regtime" nullable="false" remarks="注册时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="5" name="url" nullable="false" remarks="域名/路由" size="128" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="6" name="invite_last_num" nullable="false" remarks="邀请昨日总量" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="7" name="invite_num" nullable="false" remarks="邀请账号数" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="8" name="reward" nullable="false" remarks="获得奖励" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0000-00-00 00:00:00" digits="0" id="9" name="created" nullable="false" remarks="创建时间" size="19" type="DATETIME"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="uid" unique="true">
+            <column ascending="true" name="uid"/>
+         </index>
+      </table>
+      <table name="vbos_priv" numRows="161" remarks="权限表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="priv_id" nullable="false" remarks="非主键业务ID" size="10" type="INT">
+            <child column="priv_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="vbos_priv_role"/>
+            <child column="priv_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="vbos_user_action_log"/>
+         </column>
+         <column autoUpdated="false" defaultValue="" digits="0" id="1" name="priv_name" nullable="true" remarks="权限名称" size="128" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="2" name="parent" nullable="false" remarks="父级ID" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="menu" nullable="false" remarks="是否为菜单，1是，0否" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" defaultValue="" digits="0" id="4" name="action" nullable="true" remarks="方法名称" size="255" type="VARCHAR"/>
+         <column autoUpdated="false" defaultValue="" digits="0" id="5" name="controller" nullable="true" remarks="class类名称" size="255" type="VARCHAR"/>
+         <column autoUpdated="false" defaultValue="" digits="0" id="6" name="icon" nullable="true" remarks="图标" size="255" type="VARCHAR"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="7" name="init_time" nullable="false" remarks="数据创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="8" name="dml_time" nullable="false" remarks="数据最后修改时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="9" name="dml_flag" nullable="false" remarks="数据操作标识: 1-新增;2-修改;3-删除" size="3" type="TINYINT"/>
+         <primaryKey column="priv_id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="priv_id"/>
+         </index>
+      </table>
+      <table name="vbos_priv_role" numRows="851" remarks="权限用户关联表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="auto_id" nullable="false" remarks="非业务主键ID" size="10" type="INT">
+            <parent column="auto_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="vbos_user_mexp"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="priv_id" nullable="false" remarks="权限ID" size="10" type="INT">
+            <parent column="priv_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="vbos_priv"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="role_id" nullable="false" remarks="角色ID" size="10" type="INT">
+            <parent column="role_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="vbos_role"/>
+         </column>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="3" name="init_time" nullable="false" remarks="数据创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="4" name="dml_time" nullable="false" remarks="数据最后修改时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="5" name="dml_flag" nullable="false" remarks="数据操作标识: 1-新增;2-修改;3-删除" size="3" type="TINYINT"/>
+         <primaryKey column="auto_id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="auto_id"/>
+         </index>
+      </table>
+      <table name="vbos_program_stat" numRows="0" remarks="每日对道具的统计表" type="TABLE">
+         <column autoUpdated="false" defaultValue="0" digits="0" id="0" name="program_id" nullable="false" remarks="节目ID，和节目表的主键关联" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="1" name="price" nullable="false" remarks="节目当日的单价" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="2" name="sold_num" nullable="false" remarks="当日的点播次数" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="sold_amount" nullable="false" remarks="当日此节目销售的总金额" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="4" name="props_level" nullable="false" remarks="当日此节目的等级" size="3" type="TINYINT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="5" name="props_type" nullable="false" remarks="当日此节目的类型" size="3" type="TINYINT UNSIGNED"/>
+         <column autoUpdated="false" digits="0" id="6" name="ctime" nullable="false" remarks="统计的时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="7" name="init_time" nullable="false" remarks="数据创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="8" name="dml_time" nullable="false" remarks="数据最后修改时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="9" name="dml_flag" nullable="false" remarks="数据操作标识: 1-新增;2-修改;3-删除" size="3" type="TINYINT"/>
+         <primaryKey column="ctime" sequenceNumberInPK="1"/>
+         <primaryKey column="program_id" sequenceNumberInPK="2"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="program_id"/>
+            <column ascending="true" name="ctime"/>
+         </index>
+      </table>
+      <table name="vbos_props_logs" numRows="1157" remarks="手动发放道具记录表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="非业务主键ID" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="1" name="uid" nullable="false" remarks="用户ID" size="10" type="INT">
+            <parent column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="vbos_host_info"/>
+         </column>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="2" name="gid" nullable="false" remarks="道具ID" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="num" nullable="false" remarks="增加道具数量" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0000-00-00 00:00:00" digits="0" id="4" name="created" nullable="false" remarks="创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="5" name="admin_id" nullable="false" remarks="操作人员ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="6" name="content" nullable="false" remarks="原因" size="65535" type="TEXT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="7" name="status" nullable="false" remarks="添加状态   1：成功   2：失败" size="3" type="TINYINT"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="vbos_props_stat" numRows="4939" remarks="每日对道具的统计表" type="TABLE">
+         <column autoUpdated="false" defaultValue="0" digits="0" id="0" name="props_id" nullable="false" remarks="道具ID，和道具表的主键关联" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="1" name="props_price" nullable="false" remarks="道具当日的单价" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="2" name="sold_num" nullable="false" remarks="当日的销售数量" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="sold_amount" nullable="false" remarks="当日此道具销售的总金额" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="4" name="props_level" nullable="false" remarks="当日此道具的等级" size="3" type="TINYINT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="5" name="props_type" nullable="false" remarks="当日此道具的类型" size="255" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="6" name="ctime" nullable="false" remarks="统计的时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="7" name="init_time" nullable="false" remarks="数据创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="8" name="dml_time" nullable="false" remarks="数据最后修改时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="9" name="dml_flag" nullable="false" remarks="数据操作标识: 1-新增;2-修改;3-删除" size="3" type="TINYINT"/>
+         <primaryKey column="ctime" sequenceNumberInPK="1"/>
+         <primaryKey column="props_id" sequenceNumberInPK="2"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="props_id"/>
+            <column ascending="true" name="ctime"/>
+         </index>
+      </table>
+      <table name="vbos_recharge_stat" numRows="0" remarks="充值流程统计表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="auid" nullable="false" remarks="非业务主键ID" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="1" name="serial" nullable="false" remarks="流水号" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="2" name="order_no" nullable="false" remarks="当单号" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0.00" digits="2" id="3" name="charge_amount" nullable="false" remarks="充值金额" size="5" type="DECIMAL"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="4" name="recharge_type" nullable="false" remarks="充值方式" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="5" name="status" nullable="false" remarks="支付状态" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="6" name="uid" nullable="false" remarks="充值用户ID" size="10" type="INT UNSIGNED">
+            <parent column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="vbos_users_recharge_list"/>
+         </column>
+         <column autoUpdated="false" defaultValue="" digits="0" id="7" name="nick" nullable="false" remarks="用户昵称" size="32" type="CHAR"/>
+         <column autoUpdated="false" digits="0" id="8" name="ctime" nullable="false" remarks="统计的时间" size="19" type="DATETIME"/>
+         <primaryKey column="auid" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="auid"/>
+         </index>
+      </table>
+      <table name="vbos_role" numRows="17" remarks="用户角色表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="role_id" nullable="false" remarks="角色ID" size="10" type="INT">
+            <child column="role_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="vbos_admin"/>
+            <child column="role_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="vbos_priv_role"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="name" nullable="false" remarks="角色名称" size="20" type="VARCHAR"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="2" name="init_time" nullable="false" remarks="数据创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="3" name="dml_time" nullable="false" remarks="数据最后修改时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="4" name="dml_flag" nullable="false" remarks="数据操作标识: 1-新增;2-修改;3-删除" size="3" type="TINYINT"/>
+         <primaryKey column="role_id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="role_id"/>
+         </index>
+      </table>
+      <table name="vbos_timing_task" numRows="88" remarks="系统消息发送TASK 任务记录表                      **创建者：morgan" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="非业务主键ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="conditions" nullable="false" remarks="插入查询条件" size="65535" type="TEXT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="2" name="status" nullable="false" remarks="是否已执行   0：未执行   1：已执行" size="3" type="TINYINT"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="vbos_user_action_log" numRows="399216" remarks="用户访问操作日志表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="日志ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="priv_id" nullable="true" remarks="权限ID" size="10" type="INT">
+            <parent column="priv_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="vbos_priv"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="admin_id" nullable="true" remarks="后台用户ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="3" name="created" nullable="true" remarks="创建时间" size="19" type="DATETIME"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="vbos_user_mexp" numRows="56" remarks="用户经验值修改表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="auto_id" nullable="false" remarks="自增ID" size="10" type="INT">
+            <child column="auto_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="vbos_priv_role"/>
+         </column>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="1" name="uid" nullable="false" remarks="用户ID" size="10" type="INT">
+            <parent column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="vbos_host_info"/>
+         </column>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="2" name="exp" nullable="false" remarks="经验值" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="type" nullable="false" remarks="1增加，2减少" size="3" type="TINYINT"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="4" name="status" nullable="false" remarks="审核状态：1等待审核，2通过审核;,3审核失败" size="3" type="TINYINT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="5" name="roled" nullable="false" remarks="角色：0用户，3主播" size="3" type="TINYINT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="6" name="admin_id" nullable="false" remarks="操作人ID" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="7" name="init_time" nullable="false" remarks="数据创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="8" name="dml_time" nullable="false" remarks="数据最后修改时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="9" name="dml_flag" nullable="false" remarks="数据操作标识: 1-新增;2-修改;3-删除" size="3" type="TINYINT"/>
+         <primaryKey column="auto_id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="auto_id"/>
+         </index>
+      </table>
+      <table name="vbos_users_recharge_list" numRows="8098" remarks="用户充值时间列表" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="uid" nullable="false" remarks="用户ID" size="10" type="INT UNSIGNED">
+            <child column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="vbos_mrecharge_stat"/>
+            <child column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="vbos_pay_bonus"/>
+            <child column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="vbos_recharge_stat"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="ctime" nullable="false" remarks="充值或创建时间" size="19" type="DATETIME"/>
+         <primaryKey column="uid" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="uid"/>
+         </index>
+      </table>
+      <table name="vbos_usr_stat" numRows="196" remarks="用户访问统计表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="auid" nullable="false" remarks="非业务主键ID" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="1" name="registed_users" nullable="false" remarks="当日用户注册数" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="2" name="uv" nullable="false" remarks="当日UV数" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="login_users" nullable="false" remarks="当日登陆用户数" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="4" name="login_num" nullable="false" remarks="当日登陆次数" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" digits="0" id="5" name="users_in_room" nullable="false" remarks="当日连线用户数" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="6" name="num_in_room" nullable="false" remarks="当日连线人次" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="7" name="apex_num" nullable="false" remarks="当日峰值最高人数" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0000-00-00 00:00:00" digits="0" id="8" name="apex_time" nullable="false" remarks="当日峰值出现的时刻，精确到分钟" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="9" name="avg_time" nullable="false" remarks="当日平均停留时长" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="10" name="ctime" nullable="false" remarks="统计的时间" size="19" type="DATETIME"/>
+         <primaryKey column="auid" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="auid"/>
+         </index>
+         <index name="ctime_key" unique="false">
+            <column ascending="true" name="ctime"/>
+         </index>
+      </table>
+   </tables>
+</database>

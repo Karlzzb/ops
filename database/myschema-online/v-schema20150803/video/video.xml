@@ -1,0 +1,970 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<database name="video" type="MySQL - 5.6.22-log">
+   <tables>
+      <table name="scfg_auto_column" numRows="0" remarks="共用自增字段配置存储" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="db_name" nullable="false" remarks="库名称" size="16" type="CHAR"/>
+         <column autoUpdated="false" digits="0" id="1" name="table_prefix" nullable="false" remarks="表名前缀（分表默认为table_prefix_01格式）" size="32" type="CHAR"/>
+         <column autoUpdated="false" digits="0" id="2" name="pub_column" nullable="false" remarks="公共字段名" size="32" type="CHAR"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="3" name="start_value" nullable="false" remarks="起始值（默认为1）" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="4" name="current_value" nullable="false" remarks="当前已分配值（默认为1）" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="5" name="interval" nullable="false" remarks="增量间隔（默认为1）" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="4294967295" digits="0" id="6" name="threshold" nullable="false" remarks="可用最大值（默认为4294967295）" size="20" type="BIGINT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="7" name="init_time" nullable="false" remarks="数据创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="8" name="dml_time" nullable="false" remarks="数据最后修改时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="9" name="dml_flag" nullable="false" remarks="数据操作标识: 1-新增;2-修改;3-删除" size="3" type="TINYINT"/>
+         <primaryKey column="db_name" sequenceNumberInPK="1"/>
+         <primaryKey column="pub_column" sequenceNumberInPK="2"/>
+         <primaryKey column="table_prefix" sequenceNumberInPK="3"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="db_name"/>
+            <column ascending="true" name="table_prefix"/>
+            <column ascending="true" name="pub_column"/>
+         </index>
+      </table>
+      <table name="scfg_shards_table" numRows="100" remarks="分表状态信息存储" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="db_name" nullable="false" remarks="库名称" size="16" type="CHAR"/>
+         <column autoUpdated="false" digits="0" id="1" name="table_name" nullable="false" remarks="分表名称" size="32" type="CHAR"/>
+         <column autoUpdated="false" digits="0" id="2" name="shard_column" nullable="false" remarks="分表依赖字段名" size="32" type="CHAR"/>
+         <column autoUpdated="false" digits="0" id="3" name="mod_result" nullable="false" remarks="取模结果" size="3" type="TINYINT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="4" name="min_value" nullable="false" remarks="分表字段的最小值（用于sub sharding）" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="4294967295" digits="0" id="5" name="max_value" nullable="false" remarks="分表字段的最大值（用于sub sharding）" size="20" type="BIGINT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="6" name="init_time" nullable="false" remarks="数据创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="7" name="dml_time" nullable="false" remarks="数据最后修改时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="8" name="dml_flag" nullable="false" remarks="数据操作标识: 1-新增;2-修改;3-删除" size="3" type="TINYINT"/>
+         <primaryKey column="db_name" sequenceNumberInPK="1"/>
+         <primaryKey column="table_name" sequenceNumberInPK="2"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="db_name"/>
+            <column ascending="true" name="table_name"/>
+         </index>
+      </table>
+      <table name="scfg_table_rules" numRows="8" remarks="库表管理配置存储" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="db_name" nullable="false" remarks="库名称" size="16" type="CHAR"/>
+         <column autoUpdated="false" digits="0" id="1" name="table_prefix" nullable="false" remarks="表名前缀（分表默认为table_prefix_0...table_prefix_11格式）" size="32" type="CHAR"/>
+         <column autoUpdated="false" digits="0" id="2" name="shard_column" nullable="false" remarks="分表依赖字段名" size="32" type="CHAR"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="mod_value" nullable="false" remarks="取模值(默认0为不分表)" size="3" type="TINYINT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="4" name="achieve_vals" nullable="false" remarks="归档周期（默认0为不归档）" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" digits="0" id="5" name="table_detail" nullable="true" remarks="描述信息" size="256" type="VARCHAR"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="6" name="init_time" nullable="false" remarks="数据创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="7" name="dml_time" nullable="false" remarks="数据最后修改时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="8" name="dml_flag" nullable="false" remarks="数据操作标识: 1-新增;2-修改;3-删除" size="3" type="TINYINT"/>
+         <primaryKey column="db_name" sequenceNumberInPK="1"/>
+         <primaryKey column="table_prefix" sequenceNumberInPK="2"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="db_name"/>
+            <column ascending="true" name="table_prefix"/>
+         </index>
+      </table>
+      <table name="video_active" numRows="2" remarks="" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="active_id" nullable="false" remarks="活动ID" size="10" type="INT">
+            <child column="active_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_charm_rank"/>
+            <child column="active_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_extreme_rank"/>
+         </column>
+         <column autoUpdated="false" defaultValue="" digits="0" id="1" name="name" nullable="false" remarks="活动名称" size="255" type="VARCHAR"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="2" name="gid" nullable="false" remarks="礼物ID" size="10" type="INT">
+            <parent column="gid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_goods"/>
+         </column>
+         <column autoUpdated="false" defaultValue="1970-01-01" digits="0" id="3" name="stime" nullable="false" remarks="活动开始时间" size="10" type="DATE"/>
+         <column autoUpdated="false" defaultValue="1970-01-01" digits="0" id="4" name="etime" nullable="false" remarks="活动结束时间" size="10" type="DATE"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="5" name="dml_flag" nullable="false" remarks="数据操作标识: 1-新增;2-修改;3-删除" size="0" type="BIT"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="6" name="init_time" nullable="false" remarks="数据创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="7" name="dml_time" nullable="false" remarks="数据最后修改时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="8" name="admin_id" nullable="false" remarks="操作人ID" size="10" type="INT"/>
+         <primaryKey column="active_id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="active_id"/>
+         </index>
+      </table>
+      <table name="video_admin_log" numRows="77101" remarks="" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" digits="0" id="1" name="base_path" nullable="false" remarks="" size="80" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="2" name="params" nullable="false" remarks="" size="255" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="3" name="ip" nullable="false" remarks="" size="80" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="4" name="created" nullable="false" remarks="" size="19" type="DATETIME"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="video_agent_relationship" numRows="35406" remarks="" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="aid" nullable="false" remarks="对应 video_agents 里面的 id" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="2" name="uid" nullable="false" remarks="用户ID" size="10" type="INT">
+            <parent column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_user"/>
+         </column>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="multikey1" unique="false">
+            <column ascending="true" name="uid"/>
+            <column ascending="true" name="aid"/>
+         </index>
+      </table>
+      <table name="video_agents" numRows="121" remarks="" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="代理ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="agentaccount" nullable="false" remarks="代理账号" size="128" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="2" name="password" nullable="false" remarks="代理密码" size="128" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="3" name="nickname" nullable="false" remarks="代理昵称" size="128" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="4" name="atype" nullable="false" remarks="代理类型:0代理商，1渠道商" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="5" name="rebate" nullable="false" remarks="返点" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="6" name="agentname" nullable="false" remarks="代理姓名" size="128" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="7" name="withdrawalname" nullable="false" remarks="提款账号姓名" size="128" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="8" name="bank" nullable="false" remarks="提款银行" size="128" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="9" name="bankaccount" nullable="false" remarks="提款银行账号" size="128" type="VARCHAR"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="10" name="testaccount" nullable="false" remarks="是否测试帐户:1是，0否" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="11" name="did" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0000-00-00 00:00:00" digits="0" id="12" name="regtime" nullable="false" remarks="域名ID" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="13" name="status" nullable="false" remarks="是否已删除：0正常,1删除" size="5" type="SMALLINT"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="video_anchor" numRows="180" remarks="主播中心表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" digits="0" id="1" name="uid" nullable="true" remarks="用户ID" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" digits="0" id="2" name="aid" nullable="true" remarks="相册ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="3" name="name" nullable="true" remarks="文件名称" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="4" name="file" nullable="true" remarks="文件名" size="32" type="CHAR"/>
+         <column autoUpdated="false" digits="0" id="5" name="size" nullable="true" remarks="文件大小" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="6" name="summary" nullable="true" remarks="文件描述" size="255" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="7" name="jointime" nullable="true" remarks="上传时间" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="8" name="status" nullable="true" remarks="文件状态(保留)" size="0" type="BIT"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="video_anchor_tag" numRows="357" remarks="主播分类标签" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="uid" nullable="false" remarks="主播用户id" size="10" type="INT">
+            <parent column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_user"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="tag_id" nullable="false" remarks="标签id" size="5" type="SMALLINT">
+            <parent column="tag_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_tag"/>
+         </column>
+         <primaryKey column="tag_id" sequenceNumberInPK="1"/>
+         <primaryKey column="uid" sequenceNumberInPK="2"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="uid"/>
+            <column ascending="true" name="tag_id"/>
+         </index>
+      </table>
+      <table name="video_area" numRows="3521" remarks="地区表" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="code" nullable="false" remarks="地区的code值" size="6" type="CHAR"/>
+         <column autoUpdated="false" digits="0" id="1" name="root" nullable="true" remarks="暂时无用字段" size="6" type="CHAR"/>
+         <column autoUpdated="false" defaultValue="" digits="0" id="2" name="area" nullable="false" remarks="地区的名称" size="32" type="VARCHAR"/>
+         <primaryKey column="area" sequenceNumberInPK="1"/>
+         <primaryKey column="code" sequenceNumberInPK="2"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="code"/>
+            <column ascending="true" name="area"/>
+         </index>
+      </table>
+      <table name="video_attention" numRows="0" remarks="废除不用" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="fid" nullable="false" remarks="关注的发起用户uid" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="tid" nullable="false" remarks="被关注的用户uid" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0000-00-00 00:00:00" digits="0" id="2" name="adddate" nullable="false" remarks="" size="19" type="TIMESTAMP"/>
+         <primaryKey column="fid" sequenceNumberInPK="1"/>
+         <primaryKey column="tid" sequenceNumberInPK="2"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="fid"/>
+            <column ascending="true" name="tid"/>
+         </index>
+      </table>
+      <table name="video_birth_star" numRows="24" remarks="星座表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="非业务自增主键ID" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" digits="0" id="1" name="monthday" nullable="false" remarks="星座日期范围" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" digits="0" id="2" name="starname" nullable="true" remarks="星座" size="6" type="CHAR"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="video_bonus_rule" numRows="31" remarks="分成规则表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="auid" nullable="false" remarks="非业务主键ID" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="1" name="host_level" nullable="false" remarks="主播等级" size="3" type="TINYINT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="2" name="host_shares" nullable="false" remarks="分成比率" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="3" name="init_time" nullable="false" remarks="数据创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="4" name="dml_time" nullable="false" remarks="数据最后修改时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="5" name="dml_flag" nullable="false" remarks="数据操作标识: 1-新增;2-修改;3-删除" size="3" type="TINYINT"/>
+         <primaryKey column="auid" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="auid"/>
+         </index>
+      </table>
+      <table name="video_cargame" numRows="0" remarks="赛车游戏" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="gameid" nullable="false" remarks="游戏id" size="10" type="INT">
+            <child column="gameid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_cargame_bet"/>
+            <child column="gameid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_cargame_bet_bak"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="stime" nullable="true" remarks="游戏开始时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="2" name="etime" nullable="true" remarks="游戏结束时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="carnum" nullable="true" remarks="开奖号码" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" digits="0" id="4" name="uid" nullable="true" remarks="庄家账号" size="10" type="INT">
+            <parent column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="5" name="rid" nullable="true" remarks="所在房间Id" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="6" name="points" nullable="true" remarks="庄家投注钻石数" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="7" name="times" nullable="true" remarks="抢庄倍数" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="8" name="win" nullable="true" remarks="庄家纯收入,正数为赢钱（除抽水）,负数为输钱" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="9" name="draw" nullable="true" remarks="庄家赢钱抽水" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="10" name="totaluser" nullable="true" remarks="押注总人数" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="11" name="totalpoints" nullable="true" remarks="押注总金额" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="12" name="totaldraw" nullable="true" remarks="总赢钱抽水" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="13" name="rate" nullable="true" remarks="赢钱抽水比例0-100" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="14" name="channel" nullable="true" remarks="渠道编号id" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="15" name="dml_flag" nullable="false" remarks="数据操作标识: 1-新增;2-修改;3-删除" size="0" type="BIT"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="16" name="init_time" nullable="false" remarks="数据创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="17" name="dml_time" nullable="false" remarks="数据最后修改时间" size="19" type="DATETIME"/>
+         <primaryKey column="gameid" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="gameid"/>
+         </index>
+         <index name="index_cargame_uid" unique="false">
+            <column ascending="true" name="uid"/>
+         </index>
+      </table>
+      <table name="video_cargame_bet" numRows="0" remarks="当前赛车游戏投注信息" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="auto_id" nullable="false" remarks="自增ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="gameid" nullable="true" remarks="赛车游戏ID" size="10" type="INT">
+            <parent column="gameid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_cargame"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="uid" nullable="true" remarks="投注账号" size="10" type="INT">
+            <parent column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="rid" nullable="true" remarks="房间Id" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="4" name="points" nullable="true" remarks="投注钻石数" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="5" name="carnum" nullable="true" remarks="投注赛车号码" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="6" name="win" nullable="true" remarks="玩家纯收入,正数为赢钱（除抽水）,负数为输钱" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="7" name="draw" nullable="true" remarks="玩家赢钱抽水" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="8" name="created" nullable="true" remarks="创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="9" name="dml_flag" nullable="false" remarks="数据操作标识: 1-新增;2-修改;3-删除" size="0" type="BIT"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="10" name="init_time" nullable="false" remarks="数据创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="11" name="dml_time" nullable="false" remarks="数据最后修改时间" size="19" type="DATETIME"/>
+         <primaryKey column="auto_id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="auto_id"/>
+         </index>
+         <index name="index_cargame_created" unique="false">
+            <column ascending="true" name="created"/>
+         </index>
+         <index name="index_cargame_gameId" unique="false">
+            <column ascending="true" name="gameid"/>
+         </index>
+         <index name="index_cargame_uid" unique="false">
+            <column ascending="true" name="uid"/>
+         </index>
+      </table>
+      <table name="video_cargame_bet_bak" numRows="0" remarks="历史赛车游戏投注信息" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="auto_id" nullable="false" remarks="自增ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="gameid" nullable="true" remarks="赛车游戏ID" size="10" type="INT">
+            <parent column="gameid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_cargame"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="uid" nullable="true" remarks="投注账号" size="10" type="INT">
+            <parent column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="rid" nullable="true" remarks="房间Id" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="4" name="points" nullable="true" remarks="投注钻石数" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="5" name="carnum" nullable="true" remarks="投注赛车号码" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="6" name="win" nullable="true" remarks="玩家纯收入,正数为赢钱（除抽水）,负数为输钱" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="7" name="draw" nullable="true" remarks="玩家赢钱抽水" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="8" name="created" nullable="true" remarks="创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="9" name="dml_flag" nullable="false" remarks="数据操作标识: 1-新增;2-修改;3-删除" size="0" type="BIT"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="10" name="init_time" nullable="false" remarks="数据创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="11" name="dml_time" nullable="false" remarks="数据最后修改时间" size="19" type="DATETIME"/>
+         <primaryKey column="auto_id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="auto_id"/>
+         </index>
+         <index name="index_cargame_created" unique="false">
+            <column ascending="true" name="created"/>
+         </index>
+         <index name="index_cargame_gameId" unique="false">
+            <column ascending="true" name="gameid"/>
+         </index>
+         <index name="index_cargame_uid" unique="false">
+            <column ascending="true" name="uid"/>
+         </index>
+      </table>
+      <table name="video_cargame_settlement" numRows="0" remarks="赛车游戏统计信息" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="auto_id" nullable="false" remarks="自增ID" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="1" name="rid" nullable="true" remarks="房间Id" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="2" name="totalbanker" nullable="true" remarks="庄家人数" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="totaluser" nullable="true" remarks="押注总人数" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="4" name="totalpoints" nullable="true" remarks="押注总金额" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="5" name="totaldraw" nullable="true" remarks="总赢钱抽水" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="1970-01-01" digits="0" id="6" name="created" nullable="false" remarks="统计日期" size="10" type="DATE"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="7" name="dml_flag" nullable="false" remarks="数据操作标识: 1-新增;2-修改;3-删除" size="0" type="BIT"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="8" name="init_time" nullable="false" remarks="数据创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="9" name="dml_time" nullable="false" remarks="数据最后修改时间" size="19" type="DATETIME"/>
+         <primaryKey column="auto_id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="auto_id"/>
+         </index>
+         <index name="index_cargame_settlement_rid" unique="false">
+            <column ascending="true" name="rid"/>
+         </index>
+      </table>
+      <table name="video_charge_list" numRows="37798" remarks="" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="uid" nullable="false" remarks="用户id" size="10" type="INT">
+            <parent column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_user"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="tradeno" nullable="false" remarks="交易号" size="255" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="3" name="ttime" nullable="false" remarks="交易成功时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="4" name="paymoney" nullable="false" remarks="支付金额" size="22" type="DOUBLE"/>
+         <column autoUpdated="false" digits="0" id="5" name="status" nullable="false" remarks="0表示未支付,1表示支付中,2表示支付成功,3表示支付失败" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="6" name="points" nullable="false" remarks="点数" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="7" name="del" nullable="false" remarks="是否删除0未删除1删除" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="8" name="ctime" nullable="true" remarks="" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="9" name="postdata" nullable="true" remarks="" size="500" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="10" name="message" nullable="true" remarks="后台操作记录留言" size="200" type="VARCHAR"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="11" name="editor" nullable="false" remarks="操作人ID" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="12" name="channel" nullable="false" remarks="" size="10" type="INT"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="video_charm_rank" numRows="160" remarks="主播排行表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="crank_id" nullable="false" remarks="主播排行主键" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="1" name="active_id" nullable="false" remarks="活动ID" size="10" type="INT">
+            <parent column="active_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_active"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="uid" nullable="false" remarks="用户ID" size="10" type="INT">
+            <parent column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="gnum" nullable="false" remarks="收礼数量" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="4" name="num" nullable="false" remarks="收钻石数" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="5" name="dml_flag" nullable="false" remarks="数据操作标识: 1-新增;2-修改;3-删除" size="0" type="BIT"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="6" name="init_time" nullable="false" remarks="数据创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="7" name="dml_time" nullable="false" remarks="数据最后修改时间" size="19" type="DATETIME"/>
+         <primaryKey column="crank_id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="crank_id"/>
+         </index>
+         <index name="active_id_key" unique="false">
+            <column ascending="true" name="active_id"/>
+         </index>
+         <index name="uid_key" unique="false">
+            <column ascending="true" name="uid"/>
+         </index>
+      </table>
+      <table name="video_chat" numRows="0" remarks="" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="send_uid" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="2" name="rec_uid" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="3" name="rid" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="4" name="category" nullable="false" remarks="" size="0" type="BIT"/>
+         <column autoUpdated="false" digits="0" id="5" name="created" nullable="false" remarks="" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="6" name="content" nullable="false" remarks="" size="255" type="VARCHAR"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="video_complaints" numRows="223" remarks="用户投诉建议表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="非业务主键ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="uid" nullable="false" remarks="投诉用户ID" size="10" type="INT">
+            <parent column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="2" name="cid" nullable="false" remarks="被投诉客服ID" size="255" type="VARCHAR"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="type" nullable="false" remarks="投诉类型" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="4" name="content" nullable="false" remarks="投诉内容" size="65535" type="TEXT"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="results" nullable="false" remarks="处理结果" size="255" type="VARCHAR"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="6" name="status" nullable="false" remarks="状态  0：待处理   1： 处理完毕" size="3" type="TINYINT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="7" name="editors_id" nullable="false" remarks="操作人ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="8" name="created" nullable="false" remarks="创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="9" name="edit_time" nullable="false" remarks="处理时间" size="19" type="DATETIME"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="video_conf" numRows="4" remarks="" type="TABLE">
+         <column autoUpdated="false" defaultValue="" digits="0" id="0" name="name" nullable="false" remarks="" size="128" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="1" name="value" nullable="false" remarks="" size="128" type="VARCHAR"/>
+         <primaryKey column="name" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="name"/>
+         </index>
+      </table>
+      <table name="video_domain" numRows="151" remarks="域名和跳转页面表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="" digits="0" id="1" name="url" nullable="true" remarks="域名或跳转地址" size="255" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="2" name="type" nullable="true" remarks="类型：0域名，1跳转页面" size="0" type="BIT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="click" nullable="true" remarks="点击量" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="4" name="ctime" nullable="true" remarks="创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="5" name="status" nullable="false" remarks="是否已删除：0正常,1删除" size="5" type="SMALLINT"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="video_exit_room" numRows="3417128" remarks="" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="uid" nullable="false" remarks="" size="10" type="INT">
+            <parent column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_user"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="rid" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="3" name="video_uid" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="4" name="duration" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="5" name="in_time" nullable="false" remarks="" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="6" name="created" nullable="false" remarks="" size="19" type="DATETIME"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="created_key" unique="false">
+            <column ascending="true" name="created"/>
+         </index>
+         <index name="uid_key" unique="false">
+            <column ascending="true" name="uid"/>
+         </index>
+      </table>
+      <table name="video_extreme_rank" numRows="80" remarks="用户排行表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="erank_id" nullable="false" remarks="用户排行主键" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="1" name="active_id" nullable="false" remarks="活动ID" size="10" type="INT">
+            <parent column="active_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_active"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="uid" nullable="false" remarks="用户ID" size="10" type="INT">
+            <parent column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="gnum" nullable="false" remarks="送礼数量" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="4" name="num" nullable="false" remarks="送钻石数" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="5" name="dml_flag" nullable="false" remarks="数据操作标识: 1-新增;2-修改;3-删除" size="0" type="BIT"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="6" name="init_time" nullable="false" remarks="数据创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="7" name="dml_time" nullable="false" remarks="数据最后修改时间" size="19" type="DATETIME"/>
+         <primaryKey column="erank_id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="erank_id"/>
+         </index>
+         <index name="active_id_key" unique="false">
+            <column ascending="true" name="active_id"/>
+         </index>
+         <index name="uid_key" unique="false">
+            <column ascending="true" name="uid"/>
+         </index>
+      </table>
+      <table name="video_game_operator" numRows="2" remarks="游戏运营员收入表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="auto_id" nullable="false" remarks="自增ID" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="1" name="uid" nullable="false" remarks="运营ID" size="10" type="INT">
+            <parent column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="2" name="points" nullable="false" remarks="游戏获得总收入,正数赢钱，负数输钱" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="3" name="type" nullable="false" remarks="游戏类型：1赛车" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="4" name="dml_flag" nullable="false" remarks="数据操作标识: 1-新增;2-修改;3-删除" size="0" type="BIT"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="5" name="init_time" nullable="false" remarks="数据创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="6" name="dml_time" nullable="false" remarks="数据最后修改时间" size="19" type="DATETIME"/>
+         <primaryKey column="auto_id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="auto_id"/>
+         </index>
+      </table>
+      <table name="video_gift_activity" numRows="11" remarks="活动充值送礼表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="非业务自增主键ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="giftname" nullable="true" remarks="送礼的描述性文字" size="100" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="2" name="moneymin" nullable="true" remarks="赠送的限制起始金额" size="7" type="MEDIUMINT"/>
+         <column autoUpdated="false" digits="0" id="3" name="moneymax" nullable="true" remarks="赠送的限制结束金额" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="4" name="packid" nullable="true" remarks="时长道具id" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" digits="0" id="5" name="giftday" nullable="true" remarks="送礼时长道具的天数" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" digits="0" id="6" name="gitmoney" nullable="true" remarks="赠送的钱数" size="7" type="MEDIUMINT"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="7" name="type" nullable="true" remarks="活动的类型,1:充值送礼" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="8" name="flag" nullable="true" remarks="改活动默认开启" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="9" name="richlv" nullable="true" remarks="赠送的财富等级id" size="5" type="SMALLINT"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="video_goods" numRows="92" remarks="礼物配置表" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="gid" nullable="false" remarks="礼物id" size="10" type="INT">
+            <child column="gid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_active"/>
+            <child column="gid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_mall_list"/>
+            <child column="gid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_pack"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="name" nullable="false" remarks="礼物名称" size="128" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="2" name="price" nullable="false" remarks="礼物价格" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="3" name="desc" nullable="false" remarks="描述" size="128" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="4" name="category_name" nullable="true" remarks="类型名称" size="20" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="5" name="category" nullable="false" remarks="礼物类别" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="6" name="unit_type" nullable="false" remarks="购买单位方式,1=计件；2=计时" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="7" name="is_show" nullable="false" remarks="是否上架：0=下架，1=上架" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="8" name="is_cast" nullable="false" remarks="是否上礼物跑道 0不上 1上" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" digits="0" id="9" name="create_time" nullable="false" remarks="上线时间" size="10" type="DATE"/>
+         <column autoUpdated="false" digits="0" id="10" name="sort_order" nullable="true" remarks="商品排序" size="5" type="SMALLINT"/>
+         <primaryKey column="gid" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="gid"/>
+         </index>
+      </table>
+      <table name="video_host_audit" numRows="848" remarks="主播申请记录表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="auid" nullable="false" remarks="非业务主键ID" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="1" name="host_id" nullable="false" remarks="主播ID，和主播表的主键关联" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="2" name="serial" nullable="false" remarks="签约流水号" size="32" type="VARCHAR"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="status" nullable="false" remarks="审核状态：0:等待审批;1:接受;2:拒绝;" size="3" type="TINYINT UNSIGNED"/>
+         <column autoUpdated="false" digits="0" id="4" name="audit_time" nullable="true" remarks="审核日期，如果是接受，则表示签约日期" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="5" name="ctime" nullable="false" remarks="统计的时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="6" name="is_del" nullable="false" remarks="是否删除   0 为删除   1 为正常" size="0" type="BIT"/>
+         <column autoUpdated="false" digits="0" id="7" name="editor" nullable="true" remarks="操作者" size="10" type="INT"/>
+         <primaryKey column="auid" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="auid"/>
+         </index>
+      </table>
+      <table name="video_keywords" numRows="154" remarks="" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="非业务主键ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="keyword" nullable="false" remarks="关键字" size="65535" type="TEXT"/>
+         <column autoUpdated="false" digits="0" id="2" name="type" nullable="false" remarks="类型： 1 语句  2 单词" size="3" type="TINYINT"/>
+         <column autoUpdated="false" digits="0" id="3" name="ctime" nullable="true" remarks="创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="4" name="editor" nullable="true" remarks="操作人ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="5" name="status" nullable="false" remarks="状态   0  正常   1 删除" size="3" type="TINYINT"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="video_level_exp" numRows="14" remarks="主播等级配置表" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="level_id" nullable="false" remarks="等级ID" size="10" type="INT">
+            <child column="level_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_level_rich"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="level_name" nullable="true" remarks="主播等级" size="20" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="2" name="level_title" nullable="true" remarks="头衔" size="20" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="3" name="level_value" nullable="true" remarks="主播等级升级所需要的值" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="4" name="open_guest" nullable="true" remarks="允许发起竞彩，1=允许" size="0" type="BIT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="5" name="open_user_level" nullable="true" remarks="允许设置进入用户等级" size="0" type="BIT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="6" name="open_pay_room" nullable="true" remarks="允许设定付费房间" size="0" type="BIT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="7" name="open_song_price" nullable="true" remarks="允许设定点歌价格" size="0" type="BIT"/>
+         <column autoUpdated="false" digits="0" id="8" name="ratio" nullable="true" remarks="分成比率" size="3" type="TINYINT"/>
+         <primaryKey column="level_id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="level_id"/>
+         </index>
+      </table>
+      <table name="video_level_rich" numRows="28" remarks="用户财富等级配置表" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="level_id" nullable="false" remarks="用户财富等级id，关联video_gift_activity的richlv" size="10" type="INT">
+            <parent column="level_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_level_exp"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="level_name" nullable="true" remarks="用户财富等级" size="20" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="2" name="level_value" nullable="true" remarks="用户财富等级升级所需要的值" size="10" type="INT"/>
+         <primaryKey column="level_id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="level_id"/>
+         </index>
+      </table>
+      <table name="video_live_list" numRows="56890" remarks="" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="uid" nullable="false" remarks="用户id" size="10" type="INT">
+            <parent column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_user"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="created" nullable="false" remarks="创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="3" name="start_time" nullable="false" remarks="开始直播时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="4" name="rid" nullable="false" remarks="房间id" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="5" name="category" nullable="false" remarks="0普通直播；1=一对一直播；2=一对多直播" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="6" name="duration" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="7" name="points" nullable="true" remarks="本场直播收入" size="10" type="INT"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="multikey1" unique="false">
+            <column ascending="true" name="uid"/>
+            <column ascending="true" name="start_time"/>
+         </index>
+      </table>
+      <table name="video_lottery" numRows="6" remarks="抽奖概率控制表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="非业务自增主键ID" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="" digits="0" id="1" name="origin" nullable="true" remarks="抽奖来源" size="50" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="2" name="prize" nullable="true" remarks="奖品" size="255" type="VARCHAR"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="fenshu" nullable="true" remarks="奖品奖励的钻石数目" size="10" type="INT"/>
+         <column autoUpdated="false" digits="2" id="4" name="probability" nullable="true" remarks="概率" size="10" type="DECIMAL"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="5" name="nums" nullable="true" remarks="奖品数量" size="10" type="INT"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="video_mail" numRows="1717045" remarks="私信表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="send_uid" nullable="false" remarks="发送者用户id" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="2" name="rec_uid" nullable="false" remarks="接收者uid" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="3" name="content" nullable="false" remarks="消息内容" size="255" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="4" name="category" nullable="false" remarks="1=系统消息，2=用户消息" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" digits="0" id="5" name="status" nullable="false" remarks="1=已读；0=未读" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="6" name="logicflag" nullable="true" remarks="" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" digits="0" id="7" name="created" nullable="false" remarks="消息发送时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="8" name="mail_type" nullable="true" remarks="业务类别" size="5" type="SMALLINT"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name=" category" unique="false">
+            <column ascending="true" name="category"/>
+         </index>
+         <index name="created_key" unique="false">
+            <column ascending="true" name="created"/>
+         </index>
+         <index name="rec_uid_key" unique="false">
+            <column ascending="true" name="rec_uid"/>
+         </index>
+         <index name="send_uid_key" unique="false">
+            <column ascending="true" name="send_uid"/>
+         </index>
+      </table>
+      <table name="video_mall_list" numRows="324563" remarks="用户送礼表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="send_uid" nullable="true" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="2" name="rec_uid" nullable="true" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="3" name="gid" nullable="true" remarks="" size="10" type="INT">
+            <parent column="gid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_goods"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="4" name="gnum" nullable="true" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="5" name="created" nullable="true" remarks="" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="6" name="rid" nullable="true" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="7" name="points" nullable="true" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="8" name="rate" nullable="true" remarks="分成比例" size="5" type="SMALLINT"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="index_created" unique="false">
+            <column ascending="true" name="created"/>
+         </index>
+         <index name="index_rec_uid" unique="false">
+            <column ascending="true" name="rec_uid"/>
+         </index>
+         <index name="send_uid_key" unique="false">
+            <column ascending="true" name="send_uid"/>
+         </index>
+      </table>
+      <table name="video_online" numRows="117381" remarks="" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="users" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="2" name="created" nullable="false" remarks="" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="channel_id" nullable="true" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="4" name="guest_users" nullable="false" remarks="" size="10" type="INT"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="created_key" unique="false">
+            <column ascending="true" name="created"/>
+         </index>
+         <index name="users_key" unique="false">
+            <column ascending="true" name="users"/>
+         </index>
+      </table>
+      <table name="video_pack" numRows="96713" remarks="用户背包数据" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="uid" nullable="false" remarks="" size="10" type="INT">
+            <parent column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_user"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="gid" nullable="false" remarks="" size="10" type="INT">
+            <parent column="gid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_goods"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="num" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="3" name="expires" nullable="true" remarks="过期时间，null永久有效" size="10" type="INT"/>
+         <primaryKey column="gid" sequenceNumberInPK="1"/>
+         <primaryKey column="uid" sequenceNumberInPK="2"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="uid"/>
+            <column ascending="true" name="gid"/>
+         </index>
+      </table>
+      <table name="video_recharge" numRows="29047" remarks="充值流水表（订单表）" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="非业务主键ID" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" digits="0" id="1" name="uid" nullable="false" remarks="用户ID" size="10" type="INT">
+            <parent column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_user"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="points" nullable="false" remarks="充值钻石数" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="3" name="created" nullable="false" remarks="订单创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="4" name="order_id" nullable="false" remarks="订单ID" size="128" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="5" name="pay_type" nullable="true" remarks="充值方式：1 银行转账、2 抽奖  3 （未使用）   4 后台充值 5 充值赠送" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="6" name="pay_status" nullable="false" remarks="充值状态： 1 成功  2 等待支付" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" digits="0" id="7" name="nickname" nullable="true" remarks="充值时 使用昵称" size="40" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="8" name="pay_id" nullable="true" remarks="财务充值ID" size="128" type="VARCHAR"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="order_id" unique="true">
+            <column ascending="true" name="order_id"/>
+         </index>
+      </table>
+      <table name="video_redirect" numRows="201" remarks="域名和跳转页面关联表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="did" nullable="true" remarks="域名" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="2" name="rid" nullable="true" remarks="跳转页面" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="3" name="ctime" nullable="true" remarks="创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="4" name="status" nullable="false" remarks="是否已删除：0正常,1删除" size="5" type="SMALLINT"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="video_room_duration" numRows="1925" remarks="预约房间记录表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="主键ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="uid" nullable="false" remarks="用户ID" size="10" type="INT">
+            <parent column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_user"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="roomtid" nullable="false" remarks="房间类型ID" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" digits="0" id="3" name="created" nullable="true" remarks="创建时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="4" name="starttime" nullable="false" remarks="房间开始时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="5" name="duration" nullable="false" remarks="房间时长" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="6" name="points" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="7" name="tickets" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="8" name="status" nullable="false" remarks="房间状态" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="9" name="reuid" nullable="false" remarks="用户预约ID" size="10" type="INT"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="video_room_duration_day" numRows="72828" remarks="主播总时长统计表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="主键ID" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="1" name="uid" nullable="false" remarks="用户ID" size="10" type="INT">
+            <parent column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="2" name="duration" nullable="false" remarks="时长" size="19" type="BIGINT"/>
+         <column autoUpdated="false" defaultValue="0000-00-00 00:00:00" digits="0" id="3" name="updated" nullable="false" remarks="创建时间" size="19" type="DATETIME"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="uid_uniq" unique="true">
+            <column ascending="true" name="uid"/>
+         </index>
+      </table>
+      <table name="video_room_online" numRows="0" remarks="" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="users" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="2" name="rid" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="3" name="created" nullable="false" remarks="" size="19" type="DATETIME"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="video_room_status" numRows="2026" remarks="房间状态表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="自增ID" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" digits="0" id="1" name="uid" nullable="true" remarks="主播ID" size="10" type="INT">
+            <parent column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_user"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="tid" nullable="true" remarks="房间类型ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="3" name="pwd" nullable="true" remarks="房间密码" size="100" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="4" name="time" nullable="true" remarks="最后修改时间" size="19" type="TIMESTAMP"/>
+         <column autoUpdated="false" digits="0" id="5" name="status" nullable="true" remarks="状态1=开启,否则关闭" size="10" type="INT"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="uid_key" unique="false">
+            <column ascending="true" name="uid"/>
+         </index>
+      </table>
+      <table name="video_room_type" numRows="5" remarks="房间类型表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="自增ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="type" nullable="true" remarks="房间类型名称" size="12" type="VARCHAR"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="video_server" numRows="0" remarks="" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="ip" nullable="false" remarks="" size="80" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="2" name="port" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="3" name="created" nullable="false" remarks="" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="4" name="status" nullable="true" remarks="" size="0" type="BIT"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="video_song_info" numRows="0" remarks="主播歌单" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="singer_name" nullable="false" remarks="" size="80" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="2" name="song_name" nullable="false" remarks="" size="80" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="3" name="video_id" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="4" name="visit_num" nullable="true" remarks="点歌次数" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="5" name="agree_num" nullable="true" remarks="同意次数" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="6" name="created" nullable="false" remarks="" size="19" type="DATETIME"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="video_song_list" numRows="0" remarks="用户点歌流水" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="video_uid" nullable="false" remarks="主播id" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="2" name="send_uid" nullable="false" remarks="点歌用户id" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="3" name="sid" nullable="false" remarks="主播歌曲id" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="4" name="singer_name" nullable="true" remarks="自定义点歌歌曲原唱" size="80" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="5" name="song_name" nullable="true" remarks="自定义点歌歌名" size="80" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="6" name="created" nullable="false" remarks="" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="7" name="status" nullable="false" remarks="0=未处理；1=已同意" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" digits="0" id="8" name="cost" nullable="false" remarks="花费价格" size="10" type="INT"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="video_tag" numRows="3" remarks="主播类型表" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="tag_id" nullable="false" remarks="" size="5" type="SMALLINT">
+            <child column="tag_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_anchor_tag"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="name" nullable="true" remarks="" size="20" type="VARCHAR"/>
+         <primaryKey column="tag_id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="tag_id"/>
+         </index>
+      </table>
+      <table name="video_user" numRows="175395" remarks="用户表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="uid" nullable="false" remarks="" size="10" type="INT">
+            <child column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_agent_relationship"/>
+            <child column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_anchor_tag"/>
+            <child column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_cargame"/>
+            <child column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_cargame_bet"/>
+            <child column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_cargame_bet_bak"/>
+            <child column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_charge_list"/>
+            <child column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_charm_rank"/>
+            <child column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_complaints"/>
+            <child column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_exit_room"/>
+            <child column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_extreme_rank"/>
+            <child column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_game_operator"/>
+            <child column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_live_list"/>
+            <child column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_pack"/>
+            <child column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_recharge"/>
+            <child column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_room_duration"/>
+            <child column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_room_duration_day"/>
+            <child column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_room_status"/>
+            <child column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_user_login_logs"/>
+            <child column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_withdrawal_list"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="username" nullable="false" remarks="登录名" size="128" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="2" name="password" nullable="false" remarks="" size="128" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="3" name="nickname" nullable="false" remarks="" size="64" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="4" name="safemail" nullable="true" remarks="" size="128" type="VARCHAR"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="5" name="sex" nullable="true" remarks="性别" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="6" name="exp" nullable="true" remarks="经验值" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="7" name="roled" nullable="true" remarks="" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" digits="0" id="8" name="description" nullable="true" remarks="个人说明" size="255" type="VARCHAR"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="9" name="points" nullable="true" remarks="点卷" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" digits="0" id="10" name="created" nullable="true" remarks="" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="11" name="logined" nullable="true" remarks="" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="12" name="rid" nullable="true" remarks="房间id" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="13" name="rich" nullable="true" remarks="财富" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="14" name="pop" nullable="true" remarks="人气" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="15" name="status" nullable="true" remarks="0=禁用" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="16" name="vip" nullable="true" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="17" name="vip_end" nullable="true" remarks="" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="18" name="province" nullable="true" remarks="省份" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="19" name="city" nullable="true" remarks="城市" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="20" name="county" nullable="true" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="21" name="video_status" nullable="true" remarks="主播状态" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" digits="0" id="22" name="birthday" nullable="true" remarks="生日" size="10" type="DATE"/>
+         <column autoUpdated="false" digits="0" id="23" name="headimg" nullable="true" remarks="头像" size="128" type="VARCHAR"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="24" name="lv_exp" nullable="true" remarks="" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="25" name="lv_rich" nullable="true" remarks="" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" defaultValue="524288000" digits="0" id="26" name="pic_total_size" nullable="true" remarks="总空间大小(500M)" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="27" name="pic_used_size" nullable="true" remarks="已使用空间大小" size="10" type="INT"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="28" name="lv_type" nullable="true" remarks="主播类型1普通艺人,2中级艺人,3高级艺人" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="29" name="icon_id" nullable="true" remarks="图标ID" size="10" type="INT"/>
+         <primaryKey column="uid" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="uid"/>
+         </index>
+         <index name="created_key" unique="false">
+            <column ascending="true" name="created"/>
+         </index>
+         <index name="nickname_key" unique="false">
+            <column ascending="true" name="nickname"/>
+         </index>
+         <index name="safemail_key" unique="false">
+            <column ascending="true" name="safemail"/>
+         </index>
+         <index name="username_index" unique="true">
+            <column ascending="true" name="username"/>
+         </index>
+         <index name="username_key" unique="false">
+            <column ascending="true" name="username"/>
+         </index>
+      </table>
+      <table name="video_user_extends" numRows="817" remarks="主播扩展信息表" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="uid" nullable="false" remarks="用户ID" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" digits="0" id="1" name="realname" nullable="false" remarks="真实姓名" size="32" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="2" name="phone" nullable="true" remarks="手机" size="15" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="3" name="qq" nullable="true" remarks="qq号码" size="12" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="4" name="bankname" nullable="true" remarks="银行开户名称" size="32" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="5" name="banknumber" nullable="true" remarks="银行帐号" size="32" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="6" name="bankaddress" nullable="true" remarks="银行开户地址" size="96" type="VARCHAR"/>
+         <primaryKey column="realname" sequenceNumberInPK="1"/>
+         <primaryKey column="uid" sequenceNumberInPK="2"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="uid"/>
+            <column ascending="true" name="realname"/>
+         </index>
+         <index name="uid" unique="true">
+            <column ascending="true" name="uid"/>
+         </index>
+      </table>
+      <table name="video_user_invitation" numRows="19439" remarks="用户邀请注册记录表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="1" name="pid" nullable="false" remarks="推广者ID" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="2" name="uid" nullable="false" remarks="用户ID" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="reward" nullable="true" remarks="奖励" size="10" type="INT UNSIGNED"/>
+         <column autoUpdated="false" digits="0" id="4" name="fromlink" nullable="true" remarks="来源URL" size="255" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="5" name="fromtime" nullable="true" remarks="注册时间" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="6" name="fromip" nullable="true" remarks="注册IP地址" size="15" type="CHAR"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="pid" unique="false">
+            <column ascending="true" name="pid"/>
+         </index>
+      </table>
+      <table name="video_user_login_logs" numRows="0" remarks="废除不用" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="uid" nullable="true" remarks="" size="10" type="INT">
+            <parent column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_user"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="login_time" nullable="true" remarks="" size="19" type="DATETIME"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="video_withdrawal_list" numRows="15" remarks="主播提款申请记录表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="withdrawalnu" nullable="false" remarks="申请提款流水号" size="20" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="2" name="uid" nullable="false" remarks="用户ID" size="10" type="INT">
+            <parent column="uid" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="video_user"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="3" name="created" nullable="false" remarks="" size="19" type="DATETIME"/>
+         <column autoUpdated="false" digits="0" id="4" name="money" nullable="false" remarks="申请金额" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="5" name="status" nullable="false" remarks="0表示审批中,1表示已审批,2表示拒绝" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="6" name="withdrawaltime" nullable="true" remarks="" size="19" type="DATETIME"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="7" name="moneypoints" nullable="true" remarks="提现时候扣掉的钻石点数" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="8" name="content" nullable="true" remarks="描述" size="255" type="VARCHAR"/>
+         <column autoUpdated="false" digits="0" id="9" name="editor" nullable="true" remarks="操作者" size="10" type="INT"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="video_withdrawal_rules" numRows="23" remarks="主播礼物提成信息表" type="TABLE">
+         <column autoUpdated="true" digits="0" id="0" name="id" nullable="false" remarks="主键ID" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="1" name="anchortype" nullable="false" remarks="主播类型级别" size="5" type="SMALLINT"/>
+         <column autoUpdated="false" digits="0" id="2" name="duration" nullable="false" remarks="主播时长" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="3" name="minincome" nullable="false" remarks="提成档次最低收入" size="10" type="INT"/>
+         <column autoUpdated="false" digits="0" id="4" name="maxincome" nullable="false" remarks="提成级别封顶" size="10" type="INT"/>
+         <column autoUpdated="false" digits="2" id="5" name="rpercentage" nullable="false" remarks="提成比例" size="10" type="FLOAT"/>
+         <column autoUpdated="false" digits="0" id="6" name="rlevel" nullable="true" remarks="提成级别" size="5" type="SMALLINT"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+   </tables>
+</database>

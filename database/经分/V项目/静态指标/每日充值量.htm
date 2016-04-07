@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+		<script type="text/javascript" src="src/jquery.min.js"></script>
+		<style type="text/css">
+${demo.css}
+		</style>
+		<script type="text/javascript">
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: '每日充值额'
+        },
+        xAxis: {
+            categories: [
+                "2015-08-14","2015-08-15","2015-08-16","2015-08-17","2015-08-18","2015-08-19","2015-08-20","2015-08-21","2015-08-22","2015-08-23","2015-08-24","2015-08-25","2015-08-26","2015-08-27","2015-08-28","2015-08-29","2015-08-30","2015-08-31","2015-09-01","2015-09-02","2015-09-03","2015-09-04","2015-09-05","2015-09-06","2015-09-07","2015-09-08","2015-09-09","2015-09-10","2015-09-11"
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: '元'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:20px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.0f} 元</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [		
+		{
+            name: '充值额(元)',
+            data: [19835,14486,11205,6764,14071,5723,16228,14468,16520,12889,12923,13852,15562,11053,9994,10438,8946,10597,11928,10994,14471,27076,24264,13807,29670,39033,50228,37547,12980]
+
+        }]
+    });
+});
+		</script>
+	</head>
+	<body>
+<script src="src/highcharts.js"></script>
+<script src="src/exporting.js"></script>
+
+<div id="container" style="min-width: 310px; height: 800px; margin: 0 auto"></div>
+
+	</body>
+</html>

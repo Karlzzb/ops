@@ -1,0 +1,12 @@
+00 5 * * *  /data/app/logstash/bin/logstash -f /data/app/logstash/conf/vstat-pay-daily.conf > /data/app/logstash/log/vstat-pay-daily.log 2>&1
+03 5 * * *  /data/app/logstash/bin/logstash -f /data/app/logstash/conf/vstat-register-daily.conf > /data/app/logstash/log/vstat-register-daily.log 2>&1
+06 5 * * *  /data/app/logstash/bin/logstash -f /data/app/logstash/conf/vstat-payfirst-daily.conf > /data/app/logstash/log/vstat-payfirst-daily.log 2>&1
+09 5 * * *  /data/app/logstash/bin/logstash -f /data/app/logstash/conf/vstat-host-rank.conf > /data/app/logstash/log/vstat-host-rank.log 2>&1
+12 5 * * *  /data/app/logstash/bin/logstash -f /data/app/logstash/conf/vstat-goroom-daily.conf > /data/app/logstash/log/vstat-goroom-daily.log 2>&1
+15 5 * * *  /data/app/logstash/bin/logstash -f /data/app/logstash/conf/vstat-lostpayusr.conf > /data/app/logstash/log/vstat-lostpayusr.log 2>&1
+#18 5 * * *  /data/app/logstash/bin/logstash -f /data/app/logstash/conf/vstat-onlinetime-daily.conf > /data/app/logstash/log/vstat-onlinetime-daily.log 2>&1
+21 5 * * *  /data/app/logstash/bin/logstash -f /data/app/logstash/conf/vstat-remainusr1-daily.conf > /data/app/logstash/log/vstat-remainusr1-daily.log 2>&1
+24 5 * * *  /data/app/logstash/bin/logstash -f /data/app/logstash/conf/vstat-remainusr3-daily.conf > /data/app/logstash/log/vstat-remainusr3-daily.log 2>&1
+27 5 * * *  /data/app/logstash/bin/logstash -f /data/app/logstash/conf/vstat-remainusr7-daily.conf > /data/app/logstash/log/vstat-remainusr7-daily.log 2>&1
+30 5 * * *  /data/app/logstash/bin/logstash -f /data/app/logstash/conf/vstat-peruidonline-daily.conf > /data/app/logstash/log/vstat-peruidonline-daily.log 2>&1
+33 5 * * *  /data/app/logstash/bin/logstash -f /data/app/logstash/conf/vstat-perhostlive-daily.conf > /data/app/logstash/log/vstat-perhostlive-daily.log 2>&1

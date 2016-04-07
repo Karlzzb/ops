@@ -1,0 +1,38 @@
+// dot 2.26.0 on Linux 2.6.32-504.8.1.el6.x86_64
+// SchemaSpy rev Unknown
+digraph "FC_LOAD_BANK_CHARGE" {
+  graph [
+    rankdir="RL"
+    bgcolor="#f7f7f7"
+    nodesep="0.18"
+    ranksep="0.46"
+    fontname="Microsoft YaHei"
+    fontsize="11"
+  ];
+  node [
+    fontname="Microsoft YaHei"
+    fontsize="11"
+    shape="plaintext"
+  ];
+  edge [
+    arrowsize="0.8"
+  ];
+  "FC_LOAD_BANK_CHARGE" [
+    label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
+      <TR><TD COLSPAN="3" BGCOLOR="#9bab96" ALIGN="CENTER">FC_LOAD_BANK_CHARGE</TD></TR>
+      <TR><TD PORT="BANK_CHARGE_ID" COLSPAN="3" BGCOLOR="#bed1b8" ALIGN="LEFT">BANK_CHARGE_ID</TD></TR>
+      <TR><TD PORT="ACCOUNT_BANK_ALIAS" COLSPAN="3" ALIGN="LEFT">ACCOUNT_BANK_ALIAS</TD></TR>
+      <TR><TD PORT="ACCOUNT_BANK_NAME" COLSPAN="3" ALIGN="LEFT">ACCOUNT_BANK_NAME</TD></TR>
+      <TR><TD PORT="SAME_OTHER_CITY" COLSPAN="3" ALIGN="LEFT">SAME_OTHER_CITY</TD></TR>
+      <TR><TD PORT="SAME_OTHER_BANK" COLSPAN="3" ALIGN="LEFT">SAME_OTHER_BANK</TD></TR>
+      <TR><TD PORT="AMOUNT_MIN" COLSPAN="3" ALIGN="LEFT">AMOUNT_MIN</TD></TR>
+      <TR><TD PORT="AMOUNT_MAX" COLSPAN="3" ALIGN="LEFT">AMOUNT_MAX</TD></TR>
+      <TR><TD PORT="CHARGE" COLSPAN="3" ALIGN="LEFT">CHARGE</TD></TR>
+      <TR><TD PORT="CHARGE_TYPE" COLSPAN="3" ALIGN="LEFT">CHARGE_TYPE</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="#f7f7f7">  </TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">20 rows</TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">  </TD></TR>
+    </TABLE>>
+    URL="tables/FC_LOAD_BANK_CHARGE.html"
+    tooltip="FC_LOAD_BANK_CHARGE"
+  ];
+}

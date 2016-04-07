@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+		<script type="text/javascript" src="src/jquery.min.js"></script>
+		<style type="text/css">
+${demo.css}
+		</style>
+		<script type="text/javascript">
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: '新用户留存率'
+        },
+        xAxis: {
+            categories: [
+                '2015-08-08','2015-08-09','2015-08-10','2015-08-11','2015-08-12','2015-08-13','2015-08-14','2015-08-15','2015-08-16','2015-08-17','2015-08-18','2015-08-19','2015-08-20','2015-08-21','2015-08-22','2015-08-23','2015-08-24','2015-08-25','2015-08-26','2015-08-27','2015-08-28','2015-08-29'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: '百分比'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:20px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.1f} %</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: '新用户次日留存率',
+            data: [37.00,27.00,21.00,13.00,1.00,27.00,44.00,44.00,40.00,31.00,45.00,30.00,32.00,39.00,38.00,40.00,32.00,40.00,38.00,38.00,35.00,23.00]
+
+        },{
+            name: '新用三日留存率',
+            data: [22.00,15.00,13.00,6.00,4.00,13.00,1.00,21.00,24.00,18.00,19.00,20.00,25.00,21.00,22.00,24.00,24.00,24.00,18.00,22.00,23.00,18.00]
+
+        },{
+            name: '新用七日留存率',
+            data: [14.00,9.00,9.00,4.00,2.00,8.00,13.00,14.00,14.00,9.00,1.00,8.00,14.00,14.00,15.00,17.00,19.00,13.00,15.00,16.00,16.00,13.00]
+
+        }]
+    });
+});
+		</script>
+	</head>
+	<body>
+<script src="src/highcharts.js"></script>
+<script src="src/exporting.js"></script>
+
+<div id="container" style="min-width: 310px; height: 800px; margin: 0 auto"></div>
+
+	</body>
+</html>

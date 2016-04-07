@@ -1,0 +1,138 @@
+
+# 1721.6s user time, 3.9s system time, 23.57M rss, 197.57M vsz
+# Current date: Fri Jan  9 20:59:31 2015
+# Hostname: sg-wfc-mysql02
+# Files: mysql-slow.logbak3
+# Overall: 633.87k total, 4 unique, 472.68 QPS, 0.02x concurrency ________
+# Time range: 2015-01-09 20:00:00 to 20:22:21
+# Attribute          total     min     max     avg     95%  stddev  median
+# ============     ======= ======= ======= ======= ======= ======= =======
+# Exec time            23s    18us    44ms    36us    47us   169us    28us
+# Lock time           30ms       0    12ms       0       0    14us       0
+# Rows sent        619.99k       1       4    1.00    0.99    0.07    0.99
+# Rows examine       1.31k       0       4    0.00       0    0.09       0
+# Query size        17.51M       8     138   28.96   28.75    2.86   28.75
+
+# Profile
+# Rank Query ID           Response time Calls  R/Call V/M   Item
+# ==== ================== ============= ====== ====== ===== ==============
+#    1 0x18EC0094FCA82DC0 22.8021 99.1% 630667 0.0000  0.00 SELECT
+#    2 0x735F3CD1B0506E7F  0.0994  0.4%    335 0.0003  0.01 SELECT FC_RISK_SORT_RULE
+#    3 0x16219655761820A2  0.0892  0.4%   2829 0.0000  0.00 SELECT
+#    4 0xE3A3649C5FAC418D  0.0120  0.1%     37 0.0003  0.01 SELECT
+
+# Query 1: 470.30 QPS, 0.02x concurrency, ID 0x18EC0094FCA82DC0 at byte 5698385000
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.00
+# Time range: 2015-01-09 20:00:00 to 20:22:21
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count         99  630667
+# Exec time     99     23s    18us    44ms    36us    47us   167us    28us
+# Lock time      0       0       0       0       0       0       0       0
+# Rows sent     99 615.89k       1       1       1       1       0       1
+# Rows examine   0       0       0       0       0       0       0       0
+# Query size    99  17.44M      29      29      29      29       0      29
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us  ################################################################
+# 100us  #
+#   1ms  #
+#  10ms  #
+# 100ms
+#    1s
+#  10s+
+# EXPLAIN /*!50100 PARTITIONS*/
+select @@session.tx_read_only\G
+
+# Query 2: 0.25 QPS, 0.00x concurrency, ID 0x735F3CD1B0506E7F at byte 6026968437
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.01
+# Time range: 2015-01-09 20:00:08 to 20:22:13
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0     335
+# Exec time      0    99ms    85us    13ms   296us   194us     1ms   103us
+# Lock time    100    30ms    36us    12ms    88us    80us   608us    44us
+# Rows sent      0   1.31k       4       4       4       4       0       4
+# Rows examine 100   1.31k       4       4       4       4       0       4
+# Query size     0  45.15k     138     138     138     138       0     138
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us  ############################
+# 100us  ################################################################
+#   1ms  #
+#  10ms  #
+# 100ms
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_RISK_SORT_RULE'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_RISK_SORT_RULE`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+SELECT RULE_ID, RULE_TYPE, RULE_VALUE, WORK_CENTER, RULE_DESC, RULE_FLAG, OPERATE_TIME, OPERATOR
+FROM FC_RISK_SORT_RULE limit 0,2147483647\G
+
+# Query 3: 2.11 QPS, 0.00x concurrency, ID 0x16219655761820A2 at byte 6373992965
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.00
+# Time range: 2015-01-09 20:00:00 to 20:22:20
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0    2829
+# Exec time      0    89ms    20us   115us    31us    40us     7us    28us
+# Lock time      0       0       0       0       0       0       0       0
+# Rows sent      0   2.76k       1       1       1       1       0       1
+# Rows examine   0       0       0       0       0       0       0       0
+# Query size     0  22.10k       8       8       8       8       0       8
+# String:
+# Databases    npe
+# Hosts        10.2.30.205
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us  ################################################################
+# 100us  #
+#   1ms
+#  10ms
+# 100ms
+#    1s
+#  10s+
+# EXPLAIN /*!50100 PARTITIONS*/
+SELECT 0\G
+
+# Query 4: 0.03 QPS, 0.00x concurrency, ID 0xE3A3649C5FAC418D at byte 5621596541
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.01
+# Time range: 2015-01-09 20:00:32 to 20:22:12
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0      37
+# Exec time      0    12ms    36us    10ms   323us    98us     2ms    52us
+# Lock time      0       0       0       0       0       0       0       0
+# Rows sent      0      37       1       1       1       1       0       1
+# Rows examine   0       0       0       0       0       0       0       0
+# Query size     0   1.16k      32      32      32      32       0      32
+# String:
+# Databases    fcpay (29/78%), npe (8/21%)
+# Hosts        127.0.0.1 (36/97%), localhost (1/2%)
+# Users        root
+# Query_time distribution
+#   1us
+#  10us  ################################################################
+# 100us  ###
+#   1ms
+#  10ms  #
+# 100ms
+#    1s
+#  10s+
+# EXPLAIN /*!50100 PARTITIONS*/
+select @@version_comment limit 1\G

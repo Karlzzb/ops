@@ -1,0 +1,17 @@
+Title,URL,Username,Password,Notes
+Database,,,,
+online,,,,
+V项目,,,,
+dbroot,,root,496bfc621ade673369f21fd8312a94b7637fd315,
+server,,,,"wsadmin-pwd: j2KKFt3OdGgGCXhIciTEi; root-pwd: 8FjIsukBWCHRKLfZEWjVS; kerl-pwd: axfx12348312; zabbix-kerl: ]LxwVh/OcP^jSy;"
+充提,,,,
+dbroot,,root,a099e03ef05102d4cf4e8e7ab565af61,
+server,,,,"servers pwds: <Change value>; wsadmin-pwd: daca5609c48654e6f65f654b90f2356a9a3c52f37b53eb1270d70b3d7d5181ab; root-pwd: m}M_c?2~@(h>3LFQ)oYiqCdFy4?_0A@[c9_D{yP+w?%; kerl-pwd: c&0L=2C{'db.A0;"
+论坛,,,,
+dbroot,,root,,"203-root: 2e03434258e44706e2d6afc1eb8e12d817827def; 201-root: 496bfc621ade673369f21fd1ec6a94b7637fd315; 204-root: b1ba8e46c4a2a2598a846acc1257b9c52a73f872;"
+server,,,<Change value>,"wsadmin-pwd: Da4neqGT0odiBZv2BxRi;"
+新论坛,,,,
+db,,,<Change value>,"db-root: 82610238f05689c186e5ef261bf4e835;"
+server,,,,"root-pwd: f47636673b14c54021a69dc06f6a19fb; wsadmin-pwd: KKFt3OdGgGCXhIciTEi; beta-wsadmin(192.168.122.11 ): A1n6e3RD;"
+VPN,,,,
+VPNs,,,,"VPN-V-KERL: bGOWJL8Kmdy_M0Mx4xKms; VPN-PAY-KERL: ,SpJSiBt#[7LeKl%~.8hr; open-vpn-kerl: NAyY4dUWlAyeVOByiD7B;"

@@ -1,0 +1,1 @@
+ALTER TABLE discuz_db.`pre_home_blog` CHANGE `uid` `uid` INT(11) UNSIGNED NOT NULL DEFAULT '0';

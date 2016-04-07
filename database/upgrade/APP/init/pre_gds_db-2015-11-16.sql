@@ -1,0 +1,1 @@
+alter table pre_gds_picclub_group modify `publish_time` datetime  COMMENT '上架时间'after `total`;

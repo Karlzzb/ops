@@ -1,0 +1,45 @@
+1. rsyslog server
+
+编辑/etc/rsyslog.conf
+
+1) 取消以下两行的注释 
+$ModLoad imudp
+$UDPServerRun 514
+
+
+2) 增加以下行 
+If $msg contains "HISTORY: PPID" {
+       $template KJ_COM,"/data/logs/%HOSTNAME%/%$YEAR%-%$MONTH%-%$DAY%/user_command.log"
+       local1.debug -?KJ_COM
+} else {
+       $template KJ_LOG,"/data/logs/%HOSTNAME%/%$YEAR%-%$MONTH%-%$DAY%/%programname%.log"
+       *.* -?KJ_LOG
+}
+
+3) 重启rsyslog服务
+
+2. rsyslog client
+1)编辑/etc/rsyslog.conf,增加：
+
+*.*                     @172.16.30.16:514
+
+重启 rsyslog
+
+2) 更新我们编译过的bash（参考： http://blog.hellosa.org/2013/07/27/log-bash-history-to-syslog-on-centos-6.html）
+yum update bash 
+
+
+3. 验证
+日志保存在/data/logs/主机名/日期/目录下
+用户执行的命令日志对应user_command.log
+
+[root@srv-ops-zabbix1 2015-02-01]# pwd
+/data/logs/caegi-v-nginx01/2015-02-01
+
+[root@srv-ops-zabbix1 2015-02-01]# tail user_command.log 
+Feb  2 15:34:46 caegi-v-nginx01 -bash: HISTORY: PPID=19550 PID=19552 SID=19552 UID=0 User=root whoami
+Feb  2 15:34:47 caegi-v-nginx01 -bash: HISTORY: PPID=19550 PID=19552 SID=19552 UID=0 User=root ls
+Feb  2 15:34:48 caegi-v-nginx01 -bash: HISTORY: PPID=19550 PID=19552 SID=19552 UID=0 User=root df
+Feb  2 15:34:50 caegi-v-nginx01 -bash: HISTORY: PPID=19550 PID=19552 SID=19552 UID=0 User=root uptime
+Feb  2 15:34:51 caegi-v-nginx01 -bash: HISTORY: PPID=19550 PID=19552 SID=19552 UID=0 User=root free
+

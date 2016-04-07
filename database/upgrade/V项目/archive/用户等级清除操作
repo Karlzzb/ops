@@ -1,0 +1,7 @@
+redis-cli keys "huser_info:*" | xargs redis-cli del
+
+redis-cli keys "zrank*" | xargs redis-cli del
+
+redis-cli del home_js_data
+
+update video.video_user set exp=0,lv_exp=1 ,rich=0,lv_rich=1 ,points=0;

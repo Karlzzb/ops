@@ -1,0 +1,59 @@
+curl -XPUT  localhost:9200/_template/mystat -d '{
+        "order": 0,
+        "template": "*",
+        "settings": {
+            "index.refresh_interval": "5s",
+            "index.analysis.analyzer.default.type": "standard",
+            "index.analysis.analyzer.default.stopwords": "_none_"
+        },
+        "mappings": {
+            "_default_": {
+                "dynamic_templates": [
+                    {
+                        "string_fields": {
+                            "mapping": {
+                                "type": "multi_field",
+                                "fields": {
+                                    "{name}": {
+                                        "index": "analyzed",
+                                        "omit_norms": true,
+                                        "type": "string",
+                                        "index_options": "docs"
+                                    },
+                                    "raw": {
+                                        "ignore_above": 256,
+                                        "index": "not_analyzed",
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "match_mapping_type": "string",
+                            "match": "*"
+                        }
+                    }
+                ],
+                "_all": {
+
+
+                    "enabled": true
+                },
+                "properties": {
+                    "geoip": {
+                        "path": "full",
+                        "dynamic": true,
+                        "type": "object",
+                        "properties": {
+                            "location": {
+                                "type": "geo_point"
+                            }
+                        }
+                    },
+                    "@version": {
+                        "index": "not_analyzed",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "aliases": {}
+    }'
