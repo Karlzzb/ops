@@ -1,0 +1,1688 @@
+
+# 818.1s user time, 900ms system time, 36.55M rss, 210.52M vsz
+# Current date: Fri Jan  9 21:29:10 2015
+# Hostname: sg-wfc-mysql02
+# Files: mysql-slow.logbak4
+# Overall: 3.58M total, 139 unique, 1.23k QPS, 16.94x concurrency ________
+# Time range: 2015-01-09 20:23:53 to 21:12:25
+# Attribute          total     min     max     avg     95%  stddev  median
+# ============     ======= ======= ======= ======= ======= ======= =======
+# Exec time         49318s     1us     40s    14ms    87ms    55ms   159us
+# Lock time           185s       0   616ms    51us   103us     1ms    38us
+# Rows sent        853.34M       0  48.10k  249.89    0.99   2.83k       0
+# Rows examine      18.18G       0 609.06k   5.32k  46.68k  18.23k       0
+# Query size       808.27M       5   1.02k  236.69  719.66  228.61  183.58
+
+# Profile
+# Rank Query ID           Response time   Calls  R/Call V/M   Item
+# ==== ================== =============== ====== ====== ===== ============
+#    1 0x7C9F16E7FD4CE785 9947.8816 20.2%  83654 0.1189  0.04 SELECT FC_WITHDRAW_APPLY
+#    2 0x89729E96F683183E 5303.3442 10.8%  59919 0.0885  0.03 SELECT FC_WITHDRAW_LOAN_DETAIL
+#    3 0x9557BFAA42A6F697 5023.7629 10.2%  17441 0.2880  0.06 SELECT FC_WITHDRAW_APPLY
+#    4 0x7E069176BE499978 3126.8816  6.3%   8742 0.3577  0.12 SELECT FC_RISK_GAME_WINNING_INFO
+#    5 0x1473497F4CBA2553 2890.2234  5.9%  17441 0.1657  0.06 SELECT FC_WITHDRAW_APPLY
+#    6 0xEB64D786582469E1 2770.5886  5.6%  17457 0.1587  0.05 SELECT FC_RISK_PREPAID_ACCOUNT_CHANGE_INFO
+#    7 0x88CC29B196CC943E 2536.4973  5.1%  32052 0.0791  0.03 SELECT FC_WITHDRAW_APPLY
+#    8 0xF763B8FF58F371D5 2011.5871  4.1%   8742 0.2301  0.05 SELECT FC_RISK_CUSTOMER_ACCOUNT_INFO
+#    9 0x6A28201E86CDFA0D 1771.6562  3.6%  13956 0.1269  0.02 SELECT FC_WITHDRAW_TRANSIT_DETAIL
+#   10 0xEF418568024909B2 1706.3096  3.5%  66388 0.0257  0.01 SELECT FC_WITHDRAW_LOAN_APPLY_REF
+#   11 0xB3BB933055F9AEFC 1591.5935  3.2%  13239 0.1202  0.02 SELECT FC_WITHDRAW_LOAN_DETAIL
+#   12 0x7A8B12CB2B551206 1003.5640  2.0%  14023 0.0716  0.01 SELECT FC_WITHDRAW_TRANSIT_RECORD
+#   13 0xAEEA28950DE60080  853.7630  1.7%   7229 0.1181  0.02 SELECT FC_WITHDRAW_TRANSIT_DETAIL
+#   14 0x813031B8BBC3B329  686.9654  1.4% 201853 0.0034  0.03 COMMIT
+#   15 0x4F86C84D2C4A71CB  646.1829  1.3%  74384 0.0087  0.03 INSERT FC_WEB_GAME_TRADE
+#   16 0x5CBBDD886FB47842  517.1607  1.0%   2933 0.1763  0.05 SELECT FC_WITHDRAW_APPLY
+#   17 0x238FC87AAD011652  492.0366  1.0%   7159 0.0687  0.01 SELECT FC_WITHDRAW_TRANSIT_RECORD
+#   18 0x75DDC7C03FE7005D  487.6145  1.0%   2261 0.2157  0.07 SELECT FC_WEB_GAME_TRADE
+#   19 0xD0C55E6A917D4B6F  479.1295  1.0% 120936 0.0040  0.02 INSERT oplogs
+#   20 0xF7370F167FC53E39  476.9232  1.0%   6615 0.0721  0.01 SELECT FC_WITHDRAW_TRANSIT_RECORD
+#   21 0x5FCC541990059111  464.7313  0.9%    459 1.0125  3.19 SELECT tasks
+#   22 0x47CE1873E5790804  429.7698  0.9%  82430 0.0052  0.02 INSERT FC_RISK_GAME_FLOW_DETAIL
+#   23 0xB43BEFCCD2D35782  384.1349  0.8%    174 2.2077  0.21 SELECT oplogs
+#   24 0x3DB14C8A5EBBF937  322.9476  0.7%  33722 0.0096  0.03 INSERT FC_WITHDRAW_APPLY
+#   25 0x3BE065C94C527FB8  222.5905  0.5%  46998 0.0047  0.03 UPDATE FC_WITHDRAW_APPLY
+#   26 0x32414745C4623727  221.8002  0.4%  53367 0.0042  0.02 UPDATE tasks
+#   27 0xDDD38AE33829ACAC  204.9558  0.4% 144636 0.0014  0.02 INSERT tasks
+#   28 0xB93BAA373DD083FB  200.6724  0.4%  32563 0.0062  0.03 INSERT FC_RISK_GAME_WINNING_INFO
+#   29 0x5E76D0C7BBF5F36D  180.9422  0.4%  44050 0.0041  0.02 UPDATE tasks
+#   30 0x91C917B38ACB94BB  180.4985  0.4%  19183 0.0094  0.01 SELECT FC_INNERC_ACCOUNT FC_SHIFT_ACTIVE_ACCOUNT FC_BANKMSG_ACCOUNT_SERVICE_REF FC_SHIFT_ACCOUNT_DETAIL
+#   31 0xFACF17A673FCC281  178.2757  0.4%  32537 0.0055  0.03 INSERT FC_RISK_PREPAID_ACCOUNT_CHANGE_INFO
+#   32 0x0CB80DD637098AB7  174.2669  0.4%  34486 0.0051  0.03 UPDATE FC_WITHDRAW_APPLY
+#   33 0x6F6F9BA5CADC33E4  140.6284  0.3%    173 0.8129  0.13 SELECT tasks
+#   34 0x4DA571B2E4C717A6  137.7659  0.3%  32446 0.0042  0.02 UPDATE FC_CRM_CUSTOMER_ACCOUNT
+#   35 0x36D74B32610F37E9  121.0081  0.2%    565 0.2142  0.07 SELECT FC_WEB_GAME_TRADE
+#   36 0x200BD3D0664DF29E  112.9069  0.2%  26834 0.0042  0.02 UPDATE tasks
+#   37 0x8356003F5D441C59  111.6630  0.2% 202450 0.0006  0.01 SELECT tasks
+#   38 0xB4930D23CB187A4F  108.7187  0.2%  16225 0.0067  0.04 UPDATE FC_CRM_MEMBER
+#   39 0x74409DD13BF77364   98.6241  0.2%  17458 0.0056  0.02 UPDATE tasks
+#   40 0xAFD485876A3E9A36   95.9595  0.2% 177417 0.0005  0.01 SELECT FC_WITHDRAW_APPLY
+#   41 0x6368886AA310AB9E   92.3516  0.2%  16187 0.0057  0.05 UPDATE FC_SHIFT_ACTIVE_ACCOUNT
+#   42 0x2AEDA855DBBA5852   87.9640  0.2%  16223 0.0054  0.02 UPDATE FC_CRM_CUSTOMER
+#   43 0xB21D227814EF679C   75.0224  0.2%  16225 0.0046  0.04 INSERT FC_RISK_CUSTOMER_ACCOUNT_INFO
+#   44 0x54BAF2260458A1DD   52.7387  0.1% 112039 0.0005  0.01 UPDATE tasks
+#   45 0xC87B55D1C970D36A   40.4559  0.1%    459 0.0881  0.02 SELECT FC_WITHDRAW_APPLY
+#   46 0x7AF8A8B6F5D6B6E6   37.4080  0.1%  13657 0.0027  0.02 SELECT FC_BANKMSG_TRANS_RESULT_INFO
+#   47 0xC84B0C7241A20FA4   30.7113  0.1%  13093 0.0023  0.02 INSERT FC_BANKMSG_TRANS_RESULT_INFO
+#   48 0x64374336C60149A2   30.1216  0.1%    284 0.1061  0.04 SELECT FC_WITHDRAW_APPLY
+#   49 0x18EC0094FCA82DC0   28.7526  0.1% 791771 0.0000  0.00 SELECT
+#   50 0x48F4BABDC2F70FFC   25.9395  0.1%  33722 0.0008  0.02 SELECT FC_CRM_MEMBER
+# MISC 0xMISC              399.7475  0.8% 792451 0.0005   0.0 <89 ITEMS>
+
+# Query 1: 28.73 QPS, 3.42x concurrency, ID 0x7C9F16E7FD4CE785 at byte 1275138158
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.04
+# Time range: 2015-01-09 20:23:53 to 21:12:25
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          2   83654
+# Exec time     20   9948s   107us   633ms   119ms   253ms    68ms    91ms
+# Lock time      3      7s       0    34ms    82us   108us   214us    69us
+# Rows sent      0  81.69k       0       1    1.00    0.99    0.01    0.99
+# Rows examine  27   4.94G       0  78.79k  61.91k  76.03k  10.03k  59.57k
+# Query size     3  30.87M     387     387     387     387       0     387
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us  #
+#   1ms
+#  10ms  ################################################################
+# 100ms  ###########################################################
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_WITHDRAW_APPLY'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_WITHDRAW_APPLY`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+SELECT FC_WITH_APPLY_ID, BUSINESS_ID, DRAW_APPLY_ID, USER_NAME, AMOUNT, DRAW_TYPE, DRAW_BANK_ALIAS, DRAW_NO, DRAW_NAME, APPLY_TIME, APPLY_RECEIVE_TIME, DATA_NO, RISK_STATUS, STATUS, COMMENTS, RISK_SYN_TYPE, RISK_SYN_STEP, RISK_COMMENTS
+FROM FC_WITHDRAW_APPLY
+WHERE ((USER_NAME = 'APual08' and BUSINESS_ID = 'BM' and APPLY_TIME < '2015-01-09 20:26:06'))
+ORDER BY APPLY_TIME DESC limit 0,1\G
+
+# Query 2: 20.58 QPS, 1.82x concurrency, ID 0x89729E96F683183E at byte 1274945994
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.03
+# Time range: 2015-01-09 20:23:53 to 21:12:25
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          1   59919
+# Exec time     10   5303s     1ms   381ms    89ms   180ms    47ms    71ms
+# Lock time      3      7s    57us    40ms   119us   131us   624us    80us
+# Rows sent      0   6.62k       0       1    0.11    0.99    0.31       0
+# Rows examine   9   1.73G     650  31.98k  30.24k  31.59k   1.81k  30.09k
+# Query size     3  26.17M     458     458     458     458       0     458
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us
+#   1ms  #
+#  10ms  ################################################################
+# 100ms  #####################################
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_WITHDRAW_LOAN_DETAIL'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_WITHDRAW_LOAN_DETAIL`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+SELECT FC_ORDER_NO, LOAN_RECORD_ID, PAY_BANK_ALIAS, PAY_BANK_NO, PAY_USER_NAME, INCOME_BANK_ALIAS, INCOME_BANK_NO, INCOME_USER_NAME, TRANS_COMMENTS, AMOUNT, INCOME_BANK_CITY, INCOME_BANK_NAME, TRANSFER_TYPE, POUNDAGE, INCOME_USER_PHONE, INCOME_CONTACTS, ORDER_TIMES, STATUS, TRANS_TIME, CURRENTD_TIME, OPERATOR, BANK_COMMENTS, REMARK
+FROM FC_WITHDRAW_LOAN_DETAIL
+WHERE ((LOAN_RECORD_ID = '8a829e4b4ace6fa8014acea6730019b9' and STATUS = 1)) limit 0,2147483647\G
+
+# Query 3: 6.45 QPS, 1.86x concurrency, ID 0x9557BFAA42A6F697 at byte 1344288931
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.06
+# Time range: 2015-01-09 20:23:56 to 21:09:02
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0   17441
+# Exec time     10   5024s    94ms      2s   288ms   501ms   135ms   253ms
+# Lock time      1      2s    55us    40ms   112us   144us   555us    80us
+# Rows sent     56 482.66M  24.70k  31.06k  28.34k  30.09k   2.03k  28.66k
+# Rows examine   5   1.02G  45.85k  78.79k  61.28k  76.03k   9.31k  59.57k
+# Query size     0   6.57M     395     395     395     395       0     395
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us
+#   1ms
+#  10ms  #
+# 100ms  ################################################################
+#    1s  #
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_WITHDRAW_APPLY'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_WITHDRAW_APPLY`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+SELECT FC_WITH_APPLY_ID, BUSINESS_ID, DRAW_APPLY_ID, USER_NAME, AMOUNT, DRAW_TYPE, DRAW_BANK_ALIAS, DRAW_NO, DRAW_NAME, APPLY_TIME, APPLY_RECEIVE_TIME, DATA_NO, RISK_STATUS, STATUS, COMMENTS, RISK_SYN_TYPE, RISK_SYN_STEP, RISK_COMMENTS
+FROM FC_WITHDRAW_APPLY
+WHERE ((STATUS = 3 and USER_NAME = 'APual08' and APPLY_TIME between '2015-01-09 00:00:00' and '2015-01-09 21:07:37')) limit 0,2147483647\G
+
+# Query 4: 3.23 QPS, 1.16x concurrency, ID 0x7E069176BE499978 at byte 948618337
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.12
+# Time range: 2015-01-09 20:23:55 to 21:08:59
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0    8742
+# Exec time      6   3127s   154ms      2s   358ms   740ms   206ms   266ms
+# Lock time      0      1s    91us    17ms   132us   152us   305us   113us
+# Rows sent      0       0       0       0       0       0       0       0
+# Rows examine   4 845.55M  83.28k 113.21k  99.04k 106.99k   8.51k  97.04k
+# Query size     0   5.94M     713     713     713     713       0     713
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us
+#   1ms
+#  10ms
+# 100ms  ################################################################
+#    1s  #
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_RISK_GAME_WINNING_INFO'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_RISK_GAME_WINNING_INFO`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+SELECT GAME_WINNING_INFO_ID, BUSINESS_ID, FC_WITH_APPLY_ID, GAME_RECORD_ID, BET_TIME, BET_CLOSED_TIME, GAME_DRAW_TIME, WINNING_AMOUNT, BET_AMOUNT, DRAW_RATE, BET_DOUBLE, DRAW_NO, WINNING_NO, GAME_TYPE, GAME_RULE, BET_PATTERN, GAME_PATTERN, IP_ADDRESS, BET_RATE, COMMENTS, CUSTOMER_NAME, RECORD_DATA, QUERY_START_TIME, QUERY_END_TIME, ISSUE, CODE_TYPE, SINGLE_PRICE, MULTIPLE, TOTAL_PRICE, LV_TOP_ID, LV_TOP_POINT, LV_PROXY_ID, DEDUCT_TIME, CANCEL_TIME, IS_DEDUCT, IS_CANCEL, IS_GET_PRIZE, PRIZE_STATUS, ON_MODEL
+FROM FC_RISK_GAME_WINNING_INFO
+WHERE ((CUSTOMER_NAME = 'APual08' and BUSINESS_ID = 'BM' and BET_TIME between '2015-01-09 00:00:00' and '2015-01-09 20:01:35' and GAME_RULE in ('""'))) limit 0,2147483647\G
+
+# Query 5: 6.44 QPS, 1.07x concurrency, ID 0x1473497F4CBA2553 at byte 1033605089
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.06
+# Time range: 2015-01-09 20:23:53 to 21:09:02
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0   17441
+# Exec time      5   2890s    53ms   677ms   166ms   339ms    96ms   134ms
+# Lock time      0      1s    50us    14ms    76us    89us   211us    66us
+# Rows sent      0       0       0       0       0       0       0       0
+# Rows examine   5   1.02G  45.85k  78.79k  61.28k  76.03k   9.31k  59.57k
+# Query size     0   6.65M     400     400     400     400       0     400
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us
+#   1ms
+#  10ms  ############################
+# 100ms  ################################################################
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_WITHDRAW_APPLY'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_WITHDRAW_APPLY`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+SELECT FC_WITH_APPLY_ID, BUSINESS_ID, DRAW_APPLY_ID, USER_NAME, AMOUNT, DRAW_TYPE, DRAW_BANK_ALIAS, DRAW_NO, DRAW_NAME, APPLY_TIME, APPLY_RECEIVE_TIME, DATA_NO, RISK_STATUS, STATUS, COMMENTS, RISK_SYN_TYPE, RISK_SYN_STEP, RISK_COMMENTS
+FROM FC_WITHDRAW_APPLY
+WHERE ((RISK_STATUS = 5 and USER_NAME = 'APual08' and APPLY_TIME between '2015-01-09 00:00:00' and '2015-01-09 20:55:31')) limit 0,2147483647\G
+
+# Query 6: 6.44 QPS, 1.02x concurrency, ID 0xEB64D786582469E1 at byte 1280141904
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.05
+# Time range: 2015-01-09 20:23:54 to 21:09:03
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0   17457
+# Exec time      5   2771s    60ms   657ms   159ms   339ms    92ms   122ms
+# Lock time      0      2s    61us    37ms   102us   138us   362us    84us
+# Rows sent      0       0       0       0       0       0       0       0
+# Rows examine   9   1.65G  83.24k 113.22k  99.03k 106.99k   8.53k  97.04k
+# Query size     0   7.24M     435     435     435     435       0     435
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us
+#   1ms
+#  10ms  ##################################
+# 100ms  ################################################################
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_RISK_PREPAID_ACCOUNT_CHANGE_INFO'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_RISK_PREPAID_ACCOUNT_CHANGE_INFO`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+SELECT PREPAID_ACCOUNT_CHANGE_INFO_ID, BUSINESS_ID, ACCOUNT_CHANGE_ID, ACCOUNT_CHANGE_TIME, ACCOUNT_CHANGE_TYPE, ACCOUNT_CHANGE_AMOUNT, AVAILABLE_AMOUNT, IP_ADDRESS, ACCOUNT_NO_REMARK, LOAD_TYPE, REMARK, CUSTOMER_NAME, RECORD_DATA
+FROM FC_RISK_PREPAID_ACCOUNT_CHANGE_INFO
+WHERE ((CUSTOMER_NAME = 'APual08' and ACCOUNT_CHANGE_TYPE like '28%' and ACCOUNT_CHANGE_TIME < '2015-01-09 20:02:20'))
+ORDER BY ACCOUNT_CHANGE_TIME  DESC limit 0,1\G
+
+# Query 7: 11.01 QPS, 0.87x concurrency, ID 0x88CC29B196CC943E at byte 1280144886
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.03
+# Time range: 2015-01-09 20:23:53 to 21:12:25
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0   32052
+# Exec time      5   2536s    83us   452ms    79ms   180ms    49ms    59ms
+# Lock time      1      3s       0    22ms    95us   125us   294us    76us
+# Rows sent      0   2.98M       0     100   97.33   97.36   15.70   97.36
+# Rows examine  10   1.87G       0  78.88k  61.15k  76.03k   9.84k  59.57k
+# Query size     1  10.36M     339     339     339     339       0     339
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us  #
+# 100us
+#   1ms
+#  10ms  ################################################################
+# 100ms  #####################
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_WITHDRAW_APPLY'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_WITHDRAW_APPLY`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+SELECT FC_WITH_APPLY_ID, BUSINESS_ID, DRAW_APPLY_ID, USER_NAME, AMOUNT, DRAW_TYPE, DRAW_BANK_ALIAS, DRAW_NO, DRAW_NAME, APPLY_TIME, APPLY_RECEIVE_TIME, DATA_NO, RISK_STATUS, STATUS, COMMENTS, RISK_SYN_TYPE, RISK_SYN_STEP, RISK_COMMENTS
+FROM FC_WITHDRAW_APPLY
+WHERE ((BUSINESS_ID = 'BM' and RISK_STATUS = 1))
+ORDER BY APPLY_TIME limit 0,100\G
+
+# Query 8: 3.23 QPS, 0.74x concurrency, ID 0xF763B8FF58F371D5 at byte 1344156537
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.05
+# Time range: 2015-01-09 20:23:55 to 21:08:59
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0    8742
+# Exec time      4   2012s    70ms      2s   230ms   433ms   112ms   208ms
+# Lock time      0   630ms    38us    20ms    72us    84us   318us    54us
+# Rows sent     42 366.12M  37.28k  48.10k  42.89k  46.68k   3.16k  42.34k
+# Rows examine   1 366.12M  37.28k  48.10k  42.89k  46.68k   3.16k  42.34k
+# Query size     0   2.08M     250     250     250     250       0     250
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us
+#   1ms
+#  10ms  ####
+# 100ms  ################################################################
+#    1s  #
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_RISK_CUSTOMER_ACCOUNT_INFO'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_RISK_CUSTOMER_ACCOUNT_INFO`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+SELECT CUSTOMER_ACCOUNT_INFO_ID, BUSINESS_ID, CUSTOMER_NAME, AGENT, ACCOUNT_BALANCE, BLOCKED_AMOUNT, AVAILABLE_BALANCE, GAME_BALANCE, REGISTER_DATE, RECORD_DATA
+FROM FC_RISK_CUSTOMER_ACCOUNT_INFO
+WHERE ((CUSTOMER_NAME = 'APual08')) limit 0,2147483647\G
+
+# Query 9: 4.79 QPS, 0.61x concurrency, ID 0x6A28201E86CDFA0D at byte 324295199
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.02
+# Time range: 2015-01-09 20:23:53 to 21:12:25
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0   13956
+# Exec time      3   1772s    33ms   409ms   127ms   219ms    54ms   122ms
+# Lock time      0      1s    52us    39ms   103us   108us   621us    69us
+# Rows sent      0  13.63k       0       1    1.00    0.99    0.01    0.99
+# Rows examine   2 387.79M  15.67k  31.70k  28.45k  31.59k   2.09k  27.29k
+# Query size     0   6.06M     455     455     455     455       0     455
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us
+#   1ms
+#  10ms  ###########################
+# 100ms  ################################################################
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_WITHDRAW_TRANSIT_DETAIL'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_WITHDRAW_TRANSIT_DETAIL`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+SELECT FC_ORDER_NO, TRANSIT_RECORD_ID, PAY_BANK_ALIAS, PAY_BANK_NO, PAY_USER_NAME, INCOME_BANK_ALIAS, INCOME_BANK_NO, TRANS_COMMENTS, INCOME_USER_NAME, AMOUNT, INCOME_BANK_CITY, INCOME_BANK_NAME, TRANSFER_TYPE, POUNDAGE, INCOME_USER_PHONE, INCOME_CONTACTS, ORDER_TIMES, STATUS, TRANS_TIME, CURRENTD_TIME, OPERATOR, BANK_COMMENTS, REMARK
+FROM FC_WITHDRAW_TRANSIT_DETAIL
+WHERE ((TRANSIT_RECORD_ID in ('8a829e4b4ace6fa8014acea88d502113'))) limit 0,2147483647\G
+
+# Query 10: 22.80 QPS, 0.59x concurrency, ID 0xEF418568024909B2 at byte 1430262213
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.01
+# Time range: 2015-01-09 20:23:53 to 21:12:25
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          1   66388
+# Exec time      3   1706s     5ms   212ms    26ms    53ms    14ms    22ms
+# Lock time      2      4s    31us    34ms    63us    89us   333us    47us
+# Rows sent      0  64.83k       0       1    1.00    0.99    0.00    0.99
+# Rows examine  10   1.91G  10.81k  31.98k  30.10k  31.59k   1.86k  30.09k
+# Query size     1  10.06M     158     159  158.94  158.58    0.50  158.58
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us
+#   1ms  #
+#  10ms  ################################################################
+# 100ms  #
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_WITHDRAW_LOAN_APPLY_REF'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_WITHDRAW_LOAN_APPLY_REF`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+SELECT MAP_ID, LOAN_RECORD_ID, FC_WITH_APPLY_ID
+FROM FC_WITHDRAW_LOAN_APPLY_REF
+WHERE ((FC_WITH_APPLY_ID in ('BM_20150109195632000273707'))) limit 0,2147483647\G
+
+# Query 11: 4.55 QPS, 0.55x concurrency, ID 0xB3BB933055F9AEFC at byte 671747314
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.02
+# Time range: 2015-01-09 20:23:53 to 21:12:25
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0   13239
+# Exec time      3   1592s    31ms   385ms   120ms   219ms    54ms   116ms
+# Lock time      0      1s    50us    28ms    85us   108us   348us    66us
+# Rows sent      0  12.93k       1       1       1       1       0       1
+# Rows examine   2 374.21M  25.66k  31.98k  28.94k  31.59k   1.90k  28.66k
+# Query size     0   5.59M     443     443     443     443       0     443
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us
+#   1ms
+#  10ms  ################################
+# 100ms  ################################################################
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_WITHDRAW_LOAN_DETAIL'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_WITHDRAW_LOAN_DETAIL`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+SELECT FC_ORDER_NO, LOAN_RECORD_ID, PAY_BANK_ALIAS, PAY_BANK_NO, PAY_USER_NAME, INCOME_BANK_ALIAS, INCOME_BANK_NO, INCOME_USER_NAME, TRANS_COMMENTS, AMOUNT, INCOME_BANK_CITY, INCOME_BANK_NAME, TRANSFER_TYPE, POUNDAGE, INCOME_USER_PHONE, INCOME_CONTACTS, ORDER_TIMES, STATUS, TRANS_TIME, CURRENTD_TIME, OPERATOR, BANK_COMMENTS, REMARK
+FROM FC_WITHDRAW_LOAN_DETAIL
+WHERE ((LOAN_RECORD_ID = '8a829e4b4ace6fa8014aceb8513b50a5')) limit 0,2147483647\G
+
+# Query 12: 4.82 QPS, 0.34x concurrency, ID 0x7A8B12CB2B551206 at byte 365228837
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.01
+# Time range: 2015-01-09 20:23:53 to 21:12:25
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0   14023
+# Exec time      2   1004s    21ms   259ms    72ms   122ms    30ms    68ms
+# Lock time      0   974ms    41us    21ms    69us    84us   303us    57us
+# Rows sent      0  13.69k       1       1       1       1       0       1
+# Rows examine   2 396.41M  25.66k  31.98k  28.95k  31.59k   2.04k  28.66k
+# Query size     0   3.71M     277     278  277.71  271.23       0  271.23
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us
+#   1ms
+#  10ms  ################################################################
+# 100ms  ##############
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_WITHDRAW_TRANSIT_RECORD'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_WITHDRAW_TRANSIT_RECORD`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+SELECT TRANSIT_RECORD_ID, FC_WITH_APPLY_ID, ACCOUNT_ALIAS, ACCOUNT_BANK_ALIAS, AMOUNT, OPERATOR, TRANSIT_TYPE, TRANSIT_PATTERN, TRANSIT_STATUS, TRANSIT_TIME, COMMENTS
+FROM FC_WITHDRAW_TRANSIT_RECORD
+WHERE ((FC_WITH_APPLY_ID in ('BM_20150109195743000273837'))) limit 0,2147483647\G
+
+# Query 13: 2.48 QPS, 0.29x concurrency, ID 0xAEEA28950DE60080 at byte 664529032
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.02
+# Time range: 2015-01-09 20:23:55 to 21:12:25
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0    7229
+# Exec time      1    854s    33ms   363ms   118ms   208ms    54ms   110ms
+# Lock time      0   970ms    59us    29ms   134us   131us   794us    76us
+# Rows sent      0   7.06k       1       1       1       1       0       1
+# Rows examine   1 200.81M  25.24k  31.70k  28.45k  31.59k   2.28k  27.29k
+# Query size     0   3.22M     467     467     467     467       0     467
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us
+#   1ms
+#  10ms  ######################################
+# 100ms  ################################################################
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_WITHDRAW_TRANSIT_DETAIL'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_WITHDRAW_TRANSIT_DETAIL`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+SELECT FC_ORDER_NO, TRANSIT_RECORD_ID, PAY_BANK_ALIAS, PAY_BANK_NO, PAY_USER_NAME, INCOME_BANK_ALIAS, INCOME_BANK_NO, TRANS_COMMENTS, INCOME_USER_NAME, AMOUNT, INCOME_BANK_CITY, INCOME_BANK_NAME, TRANSFER_TYPE, POUNDAGE, INCOME_USER_PHONE, INCOME_CONTACTS, ORDER_TIMES, STATUS, TRANS_TIME, CURRENTD_TIME, OPERATOR, BANK_COMMENTS, REMARK
+FROM FC_WITHDRAW_TRANSIT_DETAIL
+WHERE ((TRANSIT_RECORD_ID = '8a829e4b4ace6fa8014aceb29d6943d5' and STATUS = 1)) limit 0,2147483647\G
+
+# Query 14: 71.13 QPS, 0.24x concurrency, ID 0x813031B8BBC3B329 at byte 926426298
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.03
+# Time range: 2015-01-09 20:23:55 to 21:11:13
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          5  201853
+# Exec time      1    687s   233us   188ms     3ms    18ms     9ms   445us
+# Lock time      0       0       0       0       0       0       0       0
+# Rows sent      0       0       0       0       0       0       0       0
+# Rows examine   0       0       0       0       0       0       0       0
+# Query size     0   1.16M       6       6       6       6       0       6
+# String:
+# Databases    npe (112039/55%), fcpay (89814/44%)
+# Hosts        10.2.30.205 (112039/55%)... 1 more
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us  ################################################################
+#   1ms  ###############
+#  10ms  #######
+# 100ms  #
+#    1s
+#  10s+
+COMMIT\G
+
+# Query 15: 26.21 QPS, 0.23x concurrency, ID 0x4F86C84D2C4A71CB at byte 409263971
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.03
+# Time range: 2015-01-09 20:23:55 to 21:11:13
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          2   74384
+# Exec time      1    646s    71us   185ms     9ms    42ms    16ms   690us
+# Lock time      1      4s    26us    16ms    48us    66us   166us    40us
+# Rows sent      0       0       0       0       0       0       0       0
+# Rows examine   0       0       0       0       0       0       0       0
+# Query size     3  25.42M     321     717  358.37  685.39  108.02  313.99
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us  ##
+# 100us  ################################################################
+#   1ms  #########################
+#  10ms  #############################
+# 100ms  #
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_WEB_GAME_TRADE'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_WEB_GAME_TRADE`\G
+insert into FC_WEB_GAME_TRADE (TRAD_ID, TRAD_TYPE,  TRAD_MSG_CONTENT, TRAD_MSG_CREATE_TIME,  TRAD_MSG_STATUS, TRAD_MSG_UPDATE_TIME,  TRAD_MSG_PLATFROM, TRAD_MSG_RESERVE1,  TRAD_MSG_RESERVE2) values ('8a829e4b4ace6f45014aceb0d7dd56ab', 'FC0010',  '', '2015-01-09 20:35:03',  '0', '2015-01-09 20:35:03',  'BM', 'req',  '0')\G
+
+# Query 16: 1.01 QPS, 0.18x concurrency, ID 0x5CBBDD886FB47842 at byte 991902875
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.05
+# Time range: 2015-01-09 20:23:57 to 21:12:24
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0    2933
+# Exec time      1    517s    53ms   634ms   176ms   339ms    93ms   148ms
+# Lock time      0   329ms    54us    35ms   112us   103us   893us    69us
+# Rows sent      0   6.32k       0      38    2.21   15.25    5.59       0
+# Rows examine   0 179.18M  45.88k  78.79k  62.56k  76.03k   9.82k  62.55k
+# Query size     0 956.66k     334     334     334     334       0     334
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us
+#   1ms
+#  10ms  ##################
+# 100ms  ################################################################
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_WITHDRAW_APPLY'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_WITHDRAW_APPLY`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+SELECT FC_WITH_APPLY_ID, BUSINESS_ID, DRAW_APPLY_ID, USER_NAME, AMOUNT, DRAW_TYPE, DRAW_BANK_ALIAS, DRAW_NO, DRAW_NAME, APPLY_TIME, APPLY_RECEIVE_TIME, DATA_NO, RISK_STATUS, STATUS, COMMENTS, RISK_SYN_TYPE, RISK_SYN_STEP, RISK_COMMENTS
+FROM FC_WITHDRAW_APPLY
+WHERE ((RISK_STATUS = 7 and BUSINESS_ID = 'BM' and STATUS = 1)) limit 0,100\G
+
+# Query 17: 2.46 QPS, 0.17x concurrency, ID 0x238FC87AAD011652 at byte 945899721
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.01
+# Time range: 2015-01-09 20:23:55 to 21:12:25
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0    7159
+# Exec time      0    492s    21ms   248ms    69ms   128ms    31ms    61ms
+# Lock time      0   383ms    36us    11ms    53us    66us   175us    44us
+# Rows sent      0   6.99k       1       1       1       1       0       1
+# Rows examine   1 201.95M  25.66k  31.98k  28.89k  31.59k   2.15k  27.29k
+# Query size     0   1.88M     274     275  274.71  271.23       0  271.23
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us
+#   1ms
+#  10ms  ################################################################
+# 100ms  ##############
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_WITHDRAW_TRANSIT_RECORD'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_WITHDRAW_TRANSIT_RECORD`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+SELECT TRANSIT_RECORD_ID, FC_WITH_APPLY_ID, ACCOUNT_ALIAS, ACCOUNT_BANK_ALIAS, AMOUNT, OPERATOR, TRANSIT_TYPE, TRANSIT_PATTERN, TRANSIT_STATUS, TRANSIT_TIME, COMMENTS
+FROM FC_WITHDRAW_TRANSIT_RECORD
+WHERE ((FC_WITH_APPLY_ID = 'BM_20150109200117000174250')) limit 0,2147483647\G
+
+# Query 18: 0.78 QPS, 0.17x concurrency, ID 0x75DDC7C03FE7005D at byte 1428659699
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.07
+# Time range: 2015-01-09 20:23:56 to 21:12:22
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0    2261
+# Exec time      0    488s    72us      1s   216ms   455ms   126ms   171ms
+# Lock time      0   286ms       0    58ms   126us   125us     1ms    69us
+# Rows sent      0       0       0       0       0       0       0       0
+# Rows examine   1 342.54M       0 189.21k 155.13k 182.98k  22.04k 150.54k
+# Query size     0 691.11k     313     313     313     313       0     313
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us  #
+# 100us
+#   1ms
+#  10ms  ########
+# 100ms  ################################################################
+#    1s  #
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_WEB_GAME_TRADE'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_WEB_GAME_TRADE`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+SELECT TRAD_ID, TRAD_TYPE, TRAD_MSG_CONTENT, TRAD_MSG_CREATE_TIME, TRAD_MSG_STATUS, TRAD_MSG_UPDATE_TIME, TRAD_MSG_PLATFROM, TRAD_MSG_RESERVE1, TRAD_MSG_RESERVE2
+FROM FC_WEB_GAME_TRADE
+WHERE ((TRAD_MSG_STATUS = '0' and TRAD_TYPE = 'FC_0008' and TRAD_MSG_PLATFROM = 'XC'))
+ORDER BY TRAD_MSG_CREATE_TIME limit 0,100\G
+
+# Query 19: 42.58 QPS, 0.17x concurrency, ID 0xD0C55E6A917D4B6F at byte 490875818
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.02
+# Time range: 2015-01-09 20:23:53 to 21:11:13
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          3  120936
+# Exec time      0    479s    41us   186ms     4ms    20ms     9ms   515us
+# Lock time      2      5s       0    35ms    45us    54us   287us    35us
+# Rows sent      0       0       0       0       0       0       0       0
+# Rows examine   0       0       0       0       0       0       0       0
+# Query size     3  24.28M     194     231  210.51  223.14    9.98  202.40
+# String:
+# Databases    npe
+# Hosts        10.2.30.205
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us  #
+# 100us  ################################################################
+#   1ms  #######################
+#  10ms  ##########
+# 100ms  #
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `npe` LIKE 'oplogs'\G
+#    SHOW CREATE TABLE `npe`.`oplogs`\G
+INSERT INTO oplogs (searchkey,message,level,uuid,createtime) values('出款机器人85 获取任务 BM_出款机器人','4bb2da87o2bf11872959d642f388c7,出款机器人85','info','611b7619-0189-40c4-9970-7bf377e393d8',1420807010714)\G
+
+# Query 20: 2.61 QPS, 0.19x concurrency, ID 0xF7370F167FC53E39 at byte 945888003
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.01
+# Time range: 2015-01-09 20:23:53 to 21:06:09
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0    6615
+# Exec time      0    477s    20ms   254ms    72ms   122ms    29ms    68ms
+# Lock time      0   513ms    43us    23ms    77us    73us   532us    54us
+# Rows sent      0   6.46k       1       1       1       1       0       1
+# Rows examine   1 187.48M  25.66k  31.70k  29.02k  31.59k   1.91k  28.66k
+# Query size     0   1.90M     300     301  300.71  299.03       0  299.03
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us
+#   1ms
+#  10ms  ################################################################
+# 100ms  ##############
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_WITHDRAW_TRANSIT_RECORD'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_WITHDRAW_TRANSIT_RECORD`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+SELECT TRANSIT_RECORD_ID, FC_WITH_APPLY_ID, ACCOUNT_ALIAS, ACCOUNT_BANK_ALIAS, AMOUNT, OPERATOR, TRANSIT_TYPE, TRANSIT_PATTERN, TRANSIT_STATUS, TRANSIT_TIME, COMMENTS
+FROM FC_WITHDRAW_TRANSIT_RECORD
+WHERE ((FC_WITH_APPLY_ID in ('BM_2015010920011800014677') and TRANSIT_STATUS = 1)) limit 0,2147483647\G
+
+# Query 21: 0.16 QPS, 0.16x concurrency, ID 0x5FCC541990059111 at byte 1430781150
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 3.19
+# Time range: 2015-01-09 20:24:00 to 21:12:25
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0     459
+# Exec time      0    465s   450ms     40s      1s      2s      2s   777ms
+# Lock time      0    19ms    26us   101us    40us    66us    11us    36us
+# Rows sent      0   6.09k      10      20   13.59   16.81    1.89   12.54
+# Rows examine   1 247.83M 466.83k 609.06k 552.90k 590.13k  35.36k 535.27k
+# Query size     0  64.55k     144     144     144     144       0     144
+# String:
+# Databases    npe
+# Hosts        10.2.30.205
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us
+#   1ms
+#  10ms
+# 100ms  ################################################################
+#    1s  ###############################
+#  10s+  #
+# Tables
+#    SHOW TABLE STATUS FROM `npe` LIKE 'tasks'\G
+#    SHOW CREATE TABLE `npe`.`tasks`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+select taskname,interstate,count(*) as counter 
+         from tasks where nodetype = 0 group by taskname,interstate order by taskname,interstate\G
+
+# Query 22: 29.05 QPS, 0.15x concurrency, ID 0x47CE1873E5790804 at byte 490871772
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.02
+# Time range: 2015-01-09 20:23:55 to 21:11:13
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          2   82430
+# Exec time      0    430s   331us   180ms     5ms    24ms    11ms   626us
+# Lock time      3      7s    55us    21ms    86us   108us   228us    73us
+# Rows sent      0       0       0       0       0       0       0       0
+# Rows examine   0       0       0       0       0       0       0       0
+# Query size     8  65.28M     821     831  830.37  793.42       0  793.42
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us  ################################################################
+#   1ms  #############################
+#  10ms  ################
+# 100ms  #
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_RISK_GAME_FLOW_DETAIL'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_RISK_GAME_FLOW_DETAIL`\G
+insert into FC_RISK_GAME_FLOW_DETAIL (GAME_FLOW_DETAIL_ID, BUSINESS_ID,  FC_WITH_APPLY_ID, GAME_RECORD_ID,  GAME_CHANGE_TIME, CHANGE_TYPE,  GAME_TYPE, GAME_RULE,  GAME_ISSUE, BET_PATTERN,  GAME_PATTERN, IN_COME,  PAY_AMOUNT, AVAILABLE_AMOUNT,  IP_ADDRESS, COMMENTS,  CUSTOMER_NAME, RECORD_DATA,  QUERY_START_TIME, QUERY_END_TIME,  PROJECT_ID, PRE_BALANCE,  PRE_HOLD, PRE_AVAILABLE,  CHANNEL_BALANCE, HOLD_BALANCE,  AVAILABLE_BALANCE) values ('0adea48ab88b3e985cd737a27a92aacc', 'BM',  'BM_20150109200900000175100', '8a829e4b4ace6f45014aceb27a6e0b5e',  '2015-01-09 20:36:50', '3',  '3', '3',  '999999', '999',  '元', 10.0,  2.0, 100.0,  '127.0.0.12', 'NONO',  'APual08', '2015-01-09 20:36:51.176',  '2015-01-09 20:36:50.776', '2015-01-09 20:36:51.176',  '8a829e4b4ace6f45014aceb27a6e0b5f', 100.0,  100.0, 100.0,  98.0, 2.0,  100.0)\G
+
+# Query 23: 0.12 QPS, 0.27x concurrency, ID 0xB43BEFCCD2D35782 at byte 979418234
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.21
+# Time range: 2015-01-09 20:41:33 to 21:05:39
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0     174
+# Exec time      0    384s      1s      5s      2s      4s   689ms      2s
+# Lock time      0    11ms    41us   168us    64us   113us    23us    54us
+# Rows sent      0   2.55k      15      15      15      15       0      15
+# Rows examine   0  81.70M 453.57k 509.23k 480.80k 485.50k  15.31k 462.39k
+# Query size     0  17.67k     104     104     104     104       0     104
+# String:
+# Databases    npe
+# Hosts        10.2.30.205
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us
+#   1ms
+#  10ms
+# 100ms
+#    1s  ################################################################
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `npe` LIKE 'oplogs'\G
+#    SHOW CREATE TABLE `npe`.`oplogs`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+SELECT searchkey,message,level,uuid,createtime from oplogs WHERE 1=1 order by createtime desc LIMIT 0,15\G
+
+# Query 24: 12.48 QPS, 0.12x concurrency, ID 0x3DB14C8A5EBBF937 at byte 490875146
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.03
+# Time range: 2015-01-09 20:23:55 to 21:08:57
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0   33722
+# Exec time      0    323s   325us   191ms    10ms    42ms    16ms     2ms
+# Lock time      1      2s    42us    27ms    68us    84us   236us    60us
+# Rows sent      0       0       0       0       0       0       0       0
+# Rows examine   0       0       0       0       0       0       0       0
+# Query size     2  16.59M     509     517  515.74  511.45    1.31  511.45
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us  ################################################################
+#   1ms  ##########################################
+#  10ms  ########################################
+# 100ms  #
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_WITHDRAW_APPLY'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_WITHDRAW_APPLY`\G
+insert into FC_WITHDRAW_APPLY (FC_WITH_APPLY_ID, BUSINESS_ID,  DRAW_APPLY_ID, USER_NAME,  AMOUNT, DRAW_TYPE,  DRAW_BANK_ALIAS, DRAW_NO,  DRAW_NAME, APPLY_TIME,  APPLY_RECEIVE_TIME, DATA_NO,  RISK_STATUS, STATUS,  COMMENTS, RISK_SYN_TYPE,  RISK_SYN_STEP, RISK_COMMENTS) values ('BM_2015010920364800018490', 'BM',  '2015010920364800018490', 'APual08',  101, 'ZMC',  'ZMC', '2015010920364800018490',  '张三丰', '2015-01-09 20:36:48',  '2015-01-09 20:36:51.177', '2015010920364800018490',  1, 1,  '0', 0,  0, null)\G
+
+# Query 25: 16.42 QPS, 0.08x concurrency, ID 0x3BE065C94C527FB8 at byte 1428666316
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.03
+# Time range: 2015-01-09 20:23:57 to 21:11:40
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          1   46998
+# Exec time      0    223s   311us   998ms     5ms    23ms    11ms   541us
+# Lock time      1      2s    25us    19ms    44us    60us   153us    38us
+# Rows sent      0       0       0       0       0       0       0       0
+# Rows examine   0  45.90k       1       1       1       1       0       1
+# Query size     0   5.43M     120     122  121.15  118.34       0  118.34
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us  ################################################################
+#   1ms  #########################
+#  10ms  #############
+# 100ms  #
+#    1s  #
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_WITHDRAW_APPLY'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_WITHDRAW_APPLY`\G
+UPDATE FC_WITHDRAW_APPLY
+SET RISK_SYN_TYPE = 0, RISK_SYN_STEP = 16
+WHERE (FC_WITH_APPLY_ID = 'BM_20150109202756000177110')\G
+# Converted for EXPLAIN
+# EXPLAIN /*!50100 PARTITIONS*/
+select  RISK_SYN_TYPE = 0, RISK_SYN_STEP = 16 from FC_WITHDRAW_APPLY where  (FC_WITH_APPLY_ID = 'BM_20150109202756000177110')\G
+
+# Query 26: 18.82 QPS, 0.08x concurrency, ID 0x32414745C4623727 at byte 926424693
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.02
+# Time range: 2015-01-09 20:23:57 to 21:11:13
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          1   53367
+# Exec time      0    222s   327us   189ms     4ms    21ms    10ms   541us
+# Lock time      1      2s    25us    31ms    46us    60us   197us    40us
+# Rows sent      0       0       0       0       0       0       0       0
+# Rows examine   0  52.12k       1       1       1       1       0       1
+# Query size     0   7.48M     146     148  147.00  143.84       0  143.84
+# String:
+# Databases    npe
+# Hosts        10.2.30.205
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us  ################################################################
+#   1ms  ######################
+#  10ms  ###########
+# 100ms  #
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `npe` LIKE 'tasks'\G
+#    SHOW CREATE TABLE `npe`.`tasks`\G
+UPDATE tasks SET obtainer=('放款机器人4') , obtaintime=(1420807943048) , interstate =(1) WHERE taskinstid = ('4bb2da87o2bf11872959d4cebb7e4e')\G
+# Converted for EXPLAIN
+# EXPLAIN /*!50100 PARTITIONS*/
+select  obtainer=('放款机器人4') , obtaintime=(1420807943048) , interstate =(1) from tasks where  taskinstid = ('4bb2da87o2bf11872959d4cebb7e4e')\G
+
+# Query 27: 50.96 QPS, 0.07x concurrency, ID 0xDDD38AE33829ACAC at byte 386138592
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.02
+# Time range: 2015-01-09 20:23:55 to 21:11:13
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          4  144636
+# Exec time      0    205s    48us   191ms     1ms     7ms     5ms   176us
+# Lock time      5     10s       0    29ms    68us    80us   253us    57us
+# Rows sent      0       0       0       0       0       0       0       0
+# Rows examine   0       0       0       0       0       0       0       0
+# Query size    11  92.00M     581     818  666.99  755.64   71.20  621.67
+# String:
+# Databases    npe
+# Hosts        10.2.30.205
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us  #
+# 100us  ################################################################
+#   1ms  ######
+#  10ms  ##
+# 100ms  #
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `npe` LIKE 'tasks'\G
+#    SHOW CREATE TABLE `npe`.`tasks`\G
+INSERT INTO tasks (taskinstid,procdefid,procinstid,taskdefid,interstate,previnsts,antecessors,procPIO,taskPIO,rolemark,startMS,idata1,idata2,strdata1,strdata2,fdata1,fdata2,taskname,jsondata,submitter,submittime,taskcenter,rootproc,nodetype,createtime) values('4bb2da87n3884c322959d60e1f06f5','withdraw.bm','024da89d-8153-49a4-a512-8a1b0ac9b222','_jbpm-unique-27',0,'4bb2da87l1946a82959d60e1b466f','',0,3,'auto,',1420806531808,1,NULL,'semi-auto',NULL,NULL,NULL,'BM_半自动出款','loanPattern:1,__n:StateContext(博马提现流程,BM_半自动出款),withdrawApplyIds:BM_20150109195804000173897,loanType:2,busiId:BM',NULL,NULL,'','024da89d-8153-49a4-a512-8a1b0ac9b222',0,1420806877429)\G
+
+# Query 28: 11.37 QPS, 0.07x concurrency, ID 0xB93BAA373DD083FB at byte 1428665112
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.03
+# Time range: 2015-01-09 20:23:55 to 21:11:40
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0   32563
+# Exec time      0    201s   387us      1s     6ms    28ms    13ms   925us
+# Lock time      2      4s    80us    25ms   128us   144us   342us   113us
+# Rows sent      0       0       0       0       0       0       0       0
+# Rows examine   0       0       0       0       0       0       0       0
+# Query size     4  32.46M   1.01k   1.02k   1.02k 1012.63       0 1012.63
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us  ################################################################
+#   1ms  ########################################
+#  10ms  ######################
+# 100ms  #
+#    1s  #
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_RISK_GAME_WINNING_INFO'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_RISK_GAME_WINNING_INFO`\G
+insert into FC_RISK_GAME_WINNING_INFO (GAME_WINNING_INFO_ID, BUSINESS_ID,  FC_WITH_APPLY_ID, GAME_RECORD_ID,  BET_TIME, BET_CLOSED_TIME,  GAME_DRAW_TIME, WINNING_AMOUNT,  BET_AMOUNT, DRAW_RATE,  BET_DOUBLE, DRAW_NO,  WINNING_NO, GAME_TYPE,  GAME_RULE, BET_PATTERN,  GAME_PATTERN, IP_ADDRESS,  BET_RATE, COMMENTS,  CUSTOMER_NAME, RECORD_DATA,  QUERY_START_TIME, QUERY_END_TIME,  ISSUE, CODE_TYPE,  SINGLE_PRICE, MULTIPLE,  TOTAL_PRICE, LV_TOP_ID,  LV_TOP_POINT, LV_PROXY_ID,  DEDUCT_TIME, CANCEL_TIME,  IS_DEDUCT, IS_CANCEL, IS_GET_PRIZE,  PRIZE_STATUS, ON_MODEL) values ('5025cddc8ccb21673fd48882e98ea204', 'BM',  'BM_2015010920134500075841', '8a829e4b4ace6f45014aced262580425',  '2015-01-09 21:11:41', '2015-01-09 21:11:41',  '2015-01-09 21:11:41', 10.0,  10.0, 10.0,  1, '',  '9999', '3',  '3', '999',  '9999', '127.0.0.1',  1, 'NONO',  'APual08', '2015-01-09 21:11:41.912',  '2015-01-09 21:11:39.639', '2015-01-09 21:11:41.912',  '999999', '0',  2.0, '2.0',  2.0, '000',  '0.0', '000',  '2015-01-09 21:11:41', null,  '1', '0', '1',  '1', '0')\G
+
+# Query 29: 15.51 QPS, 0.06x concurrency, ID 0x5E76D0C7BBF5F36D at byte 485115322
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.02
+# Time range: 2015-01-09 20:23:53 to 21:11:13
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          1   44050
+# Exec time      0    181s    41us   166ms     4ms    19ms     9ms   690us
+# Lock time      1      2s       0    26ms    53us    63us   263us    42us
+# Rows sent      0       0       0       0       0       0       0       0
+# Rows examine   0  43.02k       0       1    1.00    0.99    0.00    0.99
+# Query size     1   8.71M     202     214  207.38  212.52    4.98  202.40
+# String:
+# Databases    npe
+# Hosts        10.2.30.205
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us  #
+# 100us  ################################################################
+#   1ms  ################################
+#  10ms  ###########
+# 100ms  #
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `npe` LIKE 'tasks'\G
+#    SHOW CREATE TABLE `npe`.`tasks`\G
+UPDATE tasks SET taskinstid=('4bb2da87f396ebf82959d64b18094a') , obtainer=('CKZD00009') , obtaintime=(1420807003477) , interstate =(1) WHERE  taskinstid=('4bb2da87f396ebf82959d64b18094a') AND interstate=(0)\G
+# Converted for EXPLAIN
+# EXPLAIN /*!50100 PARTITIONS*/
+select  taskinstid=('4bb2da87f396ebf82959d64b18094a') , obtainer=('CKZD00009') , obtaintime=(1420807003477) , interstate =(1) from tasks where   taskinstid=('4bb2da87f396ebf82959d64b18094a') AND interstate=(0)\G
+
+# Query 30: 7.13 QPS, 0.07x concurrency, ID 0x91C917B38ACB94BB at byte 23951325
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.01
+# Time range: 2015-01-09 20:23:58 to 21:08:50
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0   19183
+# Exec time      0    180s   322us    86ms     9ms    24ms     8ms     8ms
+# Lock time      1      3s    90us    25ms   135us   144us   367us   113us
+# Rows sent      0 118.31k       0      10    6.32    9.83    4.60    9.83
+# Rows examine   0  78.99M      40   6.82k   4.22k   5.73k   1.91k   4.95k
+# Query size     1  13.81M     755     755     755     755       0     755
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us  ###
+#   1ms  ################################################################
+#  10ms  ##############################
+# 100ms
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_INNERC_ACCOUNT'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_INNERC_ACCOUNT`\G
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_SHIFT_ACTIVE_ACCOUNT'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_SHIFT_ACTIVE_ACCOUNT`\G
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_BANKMSG_ACCOUNT_SERVICE_REF'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_BANKMSG_ACCOUNT_SERVICE_REF`\G
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_SHIFT_ACCOUNT_DETAIL'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_SHIFT_ACCOUNT_DETAIL`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+select acc.ACCOUNT_ALIAS,acc.ACCOUNT_NO,acc.ACCOUNT_NAME,acc.ACCOUNT_BANK_NAME,acc.ACCOUNT_BANK_ALIAS, acc.ACCOUNT_GROUP_ID,acc.ACCOUNT_AUTO_TYPE,acc.ACCOUNT_STATUS,acc.ACCOUNT_STATUS_INFO, acc.PAYMENT_TYPE,acc.ACCOUNT_TIER,acc.BANK_NAME,acc.EMAIL,act.STATUS,act.IS_TRANSFERING, detail.LAST_BALANCE from FC_INNERC_ACCOUNT acc, FC_SHIFT_ACTIVE_ACCOUNT act,  FC_BANKMSG_ACCOUNT_SERVICE_REF ref, FC_SHIFT_ACCOUNT_DETAIL detail where acc.ACCOUNT_ALIAS=act.ACCOUNT_ALIAS and ref.ACCOUNT_ALIAS=acc.ACCOUNT_ALIAS and detail.ACCOUNT_ALIAS=acc.ACCOUNT_ALIAS   and acc.ACCOUNT_TIER = 0 and acc.PAYMENT_TYPE = 2 and acc.ACCOUNT_AUTO_TYPE = 1 and acc.ACCOUNT_STATUS = 1   and acc.BUSINESS_ID = 'BM' and act.STATUS =1 and act.IS_TRANSFERING=1 and ref.STATUS=2 limit 10\G
+
+# Query 31: 11.36 QPS, 0.06x concurrency, ID 0xFACF17A673FCC281 at byte 1428664315
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.03
+# Time range: 2015-01-09 20:23:55 to 21:11:40
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0   32537
+# Exec time      0    178s   320us      1s     5ms    24ms    12ms   799us
+# Lock time      1      2s    44us    17ms    74us    93us   214us    63us
+# Rows sent      0       0       0       0       0       0       0       0
+# Rows examine   0       0       0       0       0       0       0       0
+# Query size     2  19.78M     629     638  637.38  621.67       0  621.67
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us  ################################################################
+#   1ms  ######################################
+#  10ms  ###################
+# 100ms  #
+#    1s  #
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_RISK_PREPAID_ACCOUNT_CHANGE_INFO'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_RISK_PREPAID_ACCOUNT_CHANGE_INFO`\G
+insert into FC_RISK_PREPAID_ACCOUNT_CHANGE_INFO (PREPAID_ACCOUNT_CHANGE_INFO_ID, BUSINESS_ID,  ACCOUNT_CHANGE_ID, ACCOUNT_CHANGE_TIME,  ACCOUNT_CHANGE_TYPE, ACCOUNT_CHANGE_AMOUNT,  AVAILABLE_AMOUNT, IP_ADDRESS,  ACCOUNT_NO_REMARK, LOAD_TYPE,  REMARK, CUSTOMER_NAME,  RECORD_DATA, FC_WITH_APPLY_ID,  QUERY_START_TIME, QUERY_END_TIME) values ('d5310d4a3fde558c8088555f3d0e8dc2', 'BM',  '8a829e4b4ace6f45014aced262580421', '2015-01-09 21:11:41',  '1', 100.0,  200.0, '127.0.0.12',  '52929302320302032032', 0,  'NONO', 'APual08',  '2015-01-09 21:11:41.912', 'BM_20150109201345000335980',  '2015-01-09 21:11:39.671', '2015-01-09 21:11:41.912')\G
+
+# Query 32: 12.04 QPS, 0.06x concurrency, ID 0x0CB80DD637098AB7 at byte 1428666597
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.03
+# Time range: 2015-01-09 20:23:55 to 21:11:40
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0   34486
+# Exec time      0    174s   315us   997ms     5ms    24ms    12ms   596us
+# Lock time      2      5s    28us   306ms   151us    63us     4ms    40us
+# Rows sent      0       0       0       0       0       0       0       0
+# Rows examine   0  33.68k       1       1       1       1       0       1
+# Query size     0   4.56M     138     139  138.72  136.99       0  136.99
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us  ################################################################
+#   1ms  #############################
+#  10ms  ###############
+# 100ms  #
+#    1s  #
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_WITHDRAW_APPLY'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_WITHDRAW_APPLY`\G
+UPDATE FC_WITHDRAW_APPLY
+SET RISK_STATUS = 2, RISK_SYN_TYPE = 0, RISK_SYN_STEP = 31
+WHERE (FC_WITH_APPLY_ID = 'BM_2015010920134500075841')\G
+# Converted for EXPLAIN
+# EXPLAIN /*!50100 PARTITIONS*/
+select  RISK_STATUS = 2, RISK_SYN_TYPE = 0, RISK_SYN_STEP = 31 from FC_WITHDRAW_APPLY where  (FC_WITH_APPLY_ID = 'BM_2015010920134500075841')\G
+
+# Query 33: 0.12 QPS, 0.10x concurrency, ID 0x6F6F9BA5CADC33E4 at byte 1230790567
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.13
+# Time range: 2015-01-09 20:41:33 to 21:05:35
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0     173
+# Exec time      0    141s   436ms      3s   813ms      1s   329ms   705ms
+# Lock time      0     8ms    29us    94us    44us    80us    15us    38us
+# Rows sent      0   1.04k       6       7    6.15    6.98    0.44    5.75
+# Rows examine   0  95.31M 531.58k 597.58k 564.14k 590.13k  19.68k 562.03k
+# Query size     0  27.54k     163     163     163     163       0     163
+# String:
+# Databases    npe
+# Hosts        10.2.30.205
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us
+#   1ms
+#  10ms
+# 100ms  ################################################################
+#    1s  ####################
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `npe` LIKE 'tasks'\G
+#    SHOW CREATE TABLE `npe`.`tasks`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+select taskcenter as taskname,interstate,count(*) as counter 
+         from tasks where nodetype = 0  group by taskcenter,interstate order by taskcenter,interstate\G
+
+# Query 34: 11.43 QPS, 0.05x concurrency, ID 0x4DA571B2E4C717A6 at byte 926415439
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.02
+# Time range: 2015-01-09 20:23:55 to 21:11:13
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0   32446
+# Exec time      0    138s   327us   181ms     4ms    21ms    10ms   515us
+# Lock time      1      2s    38us    12ms    57us    80us   121us    49us
+# Rows sent      0       0       0       0       0       0       0       0
+# Rows examine   0  31.69k       1       1       1       1       0       1
+# Query size     1  11.84M     375     383  382.78  381.65       4  381.65
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us  ################################################################
+#   1ms  ####################
+#  10ms  ###########
+# 100ms  #
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_CRM_CUSTOMER_ACCOUNT'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_CRM_CUSTOMER_ACCOUNT`\G
+update FC_CRM_CUSTOMER_ACCOUNT set FC_CUSTOMER_ID = 'BM_APual08', ACCOUNT_NO = '6666666666661', ACCOUNT_NAME = 'APual08', ACCOUNT_BANK_NAME = 'RMB', BANK_ALIAS = 'RMB', ACCOUNT_STATUS = 1, ACCOUNT_STATUS_INFO = null, ACCOUNT_EDIT_DATETIME = '2015-01-09 20:52:23.23', ACCOUNT_REGISTER_DATETIME = '2015-01-09 20:52:23.23', IS_DEFAULT = 0 where ACCOUNT_ID = 'BM_APual08_6666666666661'\G
+# Converted for EXPLAIN
+# EXPLAIN /*!50100 PARTITIONS*/
+select  FC_CUSTOMER_ID = 'BM_APual08', ACCOUNT_NO = '6666666666661', ACCOUNT_NAME = 'APual08', ACCOUNT_BANK_NAME = 'RMB', BANK_ALIAS = 'RMB', ACCOUNT_STATUS = 1, ACCOUNT_STATUS_INFO = null, ACCOUNT_EDIT_DATETIME = '2015-01-09 20:52:23.23', ACCOUNT_REGISTER_DATETIME = '2015-01-09 20:52:23.23', IS_DEFAULT = 0 from FC_CRM_CUSTOMER_ACCOUNT where  ACCOUNT_ID = 'BM_APual08_6666666666661'\G
+
+# Query 35: 0.19 QPS, 0.04x concurrency, ID 0x36D74B32610F37E9 at byte 675644192
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.07
+# Time range: 2015-01-09 20:23:55 to 21:12:18
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0     565
+# Exec time      0    121s    94us   707ms   214ms   433ms   121ms   180ms
+# Lock time      0    53ms       0     1ms    93us   144us    46us    80us
+# Rows sent      0       0       0       0       0       0       0       0
+# Rows examine   0  85.48M       0 189.15k 154.92k 182.98k  22.46k 150.54k
+# Query size     0 186.49k     338     338     338     338       0     338
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us  #
+# 100us
+#   1ms
+#  10ms  ###########
+# 100ms  ################################################################
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_WEB_GAME_TRADE'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_WEB_GAME_TRADE`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+SELECT TRAD_ID, TRAD_TYPE, TRAD_MSG_CONTENT, TRAD_MSG_CREATE_TIME, TRAD_MSG_STATUS, TRAD_MSG_UPDATE_TIME, TRAD_MSG_PLATFROM, TRAD_MSG_RESERVE1, TRAD_MSG_RESERVE2
+FROM FC_WEB_GAME_TRADE
+WHERE ((TRAD_MSG_STATUS = '0' and TRAD_TYPE = 'FC_0008' and TRAD_MSG_PLATFROM not in ('XC', 'HC', 'NC', 'BM')))
+ORDER BY TRAD_MSG_CREATE_TIME limit 0,100\G
+
+# Query 36: 9.46 QPS, 0.04x concurrency, ID 0x200BD3D0664DF29E at byte 485113567
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.02
+# Time range: 2015-01-09 20:23:55 to 21:11:13
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0   26834
+# Exec time      0    113s   376us   174ms     4ms    21ms    10ms   657us
+# Lock time      1      2s    41us    35ms    75us    84us   323us    63us
+# Rows sent      0       0       0       0       0       0       0       0
+# Rows examine   0  26.21k       1       1       1       1       0       1
+# Query size     1  15.49M     597     613  605.33  592.07       0  592.07
+# String:
+# Databases    npe
+# Hosts        10.2.30.205
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us  ################################################################
+#   1ms  ######################
+#  10ms  ##########
+# 100ms  #
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `npe` LIKE 'tasks'\G
+#    SHOW CREATE TABLE `npe`.`tasks`\G
+UPDATE tasks SET taskinstid=('4bb2da87a3958fa12959d62dfa07db') , procdefid=('withdraw.bm') , procinstid=('8a53d092-4e8e-4694-b731-9d18c34e0dff') , taskdefid=('_jbpm-unique-8') , submitter=('auto') , interstate=(2) , procPIO=(0) , taskPIO=(3) , rolemark=('auto,') , idata1=(1) , idata2=(NULL) , strdata1=('semi-auto') , fdata1=(NULL) , fdata2=(NULL) , jsondata=('__n:StateContext(博马提现流程,BM_放款机器人),loanPattern:1,withdrawApplyIds:BM_2015010919595400014523,busiId:BM,loanType:2') , submittime =(1420807003460) WHERE  taskinstid=('4bb2da87a3958fa12959d62dfa07db') AND interstate=(1)\G
+# Converted for EXPLAIN
+# EXPLAIN /*!50100 PARTITIONS*/
+select  taskinstid=('4bb2da87a3958fa12959d62dfa07db') , procdefid=('withdraw.bm') , procinstid=('8a53d092-4e8e-4694-b731-9d18c34e0dff') , taskdefid=('_jbpm-unique-8') , submitter=('auto') , interstate=(2) , procPIO=(0) , taskPIO=(3) , rolemark=('auto,') , idata1=(1) , idata2=(NULL) , strdata1=('semi-auto') , fdata1=(NULL) , fdata2=(NULL) , jsondata=('__n:StateContext(博马提现流程,BM_放款机器人),loanPattern:1,withdrawApplyIds:BM_2015010919595400014523,busiId:BM,loanType:2') , submittime =(1420807003460) from tasks where   taskinstid=('4bb2da87a3958fa12959d62dfa07db') AND interstate=(1)\G
+
+# Query 37: 71.29 QPS, 0.04x concurrency, ID 0x8356003F5D441C59 at byte 386108876
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.01
+# Time range: 2015-01-09 20:23:53 to 21:11:13
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          5  202450
+# Exec time      0    112s    77us   137ms   551us   403us     2ms   260us
+# Lock time     11     21s       0    32ms   102us   138us   214us    93us
+# Rows sent      0  52.12k       0       1    0.26    0.99    0.44       0
+# Rows examine   0 104.23k       0       2    0.53    1.96    0.87       0
+# Query size     8  72.35M     364     377  374.73  363.48       0  363.48
+# String:
+# Databases    npe
+# Hosts        10.2.30.205
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us  #
+# 100us  ################################################################
+#   1ms  #
+#  10ms  #
+# 100ms  #
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `npe` LIKE 'tasks'\G
+#    SHOW CREATE TABLE `npe`.`tasks`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+SELECT taskinstid,procdefid,procinstid,taskdefid,interstate,previnsts,antecessors,procPIO,taskPIO,rolemark,startMS,idata1,idata2,strdata1,strdata2,fdata1,fdata2,taskname,jsondata,submitter,submittime,taskcenter,rootproc,nodetype,createtime from tasks WHERE interstate in (1) and obtainer='CKZD00008'  and taskname='BM_半自动出款'  order by obtaintime asc LIMIT 0,1\G
+
+# Query 38: 5.66 QPS, 0.04x concurrency, ID 0xB4930D23CB187A4F at byte 1428666894
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.04
+# Time range: 2015-01-09 20:23:55 to 21:11:40
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0   16225
+# Exec time      0    109s   325us   973ms     7ms    31ms    16ms   761us
+# Lock time      0   889ms    32us     8ms    54us    76us    92us    47us
+# Rows sent      0       0       0       0       0       0       0       0
+# Rows examine   0  15.84k       1       1       1       1       0       1
+# Query size     0   3.91M     253     253     253     253       0     253
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us  ################################################################
+#   1ms  ###################################
+#  10ms  #######################
+# 100ms  #
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_CRM_MEMBER'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_CRM_MEMBER`\G
+update FC_CRM_MEMBER set BUSINESS_ID = 'BM', FC_CUSTOMER_ID = 'BM_APual08', CUSTOMER_NAME = 'APual08', CUSTOMER_REAL_NAME = 'APual08', MOBILE = '13800138000', AGENT = '00001', BIRTHDAY = '1980-01-01', STATUS = 1 where FC_CUSTOMER_TRADE_ID = 'BM_APual08'\G
+# Converted for EXPLAIN
+# EXPLAIN /*!50100 PARTITIONS*/
+select  BUSINESS_ID = 'BM', FC_CUSTOMER_ID = 'BM_APual08', CUSTOMER_NAME = 'APual08', CUSTOMER_REAL_NAME = 'APual08', MOBILE = '13800138000', AGENT = '00001', BIRTHDAY = '1980-01-01', STATUS = 1 from FC_CRM_MEMBER where  FC_CUSTOMER_TRADE_ID = 'BM_APual08'\G
+
+# Query 39: 6.45 QPS, 0.04x concurrency, ID 0x74409DD13BF77364 at byte 457781568
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.02
+# Time range: 2015-01-09 20:23:55 to 21:09:03
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0   17458
+# Exec time      0     99s   408us   139ms     6ms    28ms    11ms   690us
+# Lock time      0      1s    43us    14ms    78us    93us   250us    66us
+# Rows sent      0       0       0       0       0       0       0       0
+# Rows examine   0  17.05k       1       1       1       1       0       1
+# Query size     1   8.99M     535     544  540.20  537.02    4.50  537.02
+# String:
+# Databases    npe
+# Hosts        10.2.30.205
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us  ################################################################
+#   1ms  #########################
+#  10ms  ##################
+# 100ms  #
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `npe` LIKE 'tasks'\G
+#    SHOW CREATE TABLE `npe`.`tasks`\G
+UPDATE tasks SET taskinstid=('4bb2da87g146c6572959d63818a832') , procdefid=('financialAudit.bm') , procinstid=('f4e1c764-f28f-40a4-810d-cf56917bd0b8') , taskdefid=('_jbpm-unique-1') , submitter=('CW00010') , interstate=(2) , procPIO=(0) , taskPIO=(2) , rolemark=('CW00010,') , idata1=(NULL) , idata2=(NULL) , fdata1=(NULL) , fdata2=(NULL) , jsondata=('__n:StateContext(博马财务审核,BM_财务审核),recordid:BM_20150109195949000274067') , submittime =(1420806965305) WHERE  taskinstid=('4bb2da87g146c6572959d63818a832') AND interstate=(1)\G
+# Converted for EXPLAIN
+# EXPLAIN /*!50100 PARTITIONS*/
+select  taskinstid=('4bb2da87g146c6572959d63818a832') , procdefid=('financialAudit.bm') , procinstid=('f4e1c764-f28f-40a4-810d-cf56917bd0b8') , taskdefid=('_jbpm-unique-1') , submitter=('CW00010') , interstate=(2) , procPIO=(0) , taskPIO=(2) , rolemark=('CW00010,') , idata1=(NULL) , idata2=(NULL) , fdata1=(NULL) , fdata2=(NULL) , jsondata=('__n:StateContext(博马财务审核,BM_财务审核),recordid:BM_20150109195949000274067') , submittime =(1420806965305) from tasks where   taskinstid=('4bb2da87g146c6572959d63818a832') AND interstate=(1)\G
+
+# Query 40: 62.47 QPS, 0.03x concurrency, ID 0xAFD485876A3E9A36 at byte 1285924441
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.01
+# Time range: 2015-01-09 20:23:53 to 21:11:13
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          4  177417
+# Exec time      0     96s    92us   148ms   540us   301us     3ms   131us
+# Lock time      7     13s    38us    35ms    74us    98us   335us    57us
+# Rows sent      0 173.26k       1       1       1       1       0       1
+# Rows examine   0 173.26k       1       1       1       1       0       1
+# Query size     6  53.08M     313     314  313.71  313.99    0.50  313.99
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us  #
+# 100us  ################################################################
+#   1ms  #
+#  10ms  #
+# 100ms  #
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_WITHDRAW_APPLY'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_WITHDRAW_APPLY`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+select FC_WITH_APPLY_ID, BUSINESS_ID, DRAW_APPLY_ID, USER_NAME, AMOUNT, DRAW_TYPE,  DRAW_BANK_ALIAS, DRAW_NO, DRAW_NAME, APPLY_TIME, APPLY_RECEIVE_TIME, DATA_NO,  RISK_STATUS, STATUS, COMMENTS, RISK_SYN_TYPE, RISK_SYN_STEP, RISK_COMMENTS from FC_WITHDRAW_APPLY where FC_WITH_APPLY_ID = 'BM_2015010920125600075752'\G
+
+# Query 41: 6.01 QPS, 0.03x concurrency, ID 0x6368886AA310AB9E at byte 364015304
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.05
+# Time range: 2015-01-09 20:23:58 to 21:08:50
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0   16187
+# Exec time      0     92s   301us   624ms     6ms    24ms    17ms   690us
+# Lock time     10     20s    32us   616ms     1ms    84us    14ms    44us
+# Rows sent      0       0       0       0       0       0       0       0
+# Rows examine   0  15.81k       1       1       1       1       0       1
+# Query size     0   2.77M     174     180  179.30  174.84    0.09  174.84
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us  ################################################################
+#   1ms  ###################################
+#  10ms  ###############
+# 100ms  #
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_SHIFT_ACTIVE_ACCOUNT'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_SHIFT_ACTIVE_ACCOUNT`\G
+UPDATE FC_SHIFT_ACTIVE_ACCOUNT
+SET IS_TRANSFERING = 2, TRANSIT_UPDATED_TIME = '2015-01-09 20:34:11.519'
+WHERE ((ACCOUNT_ALIAS = 'ICBC00798' and STATUS = 1 and IS_TRANSFERING = 1))\G
+# Converted for EXPLAIN
+# EXPLAIN /*!50100 PARTITIONS*/
+select  IS_TRANSFERING = 2, TRANSIT_UPDATED_TIME = '2015-01-09 20:34:11.519' from FC_SHIFT_ACTIVE_ACCOUNT where  ((ACCOUNT_ALIAS = 'ICBC00798' and STATUS = 1 and IS_TRANSFERING = 1))\G
+
+# Query 42: 5.72 QPS, 0.03x concurrency, ID 0x2AEDA855DBBA5852 at byte 409240128
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.02
+# Time range: 2015-01-09 20:23:55 to 21:11:13
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0   16223
+# Exec time      0     88s   308us   151ms     5ms    27ms    11ms   541us
+# Lock time      0   818ms    29us    15ms    50us    69us   148us    40us
+# Rows sent      0       0       0       0       0       0       0       0
+# Rows examine   0  15.84k       1       1       1       1       0       1
+# Query size     0   3.06M     198     198     198     198       0     198
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us  ################################################################
+#   1ms  #########################
+#  10ms  ################
+# 100ms  #
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_CRM_CUSTOMER'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_CRM_CUSTOMER`\G
+update FC_CRM_CUSTOMER set CUSTOMER_NAME = 'APual08', CUSTOMER_REAL_NAME = 'APual08', MOBILE = '13800138000', AGENT = '00001', BIRTHDAY = '1980-01-01', STATUS = 1 where FC_CUSTOMER_ID = 'BM_APual08'\G
+# Converted for EXPLAIN
+# EXPLAIN /*!50100 PARTITIONS*/
+select  CUSTOMER_NAME = 'APual08', CUSTOMER_REAL_NAME = 'APual08', MOBILE = '13800138000', AGENT = '00001', BIRTHDAY = '1980-01-01', STATUS = 1 from FC_CRM_CUSTOMER where  FC_CUSTOMER_ID = 'BM_APual08'\G
+
+# Query 43: 5.66 QPS, 0.03x concurrency, ID 0xB21D227814EF679C at byte 1428667306
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.04
+# Time range: 2015-01-09 20:23:55 to 21:11:40
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0   16225
+# Exec time      0     75s    83us   999ms     5ms    22ms    13ms   568us
+# Lock time      0      1s    42us    23ms    80us    93us   353us    66us
+# Rows sent      0       0       0       0       0       0       0       0
+# Rows examine   0       0       0       0       0       0       0       0
+# Query size     1   8.34M     526     540  538.99  537.02       7  537.02
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us  #
+# 100us  ################################################################
+#   1ms  ##########################
+#  10ms  #############
+# 100ms  #
+#    1s  #
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_RISK_CUSTOMER_ACCOUNT_INFO'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_RISK_CUSTOMER_ACCOUNT_INFO`\G
+insert into FC_RISK_CUSTOMER_ACCOUNT_INFO (CUSTOMER_ACCOUNT_INFO_ID, BUSINESS_ID,  CUSTOMER_NAME, AGENT,  ACCOUNT_BALANCE, BLOCKED_AMOUNT,  AVAILABLE_BALANCE, GAME_BALANCE,  REGISTER_DATE, RECORD_DATA,  FC_WITH_APPLY_ID, QUERY_START_TIME,  QUERY_END_TIME) values ('BM_20150109202756000177110', 'BM',  'APual08', '111',  100.0, 2.0,  98.0, '[G_FC0022_Accounts.GameBalance(sysCode=001, balance=2.0)]',  '2015-01-09 21:11:41.915', '2015-01-09 21:11:41.915',  'BM_20150109202756000177110', '2015-01-09 21:11:39.639',  '2015-01-09 21:11:41.915')\G
+
+# Query 44: 39.48 QPS, 0.02x concurrency, ID 0x54BAF2260458A1DD at byte 1018709474
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.01
+# Time range: 2015-01-09 20:23:55 to 21:11:13
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          3  112039
+# Exec time      0     53s   110us    86ms   470us   247us     2ms   138us
+# Lock time      1      4s    20us    28ms    31us    38us   130us    26us
+# Rows sent      0       0       0       0       0       0       0       0
+# Rows examine   0 109.41k       1       1       1       1       0       1
+# Query size     1   9.16M      85      86   85.76   84.10       0   84.10
+# String:
+# Databases    npe
+# Hosts        10.2.30.205
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us  ################################################################
+#   1ms  #
+#  10ms  #
+# 100ms
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `npe` LIKE 'tasks'\G
+#    SHOW CREATE TABLE `npe`.`tasks`\G
+UPDATE tasks SET interstate =(3) WHERE taskinstid = ('4bb2da87l1946a82959d86647b31c')\G
+# Converted for EXPLAIN
+# EXPLAIN /*!50100 PARTITIONS*/
+select  interstate =(3) from tasks where  taskinstid = ('4bb2da87l1946a82959d86647b31c')\G
+
+# Query 45: 0.16 QPS, 0.01x concurrency, ID 0xC87B55D1C970D36A at byte 460393463
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.02
+# Time range: 2015-01-09 20:23:57 to 21:12:17
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0     459
+# Exec time      0     40s    30ms   282ms    88ms   171ms    47ms    75ms
+# Lock time      0    54ms    58us     9ms   117us   119us   537us    73us
+# Rows sent      0  17.43k       1      50   38.88   49.17   14.26   46.83
+# Rows examine   0  27.89M  45.89k  78.83k  62.22k  76.03k   9.89k  59.57k
+# Query size     0 143.89k     321     321     321     321       0     321
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us
+#   1ms
+#  10ms  ################################################################
+# 100ms  ######################################
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_WITHDRAW_APPLY'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_WITHDRAW_APPLY`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+SELECT FC_WITH_APPLY_ID, BUSINESS_ID, DRAW_APPLY_ID, USER_NAME, AMOUNT, DRAW_TYPE, DRAW_BANK_ALIAS, DRAW_NO, DRAW_NAME, APPLY_TIME, APPLY_RECEIVE_TIME, DATA_NO, RISK_STATUS, STATUS, COMMENTS, RISK_SYN_TYPE, RISK_SYN_STEP, RISK_COMMENTS
+FROM FC_WITHDRAW_APPLY
+WHERE ((RISK_STATUS in (0, 2)))
+ORDER BY APPLY_TIME limit 0,50\G
+
+# Query 46: 4.81 QPS, 0.01x concurrency, ID 0x7AF8A8B6F5D6B6E6 at byte 484860187
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.02
+# Time range: 2015-01-09 20:23:55 to 21:11:13
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0   13657
+# Exec time      0     37s    93us   139ms     3ms    18ms     8ms   138us
+# Lock time      0      1s    42us    31ms    98us   103us   603us    57us
+# Rows sent      0  13.26k       0       1    0.99    0.99    0.08    0.99
+# Rows examine   0  13.26k       0       1    0.99    0.99    0.08    0.99
+# Query size     0   4.42M     339     339     339     339       0     339
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us  #
+# 100us  ################################################################
+#   1ms  ######
+#  10ms  #######
+# 100ms  #
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_BANKMSG_TRANS_RESULT_INFO'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_BANKMSG_TRANS_RESULT_INFO`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+select TRAN_ORDERNO, TRAN_CARD_ALIAS, TRAN_BANK_NAME, TRAN_CREATE_TIME, TRAN_SRC_CARDNO,  TRAN_SRC_CARDNAME, TRAN_DEST_CARDNO, TRAN_DEST_CARDNAME, TRAN_MONEY, TRAN_POUNDAGE,  TRAN_RESULT_STATE, TRAN_RESULT_MESSAGE, TRAN_RESERVE1, TRAN_RESERVE2, TRAN_TIME from FC_BANKMSG_TRANS_RESULT_INFO where TRAN_ORDERNO = 'FC0009201501092036195742cbf'\G
+
+# Query 47: 4.86 QPS, 0.01x concurrency, ID 0xC84B0C7241A20FA4 at byte 1033532560
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.02
+# Time range: 2015-01-09 20:23:55 to 21:08:50
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0   13093
+# Exec time      0     31s    83us   134ms     2ms    15ms     7ms   131us
+# Lock time      0      1s    41us    26ms    91us    89us   526us    63us
+# Rows sent      0       0       0       0       0       0       0       0
+# Rows examine   0       0       0       0       0       0       0       0
+# Query size     0   5.99M     472     480  479.78  463.90    0.00  463.90
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us  ##
+# 100us  ################################################################
+#   1ms  #######
+#  10ms  ######
+# 100ms  #
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_BANKMSG_TRANS_RESULT_INFO'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_BANKMSG_TRANS_RESULT_INFO`\G
+insert into FC_BANKMSG_TRANS_RESULT_INFO (TRAN_ORDERNO, TRAN_CARD_ALIAS,  TRAN_BANK_NAME, TRAN_CREATE_TIME,  TRAN_SRC_CARDNO, TRAN_SRC_CARDNAME,  TRAN_DEST_CARDNO, TRAN_DEST_CARDNAME,  TRAN_MONEY, TRAN_POUNDAGE,  TRAN_RESULT_STATE, TRAN_RESULT_MESSAGE,  TRAN_RESERVE1, TRAN_RESERVE2,  TRAN_TIME) values ('FC0009201501092055316495bee', 'abcd',  'bbcd', '2015-01-09 20:55:31.982',  '234', '23432',  '23235', 'abc',  101.0000, 1,  1, '21343',  null, null,  '2015-01-09 20:55:31.982')\G
+
+# Query 48: 0.10 QPS, 0.01x concurrency, ID 0x64374336C60149A2 at byte 1279609174
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.04
+# Time range: 2015-01-09 20:24:03 to 21:12:17
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0     284
+# Exec time      0     30s    33ms   356ms   106ms   230ms    64ms    87ms
+# Lock time      0    30ms    65us     2ms   106us   144us   111us    89us
+# Rows sent      0       0       0       0       0       0       0       0
+# Rows examine   0  17.56M  45.95k  78.79k  63.30k  76.03k   9.77k  62.55k
+# Query size     0 100.95k     364     364     364     364       0     364
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us
+# 100us
+#   1ms
+#  10ms  ################################################################
+# 100ms  ###################################################
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_WITHDRAW_APPLY'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_WITHDRAW_APPLY`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+SELECT FC_WITH_APPLY_ID, BUSINESS_ID, DRAW_APPLY_ID, USER_NAME, AMOUNT, DRAW_TYPE, DRAW_BANK_ALIAS, DRAW_NO, DRAW_NAME, APPLY_TIME, APPLY_RECEIVE_TIME, DATA_NO, RISK_STATUS, STATUS, COMMENTS, RISK_SYN_TYPE, RISK_SYN_STEP, RISK_COMMENTS
+FROM FC_WITHDRAW_APPLY
+WHERE ((BUSINESS_ID not in ('XC', 'HC', 'NC', 'BM') and RISK_STATUS = 1))
+ORDER BY APPLY_TIME limit 0,100\G
+
+# Query 49: 278.79 QPS, 0.01x concurrency, ID 0x18EC0094FCA82DC0 at byte 706538676
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.00
+# Time range: 2015-01-09 20:23:53 to 21:11:13
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count         22  791771
+# Exec time      0     29s    18us    33ms    36us    52us   151us    28us
+# Lock time      0       0       0       0       0       0       0       0
+# Rows sent      0 773.21k       1       1       1       1       0       1
+# Rows examine   0       0       0       0       0       0       0       0
+# Query size     2  21.90M      29      29      29      29       0      29
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us  ################################################################
+# 100us  #
+#   1ms  #
+#  10ms  #
+# 100ms
+#    1s
+#  10s+
+# EXPLAIN /*!50100 PARTITIONS*/
+select @@session.tx_read_only\G
+
+# Query 50: 12.48 QPS, 0.01x concurrency, ID 0x48F4BABDC2F70FFC at byte 948424864
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.02
+# Time range: 2015-01-09 20:23:54 to 21:08:57
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0   33722
+# Exec time      0     26s    85us    95ms   769us     2ms     4ms   131us
+# Lock time      1      3s    37us    41ms    74us   103us   329us    60us
+# Rows sent      0  32.93k       1       1       1       1       0       1
+# Rows examine   0  32.93k       1       1       1       1       0       1
+# Query size     0   7.11M     221     221     221     221       0     221
+# String:
+# Databases    fcpay
+# Hosts        10.2.30.203
+# Users        wfcusr
+# Query_time distribution
+#   1us
+#  10us  #
+# 100us  ################################################################
+#   1ms  ##
+#  10ms  #
+# 100ms
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `fcpay` LIKE 'FC_CRM_MEMBER'\G
+#    SHOW CREATE TABLE `fcpay`.`FC_CRM_MEMBER`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+SELECT FC_CUSTOMER_TRADE_ID, BUSINESS_ID, FC_CUSTOMER_ID, CUSTOMER_NAME, CUSTOMER_REAL_NAME, MOBILE, AGENT, BIRTHDAY, STATUS
+FROM FC_CRM_MEMBER
+WHERE ((CUSTOMER_NAME = 'APual08' and BUSINESS_ID = 'BM')) limit 0,2147483647\G

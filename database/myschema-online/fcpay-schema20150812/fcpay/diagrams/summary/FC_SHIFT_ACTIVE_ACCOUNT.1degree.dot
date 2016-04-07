@@ -1,0 +1,35 @@
+// dot 2.26.0 on Linux 2.6.32-504.8.1.el6.x86_64
+// SchemaSpy rev Unknown
+digraph "FC_SHIFT_ACTIVE_ACCOUNT" {
+  graph [
+    rankdir="RL"
+    bgcolor="#f7f7f7"
+    nodesep="0.18"
+    ranksep="0.46"
+    fontname="Microsoft YaHei"
+    fontsize="11"
+  ];
+  node [
+    fontname="Microsoft YaHei"
+    fontsize="11"
+    shape="plaintext"
+  ];
+  edge [
+    arrowsize="0.8"
+  ];
+  "FC_SHIFT_ACTIVE_ACCOUNT" [
+    label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
+      <TR><TD COLSPAN="3" BGCOLOR="#9bab96" ALIGN="CENTER">FC_SHIFT_ACTIVE_ACCOUNT<br/>(当前活动账户(记录已经发出的所有自动和手动的上分卡、出款卡、中转卡，卡登陆时在这里做登陆标记，表示卡可用，心跳监听卡记录)</TD></TR>
+      <TR><TD PORT="ACCOUNT_ALIAS" COLSPAN="3" BGCOLOR="#bed1b8" ALIGN="LEFT">ACCOUNT_ALIAS</TD></TR>
+      <TR><TD PORT="STATUS" COLSPAN="3" BGCOLOR="#f4f7da" ALIGN="LEFT">STATUS</TD></TR>
+      <TR><TD PORT="IS_TRANSFERING" COLSPAN="3" BGCOLOR="#f4f7da" ALIGN="LEFT">IS_TRANSFERING</TD></TR>
+      <TR><TD PORT="TRANSIT_UPDATED_TIME" COLSPAN="3" BGCOLOR="#f4f7da" ALIGN="LEFT">TRANSIT_UPDATED_TIME</TD></TR>
+      <TR><TD PORT="REMARK" COLSPAN="3" ALIGN="LEFT">REMARK</TD></TR>
+      <TR><TD PORT="PROCESS_ID" COLSPAN="3" ALIGN="LEFT">PROCESS_ID</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="#f7f7f7">  </TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">10 rows</TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">  </TD></TR>
+    </TABLE>>
+    URL="tables/FC_SHIFT_ACTIVE_ACCOUNT.html"
+    tooltip="FC_SHIFT_ACTIVE_ACCOUNT"
+  ];
+}

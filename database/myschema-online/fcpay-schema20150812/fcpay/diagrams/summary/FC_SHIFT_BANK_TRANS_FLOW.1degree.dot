@@ -1,0 +1,44 @@
+// dot 2.26.0 on Linux 2.6.32-504.8.1.el6.x86_64
+// SchemaSpy rev Unknown
+digraph "FC_SHIFT_BANK_TRANS_FLOW" {
+  graph [
+    rankdir="RL"
+    bgcolor="#f7f7f7"
+    nodesep="0.18"
+    ranksep="0.46"
+    fontname="Microsoft YaHei"
+    fontsize="11"
+  ];
+  node [
+    fontname="Microsoft YaHei"
+    fontsize="11"
+    shape="plaintext"
+  ];
+  edge [
+    arrowsize="0.8"
+  ];
+  "FC_SHIFT_BANK_TRANS_FLOW" [
+    label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
+      <TR><TD COLSPAN="3" BGCOLOR="#9bab96" ALIGN="CENTER">FC_SHIFT_BANK_TRANS_FLOW<br/>(银行交易明细(出款卡、中转卡的交易明细（不含上分卡，上分卡交易明细在充值交易明细表中），交接班时，自动从网银导入的交易))</TD></TR>
+      <TR><TD PORT="BANK_TRANS_FLOW_ID" COLSPAN="3" BGCOLOR="#bed1b8" ALIGN="LEFT">BANK_TRANS_FLOW_ID</TD></TR>
+      <TR><TD PORT="FC_ACCOUNT_ALIAS" COLSPAN="3" ALIGN="LEFT">FC_ACCOUNT_ALIAS</TD></TR>
+      <TR><TD PORT="ACCOUNT_NO" COLSPAN="3" ALIGN="LEFT">ACCOUNT_NO</TD></TR>
+      <TR><TD PORT="ACCOUNT_ALIAS" COLSPAN="3" ALIGN="LEFT">ACCOUNT_ALIAS</TD></TR>
+      <TR><TD PORT="TRANS_TIME" COLSPAN="3" ALIGN="LEFT">TRANS_TIME</TD></TR>
+      <TR><TD PORT="TRANS_AMOUNT" COLSPAN="3" ALIGN="LEFT">TRANS_AMOUNT</TD></TR>
+      <TR><TD PORT="TRANFLAG" COLSPAN="3" ALIGN="LEFT">TRANFLAG</TD></TR>
+      <TR><TD PORT="POUNDAGE" COLSPAN="3" ALIGN="LEFT">POUNDAGE</TD></TR>
+      <TR><TD PORT="BALANCE" COLSPAN="3" ALIGN="LEFT">BALANCE</TD></TR>
+      <TR><TD PORT="DEST_ACCOUNT_NO" COLSPAN="3" ALIGN="LEFT">DEST_ACCOUNT_NO</TD></TR>
+      <TR><TD PORT="DEST_ACCOUNT_NAME" COLSPAN="3" ALIGN="LEFT">DEST_ACCOUNT_NAME</TD></TR>
+      <TR><TD PORT="BANK_ALIAS" COLSPAN="3" ALIGN="LEFT">BANK_ALIAS</TD></TR>
+      <TR><TD PORT="TRANSACTION_WAY" COLSPAN="3" ALIGN="LEFT">TRANSACTION_WAY</TD></TR>
+      <TR><TD PORT="COMMENTS" COLSPAN="3" ALIGN="LEFT">COMMENTS</TD></TR>
+      <TR><TD PORT="TRANSACTIONSTATE" COLSPAN="3" ALIGN="LEFT">TRANSACTIONSTATE</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="#f7f7f7">  </TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">0 rows</TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">  </TD></TR>
+    </TABLE>>
+    URL="tables/FC_SHIFT_BANK_TRANS_FLOW.html"
+    tooltip="FC_SHIFT_BANK_TRANS_FLOW"
+  ];
+}

@@ -1,0 +1,39 @@
+// dot 2.26.0 on Linux 2.6.32-504.8.1.el6.x86_64
+// SchemaSpy rev 590
+digraph "FC_SHIFT_MONITOR_ORDER" {
+  graph [
+    rankdir="RL"
+    bgcolor="#f7f7f7"
+    nodesep="0.18"
+    ranksep="0.46"
+    fontname="Helvetica"
+    fontsize="11"
+  ];
+  node [
+    fontname="Helvetica"
+    fontsize="11"
+    shape="plaintext"
+  ];
+  edge [
+    arrowsize="0.8"
+  ];
+  "FC_SHIFT_MONITOR_ORDER" [
+    label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
+      <TR><TD COLSPAN="3" BGCOLOR="#9bab96" ALIGN="CENTER">FC_SHIFT_MONITOR_ORDER</TD></TR>
+      <TR><TD PORT="MONITOR_ID" COLSPAN="3" BGCOLOR="#bed1b8" ALIGN="LEFT">MONITOR_ID</TD></TR>
+      <TR><TD PORT="ACCOUNT_ALIAS" COLSPAN="3" ALIGN="LEFT">ACCOUNT_ALIAS</TD></TR>
+      <TR><TD PORT="ORDER_TYPE" COLSPAN="3" ALIGN="LEFT">ORDER_TYPE</TD></TR>
+      <TR><TD PORT="CREATE_TIME" COLSPAN="3" ALIGN="LEFT">CREATE_TIME</TD></TR>
+      <TR><TD PORT="COMPLETED_TIME" COLSPAN="3" ALIGN="LEFT">COMPLETED_TIME</TD></TR>
+      <TR><TD PORT="OPERATOR" COLSPAN="3" ALIGN="LEFT">OPERATOR</TD></TR>
+      <TR><TD PORT="ACCOUNT_CHANGE_RECORD_ID" COLSPAN="3" ALIGN="LEFT">ACCOUNT_CHANGE_RECORD_ID</TD></TR>
+      <TR><TD PORT="STATUS" COLSPAN="3" ALIGN="LEFT">STATUS</TD></TR>
+      <TR><TD PORT="MESSAGE_NO" COLSPAN="3" ALIGN="LEFT">MESSAGE_NO</TD></TR>
+      <TR><TD PORT="VALUE" COLSPAN="3" ALIGN="LEFT">VALUE</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="#f7f7f7">  </TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">13 rows</TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">  </TD></TR>
+    </TABLE>>
+    URL="tables/FC_SHIFT_MONITOR_ORDER.html"
+    tooltip="FC_SHIFT_MONITOR_ORDER"
+  ];
+}

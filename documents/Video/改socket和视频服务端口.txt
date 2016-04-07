@@ -1,0 +1,5 @@
+socket:
+改聊天socket 端口：video/classes/channel.xml 改port 为9056
+
+crtmpserver:
+改crtmpserver/builder/cmake/crtmpserver/crtmpserver.lua 1935 改为9935

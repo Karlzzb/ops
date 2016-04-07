@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+		<script type="text/javascript" src="src/jquery.min.js"></script>
+		<style type="text/css">
+${demo.css}
+		</style>
+		<script type="text/javascript">
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'APA每周付费用户数'
+        },
+        xAxis: {
+            categories: [
+                '2015-07 最后一周','2015-08 第一周','2015-08 第二周','2015-08 第三周','2015-08 第四周'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: '人'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:20px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.0f} 人</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: '每周活跃用户数',
+            data: [17802,28459,19541,24899,26027]
+
+        },{
+            name: '每周付费用户数(银行支付)',
+            data: [318,251,56,278,93]
+
+        },{
+            name: '每周付费用户(后台充值)',
+            data: [46,151,12,165,111]
+
+        }
+		]
+    });
+});
+		</script>
+	</head>
+	<body>
+<script src="src/highcharts.js"></script>
+<script src="src/exporting.js"></script>
+
+<div id="container" style="min-width: 310px; height: 800px; margin: 0 auto"></div>
+
+	</body>
+</html>

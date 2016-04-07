@@ -1,0 +1,40 @@
+// dot 2.26.0 on Linux 2.6.32-504.3.3.el6.x86_64
+// SchemaSpy rev Unknown
+digraph "FC_RISK_WITHDRAW_CHECK" {
+  graph [
+    rankdir="RL"
+    bgcolor="#f7f7f7"
+    nodesep="0.18"
+    ranksep="0.46"
+    fontname="Microsoft YaHei"
+    fontsize="11"
+  ];
+  node [
+    fontname="Microsoft YaHei"
+    fontsize="11"
+    shape="plaintext"
+  ];
+  edge [
+    arrowsize="0.8"
+  ];
+  "FC_RISK_WITHDRAW_CHECK" [
+    label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
+      <TR><TD COLSPAN="3" BGCOLOR="#9bab96" ALIGN="CENTER">FC_RISK_WITHDRAW_CHECK<br/>(订单审批记录表())</TD></TR>
+      <TR><TD PORT="FC_WITHDRAW_CHECK_ID" COLSPAN="3" BGCOLOR="#bed1b8" ALIGN="LEFT">FC_WITHDRAW_CHECK_ID</TD></TR>
+      <TR><TD PORT="BUSINESS_ID" COLSPAN="3" ALIGN="LEFT">BUSINESS_ID</TD></TR>
+      <TR><TD PORT="FC_WITH_APPLY_ID" COLSPAN="3" ALIGN="LEFT">FC_WITH_APPLY_ID</TD></TR>
+      <TR><TD PORT="PLATFORM_NAME" COLSPAN="3" ALIGN="LEFT">PLATFORM_NAME</TD></TR>
+      <TR><TD PORT="CUSTOMER_NAME" COLSPAN="3" ALIGN="LEFT">CUSTOMER_NAME</TD></TR>
+      <TR><TD PORT="CHECK_TYPE" COLSPAN="3" ALIGN="LEFT">CHECK_TYPE</TD></TR>
+      <TR><TD PORT="CHECK_NAME" COLSPAN="3" ALIGN="LEFT">CHECK_NAME</TD></TR>
+      <TR><TD PORT="CHECK_TIME" COLSPAN="3" ALIGN="LEFT">CHECK_TIME</TD></TR>
+      <TR><TD PORT="USER_NAME" COLSPAN="3" ALIGN="LEFT">USER_NAME</TD></TR>
+      <TR><TD PORT="CHECK_RESULT" COLSPAN="3" ALIGN="LEFT">CHECK_RESULT</TD></TR>
+      <TR><TD PORT="CHECK_REMARK" COLSPAN="3" ALIGN="LEFT">CHECK_REMARK</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="#f7f7f7">  </TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">0 rows</TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">  </TD></TR>
+    </TABLE>>
+    URL="tables/FC_RISK_WITHDRAW_CHECK.html"
+    tooltip="FC_RISK_WITHDRAW_CHECK"
+  ];
+}

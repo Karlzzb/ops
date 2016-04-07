@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>page</title>
+    <link rel="stylesheet" href="js/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="js/bootstrap/css/bootstrap-datetimepicker.min.css">
+    <script src="js/jquery-2.0.1.min.js"></script>
+    <script src="js/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="js/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+    <style>
+      .main-message{ padding: 30px 15px 0px 15px;}
+      .control-label{ line-height: 34px;}
+      iframe{ border: none;}
+      .kbn-timepicker-section{
+        float: left;
+        margin-right: 40px;
+      }
+    </style>
+</head>
+<body>
+
+     <div class="panel-body">
+      <div class="container-fluid">
+      <form class="form-inline">
+          <div class="kbn-timepicker-section">
+            <label>From:</label>
+            </br>
+            <div class="form-group">
+              <div class="input-group date form_date" data-date="" data-link-field="startDate" data-link-format="yyyy-mm-dd" id="startTime">
+                <input class="form-control" size="16" type="text" value="" id="startDateText">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+              </div>
+              <input type="hidden" id="startDate" value="" /><br/>
+            </div>
+          </div>
+
+          <div class="kbn-timepicker-section">
+              <label>
+                To:
+              </label>
+              </br>
+              <div class="input-group date form_date" data-date="" data-link-field="endDate" data-link-format="yyyy-mm-dd" id="endTime">
+                <input class="form-control" size="16" type="text" value="" id="endDateText">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+              </div>
+              <button type="button" class="btn btn-primary kbn-timepicker-go" id="chartFresh">Go</button>
+              <input type="hidden" id="endDate" value="" /><br/>
+          </div>
+      </form>
+      </div>
+        <div class="form-group main-message" style="margin-bottom: 0">
+            <iframe src="" height="470" width="100%" border="0" id="chart" name="chart"></iframe>
+        </div>
+     </div>
+</body>
+</html>
+<script type="text/javascript">
+
+    var url = "";
+    var dateStart = GetDateStr(-7);
+    var dateEnd = GetDateStr(-1);
+    console.log(dateStart)
+    console.log(dateEnd)
+
+    var url1 = "http://59.188.30.132:5601/app/kibana#/dashboard/new-%E6%B8%B8%E6%88%8F%E6%8C%87%E6%A0%87?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'";
+    var url2 = "',mode:absolute,to:'";
+    var url3 = "'))&_a=(filters:!(),options:(darkTheme:!f),panels:!((col:5,id:%E6%B8%B8%E6%88%8F30%E5%A4%A9%E6%96%B0%E5%A2%9E%E5%85%85%E5%80%BC,panelIndex:3,row:1,size_x:4,size_y:4,type:visualization),(col:9,id:%E6%B8%B8%E6%88%8F%E6%AF%8F%E6%97%A5%E5%9C%A8%E7%BA%BF%E6%9C%8D%E5%8A%A1%E5%99%A8,panelIndex:6,row:1,size_x:4,size_y:4,type:visualization),(col:1,id:%E6%B8%B8%E6%88%8F%E6%AF%8F%E6%97%A5%E7%99%BB%E5%BD%95%E6%AC%A1%E6%95%B0,panelIndex:7,row:5,size_x:4,size_y:4,type:visualization),(col:5,id:%E6%B8%B8%E6%88%8F%E6%AF%8F%E6%97%A5%E7%99%BB%E5%BD%95%E7%94%A8%E6%88%B7%E6%95%B0,panelIndex:8,row:5,size_x:4,size_y:4,type:visualization),(col:9,id:%E6%B8%B8%E6%88%8F%E6%AC%A1%E6%97%A5%E7%95%99%E5%AD%98%E7%8E%87,panelIndex:9,row:5,size_x:4,size_y:4,type:visualization),(col:1,id:%E6%B8%B8%E6%88%8F3%E6%97%A5%E7%95%99%E5%AD%98%E7%8E%87,panelIndex:10,row:9,size_x:4,size_y:4,type:visualization),(col:5,id:%E6%B8%B8%E6%88%8F7%E6%97%A5%E7%95%99%E5%AD%98%E7%8E%87,panelIndex:11,row:9,size_x:4,size_y:4,type:visualization),(col:9,id:%E6%B8%B8%E6%88%8F30%E6%97%A5%E7%95%99%E5%AD%98%E7%8E%87,panelIndex:12,row:9,size_x:4,size_y:4,type:visualization),(col:1,id:%E6%B8%B8%E6%88%8F%E6%AF%8F%E6%97%A5%E5%85%85%E5%80%BC%E7%BB%9F%E8%AE%A1,panelIndex:16,row:13,size_x:4,size_y:4,type:visualization),(col:9,id:%E6%B8%B8%E6%88%8F%E6%AF%8F%E6%97%A5%E4%BB%98%E8%B4%B9%E7%94%A8%E6%88%B7%E6%95%B0%E7%BB%9F%E8%AE%A1,panelIndex:18,row:13,size_x:4,size_y:4,type:visualization),(col:5,id:%E6%B8%B8%E6%88%8FDAU%E4%BB%98%E8%B4%B9%E7%8E%87,panelIndex:20,row:17,size_x:4,size_y:4,type:visualization),(col:1,id:%E6%B8%B8%E6%88%8F%E6%AF%8F%E6%97%A5%E6%96%B0%E5%A2%9E%E7%94%A8%E6%88%B7,panelIndex:22,row:1,size_x:4,size_y:4,type:visualization),(col:5,id:%E6%B8%B8%E6%88%8F%E6%AF%8F%E6%97%A5%E5%85%85%E5%80%BC%E6%AC%A1%E6%95%B0%E7%BB%9F%E8%AE%A1,panelIndex:23,row:13,size_x:4,size_y:4,type:visualization),(col:1,id:%E6%B8%B8%E6%88%8F%E6%AF%8F%E6%97%A5%E7%94%A8%E6%88%B7%E5%B9%B3%E5%9D%87%E4%BB%98%E8%B4%B9%E7%BB%9F%E8%AE%A1,panelIndex:24,row:17,size_x:4,size_y:4,type:visualization)),query:(query_string:(analyze_wildcard:!t,query:'*')),title:new-%E6%B8%B8%E6%88%8F%E6%8C%87%E6%A0%87,uiState:(P-22:(spy:(mode:(fill:!f,name:!n))),P-3:(spy:(mode:(fill:!f,name:!n)))))";
+    
+    //日期选择
+  	$('.form_date').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+    		autoclose: 1,
+    		todayHighlight: 1,
+    		startView: 2,
+    		minView: 2,
+    		forceParse: 0,
+        format: "yyyy-mm-dd"
+    })
+    .on('changeDate', function(ev){
+        var target = ev.target.id;
+        var dateValue = $(ev.target).find('.form-control').val();
+
+        if (target == "startTime") {
+          dateStart = dateValue;
+          url = url1 + dateStart + url2 + dateEnd + url3;
+        }else{
+          dateEnd = dateValue +"T16:59:59.999Z";
+          url = url1 + dateStart + url2 + dateEnd + url3;
+        };
+        
+    });
+    
+    $("#chartFresh").on("click", function(){
+        if (dateStart == "") {
+            alert("请填写开始日期");
+            return;
+        };
+
+        if (dateEnd == "") {
+            alert("请选择结束日期");
+            return;
+        };
+        $("#chart").attr("src", url);
+    });
+
+    /**
+     * 计算日期
+     * @param AddDayCount
+     * @returns {string}
+     * @constructor
+     */
+    function GetDateStr(AddDayCount) {
+        var dd = new Date();
+        dd.setDate(dd.getDate()+AddDayCount);//获取AddDayCount天后的日期
+        var y = dd.getFullYear();
+        var m = dd.getMonth()+1;//获取当前月份的日期
+        var d = dd.getDate();
+        if(m<10) m = "0"+m;
+        if(d<10) d = "0"+d;
+        console.log(y)
+        console.log(dd)
+        return y+"-"+m+"-"+d;
+    }
+
+    $(function(){
+        $("#chart").attr("height",window.innerHeight - 150);
+        $('#startDate').val(dateStart);
+        $('#endDate').val(dateEnd);
+        $('#startDateText').val(dateStart);
+        $('#endDateText').val(dateEnd);
+        url = url1 + dateStart + url2 + dateEnd + "T16:59:59.999Z" + url3;
+        $("#chart").attr("src", url);
+    })
+</script>

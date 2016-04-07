@@ -1,0 +1,38 @@
+// dot 2.26.0 on Linux 2.6.32-504.8.1.el6.x86_64
+// SchemaSpy rev Unknown
+digraph "FC_BANKMSG_WEB_TO_ASSISTANT" {
+  graph [
+    rankdir="RL"
+    bgcolor="#f7f7f7"
+    nodesep="0.18"
+    ranksep="0.46"
+    fontname="Microsoft YaHei"
+    fontsize="11"
+  ];
+  node [
+    fontname="Microsoft YaHei"
+    fontsize="11"
+    shape="plaintext"
+  ];
+  edge [
+    arrowsize="0.8"
+  ];
+  "FC_BANKMSG_WEB_TO_ASSISTANT" [
+    label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
+      <TR><TD COLSPAN="3" BGCOLOR="#9bab96" ALIGN="CENTER">FC_BANKMSG_WEB_TO_ASSISTANT<br/>(充提系统发给网银助手的交易.(自动登入登入,余额查询交易,卡转账交易))</TD></TR>
+      <TR><TD PORT="MSG_ORDERID" COLSPAN="3" BGCOLOR="#bed1b8" ALIGN="LEFT">MSG_ORDERID</TD></TR>
+      <TR><TD PORT="MSG_CARD_IDENTIFY" COLSPAN="3" ALIGN="LEFT">MSG_CARD_IDENTIFY</TD></TR>
+      <TR><TD PORT="MSG_CONTENT" COLSPAN="3" ALIGN="LEFT">MSG_CONTENT</TD></TR>
+      <TR><TD PORT="MSG_CMDTYPE" COLSPAN="3" ALIGN="LEFT">MSG_CMDTYPE</TD></TR>
+      <TR><TD PORT="MSG_CREATE_TIME" COLSPAN="3" ALIGN="LEFT">MSG_CREATE_TIME</TD></TR>
+      <TR><TD PORT="MSG_STATUS" COLSPAN="3" ALIGN="LEFT">MSG_STATUS</TD></TR>
+      <TR><TD PORT="MSG_UPDATE_TIME" COLSPAN="3" ALIGN="LEFT">MSG_UPDATE_TIME</TD></TR>
+      <TR><TD PORT="MSG_RESERVED1" COLSPAN="3" ALIGN="LEFT">MSG_RESERVED1</TD></TR>
+      <TR><TD PORT="MSG_RESERVED2" COLSPAN="3" ALIGN="LEFT">MSG_RESERVED2</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="#f7f7f7">  </TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">7,375 rows</TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">  </TD></TR>
+    </TABLE>>
+    URL="tables/FC_BANKMSG_WEB_TO_ASSISTANT.html"
+    tooltip="FC_BANKMSG_WEB_TO_ASSISTANT"
+  ];
+}

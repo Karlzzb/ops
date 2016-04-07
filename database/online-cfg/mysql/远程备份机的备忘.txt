@@ -1,0 +1,11 @@
+论坛项目
+binlog :mysql-bin.000003        35186880
+slave_info:CHANGE MASTER TO MASTER_LOG_FILE='mysql-bin.003113', MASTER_LOG_POS=999485290;
+
+充提
+binlog :mysql-bin.000001        104739880
+slave_info:CHANGE MASTER TO MASTER_LOG_FILE='mysql-bin.000710', MASTER_LOG_POS=200394694;
+
+V项目
+binlog :mysql-bin.000004        120
+slave_info:CHANGE MASTER TO MASTER_LOG_FILE='mysql-bin.006611', MASTER_LOG_POS=234549;

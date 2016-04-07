@@ -1,0 +1,18 @@
+# This is a slow log auto rotate scripts
+# You should test it by using logroate -d /etc/logrotate.d/mysql-slow-rotate before applying it into online environment 
+# Linux root user should have privileges to access mysql server without password
+# Other else you should specific user & password directly
+
+/data/dblogs/mysql3398/slowlogs/mysql-slow.log {
+   create 600 mysql mysql
+   daily
+   size 2G
+   rotate 20 
+   missingok
+   sharedscripts
+   postrotate
+      if test -x /opt/mysql/bin/mysqladmin && /opt/mysql/bin/mysqladmin -umhaadmin -pbe2caaae36d817829bda -h172.16.100.12 -P3398 ping &>/dev/null;then
+        env HOME=/root/ /opt/mysql/bin/mysql -umhaadmin -pbe2caaae36d817829bda -h172.16.100.12 -P3398 -e 'select @@global.long_query_time into @lqt_save; set global long_query_time=2000; set global slow_query_log = 0; select sleep(2); FLUSH LOGS; select sleep(2); set global long_query_time=@lqt_save; set global slow_query_log = 1;' > /data/logs/mysqladmin.flush-logs 2>&1
+      fi
+   endscript
+}

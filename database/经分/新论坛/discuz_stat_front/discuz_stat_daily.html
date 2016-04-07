@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>page</title>
+    <link rel="stylesheet" href="js/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="js/bootstrap/css/bootstrap-datetimepicker.min.css">
+    <script src="js/jquery-2.0.1.min.js"></script>
+    <script src="js/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="js/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+    <style>
+      .main-message{ padding: 30px 15px 0px 15px;}
+      .control-label{ line-height: 34px;}
+      iframe{ border: none;}
+      .kbn-timepicker-section{
+        float: left;
+        margin-right: 40px;
+      }
+    </style>
+</head>
+<body>
+
+     <div class="panel-body">
+      <div class="container-fluid">
+      <form class="form-inline">
+          <div class="kbn-timepicker-section">
+            <label>From:</label>
+            </br>
+            <div class="form-group">
+              <div class="input-group date form_date" data-date="" data-link-field="startDate" data-link-format="yyyy-mm-dd" id="startTime">
+                <input class="form-control" size="16" type="text" value="" id="startDateText">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+              </div>
+              <input type="hidden" id="startDate" value="" /><br/>
+            </div>
+          </div>
+
+          <div class="kbn-timepicker-section">
+              <label>
+                To:
+              </label>
+              </br>
+              <div class="input-group date form_date" data-date="" data-link-field="endDate" data-link-format="yyyy-mm-dd" id="endTime">
+                <input class="form-control" size="16" type="text" value="" id="endDateText">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+              </div>
+              <button type="button" class="btn btn-primary kbn-timepicker-go" id="chartFresh">Go</button>
+              <input type="hidden" id="endDate" value="" /><br/>
+          </div>
+      </form>
+      </div>
+        <div class="form-group main-message" style="margin-bottom: 0">
+            <iframe src="" height="470" width="100%" border="0" id="chart" name="chart"></iframe>
+        </div>
+     </div>
+</body>
+</html>
+<script type="text/javascript">
+
+    var url = "";
+    var dateStart = GetDateStr(-7);
+    var dateEnd = GetDateStr(-1);
+    console.log(dateStart)
+    console.log(dateEnd)
+
+    var url1 = "http://bbs-elk.ops.org/#/dashboard/%E8%AE%BA%E5%9D%9B%E6%AF%8F%E5%A4%A9%E8%AE%BF%E9%97%AE%E7%BB%9F%E8%AE%A1?embed&_a=(filters:!(),panels:!((col:1,id:%E6%96%B0%E8%AE%BA%E5%9D%9B%E6%AF%8F%E6%97%A5%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE%E7%BB%9F%E8%AE%A1%EF%BC%88IP%E9%87%8F%EF%BC%89,row:4,size_x:4,size_y:3,type:visualization),(col:5,id:%E6%96%B0%E8%AE%BA%E5%9D%9B%E6%AF%8F%E6%97%A5PV%2BIP%E7%BB%9F%E8%AE%A1,row:1,size_x:8,size_y:6,type:visualization),(col:1,id:%E6%96%B0%E8%AE%BA%E5%9D%9B%E6%AF%8F%E6%97%A5%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE%E7%BB%9F%E8%AE%A1%EF%BC%88PV%EF%BC%89,row:1,size_x:4,size_y:3,type:visualization)),query:(query_string:(analyze_wildcard:!t,query:'*')),title:%E8%AE%BA%E5%9D%9B%E6%AF%8F%E5%A4%A9%E8%AE%BF%E9%97%AE%E7%BB%9F%E8%AE%A1)&_g=(refreshInterval:(display:Off,pause:!f,section:0,value:0),time:(from:'";
+    var url2 = "',mode:absolute,to:'";
+    var url3 = "'))";
+    
+    //日期选择
+  	$('.form_date').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+    		autoclose: 1,
+    		todayHighlight: 1,
+    		startView: 2,
+    		minView: 2,
+    		forceParse: 0,
+        format: "yyyy-mm-dd"
+    })
+    .on('changeDate', function(ev){
+        var target = ev.target.id;
+        var dateValue = $(ev.target).find('.form-control').val();
+
+        if (target == "startTime") {
+          dateStart = dateValue;
+          url = url1 + dateStart + url2 + dateEnd + url3;
+        }else{
+          dateEnd = dateValue +"T15:59:59.999Z";
+          url = url1 + dateStart + url2 + dateEnd + url3;
+        };
+        
+    });
+    
+    $("#chartFresh").on("click", function(){
+        if (dateStart == "") {
+            alert("请填写开始日期");
+            return;
+        };
+
+        if (dateEnd == "") {
+            alert("请选择结束日期");
+            return;
+        };
+        $("#chart").attr("src", url);
+    });
+
+    /**
+     * 计算日期
+     * @param AddDayCount
+     * @returns {string}
+     * @constructor
+     */
+    function GetDateStr(AddDayCount) {
+        var dd = new Date();
+        dd.setDate(dd.getDate()+AddDayCount);//获取AddDayCount天后的日期
+        var y = dd.getFullYear();
+        var m = dd.getMonth()+1;//获取当前月份的日期
+        var d = dd.getDate();
+        if(m<10) m = "0"+m;
+        if(d<10) d = "0"+d;
+        console.log(y)
+        console.log(dd)
+        return y+"-"+m+"-"+d;
+    }
+
+    $(function(){
+        $("#chart").attr("height",window.innerHeight - 150);
+        $('#startDate').val(dateStart);
+        $('#endDate').val(dateEnd);
+        $('#startDateText').val(dateStart);
+        $('#endDateText').val(dateEnd);
+        url = url1 + dateStart + url2 + dateEnd + "T15:59:59.999Z" + url3;
+        $("#chart").attr("src", url);
+    })
+</script>

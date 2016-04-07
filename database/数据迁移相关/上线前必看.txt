@@ -1,0 +1,1 @@
+1. 所有数据库的wait_timeout和max_allow一定要开大

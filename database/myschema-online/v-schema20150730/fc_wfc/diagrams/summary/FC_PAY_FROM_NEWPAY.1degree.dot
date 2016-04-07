@@ -1,0 +1,42 @@
+// dot 2.26.0 on Linux 2.6.32-504.3.3.el6.x86_64
+// SchemaSpy rev Unknown
+digraph "FC_PAY_FROM_NEWPAY" {
+  graph [
+    rankdir="RL"
+    bgcolor="#f7f7f7"
+    nodesep="0.18"
+    ranksep="0.46"
+    fontname="Microsoft YaHei"
+    fontsize="11"
+  ];
+  node [
+    fontname="Microsoft YaHei"
+    fontsize="11"
+    shape="plaintext"
+  ];
+  edge [
+    arrowsize="0.8"
+  ];
+  "FC_PAY_FROM_NEWPAY" [
+    label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
+      <TR><TD COLSPAN="3" BGCOLOR="#9bab96" ALIGN="CENTER">FC_PAY_FROM_NEWPAY</TD></TR>
+      <TR><TD PORT="FC_ORDER_NO" COLSPAN="3" BGCOLOR="#bed1b8" ALIGN="LEFT">FC_ORDER_NO</TD></TR>
+      <TR><TD PORT="RESULT_CODE" COLSPAN="3" ALIGN="LEFT">RESULT_CODE</TD></TR>
+      <TR><TD PORT="STATE_CODE" COLSPAN="3" ALIGN="LEFT">STATE_CODE</TD></TR>
+      <TR><TD PORT="ORDER_AMOUNT" COLSPAN="3" ALIGN="LEFT">ORDER_AMOUNT</TD></TR>
+      <TR><TD PORT="PAY_AMOUNT" COLSPAN="3" ALIGN="LEFT">PAY_AMOUNT</TD></TR>
+      <TR><TD PORT="ACQUIRING_TIME" COLSPAN="3" ALIGN="LEFT">ACQUIRING_TIME</TD></TR>
+      <TR><TD PORT="COMPLETE_TIME" COLSPAN="3" ALIGN="LEFT">COMPLETE_TIME</TD></TR>
+      <TR><TD PORT="ORDER_NO" COLSPAN="3" ALIGN="LEFT">ORDER_NO</TD></TR>
+      <TR><TD PORT="PARTNER_ID" COLSPAN="3" ALIGN="LEFT">PARTNER_ID</TD></TR>
+      <TR><TD PORT="REMARK" COLSPAN="3" ALIGN="LEFT">REMARK</TD></TR>
+      <TR><TD PORT="CHARSET" COLSPAN="3" ALIGN="LEFT">CHARSET</TD></TR>
+      <TR><TD PORT="SIGN_TYPE" COLSPAN="3" ALIGN="LEFT">SIGN_TYPE</TD></TR>
+      <TR><TD PORT="SIGN_MSG" COLSPAN="3" ALIGN="LEFT">SIGN_MSG</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="#f7f7f7">  </TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">4,288 rows</TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">  </TD></TR>
+    </TABLE>>
+    URL="tables/FC_PAY_FROM_NEWPAY.html"
+    tooltip="FC_PAY_FROM_NEWPAY"
+  ];
+}

@@ -1,0 +1,33 @@
+[server default]
+# mysql user and password
+user=mhaadmin
+password=nGxwggL56d817829bda
+port=6980
+ssh_user=root
+# working directory on the manager
+manager_workdir=/var/log/masterha/discuz-mha
+# working directory on MySQL servers
+remote_workdir=/var/log/masterha/discuz-mha
+
+master_binlog_dir=/data/dblogs/mysql6980/binlogs
+ping_interval=5
+
+master_ip_failover_script= /usr/local/custom_script/master_ip_failover
+#secondary_check_script = masterha_secondary_check -s hostname=caegi-v-lvs02
+report_script= /usr/local/custom_script/send_report
+
+[server1]
+hostname=caegi-b-mysql01
+candidate_master=1
+
+[server2]
+hostname=caegi-b-mysql02
+candidate_master=1
+
+[server3]
+hostname=caegi-b-mysql03
+candidate_master=1
+
+[server4]
+hostname=caegi-b-mysql04
+no_master=1

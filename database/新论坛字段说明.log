@@ -1,0 +1,2176 @@
+pre_common_admincp_cmenu id 
+pre_common_admincp_cmenu title 菜单名称
+pre_common_admincp_cmenu url 菜单地址
+pre_common_admincp_cmenu sort 菜单类型,备用
+pre_common_admincp_cmenu displayorder 显示顺序
+pre_common_admincp_cmenu clicks 1 点击数,备用
+pre_common_admincp_cmenu uid 添加用户
+pre_common_admincp_cmenu dateline 添加时间
+pre_common_admincp_group cpgroupid 后台组id
+pre_common_admincp_group cpgroupname 后台组名称
+pre_common_admincp_member uid 成员uid
+pre_common_admincp_member cpgroupid 成员组id
+pre_common_admincp_perm cpgroupid 后台组id
+pre_common_admincp_perm perm 后台组权限
+pre_common_admincp_session uid 用户id
+pre_common_admincp_session adminid 管理组id
+pre_common_admincp_session panel 面板位置
+pre_common_admincp_session ip IP
+pre_common_admincp_session dateline 最后动作时间
+pre_common_admincp_session errorcount 登录错误次数
+pre_common_admingroup admingid 所属管理员分组ID
+pre_common_admingroup alloweditpost 是否允许编辑帖子
+pre_common_admingroup alloweditpoll 是否允许编辑投票
+pre_common_admingroup allowstickthread 是否允许置顶主题
+pre_common_admingroup allowmodpost 是否允许审核帖子
+pre_common_admingroup allowdelpost 是否允许删除帖子
+pre_common_admingroup allowmassprune 是否允许批量删帖
+pre_common_admingroup allowrefund 是否允许强制退款
+pre_common_admingroup allowcensorword 兼容性字段
+pre_common_admingroup allowviewip 是否允许查看IP
+pre_common_admingroup allowbanip 是否允许禁止IP
+pre_common_admingroup allowedituser 是否允许编辑用户
+pre_common_admingroup allowmoduser 是否允许审核用户
+pre_common_admingroup allowbanuser 是否允许禁止用户发言
+pre_common_admingroup allowbanvisituser 是否允许禁止用户访问
+pre_common_admingroup allowpostanunce 是否允许发布站点公告
+pre_common_admingroup allowviewlog 是否允许查看管理日志
+pre_common_admingroup allowbanpost 是否允许屏蔽帖子
+pre_common_admingroup supe_allowpushthread 兼容性字段
+pre_common_admingroup allowhighlightthread 是否允许高亮主题
+pre_common_admingroup allowlivethread 是否允许直播主题
+pre_common_admingroup allowdigestthread 是否允许精华主题
+pre_common_admingroup allowrecommendthread 是否允许推荐主题
+pre_common_admingroup allowbumpthread 是否允许提升主题
+pre_common_admingroup allowclosethread 是否允许关闭主题
+pre_common_admingroup allowmovethread 是否允许移动主题
+pre_common_admingroup allowedittypethread 是否允许编辑主题分类
+pre_common_admingroup allowstampthread 是否允许添加主题图章
+pre_common_admingroup allowstamplist 是否允许添加主题图标
+pre_common_admingroup allowcopythread 是否允许复制主题
+pre_common_admingroup allowmergethread 是否允许合并主题
+pre_common_admingroup allowsplitthread 是否允许分割主题
+pre_common_admingroup allowrepairthread 是否允许修复主题
+pre_common_admingroup allowwarnpost 是否允许警告帖子
+pre_common_admingroup allowviewreport 是否允许查看用户报告
+pre_common_admingroup alloweditforum 是否允许编辑版块
+pre_common_admingroup allowremovereward 是否允许移除悬赏
+pre_common_admingroup allowedittrade 是否允许编辑商品
+pre_common_admingroup alloweditactivity 是否允许管理活动报名者
+pre_common_admingroup allowstickreply 是否允许置顶回帖
+pre_common_admingroup allowmanagearticle 是否允许管理所有文章
+pre_common_admingroup allowaddtopic 是否允许创建专题
+pre_common_admingroup allowmanagetopic 是否允许管理专题
+pre_common_admingroup allowdiy 是否允许DIY
+pre_common_admingroup allowclearrecycle 是否允许删除回收站的帖子
+pre_common_admingroup allowmanagetag 是否允许管理标签
+pre_common_admingroup alloweditusertag 是否允许管理用户标签
+pre_common_admingroup managefeed 是否允许管理动态(feed)
+pre_common_admingroup managedoing 是否允许管理记录
+pre_common_admingroup manageshare 是否允许管理分享
+pre_common_admingroup manageblog 是否允许管理日志
+pre_common_admingroup managealbum 是否允许管理相册
+pre_common_admingroup managecomment 是否允许管理评论
+pre_common_admingroup managemagiclog 是否允许管理道具记录
+pre_common_admingroup managereport 是否允许管理举报
+pre_common_admingroup managehotuser 是否允许管理推荐成员
+pre_common_admingroup managedefaultuser 是否允许管理推荐好友
+pre_common_admingroup managevideophoto 是否允许管理视频认证
+pre_common_admingroup managemagic 是否允许管理道具
+pre_common_admingroup manageclick 是否允许管理表态动作
+pre_common_admingroup allowmanagecollection 是否允许管理淘专辑
+pre_common_admingroup allowmakehtml 允许生成HTML
+pre_common_adminte id 后台留言id
+pre_common_adminte admin 管理员姓名
+pre_common_adminte access 哪组可以看到信息
+pre_common_adminte adminid 管理员id
+pre_common_adminte dateline 发表时间
+pre_common_adminte expiration 过期时间
+pre_common_advertisement advid 广告id
+pre_common_advertisement available 是否启用
+pre_common_advertisement type 类型
+pre_common_advertisement displayorder 显示顺序
+pre_common_advertisement title 广告标题
+pre_common_advertisement starttime 开始时间
+pre_common_advertisement endtime 结束时间
+pre_common_advertisement_custom id 自定义广告类型id
+pre_common_advertisement_custom name 名称
+pre_common_banned id 禁止id
+pre_common_banned ip1 IP分段1
+pre_common_banned ip2 IP分段2
+pre_common_banned ip3 IP分段3
+pre_common_banned ip4 IP分段4
+pre_common_banned admin 管理员姓名
+pre_common_banned dateline 禁止时间
+pre_common_banned expiration 过期时间
+pre_common_block bid 模块ID
+pre_common_block blockclass 模块分类 article/pic/member/board/poll
+pre_common_block blocktype 调用类型 0为模板调用 1为js调用
+pre_common_block name 模块标名称
+pre_common_block classname 指定样式class
+pre_common_block uid 创建者用户ID
+pre_common_block username 创建者用户名
+pre_common_block styleid 模块风格ID
+pre_common_block picwidth 显示图片长度
+pre_common_block picheight 显示图片宽度
+pre_common_block target 模块链接打开方式: _blank, _self, _top
+pre_common_block dateformat 时间格式： H:i； u； Y-m-d等
+pre_common_block dateuformat 是否使用个性化时间格式
+pre_common_block script 模块获取数据脚本名
+pre_common_block shownum 获取数据数目
+pre_common_block cachetime 模块缓存更新时间间隔
+pre_common_block cachetimerange 模块缓存更新时间区间
+pre_common_block punctualupdate 是否严格按照缓存时间更新（忽略优化）
+pre_common_block hidedisplay 是否屏蔽输出
+pre_common_block dateline 模块缓存创建时间戳
+pre_common_block tinherited 是否继承所在页面权限
+pre_common_block isblank 是否为空白模块，只显示准送数据
+pre_common_block_favorite favid 收藏id
+pre_common_block_favorite uid 会员id
+pre_common_block_favorite bid 模块id
+pre_common_block_favorite dateline 收藏时间
+pre_common_block_item itemid 信息ID
+pre_common_block_item bid 模块ID
+pre_common_block_item id 来源ID
+pre_common_block_item idtype 来源ID TYPE，手工添加数据为rand
+pre_common_block_item itemtype 信息类型 0为自动 1为手工输入 2已编辑
+pre_common_block_item title 信息标题名
+pre_common_block_item url 信息链接地址
+pre_common_block_item pic 信息图片
+pre_common_block_item picflag 图片类型 0为url 1为本地 2 为ftp远程
+pre_common_block_item makethumb 是否已生成缩略图 1:生成成功; 2:生成失败
+pre_common_block_item thumbpath 缩略图地址
+pre_common_block_item displayorder 显示顺序
+pre_common_block_item startdate 开始时间戳
+pre_common_block_item enddate 结束时间戳
+pre_common_block_item_data dataid 推荐信息ID
+pre_common_block_item_data bid 模块ID
+pre_common_block_item_data id 来源ID
+pre_common_block_item_data idtype 来源ID TYPE
+pre_common_block_item_data itemtype 信息类型 0为自动 1为手工输入 3推荐数据
+pre_common_block_item_data title 信息标题名
+pre_common_block_item_data url 信息链接地址
+pre_common_block_item_data pic 信息图片
+pre_common_block_item_data picflag 图片类型 0为url 1为本地 2 为ftp远程
+pre_common_block_item_data makethumb 是否已生成缩略图
+pre_common_block_item_data displayorder 显示顺序
+pre_common_block_item_data startdate 开始时间戳
+pre_common_block_item_data enddate 结束时间戳
+pre_common_block_item_data uid 推荐者 UID
+pre_common_block_item_data username 推荐者用户名
+pre_common_block_item_data dateline 推荐日期
+pre_common_block_item_data isverified 是否已通过审核
+pre_common_block_item_data verifiedtime 通过审核日期
+pre_common_block_item_data stickgrade 置顶等级： 0～10
+pre_common_block_permission bid 模块ID
+pre_common_block_permission uid 会员id
+pre_common_block_permission allowmanage 允许管理
+pre_common_block_permission allowrecommend 允许推荐
+pre_common_block_permission needverify 推荐需要审核
+pre_common_block_permission inheritedtplname 继承自的模板名称
+pre_common_block_pic picid 图片ID
+pre_common_block_pic bid 模块ID
+pre_common_block_pic itemid 信息ID
+pre_common_block_pic pic 信息图片
+pre_common_block_pic picflag 图片类型 0为本地 1为ftp远程
+pre_common_block_pic type 信息类型 0为模块缩略图 1为上传的图
+pre_common_block_style styleid 模块样式ID
+pre_common_block_style blockclass 模块分类
+pre_common_block_style name 样式名称
+pre_common_block_style hash 样式hash（blockclass + template）
+pre_common_block_style getpic 是否需要获取pic数据
+pre_common_block_style getsummary 是否需要获取summary数据
+pre_common_block_style makethumb 是否需要block设置缩略图
+pre_common_block_style settarget 是否需要设置链接打开方式
+pre_common_block_style moreurl 是否有更多链接
+pre_common_block_xml id ID
+pre_common_block_xml name XML扩展名称
+pre_common_block_xml version XML扩展版本
+pre_common_block_xml url XML扩展 URL
+pre_common_block_xml clientid 客户端ID
+pre_common_block_xml key 通信密钥
+pre_common_block_xml signtype 签名的加密方式：目前只支持MD5方式，空为不使用签名，直接使用通信密钥
+pre_common_cache cachekey 
+pre_common_cache dateline 
+pre_common_card id 生成的卡片号码
+pre_common_card typeid 1 卡片分类
+pre_common_card maketype 卡片生成的方法
+pre_common_card makeruid 卡片生成者uid
+pre_common_card price 卡片面值
+pre_common_card extcreditskey 充值积分种类
+pre_common_card extcreditsval 积分数额
+pre_common_card status 1 卡片状态(位与):1:可用,2:已用
+pre_common_card dateline 卡片生成时间
+pre_common_card cleardateline 卡片清理时间
+pre_common_card useddateline 使用时间
+pre_common_card uid 使用者
+pre_common_card_log id 生成的卡片号码
+pre_common_card_log uid 卡片生成者
+pre_common_card_log username 卡片生成者
+pre_common_card_log cardrule 卡片生成规则
+pre_common_card_log dateline 本次log生成时间
+pre_common_card_log operation 操作动作(位与):1:生成,2:任务生成,4:删除,9:卡片过期
+pre_common_card_type id 卡片分类ID
+pre_common_card_type typename 分类名称
+pre_common_credit_log logid id
+pre_common_credit_log uid 所属用户uid
+pre_common_credit_log operation 操作类型
+pre_common_credit_log relatedid 操作相关ID
+pre_common_credit_log dateline 记录时间
+pre_common_credit_log extcredits1 积分1变化值
+pre_common_credit_log extcredits2 积分2变化值
+pre_common_credit_log extcredits3 积分3变化值
+pre_common_credit_log extcredits4 积分4变化值
+pre_common_credit_log extcredits5 积分5变化值
+pre_common_credit_log extcredits6 积分6变化值
+pre_common_credit_log extcredits7 积分7变化值
+pre_common_credit_log extcredits8 积分8变化值
+pre_common_credit_log_field logid id
+pre_common_credit_log_field title 记录标题
+pre_common_credit_rule rid 规则ID
+pre_common_credit_rule rulename 规则名称
+pre_common_credit_rule action 规则action唯一KEY
+pre_common_credit_rule cycletype 奖励周期0:一次;1:每天;2:整点;3:间隔分钟;4:不限;
+pre_common_credit_rule cycletime 间隔时间
+pre_common_credit_rule rewardnum 奖励次数
+pre_common_credit_rule repeat 是否去重1：去重;0：不去重
+pre_common_credit_rule extcredits1 扩展1
+pre_common_credit_rule extcredits2 扩展2
+pre_common_credit_rule extcredits3 扩展3
+pre_common_credit_rule extcredits4 扩展4
+pre_common_credit_rule extcredits5 扩展5
+pre_common_credit_rule extcredits6 扩展6
+pre_common_credit_rule extcredits7 扩展7
+pre_common_credit_rule extcredits8 扩展8
+pre_common_credit_rule_log clid 策略日志ID
+pre_common_credit_rule_log uid 策略日志所有者uid
+pre_common_credit_rule_log rid 策略ID
+pre_common_credit_rule_log fid 版块ID
+pre_common_credit_rule_log total 策略被执行总次数
+pre_common_credit_rule_log cyclenum 周期被执行次数
+pre_common_credit_rule_log extcredits1 扩展1
+pre_common_credit_rule_log extcredits2 扩展2
+pre_common_credit_rule_log extcredits3 扩展3
+pre_common_credit_rule_log extcredits4 扩展4
+pre_common_credit_rule_log extcredits5 扩展5
+pre_common_credit_rule_log extcredits6 扩展6
+pre_common_credit_rule_log extcredits7 扩展7
+pre_common_credit_rule_log extcredits8 扩展8
+pre_common_credit_rule_log starttime 周期开始时间
+pre_common_credit_rule_log dateline 策略最后执行时间
+pre_common_credit_rule_log_field clid 策略日志ID
+pre_common_credit_rule_log_field uid 策略日志所有者uid
+pre_common_cron cronid 计划任务id
+pre_common_cron available 是否启用
+pre_common_cron name 名称
+pre_common_cron filename 对应文件
+pre_common_cron lastrun 上次执行时间
+pre_common_cron nextrun 下次执行时间
+pre_common_cron weekday 周计划
+pre_common_cron day 日计划
+pre_common_cron hour 小时计划
+pre_common_cron minute 分计划
+pre_common_district id 地区ID
+pre_common_district name 地区名称
+pre_common_district level 地区等级：1，省级；2，市级；3，县级；4，乡镇
+pre_common_district usetype 使用对象：0:都不启用; 1:出生地; 2:居住地; 3:都启用
+pre_common_district upid 上级地区ID
+pre_common_district displayorder 显示顺序
+pre_common_diy_data targettplname 目标模板文件名
+pre_common_diy_data tpldirectory 原模板所在目录
+pre_common_diy_data primaltplname 原模板文件名
+pre_common_diy_data name 目标模板页面名称
+pre_common_diy_data uid 会员id
+pre_common_diy_data username 用户名
+pre_common_diy_data dateline 更新时间
+pre_common_domain domain 域名前缀
+pre_common_domain domainroot 二级域名后缀
+pre_common_domain id 对应对象id
+pre_common_domain idtype 对应对象类型subarea:分区、forum:版块、home:个人空间、group:群组、topic:专题、channel:频道
+pre_common_failedlogin ip 失败IP
+pre_common_failedlogin username 失败时的用户名
+pre_common_failedlogin count 尝试次数
+pre_common_failedlogin lastupdate 最后一次尝试时间
+pre_common_friendlink id id
+pre_common_friendlink displayorder 显示顺序，正序
+pre_common_friendlink name 名称
+pre_common_friendlink url url
+pre_common_friendlink logo logo
+pre_common_friendlink type 
+pre_common_grouppm id 消息id
+pre_common_grouppm authorid 作者id
+pre_common_grouppm author 作者姓名
+pre_common_grouppm dateline 时间
+pre_common_grouppm numbers 数量
+pre_common_invite id ID
+pre_common_invite uid 邀请人
+pre_common_invite code 邀请码
+pre_common_invite fuid 受邀人UID
+pre_common_invite fusername 受邀人姓名
+pre_common_invite type 邮件邀请 1是0否
+pre_common_invite email 邀请Email
+pre_common_invite inviteip 邀请IP
+pre_common_invite appid 应用ID
+pre_common_invite dateline 邀请码生成时间
+pre_common_invite endtime 邀请码结束时间
+pre_common_invite regdateline 注册时间
+pre_common_invite status 邀请码状态
+pre_common_invite orderid 购买邀请码的订单号id
+pre_common_magic magicid 道具id
+pre_common_magic available 是否可用
+pre_common_magic name 名称
+pre_common_magic identifier 唯一标识
+pre_common_magic description 描述
+pre_common_magic displayorder 顺序
+pre_common_magic credit 使用的积分
+pre_common_magic price 价格
+pre_common_magic num 数量
+pre_common_magic salevolume 销售量
+pre_common_magic supplytype 自动补货类型
+pre_common_magic supplynum 自动补货数量
+pre_common_magic useperoid 使用周期
+pre_common_magic usenum 周期使用数量
+pre_common_magic weight 1 重量
+pre_common_magic useevent 0:只在特定环境使用 1:可以在道具中心使用
+pre_common_magiclog uid 用户id
+pre_common_magiclog magicid 道具id
+pre_common_magiclog action 操作动作 1 购买 2 使用 3 赠送
+pre_common_magiclog dateline 操作时间
+pre_common_magiclog amount 操作数量
+pre_common_magiclog credit 操作积分
+pre_common_magiclog price 操作价格
+pre_common_magiclog targetid 
+pre_common_magiclog idtype 
+pre_common_magiclog targetuid 道具目标uid
+pre_common_mailcron cid 
+pre_common_mailcron touid 
+pre_common_mailcron email 
+pre_common_mailcron sendtime 
+pre_common_mailqueue qid 
+pre_common_mailqueue cid 
+pre_common_mailqueue dateline 
+pre_common_member uid 会员id
+pre_common_member email 邮箱
+pre_common_member username 用户名
+pre_common_member password 密码
+pre_common_member status 判断用户是否已经删除 需要discuz程序加判断，并增加整体清理的功能。原home字段为flag
+pre_common_member emailstatus email是否经过验证 home字段为emailcheck
+pre_common_member avatarstatus 是否有头像 home字段为avatar
+pre_common_member videophotostatus 视频认证状态 home
+pre_common_member adminid 管理员id
+pre_common_member groupid 会员组id
+pre_common_member groupexpiry 用户组有效期
+pre_common_member extgroupids 扩展用户组
+pre_common_member regdate 注册时间
+pre_common_member credits 总积分
+pre_common_member tifysound 短信声音
+pre_common_member timeoffset 时区校正
+pre_common_member newpm 新短消息数量
+pre_common_member newprompt 新提醒数目
+pre_common_member accessmasks 标志
+pre_common_member allowadmincp 标志
+pre_common_member onlyacceptfriendpm 是否只接收好友短消息
+pre_common_member conisbind 用户是否绑定QC
+pre_common_member_action_log id 记录id
+pre_common_member_action_log uid 用户ID
+pre_common_member_action_log action 操作代码
+pre_common_member_action_log dateline 
+pre_common_member_count uid 会员id
+pre_common_member_count extcredits1 声望
+pre_common_member_count extcredits2 金钱
+pre_common_member_count extcredits3 扩展
+pre_common_member_count extcredits4 扩展
+pre_common_member_count extcredits5 扩展
+pre_common_member_count extcredits6 扩展
+pre_common_member_count extcredits7 扩展
+pre_common_member_count extcredits8 扩展
+pre_common_member_count friends 好友个数 home
+pre_common_member_count posts 帖子数
+pre_common_member_count threads 主题数
+pre_common_member_count digestposts 精华数
+pre_common_member_count doings 记录数
+pre_common_member_count blogs 日志数
+pre_common_member_count albums 相册数
+pre_common_member_count sharings 分享数
+pre_common_member_count attachsize 上传附件占用的空间 home
+pre_common_member_count views 空间查看数
+pre_common_member_count oltime 在线时间
+pre_common_member_count todayattachs 当天上传附件数
+pre_common_member_count todayattachsize 当天上传附件容量
+pre_common_member_count feeds 广播数
+pre_common_member_count follower 听众数量
+pre_common_member_count following 收听数量
+pre_common_member_count newfollower 新增听众数量
+pre_common_member_count blacklist 拉黑用户数
+pre_common_member_crime cid 自增id
+pre_common_member_crime uid 被惩罚操作的用户id
+pre_common_member_crime operatorid 进行惩罚操作的用户id
+pre_common_member_crime operator 进行惩罚操作的用户名
+pre_common_member_crime action 惩罚行为
+pre_common_member_crime dateline 惩罚操作时间
+pre_common_member_field_forum uid 会员id
+pre_common_member_field_forum publishfeed 用户自定义发送哪些类型的feed(原字段为customaddfeed)
+pre_common_member_field_forum customshow 26 自定义帖子显示模式
+pre_common_member_field_forum customstatus 自定义头衔
+pre_common_member_field_forum authstr 找回密码验证串
+pre_common_member_field_forum attentiongroup 用户偏好
+pre_common_member_field_home uid 会员id
+pre_common_member_field_home videophoto 视频认证照片地址 home
+pre_common_member_field_home spacename 空间名称
+pre_common_member_field_home spacedescription 空间简介
+pre_common_member_field_home domain 空间绑定二级域名 home
+pre_common_member_field_home addsize 额外授予的上传空间 home
+pre_common_member_field_home addfriend 额外允许增加的好友数 home
+pre_common_member_field_home menunum 应用显示个数
+pre_common_member_field_home theme 空间风格主题 home
+pre_common_member_forum_buylog uid 会员id
+pre_common_member_forum_buylog fid 论坛id
+pre_common_member_forum_buylog credits 已付金额
+pre_common_member_grouppm uid 会员id
+pre_common_member_grouppm gpmid 消息id
+pre_common_member_grouppm status 0=未读 1=已读 -1=删除
+pre_common_member_grouppm dateline 阅读时间
+pre_common_member_log uid 
+pre_common_member_log action add,update,delete
+pre_common_member_log dateline 
+pre_common_member_magic uid 用户uid
+pre_common_member_magic magicid 道具id
+pre_common_member_magic num 拥有数量
+pre_common_member_medal uid 
+pre_common_member_medal medalid 
+pre_common_member_newprompt uid 会员id
+pre_common_member_newprompt data array(提醒类型=>数量)
+pre_common_member_profile uid 会员id
+pre_common_member_profile realname 实名
+pre_common_member_profile gender 性别 (0:保密 1:男 2:女)
+pre_common_member_profile birthyear 
+pre_common_member_profile birthmonth 
+pre_common_member_profile birthday 
+pre_common_member_profile constellation 星座(根据生日自动计算)
+pre_common_member_profile zodiac 生肖(根据生日自动计算)
+pre_common_member_profile telephone 固定电话
+pre_common_member_profile mobile 手机
+pre_common_member_profile idcardtype 证件类型：身份证 护照 军官证等
+pre_common_member_profile idcard 证件号码
+pre_common_member_profile address 邮寄地址
+pre_common_member_profile zipcode 邮编
+pre_common_member_profile nationality 国籍
+pre_common_member_profile birthprovince 出生省份
+pre_common_member_profile birthcity 出生城市
+pre_common_member_profile birthdist 出生行政区/县
+pre_common_member_profile birthcommunity 出生小区
+pre_common_member_profile resideprovince 居住省份
+pre_common_member_profile residecity 居住城市
+pre_common_member_profile residedist 居住行政区/县
+pre_common_member_profile residecommunity 居住小区
+pre_common_member_profile residesuite 小区、写字楼门牌号
+pre_common_member_profile graduateschool 毕业学校
+pre_common_member_profile company 公司
+pre_common_member_profile education 学历
+pre_common_member_profile occupation 职业
+pre_common_member_profile position 职位
+pre_common_member_profile revenue 年收入
+pre_common_member_profile affectivestatus 情感状态
+pre_common_member_profile lookingfor 交友目的（交友类型）
+pre_common_member_profile bloodtype 血型
+pre_common_member_profile height 身高
+pre_common_member_profile weight 体重
+pre_common_member_profile alipay 支付宝帐号
+pre_common_member_profile icq ICQ
+pre_common_member_profile qq QQ
+pre_common_member_profile yahoo YAHOO
+pre_common_member_profile msn MSN
+pre_common_member_profile taobao 阿里旺旺
+pre_common_member_profile site 主页
+pre_common_member_profile field1 自定义字段1
+pre_common_member_profile field2 自定义字段2
+pre_common_member_profile field3 自定义字段3
+pre_common_member_profile field4 自定义字段4
+pre_common_member_profile field5 自定义字段5
+pre_common_member_profile field6 自定义字段6
+pre_common_member_profile field7 自定义字段7
+pre_common_member_profile field8 自定义字段8
+pre_common_member_profile_setting fieldid profile字段标志符
+pre_common_member_profile_setting available 是否可用
+pre_common_member_profile_setting invisible 是否隐藏
+pre_common_member_profile_setting needverify 是否需要审核
+pre_common_member_profile_setting title 栏目标题
+pre_common_member_profile_setting description 解释说明
+pre_common_member_profile_setting displayorder 显示顺序
+pre_common_member_profile_setting required 是否必填内容
+pre_common_member_profile_setting unchangeable 不可修改
+pre_common_member_profile_setting showincard 在名片中显示
+pre_common_member_profile_setting showinthread 在帖子中显示
+pre_common_member_profile_setting showinregister 是否在注册页面显示
+pre_common_member_profile_setting allowsearch 是否可搜索
+pre_common_member_profile_setting formtype 表单元素类型
+pre_common_member_profile_setting size 内容最大长度
+pre_common_member_security securityid 审核项id
+pre_common_member_security uid 会员id
+pre_common_member_security username 用户名
+pre_common_member_security fieldid profile字段标志符
+pre_common_member_security dateline 提交日期
+pre_common_member_stat_field optionid 资料统计项 id
+pre_common_member_stat_field fieldid 资料项字段标志符
+pre_common_member_stat_field fieldvalue 字段值
+pre_common_member_stat_field hash 由fieldid和fieldvalue生成的hash
+pre_common_member_stat_field users 对应用户数
+pre_common_member_stat_field updatetime 更新时间
+pre_common_member_status uid 会员id
+pre_common_member_status regip 注册IP
+pre_common_member_status lastip 最后登录IP
+pre_common_member_status lastvisit 最后访问
+pre_common_member_status lastactivity 最后活动
+pre_common_member_status lastpost 最后发表
+pre_common_member_status lastsendmail 上次发送email时间 home原字段为lastsend
+pre_common_member_status invisible 是否隐身登录
+pre_common_member_status buyercredit 买家信用等级及积分
+pre_common_member_status sellercredit 卖家信用等级及积分
+pre_common_member_status favtimes 个人空间收藏次数
+pre_common_member_status sharetimes 个人空间分享次数
+pre_common_member_status profileprogress 个人资料完成度
+pre_common_member_validate uid 会员id
+pre_common_member_validate submitdate 提交日期
+pre_common_member_validate moddate 审核日期
+pre_common_member_validate admin 管理员名
+pre_common_member_validate submittimes 提交的次数
+pre_common_member_validate status 状态
+pre_common_member_verify uid 会员id
+pre_common_member_verify verify1 认证1: -1:被拒绝 0:待审核 1:审核通过
+pre_common_member_verify verify2 认证2: -1:被拒绝 0:待审核 1:审核通过
+pre_common_member_verify verify3 认证3: -1:被拒绝 0:待审核 1:审核通过
+pre_common_member_verify verify4 认证4: -1:被拒绝 0:待审核 1:审核通过
+pre_common_member_verify verify5 认证5: -1:被拒绝 0:待审核 1:审核通过
+pre_common_member_verify verify6 实名认证: -1:被拒绝 0:待审核 1:审核通过
+pre_common_member_verify verify7 视频认证: -1:被拒绝 0:待审核 1:审核通过
+pre_common_member_verify_info vid 审核id
+pre_common_member_verify_info uid 会员id
+pre_common_member_verify_info username 用户名
+pre_common_member_verify_info verifytype 审核类型0:资料审核, 1:认证1, 2:认证2, 3:认证3, 4:认证4, 5:认证5
+pre_common_member_verify_info flag -1:被拒绝 0:待审核 1:审核通过
+pre_common_member_verify_info dateline 提交日期
+pre_common_myapp appid 应用id
+pre_common_myapp appname 应用名称
+pre_common_myapp narrow 是否显示为窄的profile box
+pre_common_myapp flag 应用状态（黑白名单、默认应用等）
+pre_common_myapp version 应用版本号
+pre_common_myapp userpanelarea userabout显示区域、1主区、2、副区、3应用区
+pre_common_myapp canvastitle canvas页面标题
+pre_common_myapp fullscreen 是否是全屏应用
+pre_common_myapp displayuserpanel 是否显示应用右侧的用户菜单
+pre_common_myapp displaymethod 显示方式（iframe/myml）
+pre_common_myapp displayorder 显示顺序
+pre_common_myapp appstatus 标识应用1:新、2:热
+pre_common_myapp iconstatus 应用图标是否已下载到本地。-1：失败；0：未下载；1：已下载
+pre_common_myapp icondowntime 应用图标下载到本地时间
+pre_common_myinvite id 邀请id
+pre_common_myinvite typename 邀请名称
+pre_common_myinvite appid 应用id
+pre_common_myinvite type 类型(request 邀请/invite 请求)
+pre_common_myinvite fromuid 邀请者id
+pre_common_myinvite touid 接收者id
+pre_common_myinvite dateline 发送邀请的时间戳
+pre_common_myinvite hash hash标记
+pre_common_mytask uid 用户Uid
+pre_common_mytask username 用户名
+pre_common_mytask taskid 任务id
+pre_common_mytask status 任务状态 (-1:失败 0:进行中 1:已完成)
+pre_common_mytask csc 任务进度
+pre_common_mytask dateline 申请任务时间
+pre_common_nav id 项目id
+pre_common_nav parentid 父 id(navtype=0)
+pre_common_nav name 导航名称
+pre_common_nav title 导航说明
+pre_common_nav url 导航链接
+pre_common_nav identifier 链接标识/相关ID
+pre_common_nav target 目标框架 (0:本窗口 1:新窗口)
+pre_common_nav type 类型 系统 1 自定义 3 插件 4 频道 5 版块
+pre_common_nav available 是否可用
+pre_common_nav displayorder 显示顺序
+pre_common_nav highlight 样式(navtype=0)
+pre_common_nav level 使用等级 (0:游客 1:会员 2:版主 3:管理员)
+pre_common_nav subtype 二级导航样式(navtype=0) 顶部导航位置(navtype=4)
+pre_common_nav subcols 横排一行显示的条目数(navtype=0)
+pre_common_nav icon 图标地址(navtype=1、3)
+pre_common_nav subname 副导航名称(navtype=1)
+pre_common_nav suburl 副导航地址(navtype=1)
+pre_common_nav navtype 导航类型 (0:主导航 1:底部导航 2:家园导航 3:快捷导航 4:顶部导航)
+pre_common_nav logo 自定义 Logo
+pre_common_onlinetime uid 
+pre_common_onlinetime thismonth 本月在线时间
+pre_common_onlinetime total 总在线时间
+pre_common_onlinetime lastupdate 
+pre_common_optimizer k 记录键值
+pre_common_optimizer v 记录对应数据
+pre_common_patch serial 漏洞编号
+pre_common_patch status 修补状态
+pre_common_patch dateline 漏洞发布时间
+pre_common_plugin pluginid 插件id
+pre_common_plugin available 是否启用
+pre_common_plugin adminid 管理员id
+pre_common_plugin name 名称
+pre_common_plugin identifier 唯一标识符
+pre_common_plugin description 解释说明
+pre_common_plugin datatables 插件数据表
+pre_common_plugin directory 插件目录
+pre_common_plugin copyright 版权信息
+pre_common_plugin version 插件版本
+pre_common_pluginvar pluginvarid 插件变量id
+pre_common_pluginvar pluginid 插件id
+pre_common_pluginvar displayorder 显示顺序
+pre_common_pluginvar title 名称
+pre_common_pluginvar description 解释说明
+pre_common_pluginvar variable 变量名
+pre_common_pluginvar type 类型
+pre_common_process processid 锁名称的md5
+pre_common_process expiry 锁的过期时间
+pre_common_process extra 锁的附属信息
+pre_common_regip ip IP地址
+pre_common_regip dateline 限制时间
+pre_common_regip count 限制数量
+pre_common_relatedlink id id
+pre_common_relatedlink name 名称
+pre_common_relatedlink url url
+pre_common_relatedlink extent 
+pre_common_report id 记录id
+pre_common_report urlkey 地址md5
+pre_common_report url 地址
+pre_common_report uid 会员id
+pre_common_report username 用户名
+pre_common_report dateline 举报时间
+pre_common_report num 1 举报次数
+pre_common_report opuid 管理员id
+pre_common_report opname 管理员姓名
+pre_common_report optime 处理时间
+pre_common_report opresult 对举报人的奖惩
+pre_common_report fid 论坛id
+pre_common_searchindex searchid 缓存id
+pre_common_searchindex srchmod mod模块
+pre_common_searchindex keywords 关键字
+pre_common_searchindex useip 搜索人IP
+pre_common_searchindex uid 会员id
+pre_common_searchindex dateline 搜索时间
+pre_common_searchindex expiration 过期时间
+pre_common_searchindex threadsortid 分类信息id
+pre_common_searchindex num 主题数量
+pre_common_secquestion id 验证问题id
+pre_common_secquestion type 验证问题类型
+pre_common_secquestion answer 问题答案
+pre_common_session sid sid
+pre_common_session ip1 IP段
+pre_common_session ip2 IP段
+pre_common_session ip3 IP段
+pre_common_session ip4 IP段
+pre_common_session uid 会员id
+pre_common_session username 会员名
+pre_common_session groupid 会员组
+pre_common_session invisible 是否隐身登录
+pre_common_session action 当前动作
+pre_common_session lastactivity 最后活动时间
+pre_common_session lastolupdate 在线时间最后更新
+pre_common_session fid 论坛id
+pre_common_session tid 主题id
+pre_common_setting skey 变量名
+pre_common_smiley id 表情id
+pre_common_smiley typeid 表情分类 id
+pre_common_smiley displayorder 显示顺序
+pre_common_smiley code 标记
+pre_common_smiley url 路径
+pre_common_sphinxcounter indexid 
+pre_common_sphinxcounter maxid 
+pre_common_stat daytime 时间
+pre_common_stat login 登陆
+pre_common_stat mobilelogin 手机登陆
+pre_common_stat connectlogin QQConnect登陆
+pre_common_stat register 注册
+pre_common_stat invite 邀请
+pre_common_stat appinvite 应用邀请
+pre_common_stat doing 记录
+pre_common_stat blog 日志
+pre_common_stat pic 图片
+pre_common_stat poll 投票
+pre_common_stat activity 活动
+pre_common_stat share 分享
+pre_common_stat thread 主题
+pre_common_stat docomment 记录评论
+pre_common_stat blogcomment 日志评论
+pre_common_stat piccomment 图片评论
+pre_common_stat sharecomment 分享评论
+pre_common_stat reward 悬赏
+pre_common_stat debate 辩论
+pre_common_stat trade 商品
+pre_common_stat group 群组
+pre_common_stat groupjoin 参与群组
+pre_common_stat groupthread 群组主题
+pre_common_stat grouppost 群组回复
+pre_common_stat post 主题回复
+pre_common_stat wall 留言
+pre_common_stat poke 打招呼
+pre_common_stat click 表态
+pre_common_stat sendpm 发送PM
+pre_common_stat friend 成为好友
+pre_common_stat addfriend 好友请求
+pre_common_statuser uid 
+pre_common_statuser daytime 
+pre_common_statuser type 各种用户行为如：invite、register、login...
+pre_common_style styleid 风格id
+pre_common_style name 风格名称
+pre_common_style available 风格是否可用
+pre_common_style templateid 对应模板id
+pre_common_style extstyle 配色
+pre_common_stylevar stylevarid 风格变量id
+pre_common_stylevar styleid 风格id
+pre_common_syscache cname 缓存名称
+pre_common_syscache ctype 缓存类型 0=value, serialize=1
+pre_common_syscache dateline 缓存生成时间
+pre_common_tag tagid 标签id
+pre_common_tag tagname 标签名
+pre_common_tag status 显示状态 (0:正常 1:关闭 2:推荐 3:用户标签)
+pre_common_tagitem tagid 标签id
+pre_common_tagitem itemid itemid
+pre_common_tagitem idtype 内容类型
+pre_common_task taskid 任务id
+pre_common_task relatedtaskid 依存任务id 必须完成依存任务才能申请该任务
+pre_common_task available 是否启用
+pre_common_task name 任务名称
+pre_common_task icon 任务图标
+pre_common_task applicants 已申请任务人次
+pre_common_task achievers 已完成任务人次
+pre_common_task tasklimits 允许申请并完成该任务的人次上限
+pre_common_task applyperm 允许申请任务的用户组id, 格式: 1 2 3
+pre_common_task scriptname 任务脚本文件名
+pre_common_task starttime 任务上线时间
+pre_common_task endtime 任务下线时间
+pre_common_task period 任务周期 单位：小时 默认为0表示一次性任务 设置为24即1天表示日常任务
+pre_common_task periodtype 任务间隔周期单位 0:小时 1:天 2:周 3:月
+pre_common_task prize 奖品: 哪一个扩展积分, 道具id, 勋章id,邀请码有效期， 特殊用户组id
+pre_common_task bonus 奖品数量/有效期: 积分数量, 道具数量, 勋章有效期, 邀请码数量，特殊用户组有效期
+pre_common_task displayorder 显示顺序
+pre_common_task version 任务脚本版本号
+pre_common_taskvar taskvarid 任务变量id
+pre_common_taskvar taskid 任务id
+pre_common_taskvar name 变量名称
+pre_common_taskvar description 变量描述
+pre_common_taskvar variable 变量名
+pre_common_taskvar type 变量类型
+pre_common_template templateid 模板id
+pre_common_template name 名称
+pre_common_template directory 目录
+pre_common_template copyright 版权
+pre_common_template_block targettplname 目标模板文件名
+pre_common_template_block tpldirectory 原模板所在目录
+pre_common_template_block bid 模块ID
+pre_common_template_permission targettplname 目标模板
+pre_common_template_permission uid 用户ID
+pre_common_template_permission allowmanage 允许管理
+pre_common_template_permission allowrecommend 允许推荐
+pre_common_template_permission needverify 推荐需要审核
+pre_common_template_permission inheritedtplname 继承自的模板名称
+pre_common_usergroup groupid 会员组id
+pre_common_usergroup radminid 关联关管理组
+pre_common_usergroup system 会员是否可以自由进出
+pre_common_usergroup grouptitle 组头衔
+pre_common_usergroup creditshigher 该组的积分上限
+pre_common_usergroup creditslower 该组的积分下限
+pre_common_usergroup stars 星星数量
+pre_common_usergroup color 组头衔颜色
+pre_common_usergroup icon 
+pre_common_usergroup allowvisit 允许访问
+pre_common_usergroup allowsendpm 是否允许发送短信息
+pre_common_usergroup allowinvite 允许使用邀请注册
+pre_common_usergroup allowmailinvite 允许通过论坛邮件系统发送邀请码
+pre_common_usergroup maxinvitenum 最大邀请码拥有数量
+pre_common_usergroup inviteprice 邀请码购买价格
+pre_common_usergroup maxinviteday 邀请码有效期
+pre_common_usergroup_field groupid 会员组id
+pre_common_usergroup_field readaccess 阅读权限
+pre_common_usergroup_field allowpost 允许发帖
+pre_common_usergroup_field allowreply 允许回复
+pre_common_usergroup_field allowpostpoll 允许发表投票
+pre_common_usergroup_field allowpostreward 允许发表悬赏
+pre_common_usergroup_field allowposttrade 允许发表交易
+pre_common_usergroup_field allowpostactivity 允许发表活动
+pre_common_usergroup_field allowdirectpost 是否需要审核
+pre_common_usergroup_field allowgetattach 允许下载附件
+pre_common_usergroup_field allowgetimage 允许查看图片
+pre_common_usergroup_field allowpostattach 允许上传附件
+pre_common_usergroup_field allowpostimage 允许上传图片
+pre_common_usergroup_field allowvote 允许参与投票
+pre_common_usergroup_field allowsearch 允许搜索
+pre_common_usergroup_field allowcstatus 允许自定义头衔
+pre_common_usergroup_field allowinvisible 允许隐身登录
+pre_common_usergroup_field allowtransfer 允许积分转帐
+pre_common_usergroup_field allowsetreadperm 允许设置阅读权限
+pre_common_usergroup_field allowsetattachperm 允许设置附件权限
+pre_common_usergroup_field allowposttag 允许使用标签
+pre_common_usergroup_field allowhidecode 允许使用hide代码
+pre_common_usergroup_field allowhtml 允许使用html
+pre_common_usergroup_field allowanymous 允许匿名发帖
+pre_common_usergroup_field allowsigbbcode 允许签名使用bbcode
+pre_common_usergroup_field allowsigimgcode 允许使用img
+pre_common_usergroup_field allowmagics 允许使用道具
+pre_common_usergroup_field disableperiodctrl 不受时间段限制
+pre_common_usergroup_field reasonpm 操作理由短信通知作者
+pre_common_usergroup_field maxprice 主题最大售价
+pre_common_usergroup_field maxsigsize 最大签名尺寸
+pre_common_usergroup_field maxattachsize 最大附件尺寸
+pre_common_usergroup_field maxsizeperday 每天最大附件总尺寸
+pre_common_usergroup_field maxthreadsperhour 每小时发主题数限制
+pre_common_usergroup_field maxpostsperhour 每小时发回帖数限制
+pre_common_usergroup_field attachextensions 允许发表的附件类型
+pre_common_usergroup_field raterange 评分范围
+pre_common_usergroup_field loginreward 每日打卡奖励
+pre_common_usergroup_field mintradeprice 1 交易最小积分
+pre_common_usergroup_field maxtradeprice 交易最大积分
+pre_common_usergroup_field minrewardprice 1 悬赏最小积分
+pre_common_usergroup_field maxrewardprice 悬赏最大积分
+pre_common_usergroup_field magicsdiscount 道具折扣
+pre_common_usergroup_field maxmagicsweight 道具负载最大值
+pre_common_usergroup_field allowpostdebate 允许发表辩论
+pre_common_usergroup_field tradestick 可商品推荐数
+pre_common_usergroup_field exempt 用户组表达式
+pre_common_usergroup_field maxattachnum 最大每天附件数量
+pre_common_usergroup_field allowposturl 是否允许发送含 url 内容
+pre_common_usergroup_field allowrecommend 1 是否允许评价主题
+pre_common_usergroup_field allowpostrushreply 允许发表抢楼帖
+pre_common_usergroup_field maxfriendnum 最多好友数
+pre_common_usergroup_field maxspacesize 空间大小
+pre_common_usergroup_field allowcomment 发表留言/评论
+pre_common_usergroup_field allowcommentarticle 发表文章的评论
+pre_common_usergroup_field searchinterval 两次搜索操作间隔
+pre_common_usergroup_field searchigre 是否免费搜索
+pre_common_usergroup_field allowblog 发表日志
+pre_common_usergroup_field allowdoing 发表记录
+pre_common_usergroup_field allowupload 上传图片
+pre_common_usergroup_field allowshare 发布分享
+pre_common_usergroup_field allowblogmod 发表日志需要审核
+pre_common_usergroup_field allowdoingmod 发表记录需要审核
+pre_common_usergroup_field allowuploadmod 上传图片需要审核
+pre_common_usergroup_field allowsharemod 发布分享需要审核
+pre_common_usergroup_field allowcss 允许自定义CSS
+pre_common_usergroup_field allowpoke 允许打招呼
+pre_common_usergroup_field allowfriend 允许加好友
+pre_common_usergroup_field allowclick 允许表态
+pre_common_usergroup_field allowmagic 允许使用道具
+pre_common_usergroup_field allowstat 允许查看趋势统计
+pre_common_usergroup_field allowstatdata 允许查看统计数据报表
+pre_common_usergroup_field videophotoigre 视频认证限制
+pre_common_usergroup_field allowviewvideophoto 允许查看视频认证
+pre_common_usergroup_field allowmyop 允许使用应用
+pre_common_usergroup_field magicdiscount 购买道具折扣
+pre_common_usergroup_field domainlength 二级域名最短长度
+pre_common_usergroup_field seccode 发布操作需填验证码
+pre_common_usergroup_field disablepostctrl 发表是否受防灌水限制
+pre_common_usergroup_field allowbuildgroup 是否允许建立群组，0为不允许
+pre_common_usergroup_field allowgroupdirectpost 是否允许直接在群组中发帖
+pre_common_usergroup_field allowgroupposturl 是否允许在群组中发站外URL
+pre_common_usergroup_field edittimelimit 编辑帖子时间限制
+pre_common_usergroup_field allowpostarticle 允许发布文章
+pre_common_usergroup_field allowdownlocalimg 允许下载本地图片
+pre_common_usergroup_field allowdownremoteimg 允许下载远程图片
+pre_common_usergroup_field allowpostarticlemod 发布文章是否需要审核
+pre_common_usergroup_field allowspacediyhtml 允许自定义模块使用HTML
+pre_common_usergroup_field allowspacediybbcode 允许自定义模块使用BBCODE
+pre_common_usergroup_field allowspacediyimgcode 允许自定义模块使用[img]
+pre_common_usergroup_field allowcommentpost 允许帖子点评 0:禁止 1:楼主 2:回复 3:All
+pre_common_usergroup_field allowcommentitem 允许发表点评观点
+pre_common_usergroup_field allowcommentreply 允许发表回复点评
+pre_common_usergroup_field allowreplycredit 允许设置回帖奖励
+pre_common_usergroup_field igrecensor 是否忽略要审核的关键字
+pre_common_usergroup_field allowsendallpm 是否不受“只接收好友短消息”设置的限制
+pre_common_usergroup_field allowsendpmmaxnum 24小时内允许发短消息的数量
+pre_common_usergroup_field maximagesize 相册中允许最大图片大小
+pre_common_usergroup_field allowmediacode 允许使用多媒体代码
+pre_common_usergroup_field allowbegincode 允许使用开头动画代码
+pre_common_usergroup_field allowat 允许@用户 0：禁止 n:发帖时@的数量
+pre_common_usergroup_field allowsetpublishdate 允许定时发布主题
+pre_common_usergroup_field allowfollowcollection 允许关注淘专辑数
+pre_common_usergroup_field allowcommentcollection 允许评论淘专辑
+pre_common_usergroup_field allowcreatecollection 允许创建淘专辑数
+pre_common_usergroup_field forcesecques 强制设置安全提问才能进入后台管理
+pre_common_usergroup_field closead 是否展示广告
+pre_common_usergroup_field buildgroupcredits 创建群组需要消耗的积分
+pre_common_usergroup_field allowimgcontent 允许主题内容生成图片
+pre_common_visit ip 用户IP
+pre_common_visit view 访问次数
+pre_common_word id 词汇id
+pre_common_word admin 管理员名
+pre_common_word type 关键词分类
+pre_common_word find 不良词语
+pre_common_word replacement 替换内容
+pre_common_word extra 
+pre_common_word_type id 词语过滤分类id
+pre_common_word_type typename 分类名称
+pre_forum_access uid 会员id
+pre_forum_access fid 论坛id
+pre_forum_access allowview 允许浏览
+pre_forum_access allowpost 允许发表
+pre_forum_access allowreply 允许回复
+pre_forum_access allowgetattach 允许下载附件
+pre_forum_access allowgetimage 允许查看图片
+pre_forum_access allowpostattach 允许上传附件
+pre_forum_access allowpostimage 允许上传图片
+pre_forum_access adminuser 管理员id
+pre_forum_access dateline 时间
+pre_forum_activity tid 主题id
+pre_forum_activity uid 会员id
+pre_forum_activity aid 主题图片id
+pre_forum_activity cost 每人花销
+pre_forum_activity starttimefrom 开始时间
+pre_forum_activity starttimeto 结束时间
+pre_forum_activity place 地点
+pre_forum_activity class 类别
+pre_forum_activity gender 性别
+pre_forum_activity number 人数
+pre_forum_activity applynumber 已参加人数
+pre_forum_activity expiration 报名截止日期
+pre_forum_activity credit 需消耗的积分
+pre_forum_activityapply applyid 申请id
+pre_forum_activityapply tid 主题id
+pre_forum_activityapply username 用户名
+pre_forum_activityapply uid 会员id
+pre_forum_activityapply message 消息
+pre_forum_activityapply verified 是否审核通过 (0:N 1:Y 2:需完善资料)
+pre_forum_activityapply dateline 申请时间
+pre_forum_activityapply payment 每人花销
+pre_forum_anuncement id 公告id
+pre_forum_anuncement author 作者姓名
+pre_forum_anuncement subject 公告标题
+pre_forum_anuncement type 公告类型 (0:文字公告 1:网址链接)
+pre_forum_anuncement displayorder 显示顺序
+pre_forum_anuncement starttime 开始时间
+pre_forum_anuncement endtime 结束时间
+pre_forum_attachment aid 附件id
+pre_forum_attachment tid 主题id
+pre_forum_attachment pid 帖子id
+pre_forum_attachment uid 会员id
+pre_forum_attachment tableid 附件表id
+pre_forum_attachment downloads 下载次数
+pre_forum_attachment_0 pre_forum_attachment_0 
+pre_forum_attachment_0 aid 附件id
+pre_forum_attachment_0 tid 主题id
+pre_forum_attachment_0 pid 帖子id
+pre_forum_attachment_0 uid 会员id
+pre_forum_attachment_0 dateline 上传时间
+pre_forum_attachment_0 filename 原文件名
+pre_forum_attachment_0 filesize 文件大小
+pre_forum_attachment_0 attachment 服务器路径
+pre_forum_attachment_0 remote 是否远程附件
+pre_forum_attachment_0 description 说明
+pre_forum_attachment_0 readperm 阅读权限
+pre_forum_attachment_0 price 附件价格
+pre_forum_attachment_0 isimage 是否图片
+pre_forum_attachment_0 width 附件宽度
+pre_forum_attachment_0 thumb 是否是缩率图
+pre_forum_attachment_0 picid 相册图片ID
+pre_forum_attachment_1 pre_forum_attachment_1 
+pre_forum_attachment_1 aid 附件id
+pre_forum_attachment_1 tid 主题id
+pre_forum_attachment_1 pid 帖子id
+pre_forum_attachment_1 uid 会员id
+pre_forum_attachment_1 dateline 上传时间
+pre_forum_attachment_1 filename 原文件名
+pre_forum_attachment_1 filesize 文件大小
+pre_forum_attachment_1 attachment 服务器路径
+pre_forum_attachment_1 remote 是否远程附件
+pre_forum_attachment_1 description 说明
+pre_forum_attachment_1 readperm 阅读权限
+pre_forum_attachment_1 price 附件价格
+pre_forum_attachment_1 isimage 是否图片
+pre_forum_attachment_1 width 附件宽度
+pre_forum_attachment_1 thumb 是否是缩率图
+pre_forum_attachment_1 picid 相册图片ID
+pre_forum_attachment_2 pre_forum_attachment_2 
+pre_forum_attachment_2 aid 附件id
+pre_forum_attachment_2 tid 主题id
+pre_forum_attachment_2 pid 帖子id
+pre_forum_attachment_2 uid 会员id
+pre_forum_attachment_2 dateline 上传时间
+pre_forum_attachment_2 filename 原文件名
+pre_forum_attachment_2 filesize 文件大小
+pre_forum_attachment_2 attachment 服务器路径
+pre_forum_attachment_2 remote 是否远程附件
+pre_forum_attachment_2 description 说明
+pre_forum_attachment_2 readperm 阅读权限
+pre_forum_attachment_2 price 附件价格
+pre_forum_attachment_2 isimage 是否图片
+pre_forum_attachment_2 width 附件宽度
+pre_forum_attachment_2 thumb 是否是缩率图
+pre_forum_attachment_2 picid 相册图片ID
+pre_forum_attachment_3 pre_forum_attachment_3 
+pre_forum_attachment_3 aid 附件id
+pre_forum_attachment_3 tid 主题id
+pre_forum_attachment_3 pid 帖子id
+pre_forum_attachment_3 uid 会员id
+pre_forum_attachment_3 dateline 上传时间
+pre_forum_attachment_3 filename 原文件名
+pre_forum_attachment_3 filesize 文件大小
+pre_forum_attachment_3 attachment 服务器路径
+pre_forum_attachment_3 remote 是否远程附件
+pre_forum_attachment_3 description 说明
+pre_forum_attachment_3 readperm 阅读权限
+pre_forum_attachment_3 price 附件价格
+pre_forum_attachment_3 isimage 是否图片
+pre_forum_attachment_3 width 附件宽度
+pre_forum_attachment_3 thumb 是否是缩率图
+pre_forum_attachment_3 picid 相册图片ID
+pre_forum_attachment_4 pre_forum_attachment_4 
+pre_forum_attachment_4 aid 附件id
+pre_forum_attachment_4 tid 主题id
+pre_forum_attachment_4 pid 帖子id
+pre_forum_attachment_4 uid 会员id
+pre_forum_attachment_4 dateline 上传时间
+pre_forum_attachment_4 filename 原文件名
+pre_forum_attachment_4 filesize 文件大小
+pre_forum_attachment_4 attachment 服务器路径
+pre_forum_attachment_4 remote 是否远程附件
+pre_forum_attachment_4 description 说明
+pre_forum_attachment_4 readperm 阅读权限
+pre_forum_attachment_4 price 附件价格
+pre_forum_attachment_4 isimage 是否图片
+pre_forum_attachment_4 width 附件宽度
+pre_forum_attachment_4 thumb 是否是缩率图
+pre_forum_attachment_4 picid 相册图片ID
+pre_forum_attachment_5 pre_forum_attachment_5 
+pre_forum_attachment_5 aid 附件id
+pre_forum_attachment_5 tid 主题id
+pre_forum_attachment_5 pid 帖子id
+pre_forum_attachment_5 uid 会员id
+pre_forum_attachment_5 dateline 上传时间
+pre_forum_attachment_5 filename 原文件名
+pre_forum_attachment_5 filesize 文件大小
+pre_forum_attachment_5 attachment 服务器路径
+pre_forum_attachment_5 remote 是否远程附件
+pre_forum_attachment_5 description 说明
+pre_forum_attachment_5 readperm 阅读权限
+pre_forum_attachment_5 price 附件价格
+pre_forum_attachment_5 isimage 是否图片
+pre_forum_attachment_5 width 附件宽度
+pre_forum_attachment_5 thumb 是否是缩率图
+pre_forum_attachment_5 picid 相册图片ID
+pre_forum_attachment_6 pre_forum_attachment_6 
+pre_forum_attachment_6 aid 附件id
+pre_forum_attachment_6 tid 主题id
+pre_forum_attachment_6 pid 帖子id
+pre_forum_attachment_6 uid 会员id
+pre_forum_attachment_6 dateline 上传时间
+pre_forum_attachment_6 filename 原文件名
+pre_forum_attachment_6 filesize 文件大小
+pre_forum_attachment_6 attachment 服务器路径
+pre_forum_attachment_6 remote 是否远程附件
+pre_forum_attachment_6 description 说明
+pre_forum_attachment_6 readperm 阅读权限
+pre_forum_attachment_6 price 附件价格
+pre_forum_attachment_6 isimage 是否图片
+pre_forum_attachment_6 width 附件宽度
+pre_forum_attachment_6 thumb 是否是缩率图
+pre_forum_attachment_6 picid 相册图片ID
+pre_forum_attachment_7 pre_forum_attachment_7 
+pre_forum_attachment_7 aid 附件id
+pre_forum_attachment_7 tid 主题id
+pre_forum_attachment_7 pid 帖子id
+pre_forum_attachment_7 uid 会员id
+pre_forum_attachment_7 dateline 上传时间
+pre_forum_attachment_7 filename 原文件名
+pre_forum_attachment_7 filesize 文件大小
+pre_forum_attachment_7 attachment 服务器路径
+pre_forum_attachment_7 remote 是否远程附件
+pre_forum_attachment_7 description 说明
+pre_forum_attachment_7 readperm 阅读权限
+pre_forum_attachment_7 price 附件价格
+pre_forum_attachment_7 isimage 是否图片
+pre_forum_attachment_7 width 附件宽度
+pre_forum_attachment_7 thumb 是否是缩率图
+pre_forum_attachment_7 picid 相册图片ID
+pre_forum_attachment_8 pre_forum_attachment_8 
+pre_forum_attachment_8 aid 附件id
+pre_forum_attachment_8 tid 主题id
+pre_forum_attachment_8 pid 帖子id
+pre_forum_attachment_8 uid 会员id
+pre_forum_attachment_8 dateline 上传时间
+pre_forum_attachment_8 filename 原文件名
+pre_forum_attachment_8 filesize 文件大小
+pre_forum_attachment_8 attachment 服务器路径
+pre_forum_attachment_8 remote 是否远程附件
+pre_forum_attachment_8 description 说明
+pre_forum_attachment_8 readperm 阅读权限
+pre_forum_attachment_8 price 附件价格
+pre_forum_attachment_8 isimage 是否图片
+pre_forum_attachment_8 width 附件宽度
+pre_forum_attachment_8 thumb 是否是缩率图
+pre_forum_attachment_8 picid 相册图片ID
+pre_forum_attachment_9 pre_forum_attachment_9 
+pre_forum_attachment_9 aid 附件id
+pre_forum_attachment_9 tid 主题id
+pre_forum_attachment_9 pid 帖子id
+pre_forum_attachment_9 uid 会员id
+pre_forum_attachment_9 dateline 上传时间
+pre_forum_attachment_9 filename 原文件名
+pre_forum_attachment_9 filesize 文件大小
+pre_forum_attachment_9 attachment 服务器路径
+pre_forum_attachment_9 remote 是否远程附件
+pre_forum_attachment_9 description 说明
+pre_forum_attachment_9 readperm 阅读权限
+pre_forum_attachment_9 price 附件价格
+pre_forum_attachment_9 isimage 是否图片
+pre_forum_attachment_9 width 附件宽度
+pre_forum_attachment_9 thumb 是否是缩率图
+pre_forum_attachment_9 picid 相册图片ID
+pre_forum_attachment_exif aid 附件id
+pre_forum_attachment_unused aid 附件id
+pre_forum_attachment_unused uid 会员id
+pre_forum_attachment_unused dateline 上传时间
+pre_forum_attachment_unused filename 原文件名
+pre_forum_attachment_unused filesize 文件大小
+pre_forum_attachment_unused attachment 服务器路径
+pre_forum_attachment_unused remote 是否远程附件
+pre_forum_attachment_unused isimage 是否图片
+pre_forum_attachment_unused width 附件宽度
+pre_forum_attachment_unused thumb 是否是缩率图
+pre_forum_attachtype id 类型id
+pre_forum_attachtype fid 论坛id
+pre_forum_attachtype extension 扩展名
+pre_forum_attachtype maxsize 允许上传最大值
+pre_forum_bbcode id 代码id
+pre_forum_bbcode available 是否启用 (0:不启用 1:启用但不显示 2:启用并显示)
+pre_forum_bbcode tag 标签
+pre_forum_bbcode icon 图标
+pre_forum_bbcode example 例子
+pre_forum_bbcode params 1 参数个数
+pre_forum_bbcode nest 1 嵌套层次
+pre_forum_bbcode displayorder 显示顺序
+pre_forum_collection ctid 专辑ID
+pre_forum_collection uid 用户ID
+pre_forum_collection username 用户名
+pre_forum_collection name 专辑名
+pre_forum_collection dateline 创建时间
+pre_forum_collection follownum 订阅数
+pre_forum_collection threadnum 主题数
+pre_forum_collection commentnum 评论数
+pre_forum_collection desc 简介
+pre_forum_collection lastupdate 最后变动时间
+pre_forum_collection rate 评分
+pre_forum_collection ratenum 评分次数
+pre_forum_collection lastpost 最后主题ID
+pre_forum_collection lastsubject 最后主题标题
+pre_forum_collection lastposttime 最后主题时间
+pre_forum_collection lastposter 最后主题发帖者
+pre_forum_collection lastvisit 创建者最后访问
+pre_forum_collection keyword 专辑关键词
+pre_forum_collectioncomment cid 评论ID
+pre_forum_collectioncomment ctid 专辑ID
+pre_forum_collectioncomment uid 用户ID
+pre_forum_collectioncomment username 用户名
+pre_forum_collectioncomment dateline 评论时间
+pre_forum_collectioncomment useip IP地址
+pre_forum_collectioncomment rate 评分
+pre_forum_collectionfollow uid 用户ID
+pre_forum_collectionfollow username 用户名
+pre_forum_collectionfollow ctid 专辑ID
+pre_forum_collectionfollow dateline 关注时间
+pre_forum_collectionfollow lastvisit 最后访问专辑时间
+pre_forum_collectioninvite ctid 专辑ID
+pre_forum_collectioninvite uid 邀请合作者ID
+pre_forum_collectioninvite dateline 邀请时间
+pre_forum_collectionrelated tid 主题ID
+pre_forum_collectionteamworker ctid 专辑ID
+pre_forum_collectionteamworker uid 合作者ID
+pre_forum_collectionteamworker name 专辑名
+pre_forum_collectionteamworker username 用户名
+pre_forum_collectionteamworker lastvisit 最后访问专辑时间
+pre_forum_collectionthread ctid 专辑ID
+pre_forum_collectionthread tid 专辑内主题ID
+pre_forum_collectionthread dateline 主题日期
+pre_forum_collectionthread reason 推荐理由
+pre_forum_creditslog uid 会员id
+pre_forum_creditslog fromto 来自/到
+pre_forum_creditslog sendcredits 转出积分字段
+pre_forum_creditslog receivecredits 接受积分字段
+pre_forum_creditslog send 转出积分
+pre_forum_creditslog receive 接受积分
+pre_forum_creditslog dateline 转帐日期
+pre_forum_creditslog operation 操作
+pre_forum_debate tid 主题id
+pre_forum_debate uid 发起人id
+pre_forum_debate starttime 开始时间
+pre_forum_debate endtime 结束时间
+pre_forum_debate affirmdebaters 正方辩论人数
+pre_forum_debate negadebaters 反方辩论人数
+pre_forum_debate affirmvotes 正方得票数
+pre_forum_debate negavotes 反方得票数
+pre_forum_debate umpire 裁判用户名
+pre_forum_debate winner 获胜方 (0:平局 1:为正方 2:为反方) 裁判评判结果
+pre_forum_debate bestdebater 最佳辩手用户名
+pre_forum_debate affirmreplies 正方回复次数，用来翻页
+pre_forum_debate negareplies 反方回复次数，用来翻页
+pre_forum_debatepost pid 帖子id
+pre_forum_debatepost stand 立场 (0:中立 1:正方 2:为反方)
+pre_forum_debatepost tid 主题id
+pre_forum_debatepost uid 发起人id
+pre_forum_debatepost dateline 发表的时间
+pre_forum_debatepost voters 投票人数
+pre_forum_faq id 帮助id
+pre_forum_faq fpid 帮助父id
+pre_forum_faq displayorder 排序
+pre_forum_faq identifier 帮助标识
+pre_forum_faq keyword 帮助关键词
+pre_forum_faq title 帮助标题
+pre_forum_filter_post tid 主题ID
+pre_forum_filter_post pid 帖子ID
+pre_forum_filter_post postlength 帖子真实长度
+pre_forum_forum fid 论坛id
+pre_forum_forum fup 上级论坛id
+pre_forum_forum name 名称
+pre_forum_forum status 显示状态 (0:隐藏 1:正常 3:群组)
+pre_forum_forum displayorder 显示顺序
+pre_forum_forum styleid 风格id
+pre_forum_forum threads 主题数量
+pre_forum_forum posts 帖子数量
+pre_forum_forum todayposts 今日发帖数量
+pre_forum_forum yesterdayposts 昨日发帖数量
+pre_forum_forum rank 排名
+pre_forum_forum oldrank 前天排名
+pre_forum_forum lastpost 最后发表
+pre_forum_forum domain 绑定的二级域名
+pre_forum_forum allowsmilies 允许使用表情
+pre_forum_forum allowhtml 允许使用html
+pre_forum_forum allowbbcode 允许bbcode
+pre_forum_forum allowimgcode 允许img
+pre_forum_forum allowmediacode 允许使用多媒体代码
+pre_forum_forum allowanymous 允许匿名
+pre_forum_forum allowpostspecial 允许发表特殊主题
+pre_forum_forum allowspecialonly 只允许发表特殊主题
+pre_forum_forum allowappend 是否开启帖子补充
+pre_forum_forum alloweditrules 允许版主修改论坛规则
+pre_forum_forum allowfeed 允许推送动态,默认推送广播
+pre_forum_forum allowside 显示边栏
+pre_forum_forum recyclebin 是否启用回收站
+pre_forum_forum modnewposts 是否审核发帖
+pre_forum_forum jammer 是否启用干扰码
+pre_forum_forum disablewatermark 是否图片附件增加水印
+pre_forum_forum inheritedmod 本论坛或分类版主的权力继承到下级论坛
+pre_forum_forum autoclose 自动关闭主题
+pre_forum_forum forumcolumns 增加论坛水平横排设置
+pre_forum_forum catforumcolumns 增加分区版块水平横排设置
+pre_forum_forum threadcaches 主题缓存功能设置
+pre_forum_forum alloweditpost 1 允许编辑帖子
+pre_forum_forum simple 只显示子版块
+pre_forum_forum modworks 本版有待处理的管理事项
+pre_forum_forum allowglobalstick 是否显示全局置顶
+pre_forum_forum level 群组等级
+pre_forum_forum commoncredits 群组公共积分
+pre_forum_forum archive 是否有存档表
+pre_forum_forum recommend 推荐到的版块
+pre_forum_forum favtimes 版块或群组的收藏次数
+pre_forum_forum sharetimes 版块或群组的分享次数
+pre_forum_forum disablethumb 是否添加缩略图
+pre_forum_forum disablecollect 禁止淘帖
+pre_forum_forum_threadtable fid 版块id
+pre_forum_forum_threadtable threadtableid thread分区id
+pre_forum_forum_threadtable threads 主题数
+pre_forum_forum_threadtable posts 帖子数
+pre_forum_forumfield fid 版块id
+pre_forum_forumfield password 私密论坛密码
+pre_forum_forumfield icon 图标
+pre_forum_forumfield redirect URL转发
+pre_forum_forumfield attachextensions 允许上传附件类型
+pre_forum_forumfield viewperm 阅读权限, 格式: 1 4 5
+pre_forum_forumfield postperm 发表权限, 格式: 1 4 5
+pre_forum_forumfield replyperm 回复权限, 格式: 1 4 5
+pre_forum_forumfield getattachperm 下载附件权限, 格式: 1 4 5
+pre_forum_forumfield postattachperm 上传附件权限, 格式: 1 4 5
+pre_forum_forumfield postimageperm 上传图片权限, 格式: 1 4 5
+pre_forum_forumfield spviewperm 不受限于版权权限表达式, 格式: 1 4 5
+pre_forum_forumfield jointype 加入群组方式 -1为关闭，0为公开， 2邀请
+pre_forum_forumfield gviewperm 群组浏览权限 0:仅成员 1:所有用户
+pre_forum_forumfield membernum 群组成员数
+pre_forum_forumfield dateline 群组创建时间
+pre_forum_forumfield lastupdate 群组最后更新时间
+pre_forum_forumfield activity 群组活跃度
+pre_forum_forumfield founderuid 群组创始人UID
+pre_forum_forumfield foundername 群组创始人名称
+pre_forum_forumfield banner 群组头图片
+pre_forum_forumfield groupnum 分类下的群组数量
+pre_forum_forumfield picstyle 帖子列表是否以图片形式显示 0:否 1:
+pre_forum_forumfield widthauto 默认是否宽屏 0:全局 -1:宽屏 1:窄屏
+pre_forum_forumfield antitheft 禁止防采集
+pre_forum_forumfield forumhidewater 禁止隐藏水帖
+pre_forum_forumfield forumrecommend 禁止推荐回复
+pre_forum_forumfield livetid 版块直播帖tid
+pre_forum_forumfield price 进入版块所需支付的积分
+pre_forum_forumrecommend fid 版块id
+pre_forum_forumrecommend tid 帖子id
+pre_forum_forumrecommend typeid 是否含有附件图片
+pre_forum_forumrecommend displayorder 推荐顺序
+pre_forum_forumrecommend subject 推荐主题标题
+pre_forum_forumrecommend author 推荐主题作者
+pre_forum_forumrecommend authorid 推荐主题作者id
+pre_forum_forumrecommend moderatorid 推荐管理人员id
+pre_forum_forumrecommend expiration 推荐主题有效期
+pre_forum_forumrecommend position 显示位置
+pre_forum_forumrecommend highlight 高亮颜色
+pre_forum_forumrecommend aid 附件ID
+pre_forum_forumrecommend filename 附件文件
+pre_forum_groupcreditslog fid 群组ID
+pre_forum_groupcreditslog uid 成员UID
+pre_forum_groupcreditslog logdate 日期/20100308
+pre_forum_groupfield fid 群组关联fid
+pre_forum_groupfield privacy 群组隐私设置
+pre_forum_groupfield dateline 缓存生成时间
+pre_forum_groupfield type 缓存类型
+pre_forum_groupinvite fid 群组id
+pre_forum_groupinvite uid 邀请人id
+pre_forum_groupinvite inviteuid 被邀请人id
+pre_forum_groupinvite dateline 邀请时间
+pre_forum_grouplevel levelid 等级ID
+pre_forum_grouplevel leveltitle 群组等级名称
+pre_forum_grouplevel creditshigher 该等级的积分上限
+pre_forum_grouplevel creditslower 该等级的积分下限
+pre_forum_grouplevel icon 等级图标
+pre_forum_groupuser fid 群组关联fid
+pre_forum_groupuser uid 成员id
+pre_forum_groupuser username 成员名
+pre_forum_groupuser level 成员等级 (0:待审核 1:群主 2:副群主 3:明星成员 4:普通成员)
+pre_forum_groupuser threads 成员主题数
+pre_forum_groupuser replies 成员回复数
+pre_forum_groupuser joindateline 成员加入群组时间
+pre_forum_groupuser lastupdate 成员最后活动时间
+pre_forum_groupuser privacy 成员隐私设置
+pre_forum_hotreply_member tid 主题ID
+pre_forum_hotreply_member pid 帖子ID
+pre_forum_hotreply_member uid 用户ID
+pre_forum_hotreply_member attitude 用户投票值
+pre_forum_hotreply_number pid 帖子ID
+pre_forum_hotreply_number tid 主题ID
+pre_forum_hotreply_number support 支持数
+pre_forum_hotreply_number against 反对数
+pre_forum_hotreply_number total 总数
+pre_forum_imagetype typeid 分类id
+pre_forum_imagetype available 是否启用
+pre_forum_imagetype name 分类名称
+pre_forum_imagetype displayorder 分类顺序
+pre_forum_imagetype directory 图片目录
+pre_forum_medal medalid 勋章id
+pre_forum_medal name 勋章名称
+pre_forum_medal available 是否启用
+pre_forum_medal image 勋章图片
+pre_forum_medal type 勋章类型
+pre_forum_medal displayorder 勋章显示顺序
+pre_forum_medal description 勋章描述
+pre_forum_medal expiration 勋章有效期
+pre_forum_medal credit 勋章购买使用积分
+pre_forum_medal price 勋章价格
+pre_forum_medallog id 记录id
+pre_forum_medallog uid 勋章拥有着用户id
+pre_forum_medallog medalid 勋章id
+pre_forum_medallog type 勋章类型id
+pre_forum_medallog dateline 颁发时间id
+pre_forum_medallog expiration 有效期id
+pre_forum_medallog status 勋章状态id
+pre_forum_memberrecommend tid 主题ID
+pre_forum_memberrecommend recommenduid 推荐会员ID
+pre_forum_memberrecommend dateline 推荐时间
+pre_forum_moderator uid 会员id
+pre_forum_moderator fid 论坛id
+pre_forum_moderator displayorder 显示顺序
+pre_forum_moderator inherited 是否继承
+pre_forum_modwork uid 会员id
+pre_forum_modwork modaction 动作
+pre_forum_modwork dateline 时间段
+pre_forum_modwork count 登录次数
+pre_forum_modwork posts 发表数
+pre_forum_newthread tid 主题ID
+pre_forum_newthread fid 版块ID
+pre_forum_newthread dateline 日期
+pre_forum_onlinelist groupid 会员组id
+pre_forum_onlinelist displayorder 显示顺序
+pre_forum_onlinelist title 组名称
+pre_forum_onlinelist url 图例URL
+pre_forum_order orderid 订单号id
+pre_forum_order status 状态
+pre_forum_order buyer 购买者姓名
+pre_forum_order admin 补单管理员姓名
+pre_forum_order uid 购买者id
+pre_forum_order amount 数量
+pre_forum_order price 0.00 价格
+pre_forum_order submitdate 提交日期
+pre_forum_order confirmdate 确认日期
+pre_forum_order email 购买时的Email
+pre_forum_order ip 购买时的IP
+pre_forum_poll tid 主题id
+pre_forum_poll overt 是否公开投票参与人
+pre_forum_poll multiple 是否多选
+pre_forum_poll visible 是否投票后可见
+pre_forum_poll maxchoices 最大可选项数
+pre_forum_poll isimage 是否为图片投票0: 普通投票; 1:图片投票
+pre_forum_poll expiration 过期时间
+pre_forum_poll pollpreview 选项内容前两项预览
+pre_forum_poll voters 投票人数
+pre_forum_polloption polloptionid 选项id
+pre_forum_polloption tid 主题id
+pre_forum_polloption votes 票数
+pre_forum_polloption displayorder 显示顺序
+pre_forum_polloption polloption 选项内容
+pre_forum_polloption_image aid 图片附件id
+pre_forum_polloption_image poid 选项id
+pre_forum_polloption_image tid 主题id
+pre_forum_polloption_image pid 帖子id
+pre_forum_polloption_image uid 会员id
+pre_forum_polloption_image filename 原文件名
+pre_forum_polloption_image filesize 文件大小
+pre_forum_polloption_image attachment 服务器路径
+pre_forum_polloption_image remote 是否远程附件
+pre_forum_polloption_image width 附件宽度
+pre_forum_polloption_image thumb 是否有缩略率图
+pre_forum_polloption_image dateline 上传时间
+pre_forum_pollvoter tid 主题id
+pre_forum_pollvoter uid 会员id
+pre_forum_pollvoter username 会员名
+pre_forum_pollvoter dateline 发表时间
+pre_forum_post pid 帖子id
+pre_forum_post fid 论坛id
+pre_forum_post tid 主题id
+pre_forum_post first 是否是首贴
+pre_forum_post author 作者姓名
+pre_forum_post authorid 作者id
+pre_forum_post subject 标题
+pre_forum_post dateline 发表时间
+pre_forum_post useip 发帖者IP
+pre_forum_post invisible 是否通过审核
+pre_forum_post anymous 是否匿名
+pre_forum_post usesig 是否启用签名
+pre_forum_post htmlon 是否允许HTML
+pre_forum_post bbcodeoff 是否关闭BBCODE
+pre_forum_post smileyoff 是否关闭表情
+pre_forum_post parseurloff 是否允许粘贴URL
+pre_forum_post attachment 附件
+pre_forum_post rate 评分分数
+pre_forum_post ratetimes 评分次数
+pre_forum_post status 帖子状态
+pre_forum_post tags 新增字段，用于存放tag
+pre_forum_post comment 是否存在点评
+pre_forum_post replycredit 回帖获得积分记录
+pre_forum_post position 帖子位置信息
+pre_forum_post_location pid 
+pre_forum_post_location tid YES
+pre_forum_post_location uid YES
+pre_forum_post_location mapx 
+pre_forum_post_location mapy 
+pre_forum_post_location location 
+pre_forum_post_moderate id ID
+pre_forum_post_moderate status 状态 审核中，1 已忽略
+pre_forum_post_moderate dateline 
+pre_forum_post_tableid pid Post ID
+pre_forum_postcache pid 
+pre_forum_postcache dateline 
+pre_forum_postcomment id 
+pre_forum_postcomment tid 主题ID
+pre_forum_postcomment pid 帖子ID
+pre_forum_postcomment author 作者
+pre_forum_postcomment authorid 作者ID x1.5以后：0为游客　-1为观点
+pre_forum_postcomment dateline 时间
+pre_forum_postcomment comment 点评内容
+pre_forum_postcomment score 是否包含点评观点
+pre_forum_postcomment useip 发帖者IP
+pre_forum_postcomment rpid 关联的帖子ID
+pre_forum_postlog pid 
+pre_forum_postlog tid 
+pre_forum_postlog fid 
+pre_forum_postlog uid 
+pre_forum_postlog action 
+pre_forum_postlog dateline 
+pre_forum_poststick tid 
+pre_forum_poststick pid 
+pre_forum_poststick position 
+pre_forum_poststick dateline 
+pre_forum_promotion ip IP地址
+pre_forum_promotion uid 会员id
+pre_forum_promotion username 会员名
+pre_forum_ratelog pid 帖子id
+pre_forum_ratelog uid 会员id
+pre_forum_ratelog username 会员名
+pre_forum_ratelog extcredits 评分字段
+pre_forum_ratelog dateline 评分时间
+pre_forum_ratelog score 分数
+pre_forum_ratelog reason 操作理由
+pre_forum_relatedthread tid 主题id
+pre_forum_relatedthread expiration 过期时间
+pre_forum_relatedthread keywords 关键字
+pre_forum_replycredit tid 主题tid
+pre_forum_replycredit extcredits 单次回复奖励额度
+pre_forum_replycredit extcreditstype 本规则下奖励积分的类型
+pre_forum_replycredit times 回复奖励次数
+pre_forum_replycredit membertimes 单个用户参与次数
+pre_forum_replycredit random 用户设置的回帖奖励几率
+pre_forum_rsscache lastupdate 最后更新时间
+pre_forum_rsscache fid 论坛id
+pre_forum_rsscache tid 主题id
+pre_forum_rsscache dateline 发表时间
+pre_forum_rsscache forum 论坛名称
+pre_forum_rsscache author 作者
+pre_forum_rsscache subject 标题
+pre_forum_rsscache description 解释说明
+pre_forum_rsscache guidetype 导读中的类型
+pre_forum_sofa tid 零回复主题id
+pre_forum_sofa fid 版块id
+pre_forum_spacecache uid 用户 uid
+pre_forum_spacecache variable 缓存变量的名称
+pre_forum_spacecache expiration 过期时间
+pre_forum_statlog fid 版块ID
+pre_forum_statlog type 记录类型 -- 1:发帖数
+pre_forum_statlog value 记录值
+pre_forum_thread tid 主题id
+pre_forum_thread fid 上级论坛
+pre_forum_thread posttableid 帖子表ID
+pre_forum_thread typeid 主题分类id
+pre_forum_thread sortid 分类信息id
+pre_forum_thread readperm 阅读权限
+pre_forum_thread price 价格
+pre_forum_thread author 会员名
+pre_forum_thread authorid 会员id
+pre_forum_thread subject 标题
+pre_forum_thread dateline 发表时间
+pre_forum_thread lastpost 最后发表
+pre_forum_thread lastposter 最后发表人id
+pre_forum_thread views 浏览次数
+pre_forum_thread replies 回复次数
+pre_forum_thread displayorder 显示顺序
+pre_forum_thread highlight 是否高亮
+pre_forum_thread digest 是否精华
+pre_forum_thread rate 是否评分
+pre_forum_thread special 特殊主题,1:投票;2:商品;3:悬赏;4:活动;5:辩论贴;127:插件相关
+pre_forum_thread attachment 附件,0无附件 1普通附件 2有图片附件
+pre_forum_thread moderated 是否被管理员改动
+pre_forum_thread closed 是否关闭
+pre_forum_thread stickreply 是否有回帖置顶
+pre_forum_thread recommends 推荐指数
+pre_forum_thread recommend_add 支持人数
+pre_forum_thread recommend_sub 反对人数
+pre_forum_thread heats 主题热度值
+pre_forum_thread status 
+pre_forum_thread isgroup 是否为群组帖子
+pre_forum_thread favtimes 主题收藏次数
+pre_forum_thread sharetimes 主题分享次数
+pre_forum_thread stamp 主题图章
+pre_forum_thread icon 主题图标
+pre_forum_thread pushedaid 被推送到的文章aid
+pre_forum_thread cover 主题封面 负数:远程　正数:本地 0:无封面
+pre_forum_thread replycredit 回帖奖励积分主题记录积分值
+pre_forum_thread relatebytag 根据帖子标签取的相关主题id (time /t tid,...)
+pre_forum_thread maxposition 最大回帖位置信息
+pre_forum_thread bgcolor 保存高亮背景色
+pre_forum_thread comments 点评数
+pre_forum_thread_moderate id ID
+pre_forum_thread_moderate status 状态 审核中，1 已忽略
+pre_forum_thread_moderate dateline 
+pre_forum_threadaddviews tid 主题id
+pre_forum_threadaddviews addviews 浏览次数
+pre_forum_threadcalendar cid 帖子日历ID
+pre_forum_threadcalendar fid 版块ID
+pre_forum_threadcalendar dateline 日期
+pre_forum_threadcalendar hotnum 热帖总数
+pre_forum_threadclass typeid 分类ID
+pre_forum_threadclass fid 所属版块ID
+pre_forum_threadclass name 分类名称
+pre_forum_threadclass displayorder 显示顺序
+pre_forum_threadclass icon 分类图标URL
+pre_forum_threadclass moderators 仅管理者可用
+pre_forum_threadclosed tid 对应源主题
+pre_forum_threadclosed redirect 保留的指向 tid
+pre_forum_threaddisablepos tid 主题id
+pre_forum_threadhot cid 帖子日历ID
+pre_forum_threadhot fid 版块ID
+pre_forum_threadhot tid 主题ID
+pre_forum_threadimage tid 
+pre_forum_threadimage attachment 服务器路径
+pre_forum_threadimage remote 是否远程附件
+pre_forum_threadlog tid 
+pre_forum_threadlog fid 
+pre_forum_threadlog uid 
+pre_forum_threadlog otherid 
+pre_forum_threadlog action 
+pre_forum_threadlog expiry 
+pre_forum_threadlog dateline 
+pre_forum_threadmod tid 主题id
+pre_forum_threadmod uid 会员id
+pre_forum_threadmod username 会员名
+pre_forum_threadmod dateline 操作时间
+pre_forum_threadmod expiration 有效时间
+pre_forum_threadmod action 操作
+pre_forum_threadmod status 状态
+pre_forum_threadmod magicid 使用道具id
+pre_forum_threadmod stamp 主题图章/图标 ID
+pre_forum_threadmod reason 操作原因
+pre_forum_threadpartake tid 主题id
+pre_forum_threadpartake uid 会员id
+pre_forum_threadpartake dateline 参与时间
+pre_forum_threadpreview tid 主题ID
+pre_forum_threadpreview relay 转播次数
+pre_forum_threadprofile id id
+pre_forum_threadprofile name 名称
+pre_forum_threadprofile global 全局
+pre_forum_threadprofile_group gid 关联用户组、认证组id
+pre_forum_threadprofile_group tpid id
+pre_forum_threadrush tid 主题id
+pre_forum_threadrush stopfloor 截止楼层
+pre_forum_threadrush starttimefrom 开始时间
+pre_forum_threadrush starttimeto 结束时间
+pre_forum_threadrush creditlimit 积分下限
+pre_forum_threadrush replylimit 回帖次数上限
+pre_forum_threadtype typeid 分类信息id
+pre_forum_threadtype fid 
+pre_forum_threadtype displayorder 显示顺序
+pre_forum_threadtype name 名称
+pre_forum_threadtype description 解释说明
+pre_forum_threadtype icon 分类图标URL
+pre_forum_threadtype special 分类状态
+pre_forum_threadtype modelid 分类模型id
+pre_forum_threadtype expiration 分类有效期
+pre_forum_trade tid 主题id
+pre_forum_trade pid 帖子id
+pre_forum_trade typeid 主题分类id
+pre_forum_trade sellerid 卖家id
+pre_forum_trade seller 卖家名
+pre_forum_trade account 卖家帐号
+pre_forum_trade tenpayaccount 卖家财付通账号
+pre_forum_trade subject 标题
+pre_forum_trade price 价格
+pre_forum_trade amount 1 数量
+pre_forum_trade quality 成色
+pre_forum_trade locus 所在地
+pre_forum_trade transport 物流方式
+pre_forum_trade ordinaryfee 平邮附加费
+pre_forum_trade expressfee 快递附加费
+pre_forum_trade emsfee EMS附加费
+pre_forum_trade itemtype 商品类型
+pre_forum_trade dateline 交易时间
+pre_forum_trade expiration 过期时间
+pre_forum_trade lastbuyer 最后买家用户名
+pre_forum_trade lastupdate 最后交易时间
+pre_forum_trade totalitems 总交易量
+pre_forum_trade tradesum 总交易额
+pre_forum_trade closed 是否关闭
+pre_forum_trade aid 商品图片的 Aid
+pre_forum_trade displayorder 显示顺序
+pre_forum_trade costprice 商品原价
+pre_forum_trade credit 积分价格
+pre_forum_trade costcredit 积分原价
+pre_forum_trade credittradesum 总积分交易额
+pre_forum_tradecomment id id
+pre_forum_tradecomment orderid 订单 id
+pre_forum_tradecomment pid 帖子 id
+pre_forum_tradecomment type 类型
+pre_forum_tradecomment raterid 评价方会员id
+pre_forum_tradecomment rater 评价方用户名
+pre_forum_tradecomment rateeid 被评价方会员id
+pre_forum_tradecomment ratee 被评价方用户名
+pre_forum_tradecomment message 评价内容
+pre_forum_tradecomment explanation 解释
+pre_forum_tradecomment score 评分
+pre_forum_tradecomment dateline 评价时间
+pre_forum_tradelog tid 主题id
+pre_forum_tradelog pid 帖子id
+pre_forum_tradelog orderid 订单号id
+pre_forum_tradelog trade 支付宝订单号
+pre_forum_tradelog paytype 在线支付方式
+pre_forum_tradelog subject 标题
+pre_forum_tradelog price 价格
+pre_forum_tradelog quality 成色
+pre_forum_tradelog itemtype 商品类型
+pre_forum_tradelog number 数量
+pre_forum_tradelog tax 0.00 交易手续费
+pre_forum_tradelog locus 物品所在地
+pre_forum_tradelog sellerid 卖家id
+pre_forum_tradelog seller 卖家名
+pre_forum_tradelog selleraccount 卖家交易帐号
+pre_forum_tradelog tenpayaccount 卖家财付通账号
+pre_forum_tradelog buyerid 买家id
+pre_forum_tradelog buyer 买家名
+pre_forum_tradelog buyercontact 买家联系方式
+pre_forum_tradelog buyercredits 买家暂扣积分
+pre_forum_tradelog buyermsg 买家留言
+pre_forum_tradelog status 状态
+pre_forum_tradelog lastupdate 状态最后更新
+pre_forum_tradelog offline 是否离线交易
+pre_forum_tradelog buyername 买家姓名
+pre_forum_tradelog buyerzip 买家邮编
+pre_forum_tradelog buyerphone 买家电话
+pre_forum_tradelog buyermobile 买家手机
+pre_forum_tradelog transport 运输方式
+pre_forum_tradelog transportfee 运输费用
+pre_forum_tradelog baseprice 商品原价
+pre_forum_tradelog discount 折扣
+pre_forum_tradelog ratestatus 评价状态
+pre_forum_tradelog credit 积分价格
+pre_forum_tradelog basecredit 积分原价
+pre_forum_typeoption optionid 分类信息项目ID
+pre_forum_typeoption classid 分类信息上级项目ID
+pre_forum_typeoption displayorder 分类信息排序
+pre_forum_typeoption expiration 分类信息项目是否受有效期限制
+pre_forum_typeoption protect 分类信息项目是否是保护项目
+pre_forum_typeoption title 分类信息项目标题
+pre_forum_typeoption description 分类信息项目描述
+pre_forum_typeoption identifier 分类信息项目标识
+pre_forum_typeoption type 分类信息项目类型
+pre_forum_typeoption unit 分类信息项目单位
+pre_forum_typeoptionvar sortid 分类信息id
+pre_forum_typeoptionvar tid 分类信息数据对应帖子id
+pre_forum_typeoptionvar fid 分类信息数据对应帖子板块id
+pre_forum_typeoptionvar optionid 分类信息数据对应选项id
+pre_forum_typeoptionvar expiration 分类信息数据有效期
+pre_forum_typevar sortid 分类信息id
+pre_forum_typevar optionid 分类信息对应项目id
+pre_forum_typevar available 分类信息对应项目是否可用
+pre_forum_typevar required 分类信息对应项目是否必填
+pre_forum_typevar unchangeable 分类信息对应项目是否可修改
+pre_forum_typevar search 分类信息对应项目是否可搜索
+pre_forum_typevar displayorder 分类信息对应项目顺序
+pre_forum_typevar subjectshow 
+pre_forum_warning wid 记录id
+pre_forum_warning pid 帖子 pid
+pre_forum_warning operatorid 警告者 Uid
+pre_forum_warning operator 警告者用户名
+pre_forum_warning authorid 被警告者 uid
+pre_forum_warning author 被警告者用户名
+pre_forum_warning dateline 警告时间
+pre_forum_warning reason 警告原因
+pre_home_album albumid 相册ID
+pre_home_album albumname 相册名字
+pre_home_album catid 相册系统分类
+pre_home_album uid 相册用户ID
+pre_home_album username 相册用户名
+pre_home_album dateline 相册建立时间戳
+pre_home_album updatetime 相册最后修改时间戳
+pre_home_album picnum 相册照片数量
+pre_home_album pic 相册封面照片
+pre_home_album picflag 相册是否有图片
+pre_home_album friend 相册隐私设置:"0"全站用户可见,"1"为全好友可见,"2"为仅指定的好友可见,"3"为仅自己可见,"4"为凭密码查看
+pre_home_album password 相册密码
+pre_home_album favtimes 相册收藏次数
+pre_home_album sharetimes 相册分享次数
+pre_home_album_category catid 栏目id
+pre_home_album_category upid 上级栏目id
+pre_home_album_category catname 标题
+pre_home_album_category num 相册数
+pre_home_album_category displayorder 显示顺序
+pre_home_appcreditlog logid 序列id
+pre_home_appcreditlog uid 用户id
+pre_home_appcreditlog appid 用户名
+pre_home_appcreditlog appname 应用名称
+pre_home_appcreditlog type 积分转入转出类型
+pre_home_appcreditlog credit 积分数
+pre_home_appcreditlog dateline 操作时间
+pre_home_blacklist uid 用户ID
+pre_home_blacklist buid 被屏蔽的用户ID
+pre_home_blacklist dateline 被屏蔽的时间戳
+pre_home_blog blogid 日志ID
+pre_home_blog uid 日志所属用户ID
+pre_home_blog username 日志所属用户名
+pre_home_blog subject 日志标题
+pre_home_blog classid 个人分类id
+pre_home_blog catid 系统分类id
+pre_home_blog viewnum 日志查看数
+pre_home_blog replynum 日志回复数
+pre_home_blog hot 热度
+pre_home_blog dateline 日志发布时间
+pre_home_blog picflag 日志是否有图片
+pre_home_blog reply 是否允许评论:"0"为允许,"1"为不允许
+pre_home_blog friend 日志隐私设置:"0"为全站用户可见,"1"为全好友可见,"2"为仅指定的好友可见,"3"为仅自己可见,"4"为凭密码查看
+pre_home_blog password 日志密码
+pre_home_blog favtimes 日志收藏次数
+pre_home_blog sharetimes 日志分享次数
+pre_home_blog status blog状态 -1:回收站日志; 0:正常; 1:审核;
+pre_home_blog click1 表态1 id
+pre_home_blog click2 表态2 id
+pre_home_blog click3 表态3 id
+pre_home_blog click4 表态4 id
+pre_home_blog click5 表态5 id
+pre_home_blog click6 表态6 id
+pre_home_blog click7 表态7 id
+pre_home_blog click8 表态8 id
+pre_home_blog_category catid 栏目id
+pre_home_blog_category upid 上级栏目id
+pre_home_blog_category catname 标题
+pre_home_blog_category num 日志数
+pre_home_blog_category displayorder 显示顺序
+pre_home_blog_moderate id ID
+pre_home_blog_moderate status 状态 审核中，1 已忽略
+pre_home_blog_moderate dateline 
+pre_home_blogfield blogid 日志id
+pre_home_blogfield uid 日志所属用户ID
+pre_home_blogfield pic 标题图片
+pre_home_blogfield tag 日志TAG
+pre_home_blogfield postip 发表日志的IP
+pre_home_blogfield relatedtime 相关日志产生时间戳
+pre_home_blogfield magiccolor 道具彩色灯id
+pre_home_blogfield magicpaper 道具信纸id
+pre_home_blogfield pushedaid 被推送到的文章aid
+pre_home_class classid 个人分类id
+pre_home_class classname 分类名称
+pre_home_class uid 分类所属用户ID
+pre_home_class dateline 分类创建时间戳
+pre_home_click clickid 表态ID
+pre_home_click name 表态名称
+pre_home_click icon 表态图标
+pre_home_click idtype 表态类型
+pre_home_click available 是否有效
+pre_home_click displayorder 排序
+pre_home_clickuser uid 表态用户id
+pre_home_clickuser username 表态用户名
+pre_home_clickuser id 作用对象id
+pre_home_clickuser idtype 作用对象id类型
+pre_home_clickuser clickid 表态id
+pre_home_clickuser dateline 发表表态时间戳
+pre_home_comment cid 评论id
+pre_home_comment uid 发表评论的用户id
+pre_home_comment id 评论对象id
+pre_home_comment idtype 评论对象的id类型：blogid，picid，uid
+pre_home_comment authorid 若为回复,回复作者用户ID
+pre_home_comment author 若为回复,回复作者用户名
+pre_home_comment ip 评论IP
+pre_home_comment dateline 评论时间戳
+pre_home_comment magicflicker 是否使用了道具彩虹炫
+pre_home_comment status 评论状态 1-审核
+pre_home_comment_moderate id ID
+pre_home_comment_moderate idtype ID类型
+pre_home_comment_moderate status 状态 审核中，1 已忽略
+pre_home_comment_moderate dateline 
+pre_home_docomment id 记录回复id
+pre_home_docomment upid 上级记录回复id
+pre_home_docomment doid 所评论的记录id
+pre_home_docomment uid 发布记录者用户id
+pre_home_docomment username 发布记录者用户名
+pre_home_docomment dateline 记录回复时间戳
+pre_home_docomment ip 发布记录ip
+pre_home_docomment grade 记录回复的层级
+pre_home_doing doid 记录id
+pre_home_doing uid 记录发布者用户id
+pre_home_doing username 记录发布者用户名
+pre_home_doing from 记录的发表来源
+pre_home_doing dateline 记录发布时间戳
+pre_home_doing ip 记录发布ip
+pre_home_doing replynum 记录回复数
+pre_home_doing status 记录状态 1-审核
+pre_home_doing_moderate id ID
+pre_home_doing_moderate status 状态 审核中，1 已忽略
+pre_home_doing_moderate dateline 
+pre_home_favorite favid 收藏id
+pre_home_favorite uid 会员id
+pre_home_favorite id 
+pre_home_favorite idtype 
+pre_home_favorite spaceuid 空间会员id
+pre_home_favorite title 标题
+pre_home_favorite dateline 
+pre_home_feed feedid feed的ID
+pre_home_feed appid 应用程序ID
+pre_home_feed icon feed图标
+pre_home_feed uid 产生feed的用户ID
+pre_home_feed username 产生feed的用户名
+pre_home_feed dateline feed产生时间戳
+pre_home_feed friend 产生feed信息的隐私设置
+pre_home_feed hash_template 模板hash:md5(title_template" "body_template)
+pre_home_feed hash_data 数据内容hash:md5(title_templat" "title_data" "body_template" "body_data)
+pre_home_feed image_1 feed图1
+pre_home_feed image_1_link feed图片链接1
+pre_home_feed image_2 feed图片2
+pre_home_feed image_2_link feed图片链接2
+pre_home_feed image_3 feed图片3
+pre_home_feed image_3_link feed图片链接3
+pre_home_feed image_4 feed图片4
+pre_home_feed image_4_link feed图片链接4
+pre_home_feed id feed对应对象id
+pre_home_feed idtype feed对应对象类型
+pre_home_feed hot 热度
+pre_home_feed_app feedid 应用feed id
+pre_home_feed_app appid 应用程序ID
+pre_home_feed_app icon feed图标
+pre_home_feed_app uid 产生feed的用户ID
+pre_home_feed_app username 产生feed的用户名
+pre_home_feed_app dateline feed产生时间戳
+pre_home_feed_app friend 产生feed信息的隐私设置
+pre_home_feed_app hash_template 模板hash:md5(title_template" "body_template)
+pre_home_feed_app hash_data 数据内容hash:md5(title_templat" "title_data" "body_template" "body_data)
+pre_home_feed_app image_1 feed图1
+pre_home_feed_app image_1_link feed图片链接1
+pre_home_feed_app image_2 feed图片2
+pre_home_feed_app image_2_link feed图片链接2
+pre_home_feed_app image_3 feed图片3
+pre_home_feed_app image_3_link feed图片链接3
+pre_home_feed_app image_4 feed图片4
+pre_home_feed_app image_4_link feed图片链接4
+pre_home_follow uid 用户ID
+pre_home_follow username 用户名
+pre_home_follow followuid 被关注用户ID
+pre_home_follow fusername 被关注用户名称
+pre_home_follow bkname 用户备注
+pre_home_follow status 0:正常 1:特殊关注 -1:不能再关注此人
+pre_home_follow mutual 0:单向 1:已互相关注
+pre_home_follow dateline 
+pre_home_follow_feed feedid 自增id
+pre_home_follow_feed uid 被关注者ID
+pre_home_follow_feed username 被关注用户名
+pre_home_follow_feed tid 帖子tid
+pre_home_follow_feed dateline 
+pre_home_follow_feed_archiver feedid 自增id
+pre_home_follow_feed_archiver uid 被关注者ID
+pre_home_follow_feed_archiver username 被关注用户名
+pre_home_follow_feed_archiver tid 帖子tid
+pre_home_follow_feed_archiver dateline 
+pre_home_friend uid 用户ID
+pre_home_friend fuid 用户好友ID
+pre_home_friend fusername 用户好友名
+pre_home_friend gid 好友所在的好友组ID
+pre_home_friend num 好友之间的任务关系数
+pre_home_friend dateline 加好友的时间戳
+pre_home_friend te 好友备注
+pre_home_friend_request uid 用户ID
+pre_home_friend_request fuid 被请求用户ID
+pre_home_friend_request fusername 被请求用户名称
+pre_home_friend_request gid 好友所在的好友组ID
+pre_home_friend_request te 申请附言
+pre_home_friend_request dateline 请求好友时间戳
+pre_home_friendlog uid 用户ID
+pre_home_friendlog fuid 好友用户ID
+pre_home_friendlog action 好友动作:"add"添加,"update"更新
+pre_home_friendlog dateline 好友动作时间
+pre_home_tification id 通知ID
+pre_home_tification uid 通知用户ID
+pre_home_tification type 通知类型:"doing"记录,"friend"好友请求,"sharetice"好友分享,"post"话题回复,
+pre_home_tification new 通知是否为新:"1"为新通知,"0"为通知已读
+pre_home_tification authorid 作者用户ID
+pre_home_tification author 用户名
+pre_home_tification dateline 通知产生的时间戳
+pre_home_tification from_id 来源对象id
+pre_home_tification from_idtype 来源对象类型
+pre_home_tification from_num 来源量
+pre_home_tification category 提醒分类 1我的帖子 2坛友互动 3系统消息 4管理工作 0应用消息
+pre_home_pic picid 图片ID
+pre_home_pic albumid 图片所属相册ID
+pre_home_pic uid 图片所属用户ID
+pre_home_pic username 图片所属用户名
+pre_home_pic dateline 图片上传时间戳
+pre_home_pic postip 图片上传ip
+pre_home_pic filename 图片文件名
+pre_home_pic title 图片标题
+pre_home_pic type 图片类型
+pre_home_pic size 图片大小
+pre_home_pic filepath 图片路径
+pre_home_pic thumb 是否有缩略图
+pre_home_pic remote 是否有远程图片0:home本地图片,1:home远程图片,2:论坛本地图片,3论坛远程图片
+pre_home_pic hot 热度
+pre_home_pic sharetimes 图片分享次数
+pre_home_pic click1 表态1 id
+pre_home_pic click2 表态2 id
+pre_home_pic click3 表态3 id
+pre_home_pic click4 表态4 id
+pre_home_pic click5 表态5 id
+pre_home_pic click6 表态6 id
+pre_home_pic click7 表态7 id
+pre_home_pic click8 表态8 id
+pre_home_pic magicframe 道具使用相框id
+pre_home_pic status 图片状态 1-审核
+pre_home_pic_moderate id ID
+pre_home_pic_moderate status 状态 审核中，1 已忽略
+pre_home_pic_moderate dateline 
+pre_home_picfield picid 图片id
+pre_home_poke uid 接招呼的用户ID
+pre_home_poke fromuid 打招呼的用户ID
+pre_home_poke fromusername 打招呼的用户名
+pre_home_poke te 招呼内容
+pre_home_poke dateline 打招呼时间戳
+pre_home_poke iconid 招呼图标
+pre_home_pokearchive pid 招呼历史id
+pre_home_pokearchive pokeuid uid + fromuid
+pre_home_pokearchive uid 目标用户ID
+pre_home_pokearchive fromuid 发起用户ID
+pre_home_pokearchive te 招呼内容
+pre_home_pokearchive dateline 招呼时间戳
+pre_home_pokearchive iconid 招呼图标
+pre_home_share sid 分享id
+pre_home_share itemid 相关条目的ID
+pre_home_share type 分享类型
+pre_home_share uid 分享者用户id
+pre_home_share username 分享者用户名
+pre_home_share fromuid 被分享者用户ID
+pre_home_share dateline 分享时间戳
+pre_home_share image 分享的图片
+pre_home_share image_link 分享的图片链接
+pre_home_share hot 热度
+pre_home_share status 分享条目状态 1-审核
+pre_home_share_moderate id ID
+pre_home_share_moderate status 状态 审核中，1 已忽略
+pre_home_share_moderate dateline 
+pre_home_show uid 我要上榜用户id
+pre_home_show username 我要上榜用户名
+pre_home_show unitprice 1 单次访问单价
+pre_home_show credit 上榜总积分
+pre_home_show te 上榜宣言
+pre_home_specialuser uid 用户ID
+pre_home_specialuser username 用户名
+pre_home_specialuser status 用户类型0为推荐用户1为默认好友
+pre_home_specialuser dateline 设置时间
+pre_home_specialuser opuid 操作者用户ID
+pre_home_specialuser opusername 操作者用户名
+pre_home_specialuser displayorder 显示顺序
+pre_home_userapp uid 使用应用的用户ID
+pre_home_userapp appid 应用ID
+pre_home_userapp appname 应用名
+pre_home_userapp privacy 应用是否公开
+pre_home_userapp allowsidenav 是否在开始菜单中显示
+pre_home_userapp allowfeed 是否允许应用产生feed
+pre_home_userapp allowprofilelink 时都允许在首页显示连接
+pre_home_userapp narrow 是否在个人空间左边显示
+pre_home_userapp menuorder 菜单顺序
+pre_home_userapp displayorder 显示顺序
+pre_home_userappfield uid 使用应用的用户id
+pre_home_userappfield appid 应用id
+pre_home_visitor uid 受访者用户id
+pre_home_visitor vuid 访问者用户id
+pre_home_visitor vusername 访问者用户名
+pre_home_visitor dateline 访问时间戳
+pre_portal_article_content cid 内容ID
+pre_portal_article_content aid 文章ID
+pre_portal_article_content id 来源ID
+pre_portal_article_content idtype 来源ID类型
+pre_portal_article_content title 分页标题
+pre_portal_article_content pageorder 分页排序
+pre_portal_article_content dateline 添加时间
+pre_portal_article_count aid 文章ID
+pre_portal_article_count catid 栏目id
+pre_portal_article_count viewnum 查看数
+pre_portal_article_count commentnum 评论数
+pre_portal_article_count favtimes 文章收藏次数
+pre_portal_article_count sharetimes 文章分享次数
+pre_portal_article_moderate id ID
+pre_portal_article_moderate status 状态 审核中，1 已忽略
+pre_portal_article_moderate dateline 
+pre_portal_article_related aid 文章ID
+pre_portal_article_related raid 相关文章ID
+pre_portal_article_related displayorder 显示顺序
+pre_portal_article_title aid 文章ID
+pre_portal_article_title catid 栏目id
+pre_portal_article_title bid 模块id
+pre_portal_article_title uid 用户id
+pre_portal_article_title username 用户名
+pre_portal_article_title title 标题
+pre_portal_article_title highlight 标题样式
+pre_portal_article_title author 原作者
+pre_portal_article_title from 来源
+pre_portal_article_title fromurl 来源URL
+pre_portal_article_title url 访问URL
+pre_portal_article_title summary 摘要
+pre_portal_article_title pic 封面图片
+pre_portal_article_title thumb 封面图片是否缩略
+pre_portal_article_title remote 封面图片是否远程
+pre_portal_article_title id 来源ID
+pre_portal_article_title idtype 来源ID类型
+pre_portal_article_title contents 内容分页数
+pre_portal_article_title allowcomment 是否允许评论
+pre_portal_article_title owncomment 对于推送过来的文章：1，使用文章评论；0，同步原主题/日志的帖子/评论
+pre_portal_article_title click1 表态1 id
+pre_portal_article_title click2 表态2 id
+pre_portal_article_title click3 表态3 id
+pre_portal_article_title click4 表态4 id
+pre_portal_article_title click5 表态5 id
+pre_portal_article_title click6 表态6 id
+pre_portal_article_title click7 表态7 id
+pre_portal_article_title click8 表态8 id
+pre_portal_article_title tag 文章属性，共八位
+pre_portal_article_title dateline 添加时间
+pre_portal_article_title status 文章状态 0-已审核 1-需要审核 2-已忽略
+pre_portal_article_title showinnernav 是否显示分页导航
+pre_portal_article_title preaid 上一篇文章ID
+pre_portal_article_title nextaid 下一篇文章ID
+pre_portal_article_title htmlmade 是否生成静态文件
+pre_portal_article_title htmlname 静态文件名称
+pre_portal_article_title htmldir 静态文件目录
+pre_portal_article_trash aid 垃圾文章ID
+pre_portal_attachment attachid 附件id
+pre_portal_attachment uid 会员id
+pre_portal_attachment dateline 上传时间
+pre_portal_attachment filename 原文件名
+pre_portal_attachment filetype 文件类型
+pre_portal_attachment filesize 文件大小
+pre_portal_attachment attachment 服务器路径
+pre_portal_attachment isimage 是否图片
+pre_portal_attachment thumb 是否是缩率图
+pre_portal_attachment remote 是否远程附件
+pre_portal_attachment aid 文章id
+pre_portal_category catid 栏目id
+pre_portal_category upid 上级栏目id
+pre_portal_category catname 标题
+pre_portal_category articles 文章数
+pre_portal_category allowcomment 是否允许评论
+pre_portal_category displayorder 显示顺序
+pre_portal_category tinheritedarticle 是否不继承上级文章管理权限
+pre_portal_category tinheritedblock 是否不继承上级DIY页面和模块权限
+pre_portal_category domain 二级域名
+pre_portal_category url 自定义链接
+pre_portal_category uid 创建者ID
+pre_portal_category username 创建者用户名
+pre_portal_category dateline 创建时间
+pre_portal_category closed 是否关闭
+pre_portal_category shownav 是否在导航显示
+pre_portal_category primaltplname 列表页原模板地址
+pre_portal_category articleprimaltplname 文章页原模板地址
+pre_portal_category disallowpublish 是否禁止发布文章
+pre_portal_category foldername 文件夹名称
+pre_portal_category tshowarticlesummay 文章内容页是否不显示摘要
+pre_portal_category perpage 列表每页显示文章数
+pre_portal_category maxpages 列表最大分页数
+pre_portal_category antitheft 禁止防采集
+pre_portal_category lastpublish 最后发布文章时间
+pre_portal_category_permission catid 分类ID
+pre_portal_category_permission uid 会员id
+pre_portal_category_permission allowpublish 允许发布文章
+pre_portal_category_permission allowmanage 允许管理文章
+pre_portal_category_permission inheritedcatid 继承自的频道ID
+pre_portal_comment cid 评论id
+pre_portal_comment uid 发表评论的用户id
+pre_portal_comment username 发表评论的用户名
+pre_portal_comment id 评论对象id
+pre_portal_comment idtype 评论对象的id类型：aid，topicid
+pre_portal_comment postip 评论IP
+pre_portal_comment dateline 评论时间戳
+pre_portal_comment status 评论状态 1-审核
+pre_portal_comment_moderate id ID
+pre_portal_comment_moderate idtype ID类型
+pre_portal_comment_moderate status 状态 审核中，1 已忽略
+pre_portal_comment_moderate dateline 
+pre_portal_rsscache lastupdate 最后更新时间
+pre_portal_rsscache catid 文章分类id
+pre_portal_rsscache aid 文章id
+pre_portal_rsscache dateline 发表时间
+pre_portal_rsscache catname 分类名称
+pre_portal_rsscache author 作者
+pre_portal_rsscache subject 标题
+pre_portal_rsscache description 解释说明
+pre_portal_topic topicid 专题ID
+pre_portal_topic title 专题标题
+pre_portal_topic name 静态化名称
+pre_portal_topic domain 二级域名
+pre_portal_topic cover 专题封面
+pre_portal_topic picflag 图片类型 0为url 1为本地 2 为ftp远程
+pre_portal_topic primaltplname 原模板地址
+pre_portal_topic useheader 是否使用网站导航内容
+pre_portal_topic usefooter 是否使用网站尾部信息
+pre_portal_topic uid 创建者UID
+pre_portal_topic username 创建者用户名
+pre_portal_topic viewnum 查看数
+pre_portal_topic dateline 创建时间
+pre_portal_topic closed 是否关闭状态
+pre_portal_topic allowcomment 是否允许评论
+pre_portal_topic commentnum 评论数
+pre_portal_topic htmlmade 是否生成静态文件
+pre_portal_topic htmldir 静态文件目录
+pre_portal_topic_pic picid 图片ID
+pre_portal_topic_pic topicid 图片所属专题ID
+pre_portal_topic_pic uid 图片所属用户ID
+pre_portal_topic_pic username 图片所属用户名
+pre_portal_topic_pic dateline 图片上传时间戳
+pre_portal_topic_pic filename 图片文件名
+pre_portal_topic_pic title 图片标题
+pre_portal_topic_pic size 图片大小
+pre_portal_topic_pic filepath 图片路径
+pre_portal_topic_pic thumb 是否有缩略图
+pre_portal_topic_pic remote 是否有远程图片

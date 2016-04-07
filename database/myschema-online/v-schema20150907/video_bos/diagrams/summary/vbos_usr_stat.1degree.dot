@@ -1,0 +1,40 @@
+// dot 2.26.0 on Linux 2.6.32-504.3.3.el6.x86_64
+// SchemaSpy rev Unknown
+digraph "vbos_usr_stat" {
+  graph [
+    rankdir="RL"
+    bgcolor="#f7f7f7"
+    nodesep="0.18"
+    ranksep="0.46"
+    fontname="Microsoft YaHei"
+    fontsize="11"
+  ];
+  node [
+    fontname="Microsoft YaHei"
+    fontsize="11"
+    shape="plaintext"
+  ];
+  edge [
+    arrowsize="0.8"
+  ];
+  "vbos_usr_stat" [
+    label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
+      <TR><TD COLSPAN="3" BGCOLOR="#9bab96" ALIGN="CENTER">vbos_usr_stat<br/>(用户访问统计表)</TD></TR>
+      <TR><TD PORT="auid" COLSPAN="3" BGCOLOR="#bed1b8" ALIGN="LEFT">auid</TD></TR>
+      <TR><TD PORT="registed_users" COLSPAN="3" ALIGN="LEFT">registed_users</TD></TR>
+      <TR><TD PORT="uv" COLSPAN="3" ALIGN="LEFT">uv</TD></TR>
+      <TR><TD PORT="login_users" COLSPAN="3" ALIGN="LEFT">login_users</TD></TR>
+      <TR><TD PORT="login_num" COLSPAN="3" ALIGN="LEFT">login_num</TD></TR>
+      <TR><TD PORT="users_in_room" COLSPAN="3" ALIGN="LEFT">users_in_room</TD></TR>
+      <TR><TD PORT="num_in_room" COLSPAN="3" ALIGN="LEFT">num_in_room</TD></TR>
+      <TR><TD PORT="apex_num" COLSPAN="3" ALIGN="LEFT">apex_num</TD></TR>
+      <TR><TD PORT="apex_time" COLSPAN="3" ALIGN="LEFT">apex_time</TD></TR>
+      <TR><TD PORT="avg_time" COLSPAN="3" ALIGN="LEFT">avg_time</TD></TR>
+      <TR><TD PORT="ctime" COLSPAN="3" BGCOLOR="#f4f7da" ALIGN="LEFT">ctime</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="#f7f7f7">  </TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">235 rows</TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">  </TD></TR>
+    </TABLE>>
+    URL="tables/vbos_usr_stat.html"
+    tooltip="vbos_usr_stat"
+  ];
+}

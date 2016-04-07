@@ -1,0 +1,1 @@
+update s8_bbs.pw_reward r, discuz.pre_forum_thread t set t.price = r.ctype where t.tid = r.tid and r.cbtype regexp '^[0-9]+';

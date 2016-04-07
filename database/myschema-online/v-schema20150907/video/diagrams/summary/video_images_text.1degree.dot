@@ -1,0 +1,44 @@
+// dot 2.26.0 on Linux 2.6.32-504.3.3.el6.x86_64
+// SchemaSpy rev Unknown
+digraph "video_images_text" {
+  graph [
+    rankdir="RL"
+    bgcolor="#f7f7f7"
+    nodesep="0.18"
+    ranksep="0.46"
+    fontname="Microsoft YaHei"
+    fontsize="11"
+  ];
+  node [
+    fontname="Microsoft YaHei"
+    fontsize="11"
+    shape="plaintext"
+  ];
+  edge [
+    arrowsize="0.8"
+  ];
+  "video_images_text" [
+    label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
+      <TR><TD COLSPAN="3" BGCOLOR="#9bab96" ALIGN="CENTER">video_images_text<br/>(图文表)</TD></TR>
+      <TR><TD PORT="img_text_id" COLSPAN="3" BGCOLOR="#bed1b8" ALIGN="LEFT">img_text_id</TD></TR>
+      <TR><TD PORT="name" COLSPAN="3" ALIGN="LEFT">name</TD></TR>
+      <TR><TD PORT="temp_name" COLSPAN="3" ALIGN="LEFT">temp_name</TD></TR>
+      <TR><TD PORT="url" COLSPAN="3" ALIGN="LEFT">url</TD></TR>
+      <TR><TD PORT="creater" COLSPAN="3" ALIGN="LEFT">creater</TD></TR>
+      <TR><TD PORT="editor" COLSPAN="3" ALIGN="LEFT">editor</TD></TR>
+      <TR><TD PORT="sort" COLSPAN="3" ALIGN="LEFT">sort</TD></TR>
+      <TR><TD PORT="title" COLSPAN="3" ALIGN="LEFT">title</TD></TR>
+      <TR><TD PORT="content" COLSPAN="3" ALIGN="LEFT">content</TD></TR>
+      <TR><TD PORT="pid" COLSPAN="3" ALIGN="LEFT">pid</TD></TR>
+      <TR><TD PORT="type" COLSPAN="3" ALIGN="LEFT">type</TD></TR>
+      <TR><TD PORT="init_time" COLSPAN="3" ALIGN="LEFT">init_time</TD></TR>
+      <TR><TD PORT="dml_time" COLSPAN="3" ALIGN="LEFT">dml_time</TD></TR>
+      <TR><TD PORT="dml_flag" COLSPAN="3" ALIGN="LEFT">dml_flag</TD></TR>
+      <TR><TD PORT="bg" COLSPAN="3" ALIGN="LEFT">bg</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="#f7f7f7">  </TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">7 rows</TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">  </TD></TR>
+    </TABLE>>
+    URL="tables/video_images_text.html"
+    tooltip="video_images_text"
+  ];
+}

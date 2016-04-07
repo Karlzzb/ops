@@ -1,0 +1,37 @@
+default vesamenu.c32
+#prompt 1
+timeout 300
+ontimeout local
+
+display boot.msg
+
+menu background splash.jpg
+menu title Welcome to CentOS 6.5!
+menu color border 0 #ffffffff #00000000
+menu color sel 7 #ffffffff #ff000000
+menu color title 0 #ffffffff #00000000
+menu color tabmsg 0 #ffffffff #00000000
+menu color unsel 0 #ffffffff #00000000
+menu color hotsel 0 #ff000000 #ffffffff
+menu color hotkey 7 #ffffffff #ff000000
+menu color scrollbar 0 #ffffffff #00000000
+
+label CentOS 6.5
+        menu label ^Install CentOS 6.5
+        kernel vmlinuz
+        append initrd=initrd.img ks=http://192.168.10.253/ks.cfg
+
+
+label CentOS 6.5  + KVM Virtualization 
+        menu label ^Install CentOS 6.5 + KVM Virtualization
+        kernel vmlinuz
+        append initrd=initrd.img ks=http://192.168.10.253/kvm.cfg
+
+label vesa
+        menu label Install system with ^basic video driver
+        kernel vmlinuz
+        append initrd=initrd.img xdriver=vesa nomodeset
+
+label local
+        menu label Boot local hard drive
+        localboot 0

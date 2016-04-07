@@ -1,0 +1,37 @@
+// dot 2.26.0 on Linux 2.6.32-504.8.1.el6.x86_64
+// SchemaSpy rev Unknown
+digraph "FC_INNERC_BALANCE" {
+  graph [
+    rankdir="RL"
+    bgcolor="#f7f7f7"
+    nodesep="0.18"
+    ranksep="0.46"
+    fontname="Microsoft YaHei"
+    fontsize="11"
+  ];
+  node [
+    fontname="Microsoft YaHei"
+    fontsize="11"
+    shape="plaintext"
+  ];
+  edge [
+    arrowsize="0.8"
+  ];
+  "FC_INNERC_BALANCE" [
+    label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
+      <TR><TD COLSPAN="3" BGCOLOR="#9bab96" ALIGN="CENTER">FC_INNERC_BALANCE<br/>(银行卡实时余额表，每次银行返还余额信息更新，交易也更新)</TD></TR>
+      <TR><TD PORT="ACCOUNT_ALIAS" COLSPAN="3" BGCOLOR="#bed1b8" ALIGN="LEFT">ACCOUNT_ALIAS</TD></TR>
+      <TR><TD PORT="ACCOUNT_BALANCE" COLSPAN="3" ALIGN="LEFT">ACCOUNT_BALANCE</TD></TR>
+      <TR><TD PORT="ACCOUNT_BALANCE_UPDTIME" COLSPAN="3" ALIGN="LEFT">ACCOUNT_BALANCE_UPDTIME</TD></TR>
+      <TR><TD PORT="TEMP_BALANCE" COLSPAN="3" ALIGN="LEFT">TEMP_BALANCE</TD></TR>
+      <TR><TD PORT="TEMP_BALANCE_UPDTIME" COLSPAN="3" ALIGN="LEFT">TEMP_BALANCE_UPDTIME</TD></TR>
+      <TR><TD PORT="REQMONEY_TYPE" COLSPAN="3" ALIGN="LEFT">REQMONEY_TYPE</TD></TR>
+      <TR><TD PORT="RESERVED1" COLSPAN="3" ALIGN="LEFT">RESERVED1</TD></TR>
+      <TR><TD PORT="RESERVED2" COLSPAN="3" ALIGN="LEFT">RESERVED2</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="#f7f7f7">  </TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">24 rows</TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">  </TD></TR>
+    </TABLE>>
+    URL="tables/FC_INNERC_BALANCE.html"
+    tooltip="FC_INNERC_BALANCE"
+  ];
+}

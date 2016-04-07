@@ -1,0 +1,43 @@
+
+1. 部署war文件到/data/webapps/目录，
+
+修改/data/webapps/fcpay/WEB-INF/classes/config.properties 
+
+returnUrl=http://pay.1room.bar/fcpay/service/rt4np
+noticeUrl=http://pay.1room.bar/fcpay/service/nt4np
+
+
+
+部署到tomcat下后需要进行如下配置：
+1.   日志文件配置：附件中的logback.xml文件拷贝到tomcat/conf 目录，修改其中的日志地址（修改红字部分为日志目录绝对日志即可）：<fileNamePattern>../Logs/iface.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+
+2.   修改tomcat/bin/setclasspath.sh文件，文件最后增加如下配置 JAVA_OPTS="$JAVA_OPTS -Dlogback.configurationFile=$CATALINA_HOME/conf/logback.xml"
+
+
+
+         需要在tomcat/conf/contex.html中的</Context>前增加如下配置：修改红字的username，password，mysql ip和数据库配置。
+
+         <Resource name="jdbc/fcpay" auth="Container" type="javax.sql.DataSource"
+
+       maxActive="400" maxIdle="100" maxWait="10000" username="fcpayusr"
+
+       password="fcpaypwd" driverClassName="com.mysql.jdbc.Driver"
+
+       connectionProperties="useUnicode=yes;characterEncoding=utf8;"
+
+       url="jdbc:mysql://192.168.122.12:3366/fcpay?autoReconnect=true" />
+
+
+
+3. /data/www/video-front/app/config
+
+    #私钥
+    PAY_PRIVATEKEY: 55a57b047bab1096b38143298d82ec45
+    #通知地址
+    PYA_NOTICE_URL: http://www.1zone.info/charge/notice
+    #回调地址
+    PYA_REBACK_URL: http://www.1zone.info/charge/reback
+    #请求充提中心的地址
+    PAY_CALL_URL: http://pay.1room.bar/fcpay/service/g2p
+
+

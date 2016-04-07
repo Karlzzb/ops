@@ -1,0 +1,38 @@
+// dot 2.26.0 on Linux 2.6.32-504.3.3.el6.x86_64
+// SchemaSpy rev Unknown
+digraph "scfg_table_rules" {
+  graph [
+    rankdir="RL"
+    bgcolor="#f7f7f7"
+    nodesep="0.18"
+    ranksep="0.46"
+    fontname="Microsoft YaHei"
+    fontsize="11"
+  ];
+  node [
+    fontname="Microsoft YaHei"
+    fontsize="11"
+    shape="plaintext"
+  ];
+  edge [
+    arrowsize="0.8"
+  ];
+  "scfg_table_rules" [
+    label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
+      <TR><TD COLSPAN="3" BGCOLOR="#9bab96" ALIGN="CENTER">scfg_table_rules<br/>(库表管理配置存储)</TD></TR>
+      <TR><TD PORT="db_name" COLSPAN="3" BGCOLOR="#bed1b8" ALIGN="LEFT">db_name</TD></TR>
+      <TR><TD PORT="table_prefix" COLSPAN="3" BGCOLOR="#bed1b8" ALIGN="LEFT">table_prefix</TD></TR>
+      <TR><TD PORT="shard_column" COLSPAN="3" ALIGN="LEFT">shard_column</TD></TR>
+      <TR><TD PORT="mod_value" COLSPAN="3" ALIGN="LEFT">mod_value</TD></TR>
+      <TR><TD PORT="achieve_vals" COLSPAN="3" ALIGN="LEFT">achieve_vals</TD></TR>
+      <TR><TD PORT="table_detail" COLSPAN="3" ALIGN="LEFT">table_detail</TD></TR>
+      <TR><TD PORT="init_time" COLSPAN="3" ALIGN="LEFT">init_time</TD></TR>
+      <TR><TD PORT="dml_time" COLSPAN="3" ALIGN="LEFT">dml_time</TD></TR>
+      <TR><TD PORT="dml_flag" COLSPAN="3" ALIGN="LEFT">dml_flag</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="#f7f7f7">  </TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">8 rows</TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">  </TD></TR>
+    </TABLE>>
+    URL="tables/scfg_table_rules.html"
+    tooltip="scfg_table_rules"
+  ];
+}
