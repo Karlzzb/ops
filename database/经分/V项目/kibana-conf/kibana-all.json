@@ -1,5 +1,22 @@
 [
   {
+    "_id": "V项目用户统计",
+    "_type": "dashboard",
+    "_source": {
+      "title": "V项目用户统计",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"col\":5,\"id\":\"每日付费用户数统计\",\"row\":5,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":5,\"id\":\"每日首次付费用户统计\",\"row\":13,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":9,\"id\":\"流失付费用户数统计（付费后一周内不再进入房间的用户）\",\"row\":9,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"每日注册用户数统计\",\"row\":1,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":5,\"id\":\"每日整站收入统计\",\"row\":1,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":9,\"id\":\"每日进入房间用户数统计\",\"row\":13,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"新用户次日留存率统计\",\"row\":5,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"新用户三日留存率统计\",\"row\":9,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"新用户七日留存率统计\",\"row\":13,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":9,\"id\":\"每日用户平均房间停留时长统计\",\"row\":1,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":9,\"id\":\"每日单用户房间停留总时长统计（秒）\",\"row\":5,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":5,\"id\":\"每日非活跃用户比例统计（房间停留时长低于平均值288秒的用户）\",\"row\":17,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":9,\"id\":\"每日活跃用户消费均值统计（平均房间停留时长高于平均值288秒的用户）\",\"row\":17,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":5,\"id\":\"每日付费用户消费均值统计\",\"row\":9,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"V项目每日ARPU值统计\",\"row\":17,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":5,\"id\":\"订单金额分布比例图\",\"row\":21,\"size_x\":4,\"size_y\":2,\"type\":\"visualization\"},{\"col\":9,\"id\":\"每日收入比例分布统计\",\"row\":21,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":5,\"id\":\"单用户充值金额分布比例图\",\"row\":23,\"size_x\":4,\"size_y\":2,\"type\":\"visualization\"},{\"col\":1,\"id\":\"每日新增注册付费人数统计\",\"row\":21,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"每日新增注册平均付费金额统计\",\"row\":25,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":5,\"id\":\"每日老用户付费人数统计\",\"row\":25,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"}]",
+      "version": 1,
+      "timeRestore": true,
+      "timeTo": "now",
+      "timeFrom": "now-30d",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}}}]}"
+      }
+    }
+  },
+  {
     "_id": "V项目主播统计",
     "_type": "dashboard",
     "_source": {
@@ -8,24 +25,26 @@
       "description": "",
       "panelsJSON": "[{\"id\":\"主播消费刺激能力（平均每分钟钻石收入）\",\"type\":\"visualization\",\"size_x\":3,\"size_y\":17,\"col\":1,\"row\":1},{\"id\":\"每日主播平均直播时长分布统计\",\"type\":\"visualization\",\"size_x\":9,\"size_y\":3,\"col\":4,\"row\":4},{\"id\":\"每日主播总直播时长分布统计\",\"type\":\"visualization\",\"size_x\":9,\"size_y\":3,\"col\":4,\"row\":7},{\"id\":\"每日主播最大直播时长分布统计\",\"type\":\"visualization\",\"size_x\":9,\"size_y\":3,\"col\":4,\"row\":13},{\"id\":\"每日主播最小直播时长分布统计\",\"type\":\"visualization\",\"size_x\":9,\"size_y\":2,\"col\":4,\"row\":16},{\"id\":\"每日主播直播时长统计\",\"type\":\"visualization\",\"size_x\":9,\"size_y\":3,\"col\":4,\"row\":1},{\"id\":\"每日主播直播频次分布统计\",\"type\":\"visualization\",\"size_x\":9,\"size_y\":3,\"col\":4,\"row\":10}]",
       "version": 1,
-      "timeRestore": false,
+      "timeRestore": true,
+      "timeTo": "now",
+      "timeFrom": "now-60d",
       "kibanaSavedObjectMeta": {
         "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}}}]}"
       }
     }
   },
   {
-    "_id": "V项目用户统计",
+    "_id": "用户统计（月维度）",
     "_type": "dashboard",
     "_source": {
-      "title": "V项目用户统计",
+      "title": "用户统计（月维度）",
       "hits": 0,
       "description": "",
-      "panelsJSON": "[{\"col\":5,\"id\":\"每日付费用户数统计\",\"row\":5,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":5,\"id\":\"每日首次付费用户统计\",\"row\":13,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":9,\"id\":\"流失付费用户数统计（付费后一周内不再进入房间的用户）\",\"row\":9,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"每日注册用户数统计\",\"row\":1,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":5,\"id\":\"每日整站收入统计\",\"row\":1,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":9,\"id\":\"每日进入房间用户数统计\",\"row\":13,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"新用户次日留存率统计\",\"row\":5,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"新用户三日留存率统计\",\"row\":9,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"新用户七日留存率统计\",\"row\":13,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"每日订单金额分布统计\",\"row\":21,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":9,\"id\":\"每日用户平均房间停留时长统计\",\"row\":1,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":9,\"id\":\"每日单用户房间停留总时长统计（秒）\",\"row\":5,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":5,\"id\":\"每日非活跃用户比例统计（房间停留时长低于平均值288秒的用户）\",\"row\":17,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"id\":\"每日活跃用户消费均值统计（平均房间停留时长高于平均值288秒的用户）\",\"type\":\"visualization\",\"size_x\":4,\"size_y\":4,\"col\":9,\"row\":17},{\"id\":\"每日付费用户消费均值统计\",\"type\":\"visualization\",\"size_x\":4,\"size_y\":4,\"col\":5,\"row\":9},{\"id\":\"V项目每日ARPU值统计\",\"type\":\"visualization\",\"size_x\":4,\"size_y\":4,\"col\":1,\"row\":17},{\"id\":\"订单金额分布比例图\",\"type\":\"visualization\",\"size_x\":4,\"size_y\":2,\"col\":5,\"row\":21},{\"id\":\"每日收入比例分布统计\",\"type\":\"visualization\",\"size_x\":4,\"size_y\":4,\"col\":9,\"row\":21},{\"id\":\"单用户充值金额分布比例图\",\"type\":\"visualization\",\"size_x\":4,\"size_y\":2,\"col\":5,\"row\":23},{\"id\":\"每日新增注册付费人数统计\",\"type\":\"visualization\",\"size_x\":4,\"size_y\":4,\"col\":1,\"row\":25},{\"id\":\"每日注册平均付费金额\",\"type\":\"visualization\",\"size_x\":4,\"size_y\":4,\"col\":5,\"row\":25}]",
+      "panelsJSON": "[{\"col\":1,\"id\":\"每月付费用户数统计\",\"row\":1,\"size_x\":6,\"size_y\":6,\"type\":\"visualization\"},{\"col\":7,\"id\":\"每月老用户付费人数统计\",\"row\":1,\"size_x\":6,\"size_y\":6,\"type\":\"visualization\"},{\"col\":1,\"id\":\"每月整站收入统计\",\"row\":7,\"size_x\":6,\"size_y\":5,\"type\":\"visualization\"},{\"id\":\"每月支付用户留存率统计\",\"type\":\"visualization\",\"size_x\":6,\"size_y\":5,\"col\":7,\"row\":7}]",
       "version": 1,
       "timeRestore": true,
       "timeTo": "now",
-      "timeFrom": "now-30d",
+      "timeFrom": "now-6M",
       "kibanaSavedObjectMeta": {
         "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}}}]}"
       }
@@ -292,26 +311,6 @@
     }
   },
   {
-    "_id": "vstat-paynew-daily",
-    "_type": "search",
-    "_source": {
-      "title": "vstat-paynew-daily",
-      "description": "",
-      "hits": 0,
-      "columns": [
-        "_source"
-      ],
-      "sort": [
-        "@timestamp",
-        "desc"
-      ],
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"vstat\",\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"fragment_size\":2147483647},\"filter\":[],\"query\":{\"query_string\":{\"query\":\"_type:paynew-daily\",\"analyze_wildcard\":true}}}"
-      }
-    }
-  },
-  {
     "_id": "vstat-arpu-daily",
     "_type": "search",
     "_source": {
@@ -328,6 +327,66 @@
       "version": 1,
       "kibanaSavedObjectMeta": {
         "searchSourceJSON": "{\"index\":\"vstat\",\"query\":{\"query_string\":{\"query\":\"_type:arpu-daily\",\"analyze_wildcard\":true}},\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"fragment_size\":2147483647},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "vstat-payusernew-daily",
+    "_type": "search",
+    "_source": {
+      "title": "vstat-payusernew-daily",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "_source"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"vstat\",\"query\":{\"query_string\":{\"query\":\"_type:paynewuser-daily\",\"analyze_wildcard\":true}},\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"fragment_size\":2147483647},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "vstat-payuserold-daily",
+    "_type": "search",
+    "_source": {
+      "title": "vstat-payuserold-daily",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "_source"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"vstat\",\"query\":{\"query_string\":{\"query\":\"_type:payolduser-daily\",\"analyze_wildcard\":true}},\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"fragment_size\":2147483647},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "vstats-payuserstats-monthly",
+    "_type": "search",
+    "_source": {
+      "title": "vstats-payuserstats-monthly",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "_source"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"vstat\",\"query\":{\"query_string\":{\"query\":\"_type:payuserstats-monthly\",\"analyze_wildcard\":true}},\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"fragment_size\":2147483647},\"filter\":[]}"
       }
     }
   },
@@ -668,11 +727,81 @@
     }
   },
   {
+    "_id": "每日新增注册平均付费金额统计",
+    "_type": "visualization",
+    "_source": {
+      "title": "每日新增注册平均付费金额统计",
+      "visState": "{\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":false,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"paymoney\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"d\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}}],\"listeners\":{}}",
+      "description": "",
+      "savedSearchId": "vstat-payusernew-daily",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "每日新增注册付费人数统计",
+    "_type": "visualization",
+    "_source": {
+      "title": "每日新增注册付费人数统计",
+      "visState": "{\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":false,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"cardinality\",\"schema\":\"metric\",\"params\":{\"field\":\"uid\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"d\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}}],\"listeners\":{}}",
+      "description": "",
+      "savedSearchId": "vstat-payusernew-daily",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "每月付费用户数统计",
+    "_type": "visualization",
+    "_source": {
+      "title": "每月付费用户数统计",
+      "visState": "{\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":false,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"cardinality\",\"schema\":\"metric\",\"params\":{\"field\":\"用户ID\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"M\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}}],\"listeners\":{}}",
+      "description": "",
+      "savedSearchId": "银行支付明细",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "每月老用户付费人数统计",
+    "_type": "visualization",
+    "_source": {
+      "title": "每月老用户付费人数统计",
+      "visState": "{\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":false,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"cardinality\",\"schema\":\"metric\",\"params\":{\"field\":\"uid\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"M\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"type\":\"range\",\"schema\":\"group\",\"params\":{\"field\":\"paymoney\",\"ranges\":[{\"from\":1,\"to\":null}]}}],\"listeners\":{}}",
+      "description": "",
+      "savedSearchId": "vstat-payuserold-daily",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "每日老用户付费人数统计",
+    "_type": "visualization",
+    "_source": {
+      "title": "每日老用户付费人数统计",
+      "visState": "{\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":false,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"cardinality\",\"schema\":\"metric\",\"params\":{\"field\":\"uid\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"d\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"type\":\"range\",\"schema\":\"group\",\"params\":{\"field\":\"paymoney\",\"ranges\":[{\"from\":1,\"to\":null}]}}],\"listeners\":{}}",
+      "description": "",
+      "savedSearchId": "vstat-payuserold-daily",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
     "_id": "单用户充值金额分布比例图",
     "_type": "visualization",
     "_source": {
       "title": "单用户充值金额分布比例图",
-      "visState": "{\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"isDonut\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"cardinality\",\"schema\":\"metric\",\"params\":{\"field\":\"用户ID\"}},{\"id\":\"2\",\"type\":\"range\",\"schema\":\"segment\",\"params\":{\"field\":\"peruidpaymoney\",\"ranges\":[{\"from\":0,\"to\":299},{\"from\":300,\"to\":1999},{\"from\":2000,\"to\":4999},{\"from\":5000,\"to\":9999},{\"from\":10000,\"to\":19999},{\"from\":20000}]}}],\"listeners\":{}}",
+      "visState": "{\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"isDonut\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"cardinality\",\"schema\":\"metric\",\"params\":{\"field\":\"用户ID\"}},{\"id\":\"2\",\"type\":\"range\",\"schema\":\"segment\",\"params\":{\"field\":\"peruidpaymoney\",\"ranges\":[{\"from\":0,\"to\":49},{\"from\":200,\"to\":299},{\"from\":300,\"to\":499},{\"from\":500,\"to\":999},{\"from\":1000,\"to\":4999},{\"from\":5000,\"to\":9999},{\"from\":50,\"to\":99},{\"from\":100,\"to\":199},{\"from\":10000,\"to\":19999},{\"from\":20000}]}}],\"listeners\":{}}",
       "description": "",
       "savedSearchId": "vstat-peruidpaymoney",
       "version": 1,
@@ -686,7 +815,7 @@
     "_type": "visualization",
     "_source": {
       "title": "订单金额分布比例图",
-      "visState": "{\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"isDonut\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"range\",\"schema\":\"segment\",\"params\":{\"field\":\"收入（元）\",\"ranges\":[{\"from\":0,\"to\":299},{\"from\":300,\"to\":1999},{\"from\":2000,\"to\":4999},{\"from\":5000,\"to\":9999},{\"from\":10000,\"to\":19999},{\"from\":20000}]}}],\"listeners\":{}}",
+      "visState": "{\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"isDonut\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"range\",\"schema\":\"segment\",\"params\":{\"field\":\"收入（元）\",\"ranges\":[{\"from\":0,\"to\":49},{\"from\":300,\"to\":499},{\"from\":500,\"to\":999},{\"from\":1000,\"to\":4999},{\"from\":5000,\"to\":9999},{\"from\":100,\"to\":199},{\"from\":200,\"to\":299},{\"from\":10000,\"to\":19999},{\"from\":20000},{\"from\":50,\"to\":99}]}}],\"listeners\":{}}",
       "description": "",
       "savedSearchId": "银行支付明细",
       "version": 1,
@@ -696,13 +825,13 @@
     }
   },
   {
-    "_id": "每日注册平均付费金额",
+    "_id": "每月整站收入统计",
     "_type": "visualization",
     "_source": {
-      "title": "每日注册平均付费金额",
-      "visState": "{\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":false,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"paymoney\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"d\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}}],\"listeners\":{}}",
+      "title": "每月整站收入统计",
+      "visState": "{\"type\":\"histogram\",\"params\":{\"addLegend\":false,\"addTimeMarker\":false,\"addTooltip\":true,\"defaultYExtents\":false,\"mode\":\"stacked\",\"scale\":\"linear\",\"setYExtents\":false,\"shareYAxis\":true,\"times\":[],\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"收入（元）\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"M\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}}],\"listeners\":{}}",
       "description": "",
-      "savedSearchId": "vstat-paynew-daily",
+      "savedSearchId": "银行支付明细",
       "version": 1,
       "kibanaSavedObjectMeta": {
         "searchSourceJSON": "{\"filter\":[]}"
@@ -710,13 +839,13 @@
     }
   },
   {
-    "_id": "每日新增注册付费人数统计",
+    "_id": "每月支付用户留存率统计",
     "_type": "visualization",
     "_source": {
-      "title": "每日新增注册付费人数统计",
-      "visState": "{\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":false,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"d\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}}],\"listeners\":{}}",
+      "title": "每月支付用户留存率统计",
+      "visState": "{\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":false,\"showCircles\":true,\"smoothLines\":true,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"支付用户留存率（月）\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"M\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}}],\"listeners\":{}}",
       "description": "",
-      "savedSearchId": "vstat-paynew-daily",
+      "savedSearchId": "vstats-payuserstats-monthly",
       "version": 1,
       "kibanaSavedObjectMeta": {
         "searchSourceJSON": "{\"filter\":[]}"
